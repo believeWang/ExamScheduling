@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Index</title>
 </head>
 <body>
-
+<a href="servlet06">Kidd</a>
 </body>
 </html>
