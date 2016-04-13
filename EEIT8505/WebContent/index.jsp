@@ -7,6 +7,6 @@
 <title>Index</title>
 </head>
 <body>
-<a href="servlet06">Kidd</a>
+<a href="servlet06">李岳軒</a>
 </body>
 </html>
