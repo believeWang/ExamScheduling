@@ -7,6 +7,15 @@
 <title>Index</title>
 </head>
 <body>
+
 <a href="servlet05.do">Steve</a>
+<a href="servlet04">李協益</a>
+<a href="Servlet01">Juni</a>
+<a href="demoServlet">高明輝</a>
+<a href="Servlet03">王彥淳</a>
+
+
+
+>>>>>>> branch 'master' of https://github.com/EEIT85team05/EEIT8505.git
 </body>
 </html>
