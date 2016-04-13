@@ -9,7 +9,6 @@
 <body>
 
 <a href="demoServlet02">高明輝</a>
-
 <a href="Servlet03">王彥淳</a>
 
 </body>
