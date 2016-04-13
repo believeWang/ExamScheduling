@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
   <servlet>
     <servlet-name>AppServlet</servlet-name>
     <servlet-class>iii.team05.Servlet02</servlet-class>
@@ -17,4 +18,16 @@
     <servlet-name>AppServlet</servlet-name>
     <url-pattern>/demoServlet</url-pattern>
   </servlet-mapping>
+
+   <servlet>
+        <servlet-name>Servlet03</servlet-name>
+        <servlet-class>iii.team05.Servlet03</servlet-class>
+         
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet03</servlet-name>
+        <url-pattern>/Servlet03</url-pattern>
+    </servlet-mapping>
+  
+
 </web-app>
