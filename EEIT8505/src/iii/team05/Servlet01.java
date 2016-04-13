@@ -1,7 +1,6 @@
 package iii.team05;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Servlet03
+ * Servlet implementation class Servlet01
  */
-
-public class Servlet03 extends HttpServlet {
+@WebServlet("/Servlet01")
+public class Servlet01 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet03() {
+    public Servlet01() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,22 +27,14 @@ public class Servlet03 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out=response.getWriter();
-
-		out.println("<Html><head>");
-		out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
-		out.println("</head><body>");
-		out.println("<H1>This is 王</H1></body></Html>");
-		
-		
-	}
+		 System.out.println("這是doGet()方法印出的訊息");
+	  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+		System.out.println("這是doPost()方法印出的訊息");
+	  }
 
 }

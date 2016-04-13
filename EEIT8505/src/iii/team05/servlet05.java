@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Servlet03
+ * Servlet implementation class servlet05
  */
-
-public class Servlet03 extends HttpServlet {
+@WebServlet("/servlet05")
+public class servlet05 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet03() {
+    public servlet05() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,22 +28,16 @@ public class Servlet03 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out=response.getWriter();
-
-		out.println("<Html><head>");
-		out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
-		out.println("</head><body>");
-		out.println("<H1>This is 王</H1></body></Html>");
+		PrintWriter out =response.getWriter();
 		
-		
+		out.println("Steve Rogers");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }
