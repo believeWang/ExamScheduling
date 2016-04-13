@@ -28,8 +28,15 @@ public class Servlet03 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		out.println("<H1>This is Wang</H1>");
+
+		out.println("<Html><head>");
+		out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
+		out.println("</head><body>");
+		out.println("<H1>This is 王</H1></body></Html>");
+		
+		
 	}
 
 	/**
