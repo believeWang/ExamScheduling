@@ -11,14 +11,14 @@
   </welcome-file-list>
 
   <servlet>
-    <servlet-name>AppServlet</servlet-name>
+    <servlet-name>AppServlet01</servlet-name>
     <servlet-class>iii.team05.Servlet01</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AppServlet</servlet-name>
+    <servlet-name>AppServlet01</servlet-name>
     <url-pattern>/demoServlet</url-pattern>
   </servlet-mapping>
-</web-app>
+
   <servlet>
     <servlet-name>AppServlet</servlet-name>
     <servlet-class>iii.team05.Servlet02</servlet-class>
