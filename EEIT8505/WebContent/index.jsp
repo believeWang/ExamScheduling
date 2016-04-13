@@ -7,6 +7,6 @@
 <title>Index</title>
 </head>
 <body>
-<a href="Servlet01">Servlet01</a>
+<a href="Servlet01">Juni</a>
 </body>
 </html>
