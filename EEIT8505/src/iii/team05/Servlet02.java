@@ -1,6 +1,8 @@
 package iii.team05;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +29,8 @@ public class Servlet02 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("kao-minghui");
+		PrintWriter out=response.getWriter();
+		out.println("<p>kao-minghui</p>");
 	}
 
 	/**
