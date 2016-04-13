@@ -31,6 +31,7 @@ public class severlet06 extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("Today is a badday");
 		out.println("我要修改");
+		out.println("我又要修改");
 	}
 
 	/**
