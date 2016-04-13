@@ -16,7 +16,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AppServlet01</servlet-name>
-    <url-pattern>/demoServlet</url-pattern>
+    <url-pattern>/demoServlet01</url-pattern>
   </servlet-mapping>
 
   <servlet>
