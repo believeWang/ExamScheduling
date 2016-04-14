@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>EEIT8505</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>Lottery1</servlet-name>
+		<servlet-class>iii.team05.severlet06</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>Lottery1</servlet-name>
+	<url-pattern>/servlet06</url-pattern>
+	</servlet-mapping>
+
+ <servlet>
+        <servlet-name>servlet05Id</servlet-name>
+        <servlet-class>iii.team05.servlet05</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servlet05Id</servlet-name>
+        <url-pattern>/servlet05.do</url-pattern>
+        </servlet-mapping>
+
+<servlet>
+			<servlet-name>servlet04</servlet-name>
+			<servlet-class>iii.team05.servlet04</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>servlet04</servlet-name>
+			<url-pattern>/servlet04</url-pattern>
+		</servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>AppServlet01</servlet-name>
+    <servlet-class>iii.team05.Servlet01</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppServlet01</servlet-name>
+    <url-pattern>/demoServlet01</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Servlet02</servlet-name>
+    <servlet-class>iii.team05.Servlet02</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Servlet02</servlet-name>
+    <url-pattern>/demoServlet02</url-pattern>
+  </servlet-mapping>
+
+   <servlet>
+        <servlet-name>Servlet03</servlet-name>
+        <servlet-class>iii.team05.Servlet03</servlet-class>
+         
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet03</servlet-name>
+        <url-pattern>/Servlet03</url-pattern>
+    </servlet-mapping>
+  
+</web-app>
+
