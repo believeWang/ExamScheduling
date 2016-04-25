@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="iii.team05.mes.model.MesVO" table="Message" >
+        
+        <id name="messageid" column="messageid">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="msgname" column="msgname" />
+        <property name="msgmail" column="msgmail" />
+        <property name="msgtime" column="msgtime" />
+        <property name="msgcontent" column="msgcontent" />
+        <property name="rpname" column="rpname" />
+        <property name="rptime" column="rptime" />
+        <property name="rpcontent" column="rpcontent" />
+    </class>
+</hibernate-mapping>
