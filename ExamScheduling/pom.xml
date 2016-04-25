@@ -60,6 +60,22 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		 <!-- JDBC sqldriver 4.0 API -->
+		 <!-- 1.Run Configuration -->
+		 <!-- Goals:install:install-file -->
+		 <!-- file         C:\myLib\sqljdbc4.jar-->
+		 <!-- groupId      iii.team05-->
+		 <!-- artifactId    sqljdbc-->
+		 <!-- version       4.0-->
+		 <!-- packaging     jar-->
+		 
+		 
+		<dependency>
+            <groupId>iii.team05</groupId>
+            <artifactId>sqljdbc</artifactId>
+            <version>4.0</version>
+            
+        </dependency>
 
 	</dependencies>
 	<build>
