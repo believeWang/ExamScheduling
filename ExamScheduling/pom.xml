@@ -76,6 +76,19 @@
             <version>4.0</version>
             
         </dependency>
+        
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 	</dependencies>
 	<build>
@@ -90,6 +103,7 @@
 					<target>${java-version}</target>
 				</configuration>
 			</plugin>
+
 
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
