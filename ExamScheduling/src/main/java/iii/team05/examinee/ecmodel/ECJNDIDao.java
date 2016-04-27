@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-public class ExamineeCatDao implements ExamineeCatDao_interface {
+public class ECJNDIDao implements ExamineeCatDao_interface {
 
 
 
@@ -57,7 +57,7 @@ public class ExamineeCatDao implements ExamineeCatDao_interface {
 		pstmt=con.prepareStatement(INSERT_STMT);
 		pstmt.setString(1,examineeCatVO.getEcno() );
 		pstmt.setString(2,examineeCatVO.getEcname() );
-		pstmt.setString(3,examineeCatVO.getEcmail() );
+		pstmt.setString(3,examineeCatVO.getEcemail() );
 		pstmt.setString(4,examineeCatVO.getEcpsd());
 		pstmt.setBoolean(5,examineeCatVO.getEcstatus() );
 		pstmt.setString(6,examineeCatVO.getEcremark1() );
@@ -87,7 +87,7 @@ public class ExamineeCatDao implements ExamineeCatDao_interface {
 		pstmt=con.prepareStatement(UPDATE);
 		pstmt.setString(6,examineeCatVO.getEcno() );
 		pstmt.setString(1,examineeCatVO.getEcname() );
-		pstmt.setString(2,examineeCatVO.getEcmail() );
+		pstmt.setString(2,examineeCatVO.getEcemail() );
 		pstmt.setString(3,examineeCatVO.getEcpsd());
 		pstmt.setBoolean(4,examineeCatVO.getEcstatus() );
 		pstmt.setString(5,examineeCatVO.getEcremark1() );
@@ -150,7 +150,7 @@ public class ExamineeCatDao implements ExamineeCatDao_interface {
 			examineeCatVO =new  ExamineeCatVO();
 			examineeCatVO.setEcno(rs.getString(1));
 			examineeCatVO.setEcname(rs.getString(2));
-			examineeCatVO.setEcmail(rs.getString(3));
+			examineeCatVO.setEcemail(rs.getString(3));
 			examineeCatVO.setEcpsd(rs.getString(4));
 			examineeCatVO.setEcstatus(rs.getBoolean(5));
 			examineeCatVO.setEcremark1(rs.getString(6));
@@ -190,7 +190,7 @@ public class ExamineeCatDao implements ExamineeCatDao_interface {
 			examineeCatVO =new  ExamineeCatVO();
 			examineeCatVO.setEcno(rs.getString(1));
 			examineeCatVO.setEcname(rs.getString(2));
-			examineeCatVO.setEcmail(rs.getString(3));
+			examineeCatVO.setEcemail(rs.getString(3));
 			examineeCatVO.setEcpsd(rs.getString(4));
 			examineeCatVO.setEcstatus(rs.getBoolean(5));
 			examineeCatVO.setEcremark1(rs.getString(6));

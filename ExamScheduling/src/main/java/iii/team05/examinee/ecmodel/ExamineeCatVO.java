@@ -3,7 +3,7 @@ package iii.team05.examinee.ecmodel;
 public class ExamineeCatVO implements java.io.Serializable{
 	private String ecno;
 	private String ecname;
-	private String ecmail;
+	private String ecemail;
 	private String ecpsd;
 	private Boolean ecstatus;
 	private String ecremark1;
@@ -19,11 +19,11 @@ public class ExamineeCatVO implements java.io.Serializable{
 	public void setEcname(String ecname) {
 		this.ecname = ecname;
 	}
-	public String getEcmail() {
-		return ecmail;
+	public String getEcemail() {
+		return ecemail;
 	}
-	public void setEcmail(String ecmail) {
-		this.ecmail = ecmail;
+	public void setEcemail(String ecmail) {
+		this.ecemail = ecmail;
 	}
 	public String getEcpsd() {
 		return ecpsd;
