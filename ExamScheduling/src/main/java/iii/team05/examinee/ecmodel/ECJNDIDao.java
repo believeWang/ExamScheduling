@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-public class ECJNDIDao implements ExamineeCatDao_interface {
+public class ECJNDIDao implements ECDao_interface {
 
 
 
@@ -49,7 +49,7 @@ public class ECJNDIDao implements ExamineeCatDao_interface {
 	}
 	
 	@Override
-	public void insert(ExamineeCatVO examineeCatVO){
+	public void insert(ECVO examineeCatVO){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try{
@@ -78,7 +78,7 @@ public class ECJNDIDao implements ExamineeCatDao_interface {
 	}
 
 	@Override
-	public void update(ExamineeCatVO examineeCatVO) {
+	public void update(ECVO examineeCatVO) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -135,10 +135,10 @@ public class ECJNDIDao implements ExamineeCatDao_interface {
 	}
 
 	@Override
-	public ExamineeCatVO findByPrimaryKey(String ecno) {
+	public ECVO findByPrimaryKey(String ecno) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ExamineeCatVO examineeCatVO=null;
+		ECVO examineeCatVO=null;
 		try{
 			con=ds.getConnection();
 		pstmt=con.prepareStatement(GET_ONE_STMT);
@@ -147,7 +147,7 @@ public class ECJNDIDao implements ExamineeCatDao_interface {
 		ResultSet rs= pstmt.executeQuery();
 		
 		if(rs.next()){
-			examineeCatVO =new  ExamineeCatVO();
+			examineeCatVO =new  ECVO();
 			examineeCatVO.setEcno(rs.getString(1));
 			examineeCatVO.setEcname(rs.getString(2));
 			examineeCatVO.setEcemail(rs.getString(3));
@@ -172,9 +172,9 @@ public class ECJNDIDao implements ExamineeCatDao_interface {
 	}
 
 	@Override
-	public List<ExamineeCatVO> getAll() {
-		List<ExamineeCatVO> list = new ArrayList<ExamineeCatVO>();
-		ExamineeCatVO examineeCatVO=null;
+	public List<ECVO> getAll() {
+		List<ECVO> list = new ArrayList<ECVO>();
+		ECVO examineeCatVO=null;
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -187,7 +187,7 @@ public class ECJNDIDao implements ExamineeCatDao_interface {
 		 rs= pstmt.executeQuery();
 		
 		while(rs.next()){
-			examineeCatVO =new  ExamineeCatVO();
+			examineeCatVO =new  ECVO();
 			examineeCatVO.setEcno(rs.getString(1));
 			examineeCatVO.setEcname(rs.getString(2));
 			examineeCatVO.setEcemail(rs.getString(3));

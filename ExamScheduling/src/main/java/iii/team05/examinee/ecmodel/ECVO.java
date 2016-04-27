@@ -1,6 +1,6 @@
 package iii.team05.examinee.ecmodel;
 
-public class ExamineeCatVO implements java.io.Serializable{
+public class ECVO implements java.io.Serializable{
 	private String ecno;
 	private String ecname;
 	private String ecemail;

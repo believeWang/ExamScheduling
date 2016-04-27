@@ -11,14 +11,14 @@ import org.hibernate.Session;
 
 import iii.team05.hibernate.util.*;
 
-public class ECHibernateDAO implements ExamineeCatDao_interface{
-	private static final String GET_ALL_STMT = "from ExamineeCatVO order by ecno";
+public class ECHibernateDAO implements ECDao_interface{
+	private static final String GET_ALL_STMT = "from ECVO order by ecno";
 	@Override
-	public void insert(ExamineeCatVO examineecatVO) {
+	public void insert(ECVO examineeCatVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(examineecatVO);
+			session.saveOrUpdate(examineeCatVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -27,11 +27,11 @@ public class ECHibernateDAO implements ExamineeCatDao_interface{
 	}
 
 	@Override
-	public void update(ExamineeCatVO examineecatVO) {
+	public void update(ECVO examineeCatVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(examineecatVO);
+			session.saveOrUpdate(examineeCatVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -45,7 +45,7 @@ public class ECHibernateDAO implements ExamineeCatDao_interface{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			ExamineeCatVO examineecatVO = (ExamineeCatVO) session.get(ExamineeCatVO.class, ecno);			
+			ECVO examineecatVO = (ECVO) session.get(ECVO.class, ecno);			
 			session.delete(examineecatVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -56,12 +56,12 @@ public class ECHibernateDAO implements ExamineeCatDao_interface{
 	}
 
 	@Override
-	public ExamineeCatVO findByPrimaryKey(String ecno) {
-		ExamineeCatVO examineecatVO = null;
+	public ECVO findByPrimaryKey(String ecno) {
+		ECVO examineecatVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			examineecatVO = (ExamineeCatVO) session.get(ExamineeCatVO.class, ecno);
+			examineecatVO = (ECVO) session.get(ECVO.class, ecno);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -71,8 +71,8 @@ public class ECHibernateDAO implements ExamineeCatDao_interface{
 	}
 
 	@Override
-	public List<ExamineeCatVO> getAll() {
-		List<ExamineeCatVO> list = null;
+	public List<ECVO> getAll() {
+		List<ECVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();

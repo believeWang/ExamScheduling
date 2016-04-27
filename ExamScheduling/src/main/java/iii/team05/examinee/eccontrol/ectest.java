@@ -2,7 +2,11 @@ package iii.team05.examinee.eccontrol;
 
 import iii.team05.examinee.ecmodel.ECHibernateDAO;
 import iii.team05.examinee.ecmodel.ECJNDIDao;
-import iii.team05.examinee.ecmodel.ExamineeCatVO;
+import iii.team05.examinee.ecmodel.ESHibernateDAO;
+import iii.team05.examinee.ecmodel.ECVO;
+import iii.team05.examinee.ecmodel.ESVO;
+import iii.team05.examinee.ecmodel.ScoreHibernateDAO;
+import iii.team05.examinee.ecmodel.ScoreVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ectest
+ * 測試用~~~~
  */
 @WebServlet("/ectest")
 public class ectest extends HttpServlet {
@@ -26,13 +30,15 @@ public class ectest extends HttpServlet {
 
 		//testJNDI(res);
 		testHibernate(res);
+		//testSubHibernate(res);
+		//testScoreHibernate(res);
 	}
 	
 	private void testJNDI(HttpServletResponse res)throws ServletException, IOException {
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
 		ECJNDIDao dao = new ECJNDIDao();
-		ExamineeCatVO examineeCatVO = new ExamineeCatVO();
+		ECVO examineeCatVO = new ECVO();
 		examineeCatVO.setEcno("EEIT8517");
 		examineeCatVO.setEcname("彥淳");
 		examineeCatVO.setEcemail("believe91326@hotmail");
@@ -42,10 +48,10 @@ public class ectest extends HttpServlet {
 		examineeCatVO.setEcname("淳阿");
 		dao.update(examineeCatVO);
 		// dao.delete("EEIT8517");
-		ExamineeCatVO examineeCatVO2 = dao.findByPrimaryKey("EEIT8517");
+		ECVO examineeCatVO2 = dao.findByPrimaryKey("EEIT8517");
 		out.print(examineeCatVO2.getEcname());
-		List<ExamineeCatVO> list = dao.getAll();
-		for (ExamineeCatVO ecVO : list) {
+		List<ECVO> list = dao.getAll();
+		for (ECVO ecVO : list) {
 			out.println(ecVO.getEcno() + " " + ecVO.getEcname() + " "
 					+ ecVO.getEcstatus());
 		}
@@ -54,7 +60,7 @@ public class ectest extends HttpServlet {
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
 		ECHibernateDAO ecHDAO=new ECHibernateDAO();
-		ExamineeCatVO examineeCatVO = new ExamineeCatVO();
+		ECVO examineeCatVO = new ECVO();
 		examineeCatVO.setEcno("EEIT8517");
 		examineeCatVO.setEcname("彥淳");
 		examineeCatVO.setEcemail("believe91326@hotmail");
@@ -63,13 +69,61 @@ public class ectest extends HttpServlet {
 		examineeCatVO.setEcno("EEIT8517");
 		examineeCatVO.setEcname("淳阿");
 		ecHDAO.update(examineeCatVO);
-		ExamineeCatVO examineeCatVO2 = ecHDAO.findByPrimaryKey("EEIT8517");
+		ECVO examineeCatVO2 = ecHDAO.findByPrimaryKey("EEIT8517");
 		out.print(examineeCatVO2.getEcname());
-		List<ExamineeCatVO> list = ecHDAO.getAll();
-		for (ExamineeCatVO ecVO : list) {
+		ecHDAO.delete("EEIT8517");
+		List<ECVO> list = ecHDAO.getAll();
+		for (ECVO ecVO : list) {
 			out.println(ecVO.getEcno() + " " + ecVO.getEcname() + " "
 					+ ecVO.getEcstatus()+"<br/>");
 		}
 	}
+	private void testSubHibernate(HttpServletResponse res)throws ServletException, IOException {
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		ESHibernateDAO esHDAO=new ESHibernateDAO();
+		ESVO examineeSubVO = new ESVO();
+		examineeSubVO.setEcno("EEIT8517");
+		examineeSubVO.setEsschool("淡江");
+		examineeSubVO.setEssex(true);
+		
+		esHDAO.insert(examineeSubVO);
+		examineeSubVO.setEcno("EEIT8517");
+		examineeSubVO.setEsschool("江淡");
+		
+		esHDAO.update(examineeSubVO);
+		ESVO examineeSubVO2 = esHDAO.findByPrimaryKey("EEIT8517");
+		out.println(examineeSubVO2.getEcno());
+		esHDAO.delete("EEIT8517");
+		List<ESVO> list = esHDAO.getAll();
+		for (ESVO esVO : list) {
+			out.println(esVO.getEcno() + " " + esVO.getEsschool() + " "
+					+ esVO.getEssex()+"<br/>");
+		}
+	}
+	private void testScoreHibernate(HttpServletResponse res)throws ServletException, IOException {
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		ScoreHibernateDAO sHDAO=new ScoreHibernateDAO();
+		ScoreVO scoreVO = new ScoreVO();
+		scoreVO.setEcno("EEIT8517");
+		scoreVO.setInterview(123);
+		
+		sHDAO.insert(scoreVO);
+		scoreVO.setEcno("EEIT8517");
+		scoreVO.setInterview(321);
+		
+		sHDAO.update(scoreVO);
+		ScoreVO scoreVO2 = sHDAO.findByPrimaryKey("EEIT8517");
+		
+		out.println(scoreVO2.getEcno());
+		sHDAO.delete("EEIT8517");
+		List<ScoreVO> list = sHDAO.getAll();
+		for (ScoreVO scoreVO3 : list) {
+			out.println(scoreVO3.getEcno() +" "+scoreVO3.getInterview()+"<br/>");
+		}
+	}
+	
+	
 
 }

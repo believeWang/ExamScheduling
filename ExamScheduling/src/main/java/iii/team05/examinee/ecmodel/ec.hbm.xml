@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="iii.team05.examinee.ecmodel.ExamineeCatVO" table="Examinee_Cat">
+    <class name="iii.team05.examinee.ecmodel.ECVO" table="Examinee_Cat">
         
         <id name="ecno" column="ecno">       
         </id>
