@@ -68,7 +68,7 @@ public class EventSaveServlet extends HttpServlet {
 		evo.setEmpno(1);
 		evo.setStarttime(ts);
 		evo.setEndtime(ts);
-		evo.setBgcolor("#808080");
+		evo.setBgcolor("#337AB7");
 		evo.setTitle(title);
 		evo.setEcno("EEIT8501");
 		//evo.setEventremark();

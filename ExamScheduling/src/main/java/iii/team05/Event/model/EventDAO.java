@@ -17,7 +17,7 @@ public class EventDAO implements EventDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/BlobClobDEMO");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/ESDB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
