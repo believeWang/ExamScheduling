@@ -6,10 +6,19 @@ public class ScoreVO implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String ecno;
+
+	private ECVO eCVO;
 	private Integer lab;//上機考分數
 	private Integer interview; //面試分數
 	private Integer labtime; //上機考時間(分鐘)
 	private Integer onlineex;  //線上測驗分數
+	
+	public ECVO geteCVO() {
+		return eCVO;
+	}
+	public void seteCVO(ECVO eCVO) {
+		this.eCVO = eCVO;
+	}
 	public String getEcno() {
 		return ecno;
 	}
