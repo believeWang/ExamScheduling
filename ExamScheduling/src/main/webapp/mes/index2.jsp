@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>考試預約系統Backstage</title>
+
+<title>考試預約系統Reception</title>
 		<style>
        @import url('<%=request.getContextPath()%>/mes_css/main.css');
 		</style>
@@ -17,7 +18,7 @@
        		<ul id="menu">	   
        	  	      <li><a href="<%=request.getContextPath()%>/index.jsp">輸入成績</a></li>
        		      <li><a href="<%=request.getContextPath()%>/index.jsp">編輯考題</a></li>
-		  	      <li><a href="<%=request.getContextPath()%>/mes/ListNotReplyMessage.jsp"></a>留言板</li>
+		  	      <li><a href="<%=request.getContextPath()%>/mes/ListNotReplyMessage.jsp">留言板</a></li>
        		</ul>
        	</nav>       	
        </header>

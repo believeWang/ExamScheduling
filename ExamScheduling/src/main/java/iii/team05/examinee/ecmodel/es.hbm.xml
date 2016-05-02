@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="iii.team05.examinee.ecmodel.ESVO" table="Examinee_Sub">
+        
+        <id name="ecno" column="ecno">       
+        </id>
+        
+        <property name="esteam" column="esteam" />
+        <property name="esbirth" column="esbirth" />
+        <property name="esschool" column="esschool" />
+        <property name="essex" column="essex" />
+        <property name="eshiredate" column="eshiredate" />
+        <property name="essalary" column="essalary" />
+        <property name="esranking" column="esranking" />
+        <property name="esremark2" column="esremark2" />
+
+    </class>
+</hibernate-mapping>

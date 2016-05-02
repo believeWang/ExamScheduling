@@ -36,6 +36,8 @@ public class MesServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 
+
+		/*留言*/
 		if ("leave".equals(action)) {
 			try {
 				String msgname = request.getParameter("msgname");
@@ -50,16 +52,17 @@ public class MesServlet extends HttpServlet {
 				mesVO.setMsgtime(msgtime);
 				mesVO.setMsgcontent(msgcontent);
 
-				/*************************** 2.開始新增資料 ***************************************/
+				/*開始新增資料 */
 				MesService mesSvc = new MesService();
 				mesVO = mesSvc.leaveMessage(msgname, msgmail, msgtime,
 						msgcontent);
 
-				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				String url = "/mes/ListAllMessage.jsp";
-				RequestDispatcher successView = request
-						.getRequestDispatcher(url);
-				successView.forward(request, response);
+				/*新增完成,準備轉交*/
+				String url = "ListAllMessage.jsp";
+//				RequestDispatcher successView = request
+//						.getRequestDispatcher(url);
+//				successView.forward(request, response);
+				response.sendRedirect(response.encodeRedirectURL(url));
 			} catch (Exception e) {
 				e.printStackTrace();
 				RequestDispatcher failureView = request
@@ -67,7 +70,8 @@ public class MesServlet extends HttpServlet {
 				failureView.forward(request, response);
 			}
 		}
-
+		
+		/*回覆*/
 		if ("reply".equals(action)) {
 			try {
 				Integer messageid = new Integer(request.getParameter("messageid").trim());
@@ -89,24 +93,26 @@ public class MesServlet extends HttpServlet {
 				mesVO.setMsgtime(rptime);
 				mesVO.setMsgcontent(rpcontent);
 
-				/*************************** 2.開始新增資料 ***************************************/
+	
 				MesService mesSvc = new MesService();
 				mesVO = mesSvc.replyMessage(messageid,msgname,msgmail,msgtime,msgcontent,rpname,rptime,rpcontent);
-//
-				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				String url = "/mes/ListNotReplyMessage.jsp";
-				RequestDispatcher successView = request
-						.getRequestDispatcher(url);
-				successView.forward(request, response);
+
+				String url = "ListNotReplyMessage.jsp";
+//				RequestDispatcher successView = request
+//						.getRequestDispatcher(url);
+//				successView.forward(request, response);
+				response.sendRedirect(response.encodeRedirectURL(url));
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				RequestDispatcher failureView = request
 						.getRequestDispatcher("/mes/ListNotReplyMessage.jsp");
 				failureView.forward(request, response);
+				
 			}
 		}
 
-		if ("getOne_For_Message".equals(action)) { // 來自select_page.jsp的請求
+		if ("getOne_For_Message".equals(action)) { 
 
 			try {
 
@@ -114,7 +120,7 @@ public class MesServlet extends HttpServlet {
 						request.getParameter("messageid"));
 				MesService empSvc = new MesService();
 				MesVO mesVO = empSvc.getOneMes(messageid);
-				request.setAttribute("mesVO", mesVO); // 資料庫取出的empVO物件,存入req
+				request.setAttribute("mesVO", mesVO); 
 				String url = "/mes/ListOneMessage.jsp";
 				RequestDispatcher successView = request
 						.getRequestDispatcher(url);
@@ -124,15 +130,15 @@ public class MesServlet extends HttpServlet {
 			}
 		}
 
-		if ("getOne_Not_RePlay_Message".equals(action)) { // 來自select_page.jsp的請求
-
+		
+		if ("getOne_Not_RePlay_Message".equals(action)) {
 			try {
 
 				Integer messageid = new Integer(
 						request.getParameter("messageid"));
 				MesService empSvc = new MesService();
 				MesVO mesVO = empSvc.getOneMes(messageid);
-				request.setAttribute("mesVO", mesVO); // 資料庫取出的empVO物件,存入req
+				request.setAttribute("mesVO", mesVO); 
 				String url = "/mes/ReplyMessage.jsp";
 				RequestDispatcher successView = request
 						.getRequestDispatcher(url);

@@ -8,5 +8,6 @@
 
 <h1><a href="<%=request.getContextPath()%>/mes/index1.jsp">留言</a></h1>
 <h1><a href="<%=request.getContextPath()%>/mes/index2.jsp">回覆</a></h1>
+<h1><a href="<%=request.getContextPath()%>/fullcalendar/JobServlet?jobid=1">FullCalendar</a></h1>
 </body>
 </html>
