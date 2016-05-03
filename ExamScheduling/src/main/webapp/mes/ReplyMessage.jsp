@@ -44,7 +44,6 @@ MesVO mesVO = (MesVO) request.getAttribute("mesVO");
 </table>
 
 <fieldset>
-<legend>回覆</legend>
 <table border="0">
 	<tr>
 		<td>姓名:</td>

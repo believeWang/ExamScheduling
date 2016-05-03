@@ -36,6 +36,7 @@ public class MesServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 
+
 		/*留言*/
 		if ("leave".equals(action)) {
 			try {
@@ -57,10 +58,11 @@ public class MesServlet extends HttpServlet {
 						msgcontent);
 
 				/*新增完成,準備轉交*/
-				String url = "/mes/ListAllMessage.jsp";
-				RequestDispatcher successView = request
-						.getRequestDispatcher(url);
-				successView.forward(request, response);
+				String url = "ListAllMessage.jsp";
+//				RequestDispatcher successView = request
+//						.getRequestDispatcher(url);
+//				successView.forward(request, response);
+				response.sendRedirect(response.encodeRedirectURL(url));
 			} catch (Exception e) {
 				e.printStackTrace();
 				RequestDispatcher failureView = request
@@ -95,15 +97,18 @@ public class MesServlet extends HttpServlet {
 				MesService mesSvc = new MesService();
 				mesVO = mesSvc.replyMessage(messageid,msgname,msgmail,msgtime,msgcontent,rpname,rptime,rpcontent);
 
-				String url = "/mes/ListNotReplyMessage.jsp";
-				RequestDispatcher successView = request
-						.getRequestDispatcher(url);
-				successView.forward(request, response);
+				String url = "ListNotReplyMessage.jsp";
+//				RequestDispatcher successView = request
+//						.getRequestDispatcher(url);
+//				successView.forward(request, response);
+				response.sendRedirect(response.encodeRedirectURL(url));
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				RequestDispatcher failureView = request
 						.getRequestDispatcher("/mes/ListNotReplyMessage.jsp");
 				failureView.forward(request, response);
+				
 			}
 		}
 
