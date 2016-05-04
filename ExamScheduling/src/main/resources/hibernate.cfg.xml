@@ -26,10 +26,17 @@
 
 		<!--Java物件與資料庫表格的映射檔 -->
 		<mapping resource="iii/team05/mes/model/mes.hbm.xml" />
+
+
 		<mapping resource="iii/team05/examinee/ecmodel/ec.hbm.xml" />
 		<mapping resource="iii/team05/examinee/ecmodel/es.hbm.xml" />
 		<mapping resource="iii/team05/examinee/ecmodel/score.hbm.xml" />
+		<mapping resource="iii/team05/exam/model/exam.hbm.xml" />
+		<mapping resource="iii/team05/exam/model/examdetail.hbm.xml" />
+		<mapping resource="iii/team05/exam/model/options.hbm.xml" />
 		
+
+
 		
 
 	</session-factory>
