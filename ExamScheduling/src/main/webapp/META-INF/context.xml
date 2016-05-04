@@ -2,7 +2,7 @@
 <Context displayName="EEiT85 Team05" docBase="ExamScheduling" path="/ExamScheduling" reloadable="true">
   <!--                  SQLServer                      -->
   <Resource name="jdbc/ESDB" type="javax.sql.DataSource"
-      username="sa" password="p@sswOrd"
+      username="sa" password="P@sswOrd"
       driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
       url="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=ESDB"    
       maxActive="8"
