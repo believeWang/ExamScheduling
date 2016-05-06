@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/quiz_front/choose.jsp");
+				.getRequestDispatcher("/WEB-INF/quiz_front/choose.jsp");
 		dispatcher.forward(request, response);
 	}
 }
