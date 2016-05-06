@@ -16,7 +16,6 @@
  		 <nav>
        		<img src="<%=request.getContextPath()%>/mes_images/logo.jpg" style="float:left" />  
        		<ul id="menu">	  			   
-
        	 	    <li><a href="<%=request.getContextPath()%>/index.jsp">預約考試</a></li>
        		    <li><a href="<%=request.getContextPath()%>/index.jsp">前往考試</a></li>
        		    <li><a href="<%=request.getContextPath()%>/index.jsp">關於偉康</a></li>
@@ -49,3 +48,4 @@
 </div>
 </body>
 </html>
+

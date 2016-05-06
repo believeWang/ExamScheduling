@@ -37,6 +37,7 @@ public class MesServlet extends HttpServlet {
 		String action = request.getParameter("action");
 
 
+
 		/*留言*/
 		if ("leave".equals(action)) {
 			try {
@@ -139,6 +140,7 @@ public class MesServlet extends HttpServlet {
 				MesService empSvc = new MesService();
 				MesVO mesVO = empSvc.getOneMes(messageid);
 				request.setAttribute("mesVO", mesVO); 
+
 				String url = "/mes/ReplyMessage.jsp";
 				RequestDispatcher successView = request
 						.getRequestDispatcher(url);

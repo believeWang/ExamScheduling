@@ -1,5 +1,6 @@
 package iii.team05.examinee.ecmodel;
 
+
 import java.util.List;
 
 import org.hibernate.Query;
