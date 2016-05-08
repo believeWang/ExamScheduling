@@ -6,15 +6,23 @@ public class ESVO implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String ecno;
+	private ECVO eCVO;
 	private Integer esteam;
 	private Integer esbirth;
+	
 	private String esschool;
 	private Boolean essex;
 	private Date eshiredate;
 	private Integer essalary;
 	private Integer esranking;
 	private String esremark2;
-	
+	public ECVO geteCVO() {
+		return eCVO;
+	}
+
+	public void seteCVO(ECVO eCVO) {
+		this.eCVO = eCVO;
+	}
 	public String getEcno() {
 		return ecno;
 	}

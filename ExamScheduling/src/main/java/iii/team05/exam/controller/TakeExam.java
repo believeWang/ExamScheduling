@@ -1,5 +1,8 @@
 package iii.team05.exam.controller;
 
+import iii.team05.exam.model.ExamService;
+import iii.team05.exam.model.ExamVO;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -11,59 +14,42 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.w3c.dom.Document;
 
-
-
 /**
  * Servlet implementation class TakeExam
  */
 @WebServlet("/TakeExam")
 public class TakeExam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
- 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		/*request.getSession().setAttribute("currentExam", null);
-		request.getSession().setAttribute("totalNumberOfQuizQuestions",null);
-		request.getSession().setAttribute("quizDuration",null);
-		request.getSession().setAttribute("min",null);
-		request.getSession().setAttribute("sec",null);
 
-		String exam = request.getParameter("test");
-		request.getSession().setAttribute("exam", exam);
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		ExamService examService = new ExamService();
+		
+		//取得考試科目名稱
+		String examno = request.getParameter("test");
+		
 
-		System.out.println(request.getSession().getAttribute("user"));
-		if (request.getSession().getAttribute("user") == null) {
-			request.getRequestDispatcher("/login").forward(request,
-					response);
+		//查看是否登入	
+	//	System.out.println(request.getSession().getAttribute("ecno"));
+		if (request.getSession().getAttribute("ecno") == null) {
 			
+			request.getRequestDispatcher("/login").forward(request, response);
+			
+			//response.sendRedirect("/login");
+
 		} else {
+			examService.putExamDetailInRequest(examno, request);
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("/WEB-INF/jsps/quizDetails.jsp");
-			Document document=null;
-			try{
-			document=iii.team05.exam.model.CreateDOM.getDOM(exam);
-			
-		   
-			request.getSession().setAttribute("totalNumberOfQuizQuestions",document.getElementsByTagName("totalQuizQuestions").item(0).getTextContent());
-			request.getSession().setAttribute("quizDuration",document.getElementsByTagName("quizDuration").item(0).getTextContent());
-			request.getSession().setAttribute("min",document.getElementsByTagName("quizDuration").item(0).getTextContent());
-			request.getSession().setAttribute("sec",0);
-			
-			
-			}				
-			catch(Exception e){e.printStackTrace();}
+					.getRequestDispatcher("/WEB-INF/quiz_front/quizDetails.jsp");
 			dispatcher.forward(request, response);
+		
+		
 		}
-	
-	*/
-	
+
 	}
 
-
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }

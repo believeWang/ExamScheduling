@@ -6,11 +6,11 @@
 <head>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/login_front/css/styles.css">   
+   <link rel="stylesheet" href="exam_resourse/css/styles.css">   
     <style type="text/css">
     
 body {
-	background: url("${pageContext.request.contextPath}/login_front/images/background.jpg");
+	background: url("exam_resourse/images/background.jpg");
 }
 
 .button {
@@ -57,8 +57,8 @@ body {
 <div id='cssmenu'>
 <ul>
    <li class=''><a href='${pageContext.request.contextPath}'><span>Home</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/login_front/login.jsp'><span>Login</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/quiz_front/choose.jsp'><span>Exam</span></a></li>
+   <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li>
+   <li><a href='${pageContext.request.contextPath}/choose'><span>Exam</span></a></li>
    
   
 </ul>
@@ -80,12 +80,12 @@ Logged as <a href="#" class="button username">${sessionScope.ecno}</a>
 <table cellpadding="0" cellspacing="50">
 
 <tr>
-<td><a href="takeExam?test=java"><img height="200" width="200" src="${pageContext.request.contextPath}/login_front/images/java.png"/></a></td>
+<td><a href="TakeExam?test=Java1"><img height="200" width="200" src="exam_resourse/images/java.png"/></a></td>
 
 </tr>
 
 <tr>
-<td><a href="takeExam?test=css"><img height="200" width="200" src="${pageContext.request.contextPath}/login_front/images/css.jpg"/></a></td>
+<td><a href="TakeExam?test=Javascript1"><img height="200" width="200" src="exam_resourse/images/javascript.png"/></a></td>
 
 </tr>
 

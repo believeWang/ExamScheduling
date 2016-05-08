@@ -29,11 +29,70 @@ public class ectest extends HttpServlet {
 			throws ServletException, IOException {
 
 		//testJNDI(res);
-		testHibernate(res);
+		//testHibernate(res);
 		//testSubHibernate(res);
 		//testScoreHibernate(res);
+		
+		testHibernateAll(res);
 	}
-	
+	private void testHibernateAll(HttpServletResponse res)throws ServletException, IOException {
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		ECHibernateDAO dao = new ECHibernateDAO();
+		
+		ECVO examineeCatVO =dao.findByPrimaryKey("EEIT8517");
+		if(examineeCatVO!=null){
+			out.print("查詢成功 查詢到"+examineeCatVO.getEcno()+" "+examineeCatVO.getEcname()+"<br/>並準備刪除<br/>");
+			//刪除
+		
+			 dao.delete("EEIT8517");
+		}
+		
+		//建立考生主表
+		 examineeCatVO = new ECVO();
+		examineeCatVO.setEcno("EEIT8517");
+		examineeCatVO.setEcname("彥淳");
+		examineeCatVO.setEcemail("believe91326@hotmail");
+		examineeCatVO.setEcstatus(false);
+		
+		//建立考生副表
+		ESVO eSVO = new ESVO();
+		eSVO.setEcno("EEIT8517");
+		eSVO.setEsschool("淡江");
+		eSVO.setEssex(true);
+		eSVO.seteCVO(examineeCatVO);
+		
+		//建立分數表
+		ScoreVO scoreVO = new ScoreVO();
+		scoreVO.setEcno("EEIT8517");
+		scoreVO.setInterview(123);
+		scoreVO.seteCVO(examineeCatVO);
+		
+		//兩張表加入主表中
+		examineeCatVO.seteSVO(eSVO);
+		examineeCatVO.setScoreVO(scoreVO);
+		
+		//因為casecade all 所以只要新增一個主表就會自動新增其他兩張表
+		dao.insert(examineeCatVO);
+		
+		//查詢
+		 examineeCatVO =dao.findByPrimaryKey("EEIT8517");
+		 out.print("新增後結果為"+examineeCatVO.getEcno()+" "+examineeCatVO.getEcname()+"<br/>");
+		
+		//修改
+		 eSVO.setEsschool("江淡");
+		 scoreVO.setInterview(321);
+		 examineeCatVO.setEcname("淳阿");
+		 
+		 //修改
+		 dao.update(examineeCatVO);
+		 
+		 //查詢
+		 examineeCatVO =dao.findByPrimaryKey("EEIT8517");
+		 out.print("修改後結果為"+examineeCatVO.getEcno()+" "+examineeCatVO.getEcname());
+		 
+		
+	}
 	private void testJNDI(HttpServletResponse res)throws ServletException, IOException {
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
@@ -71,7 +130,7 @@ public class ectest extends HttpServlet {
 		ecHDAO.update(examineeCatVO);
 		ECVO examineeCatVO2 = ecHDAO.findByPrimaryKey("EEIT8517");
 		out.print(examineeCatVO2.getEcname());
-		ecHDAO.delete("EEIT8517");
+		//ecHDAO.delete("EEIT8517");
 		List<ECVO> list = ecHDAO.getAll();
 		for (ECVO ecVO : list) {
 			out.println(ecVO.getEcno() + " " + ecVO.getEcname() + " "
@@ -94,7 +153,7 @@ public class ectest extends HttpServlet {
 		esHDAO.update(examineeSubVO);
 		ESVO examineeSubVO2 = esHDAO.findByPrimaryKey("EEIT8517");
 		out.println(examineeSubVO2.getEcno());
-		esHDAO.delete("EEIT8517");
+		//esHDAO.delete("EEIT8517");
 		List<ESVO> list = esHDAO.getAll();
 		for (ESVO esVO : list) {
 			out.println(esVO.getEcno() + " " + esVO.getEsschool() + " "
@@ -117,7 +176,7 @@ public class ectest extends HttpServlet {
 		ScoreVO scoreVO2 = sHDAO.findByPrimaryKey("EEIT8517");
 		
 		out.println(scoreVO2.getEcno());
-		sHDAO.delete("EEIT8517");
+		//sHDAO.delete("EEIT8517");
 		List<ScoreVO> list = sHDAO.getAll();
 		for (ScoreVO scoreVO3 : list) {
 			out.println(scoreVO3.getEcno() +" "+scoreVO3.getInterview()+"<br/>");

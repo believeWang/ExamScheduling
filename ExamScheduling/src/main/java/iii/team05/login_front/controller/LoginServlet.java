@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/login_front/LoginServlet")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
@@ -27,8 +27,11 @@ public class LoginServlet extends HttpServlet {
 		if(hasAccount){
 			 HttpSession session=request.getSession();
 		     session.setAttribute("ecno",ecno);
-			 RequestDispatcher rd=request.getRequestDispatcher("/quiz_front/choose.jsp");
-			 rd.forward(request, response);
+		   
+		     RequestDispatcher dispatcher = request
+						.getRequestDispatcher("/WEB-INF/quiz_front/choose.jsp");
+				dispatcher.forward(request, response);
+			
 		}else{
 			
 		}

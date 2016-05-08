@@ -7,20 +7,20 @@
     <title>
         HTML Document Structure
     </title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/login_front/css/style.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/login_front/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="exam_resourse/css/style.css" />
+    <link rel="stylesheet" href="exam_resourse/css/styles.css">
     <style type="text/css">
 body {
-	background: url("${pageContext.request.contextPath}/login_front/images/background.jpg");
+	background: url("exam_resourse/images/background.jpg");
 }
 .user-icon {
 	top:153px; /* Positioning fix for slide-in, got lazy to think up of simpler method. */
-	background: rgba(65,72,72,0.75) url('${pageContext.request.contextPath}/login_front/images/user-icon.png') no-repeat center;	
+	background: rgba(65,72,72,0.75) url('exam_resourse/images/user-icon.png') no-repeat center;	
 }
 
 .pass-icon {
 	top:201px;
-	background: rgba(65,72,72,0.75) url('${pageContext.request.contextPath}/login_front/images/pass-icon.png') no-repeat center;
+	background: rgba(65,72,72,0.75) url('exam_resourse/images/pass-icon.png') no-repeat center;
 }
 
 
@@ -32,7 +32,7 @@ body {
 <ul>
    <li class=''><a href='${pageContext.request.contextPath}'><span>Home</span></a></li>
    <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li>
-   <li class=''><a href='${pageContext.request.contextPath}/quiz_front/choose.jsp'><span>Exam</span></a></li>
+   <li class=''><a href='${pageContext.request.contextPath}/choose'><span>Exam</span></a></li>
   
 </ul>
 </div>
