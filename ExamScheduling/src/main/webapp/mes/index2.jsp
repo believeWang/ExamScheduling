@@ -7,13 +7,13 @@
 
 <title>考試預約系統Reception</title>
 		<style>
-       @import url('<%=request.getContextPath()%>/mes_css/main.css');
+       @import url('<%=request.getContextPath()%>/mes/css/main.css');
 		</style>
 </head>
 <body>
      	
      	<header>
- 		 <img src="<%=request.getContextPath()%>/mes_images/logo.jpg" style="float:left" />  
+ 		        		<img src="<%=request.getContextPath()%>/mes/images/logo.jpg" style="float:left" />    
  		 <nav>
        		<ul id="menu">	   
        	  	      <li><a href="<%=request.getContextPath()%>/index.jsp">輸入成績</a></li>

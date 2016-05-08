@@ -70,38 +70,27 @@
 		<!-- version 4.0 -->
 		<!-- packaging jar -->
 
-
 		<dependency>
 			<groupId>iii.team05</groupId>
 			<artifactId>sqljdbc</artifactId>
 			<version>4.0</version>
-
 		</dependency>
-
-		<!-- test dependencies -->
+		
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
-			<scope>test</scope>
+		<groupId>javax</groupId>
+		<artifactId>javaee-api</artifactId>
+		<version>7.0</version>
+		<scope>provided</scope>
 		</dependency>
+		<!-- scope的預設值compile:表示此jar是所有階段需要的, 部署時將一起被打包到jar/war裡面。
+		然後會與Tomcat裡的websocket-api發生衝突，故設定成provided:當運行時，此jar由Tomcat提供,
+		 部署時將不會打包到jar/war裡面。-->
+		 
 		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>1.0.4</version>
 		</dependency>
-
-		<dependency>
-			<groupId>javax.websocket</groupId>
-			<artifactId>javax.websocket-api</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>7.0</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -120,7 +109,7 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.0</version>
+				<version>2.2</version>
 			</plugin>
 
 			<plugin>
