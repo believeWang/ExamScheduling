@@ -1,5 +1,7 @@
 package iii.team05.exam.model;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -24,6 +26,9 @@ public class ExamService {
 		session.setAttribute("min", examVO.getDuration());
 		session.setAttribute("sec", 0);
 
+	}
+	public List<ExamVO> getAll(){
+		return examDAO.getAll();
 	}
 
 

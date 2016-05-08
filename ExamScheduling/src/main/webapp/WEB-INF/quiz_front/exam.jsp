@@ -15,22 +15,59 @@ body {
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript">
+    
 	var tim;
 	var min = '${sessionScope.min}';
 	var sec = '${sessionScope.sec}';
 	var currentQuestion ='${sessionScope.currentQuestion}';
-	console.log(currentQuestion);
+	var totalNumberOfQuizQuestions= '${sessionScope.totalNumberOfQuizQuestions}'
+	
 	$(function(){
 		
+
+
 		$('#next').click( function() {
 			currentQuestion++;
-			$('#next').attr('href',
-		'/ExamScheduling/Examing?currentQuestion='+currentQuestion); } );
+			getQuestion(); } );
 		
 		$('#previous').click( function() {
 			currentQuestion--;
-			$('#previous').attr('href',
-		'/ExamScheduling/Examing?currentQuestion='+currentQuestion); } );
+			getQuestion();
+		} );
+		
+		function getQuestion(){
+			console.log(currentQuestion);
+			$.ajax({
+			    url: '/ExamScheduling/Examing?currentQuestion='+currentQuestion,
+			    type: 'GET',
+			    dataType: "json",			  
+			    success: function(response) {
+			    	
+			    	$('#title').html(response['title']);
+			    	$('#option1').text(response['option1']);
+			    	$('#option2').text(response['option2']);
+			    	$('#option3').text(response['option3']);
+			    	$('#option4').text(response['option4']);
+			    	$("#no").text(currentQuestion);
+			    	if(currentQuestion>1){
+			    		
+			    		$("#previous").css('display','inline')
+			    	}else{
+			    		
+			    		$("#previous").css('display','none')
+			    	}
+			    	if(currentQuestion==totalNumberOfQuizQuestions){
+			    		$("#next").css('display','none')
+			    	}else{
+			    		$("#next").css('display','inline')
+			    	}
+			    	
+			    	
+			 
+			    }
+			  });
+		}
+
 		
 	});
 	
@@ -90,35 +127,32 @@ body {
 
 	<div style="position: absolute; left: 50px; top: 20px">
 	
-		Current Question ${sessionScope.currentQuestion+1} /
-		${sessionScope.totalNumberOfQuizQuestions}
+		Current Question <span id="no">1</span> /
+		${totalNumberOfQuizQuestions}
 	</div>
 
 	<div id="showtime" style="position: absolute; left: 800px; top: 20px"></div>
 
 	<div
 		style="position: absolute; width: 1000px; padding: 25px; height: 200px; border: 1px solid green; left: 100px; top: 60px">
-		<span>${sessionScope.questionAry[sessionScope.currentQuestion].question}</span><br />
+		<span id="title">${requestScope.title}</span><br />
 		<br />
 
-
-		<c:forEach var="choice" items="${sessionScope.questionAry[sessionScope.currentQuestion].options}"
+	<div id="choice_div">
+		<c:forEach var="choice" items="${requestScope.options}"
 			varStatus="counter">
-			<input type="radio" name="answer" value="${counter.count}">${choice.optionsName}  <br />
+			<input type="radio"   name="answer"  value="${counter.count}"><span id="option${counter.count}">${choice.optionsName}</span>  <br />
 		</c:forEach>
 		<br />
+ </div>
 
+	
+		 <input type="submit" id="previous" name="action" value="Previous" style="display:none"/>
+		
 
-		<c:if test="${sessionScope.currentQuestion > 0}">
-		<a href="" id="previous" >previous</a>
-<!-- 		 <input type="submit" name="action" value="Previous" onclick="previousQuestion" /> -->
-		</c:if>
+	
+			 <input type="submit" id="next"  name="action" value="Next" />
 
-		<c:if
-			test="${sessionScope.currentQuestion < sessionScope.totalNumberOfQuizQuestions-1}">
-<!-- 			 <input type="submit" name="action" value="Next" onclick="nextQuestion" /> -->
-	<a href="" id="next" >Next</a>
-		</c:if>
 
 	
 	 <input type="submit" name="action" value="Finish Exam" onclick="customSubmit" />

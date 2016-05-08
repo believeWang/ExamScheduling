@@ -1,6 +1,6 @@
 package iii.team05.exam.model;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ExamVO implements java.io.Serializable {
@@ -10,7 +10,7 @@ public class ExamVO implements java.io.Serializable {
 	private String examTitle;
 	private Integer quantities;	
 	private Integer duration ;
-	private Set<ExamDetailVO> examDetils = new HashSet<ExamDetailVO>();
+	private Set<ExamDetailVO> examDetils = new LinkedHashSet<ExamDetailVO>();
 	
 	public Set<ExamDetailVO> getExamDetils() {
 		return examDetils;
