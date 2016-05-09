@@ -5,7 +5,7 @@
 <html>
 <head>
 		<style>
-     	  @import url('<%=request.getContextPath()%>/mes_css/main.css');
+     	  @import url('<%=request.getContextPath()%>/mes/css/main.css');
 		</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Reception</title>
@@ -14,7 +14,8 @@
  
      	<header>
  		 <nav>
-       		<img src="<%=request.getContextPath()%>/mes_images/logo.jpg" style="float:left" />  
+       		       		<img src="<%=request.getContextPath()%>/mes/images/logo.jpg" style="float:left" />  
+
        		<ul id="menu">	  			   
        	 	    <li><a href="<%=request.getContextPath()%>/index.jsp">預約考試</a></li>
        		    <li><a href="<%=request.getContextPath()%>/index.jsp">前往考試</a></li>
@@ -24,7 +25,7 @@
        	</nav>       	
        </header>
 <div>
- <FORM METHOD="post" ACTION="mes.do" name="form1">
+ <FORM METHOD="post" ACTION="mes.do" name="form1" >
 <fieldset>
 <legend>留言板</legend>
 <table border="0">
@@ -44,7 +45,10 @@
 
 <input type="hidden" name="action" value="leave">
 <input type="submit" value="送出留言" style="width:70px;height:30px;border:2px blue none;background:red" ></fieldset></FORM>
-<a href='ListAllMessage.jsp'><img src="<%=request.getContextPath()%>/mes_images/mes.png"/></a>
+<a href='ListAllMessage.jsp'><img src="<%=request.getContextPath()%>/mes/images/mes.png"/></a>
 </div>
 </body>
+<script src='../js/jquery.min.js'></script>
+<script src="../js/bootstrap.min.js"></script>
 </html>
+
