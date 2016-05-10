@@ -20,7 +20,7 @@
 <body>
      	<header>
  		 <nav>
-       		       		<img src="<%=request.getContextPath()%>/mes/images/logo.jpg" style="float:left" />  
+       		       		<img src="<%=request.getContextPath()%>/mes/images/logo.png" style="float:left" />  
   
        		<ul id="menu">	  			   
        	 	    <li><a href="<%=request.getContextPath()%>/index.jsp">預約考試</a></li>

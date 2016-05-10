@@ -20,7 +20,7 @@
 <body>
 
      	<header>
- 		       		<img src="<%=request.getContextPath()%>/mes/images/logo.jpg" style="float:left" />  
+ 		       		<img src="<%=request.getContextPath()%>/mes/images/logo.png" style="float:left" />  
 
  		 <nav>
        		<ul id="menu">	   
