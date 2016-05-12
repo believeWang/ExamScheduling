@@ -13,7 +13,7 @@
 <body>
      	
      	<header>
- 		        		<img src="<%=request.getContextPath()%>/mes/images/logo.jpg" style="float:left" />    
+ 		        		<img src="<%=request.getContextPath()%>/mes/images/logo.png" style="float:left" />    
  		 <nav>
        		<ul id="menu">	   
        	  	      <li><a href="<%=request.getContextPath()%>/index.jsp">輸入成績</a></li>

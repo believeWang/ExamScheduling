@@ -86,4 +86,23 @@ public class ECHibernateDAO implements ECDao_interface{
 		
 	}
 
+	/*emial驗證*/
+public List<ECVO> mailcheck(String ecemail){
+	List<ECVO> list = null;
+	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	try {
+	session.beginTransaction();
+	Query query = session.createQuery("from ECVO where ecemail = :ecemail");
+	query.setParameter("ecemail", ecemail);
+	 list = query.list();
+	 session.getTransaction().commit();
+	 System.out.println(ecemail);
+	} catch (RuntimeException ex) {
+		session.getTransaction().rollback();
+		throw ex;
+	}
+	return list;
+	
+}
+
 }
