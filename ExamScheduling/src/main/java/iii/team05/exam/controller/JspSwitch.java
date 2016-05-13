@@ -18,7 +18,7 @@ public class JspSwitch extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String applicationContextPath = request.getContextPath();
-		System.out.println("switch");
+		//System.out.println("switch");
 		if (request.getRequestURI().equals(
 				applicationContextPath + "/choose")) {
 			RequestDispatcher dispatcher = request

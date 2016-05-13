@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+<link rel="stylesheet" href="exam_resourse/css/styles.css">
     <style type="text/css">
 body {
-	background: url("${pageContext.request.contextPath}/images/background.jpg");
+	background: url("exam_resourse/images/background.jpg");
 }
 
 </style>
@@ -24,14 +24,14 @@ body {
                 Quiz :
             </td>
             <td>
-                <span id="lblSubject">${sessionScope.exam}</span></td>
+                <span id="lblSubject">${sessionScope.examtitle}</span></td>
         </tr>
         <tr>
             <td class="head">
                 Starting Time :
             </td>
             <td >
-                <span id="lblStime">${sessionScope.started}</span></td>
+                <span id="lblStime">${sessionScope.quizDuration}</span></td>
         </tr>
         
               
@@ -48,7 +48,7 @@ body {
                 No. of correct answers :
             </td>
             <td>
-                <span id="lblNcans">${requestScope.result}</span></td>
+                <span id="lblNcans">${requestScope.rightCnt}</span></td>
         </tr>
         
     </table>
@@ -59,9 +59,8 @@ body {
 <c:if test="${requestScope.result < 5}">
    <h3 align="center">Failed</h3>
 </c:if>
-<h3 align="center"><a href='${pageContext.request.contextPath}/exam/review'>Review Answers</a></h3><br>
-<h3 align="center"><a href='${pageContext.request.contextPath}'>Take Another Exam</a></h3><br>
-<h3 align="center"><a href='${pageContext.request.contextPath}'>Back to HomePage</a></h3>
+<h3 align="center"><a href='${pageContext.request.contextPath}/ExamReview'>Review Answers</a></h3><br>
+
 </div>
 
 </body>

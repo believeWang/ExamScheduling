@@ -31,20 +31,18 @@ public class TakeExam extends HttpServlet {
 
 		//查看是否登入	
 	//	System.out.println(request.getSession().getAttribute("ecno"));
-		if (request.getSession().getAttribute("ecno") == null) {
-			
-			request.getRequestDispatcher("/login").forward(request, response);
+		
 			
 			//response.sendRedirect("/login");
 
-		} else {
+		
 			examService.putExamDetailInRequest(examno, request);
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("/WEB-INF/quiz_front/quizDetails.jsp");
 			dispatcher.forward(request, response);
 		
 		
-		}
+	
 
 	}
 

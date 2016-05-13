@@ -27,10 +27,18 @@ public class LoginServlet extends HttpServlet {
 		if(hasAccount){
 			 HttpSession session=request.getSession();
 		     session.setAttribute("ecno",ecno);
-		   
-		     RequestDispatcher dispatcher = request
-						.getRequestDispatcher("/WEB-INF/quiz_front/choose.jsp");
-				dispatcher.forward(request, response);
+		     
+		     String dest=(String) session.getAttribute("dest");
+		     if(dest!=null&&dest.length()!=0){
+		    	 session.removeAttribute("dest");
+		    	response.sendRedirect(dest);
+		     }else{
+		    	 
+			     RequestDispatcher dispatcher = request
+							.getRequestDispatcher("/WEB-INF/quiz_front/choose.jsp");
+					dispatcher.forward(request, response);
+		     }
+		    
 			
 		}else{
 			

@@ -21,33 +21,41 @@ body {
 	var sec = '${sessionScope.sec}';
 	var currentQuestion ='${sessionScope.currentQuestion}';
 	var totalNumberOfQuizQuestions= '${sessionScope.totalNumberOfQuizQuestions}'
-	
+	var targetQuestion=currentQuestion;
+	var selected=-1;
 	$(function(){
-		
-
-
+		$('#finishExam').click(function(){
+			$('#finishExam').attr('href','/ExamScheduling/Examing?currentQuestion='+currentQuestion+'&selected='+selected);
+		});
 		$('#next').click( function() {
-			currentQuestion++;
+			targetQuestion++;
 			getQuestion(); } );
 		
 		$('#previous').click( function() {
-			currentQuestion--;
+			targetQuestion--;
 			getQuestion();
 		} );
 		
+		
+		
 		function getQuestion(){
-			console.log(currentQuestion);
+			
 			$.ajax({
-			    url: '/ExamScheduling/Examing?currentQuestion='+currentQuestion,
+			    url: '/ExamScheduling/Examing',
+			    data:{'currentQuestion':currentQuestion,'targetQuestion':targetQuestion,'selected':selected},
 			    type: 'GET',
 			    dataType: "json",			  
 			    success: function(response) {
-			    	
+			    	currentQuestion=targetQuestion;
 			    	$('#title').html(response['title']);
-			    	$('#option1').text(response['option1']);
-			    	$('#option2').text(response['option2']);
-			    	$('#option3').text(response['option3']);
-			    	$('#option4').text(response['option4']);
+			    	$('#optionSpan1').prop('checked', false).text(response['option1']);
+			    	$('#optionSpan2').text(response['option2']);
+			    	$('#optionSpan3').text(response['option3']);
+			    	$('#optionSpan4').text(response['option4']);
+			    	$('#option1').prop('checked', false);
+			    	$('#option2').prop('checked', false);
+			    	$('#option3').prop('checked', false);
+			    	$('#option4').prop('checked', false);
 			    	$("#no").text(currentQuestion);
 			    	if(currentQuestion>1){
 			    		
@@ -62,32 +70,40 @@ body {
 			    		$("#next").css('display','inline')
 			    	}
 			    	
-			    	
+			    	selected=-1;
 			 
 			    }
 			  });
 		}
+		function finishExam(){
+		
+			
+// 			$.ajax({
+// 			    url: '/ExamScheduling/Examing',
+// 			    data:{'currentQuestion':currentQuestion,'selected':selected},
+// 			    type: 'GET',			    		  
+// 			    success: function(response) {
+			    	
+			 
+// 			    }
+// 			  });
+		}
+		
 
 		
 	});
 	
+	function choose(){
+	
+		 selected = document.querySelector('input[name = "answer"]:checked').value;
+	
 		
+	}	
 		
 	
-	function finishExam() {
+	
 
 	
-	}
-
-	function passToServlet() {
-		console.log('passToServlet');
-		
-		
-	
-		//document.questionForm.minute.value = min;
-		//document.questionForm.second.value = sec;
-		//document.questionForm.submit();
-	}
 
 	function examTimer() {
 		if (parseInt(sec) > 0) {
@@ -141,21 +157,18 @@ body {
 	<div id="choice_div">
 		<c:forEach var="choice" items="${requestScope.options}"
 			varStatus="counter">
-			<input type="radio"   name="answer"  value="${counter.count}"><span id="option${counter.count}">${choice.optionsName}</span>  <br />
+			<input type="radio"  onclick="choose()" id="option${counter.count}" name="answer"  value="${counter.count}"><span id="optionSpan${counter.count}">${choice.optionsName}</span>  <br />
 		</c:forEach>
 		<br />
  </div>
 
 	
-		 <input type="submit" id="previous" name="action" value="Previous" style="display:none"/>
-		
+		 <input type="button" id="previous" value="Previous" style="display:none"/>		
 
-	
-			 <input type="submit" id="next"  name="action" value="Next" />
+	     <input type="button" id="next"   value="Next" />
 
-
-	
-	 <input type="submit" name="action" value="Finish Exam" onclick="customSubmit" />
+<!-- 	 	 <input type="button" id="finish"  value="Finish Exam" /> -->
+		<a href="" id='finishExam'>finish</a>
 
 	
 
