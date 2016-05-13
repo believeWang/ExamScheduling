@@ -1,5 +1,7 @@
 package iii.team05.examinee.ecmodel;
 
+import java.util.List;
+
 public class ECService {
 	ECHibernateDAO ecDAO;
 
@@ -23,4 +25,10 @@ public class ECService {
 
 	}
 
+	/*email驗證*/
+	public List<ECVO> check(String ecemail) {
+
+		return ecDAO.mailcheck(ecemail);
+
+	}
 }

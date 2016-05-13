@@ -8,4 +8,5 @@ public interface ECDao_interface {
     public void delete(String ecno);
     public ECVO findByPrimaryKey(String ecno);
     public List<ECVO> getAll();
+
 }

@@ -7,11 +7,17 @@
 <title>ESS</title>
 
 <h1><a href="<%=request.getContextPath()%>/mes/index1.jsp">留言</a></h1>
-<h1><a href="<%=request.getContextPath()%>/mes/index2.jsp">回覆</a></h1>
+<h1><a href="<%=request.getContextPath()%>/mes/index2">回覆</a></h1>
 <h1><a href="<%=request.getContextPath()%>/chat/WebSocketIndex.jsp">Websocket</a></h1>
 <h1><a href="<%=request.getContextPath()%>/fullcalendar/JobServlet?jobid=1">FullCalendar</a></h1>
 <h1><a href="<%=request.getContextPath()%>/employee/ExaminerTable.jsp">主考官</a></h1>
 <h1><a href="<%=request.getContextPath()%>/choose">考試系統</a></h1>
 
+
+<FORM METHOD="post" ACTION="test" name="form1" >
+<td>e-mail:</td>
+		<td><input type="TEXT" name="msgmail" size="40" /></td>
+		<input type="submit" value="送出" >
+</FORM>
 </body>
 </html> 
