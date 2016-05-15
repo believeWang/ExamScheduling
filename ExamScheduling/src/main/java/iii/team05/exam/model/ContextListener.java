@@ -22,7 +22,7 @@ public class ContextListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		
+		//把每一個考試都放到Context的屬性中
 		ServletContext context=event.getServletContext();
 		 ExamService service =new ExamService();
 		 List<ExamVO>exams=service.getAll();

@@ -16,8 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	
+	//登出
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//清空session
 		request.getSession().invalidate();
 		RequestDispatcher dispatcher = request
 				.getRequestDispatcher("/WEB-INF/quiz_front/choose.jsp");

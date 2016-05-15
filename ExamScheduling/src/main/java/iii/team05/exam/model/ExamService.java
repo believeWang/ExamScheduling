@@ -18,10 +18,14 @@ public class ExamService {
 	public void putExamDetailInRequest(String examno, HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		ExamVO examVO = examDAO.findByPrimaryKey(examno);
+		//考試編號
 		session.setAttribute("examno", examno);
+		//考試名稱
 		session.setAttribute("examtitle", examVO.getExamTitle());
+		//考題數量
 		session.setAttribute("totalNumberOfQuizQuestions",
 				examVO.getQuantities());
+		//考試時間
 		session.setAttribute("quizDuration", examVO.getDuration());
 		session.setAttribute("min", examVO.getDuration());
 		session.setAttribute("sec", 0);

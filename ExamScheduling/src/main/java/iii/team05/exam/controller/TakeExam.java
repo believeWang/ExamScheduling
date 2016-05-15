@@ -24,25 +24,22 @@ public class TakeExam extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		ExamService examService = new ExamService();
-		
-		//取得考試科目名稱
+
+		// 取得考試科目名稱
 		String examno = request.getParameter("test");
-		
 
-		//查看是否登入	
-	//	System.out.println(request.getSession().getAttribute("ecno"));
-		
-			
-			//response.sendRedirect("/login");
+		// 查看是否登入
+		// System.out.println(request.getSession().getAttribute("ecno"));
 
-		
-			examService.putExamDetailInRequest(examno, request);
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("/WEB-INF/quiz_front/quizDetails.jsp");
-			dispatcher.forward(request, response);
-		
-		
-	
+		// response.sendRedirect("/login");
+
+		// 抓到考試科目細節
+		examService.putExamDetailInRequest(examno, request);
+
+		//轉交到jsp顯示
+		RequestDispatcher dispatcher = request
+				.getRequestDispatcher("/WEB-INF/quiz_front/quizDetails.jsp");
+		dispatcher.forward(request, response);
 
 	}
 
