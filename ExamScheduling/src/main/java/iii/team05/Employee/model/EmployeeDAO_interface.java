@@ -8,5 +8,7 @@ public interface EmployeeDAO_interface {
           public void delete(Integer empno);
           public EmployeeVO findByPrimaryKey(Integer empno);
           public List<EmployeeVO> getAll();
-		public void leave(EmployeeVO employeeVO);
+          public List<EmployeeVO> getExam();
+         
+		
 }

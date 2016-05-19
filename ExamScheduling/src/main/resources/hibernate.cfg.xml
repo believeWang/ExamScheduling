@@ -34,6 +34,8 @@
 		<mapping resource="iii/team05/exam/model/exam.hbm.xml" />
 		<mapping resource="iii/team05/exam/model/examdetail.hbm.xml" />
 		<mapping resource="iii/team05/exam/model/options.hbm.xml" />
+		<mapping resource="iii/team05/Employee/model/emp.hbm.xml" />
+		<mapping resource="iii/team05/Season/model/sea.hbm.xml" />
 		
 
 
