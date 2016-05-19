@@ -11,5 +11,6 @@
 <h2>關於偉康-編輯頁面</h2>
 
 <textarea class="ckeditor" cols="80" id="content" name=content rows="12"></textarea>
-<input type=button value="Submit">
+<input type=submit value="Submit">
+<input type=button value="Cancel">
 </html>

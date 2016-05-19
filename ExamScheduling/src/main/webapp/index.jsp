@@ -12,7 +12,7 @@
 <h1><a href="<%=request.getContextPath()%>/fullcalendar/JobServlet?jobid=1">FullCalendar</a></h1>
 <h1><a href="<%=request.getContextPath()%>/employee/ExaminerTable.jsp">主考官</a></h1>
 <h1><a href="<%=request.getContextPath()%>/choose">考試系統</a></h1>
-
+<h1><a href="<%=request.getContextPath()%>/aboutedit.jsp">公司簡介編輯</a></h1>
 
 <FORM METHOD="post" ACTION="test" name="form1" >
 <td>e-mail:</td>
