@@ -1,335 +1,127 @@
 package iii.team05.Employee.model;
 
-import java.util.*;
-import java.sql.*;
+import org.hibernate.*;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+
+import iii.team05.hibernate.util.*;
+
+import java.util.*;
 
 public class EmployeeDAO implements EmployeeDAO_interface {
-
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/ESDB");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private static final String INSERT_STMT =
-			 "INSERT INTO Employee (empno,empname,empemail,position) VALUES (?, ?, ? , ?)";
-	
-	private static final String GET_ALL_STMT =
-		      "SELECT empno,empname,empemail,position FROM employee order by empno";
-	
-	private static final String GET_ONE_STMT =
-		      "SELECT empno,empname,empemail FROM employee where empno = ?";
-	
-	
-	private static final String DELETE =
-		      "DELETE FROM employee where empno = ?";
-	
-	private static final String UPDATE =
-		      "UPDATE employee set empname=?, empemail=? where empno = ?";
+	private static final String GET_ALL_EMP = "from EmployeeVO where position=0 order by empno";
+	private static final String GET_ALL_EXAM = "from EmployeeVO where position=1 order by empno";
 
 	@Override
 	public void insert(EmployeeVO employeeVO) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(INSERT_STMT);
-
-			pstmt.setInt(1, employeeVO.getEmpno());
-			pstmt.setString(2, employeeVO.getEmpname());
-			pstmt.setString(3, employeeVO.getEmpemail());
-			pstmt.setInt(4, employeeVO.getPosition());
-			
-
-			pstmt.executeUpdate();
-
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(employeeVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 
 	}
 
 	@Override
 	public void update(EmployeeVO employeeVO) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(UPDATE);
-
-			pstmt.setInt(1, employeeVO.getEmpno());
-			pstmt.setString(2, employeeVO.getEmpname());
-			pstmt.setString(3, employeeVO.getEmpemail());
-			pstmt.setInt(4, employeeVO.getPosition());
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(employeeVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 
 	}
 
 	@Override
-	public void delete(Integer getEmpno) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+	public void delete(Integer empno) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(DELETE);
-
-			pstmt.setInt(1, getEmpno);
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			EmployeeVO employeeVO = (EmployeeVO) session.get(EmployeeVO.class, empno);
+			session.delete(employeeVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 
 	}
 
 	@Override
 	public EmployeeVO findByPrimaryKey(Integer empno) {
-
-		EmployeeVO employeeVO = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		EmployeeVO deptVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(GET_ONE_STMT);
-
-			pstmt.setInt(1, empno);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVo �]�٬� Domain objects
-				employeeVO = new EmployeeVO();
-				employeeVO.setEmpno(rs.getInt("empno"));
-				employeeVO.setEmpname(rs.getString("empname"));
-				employeeVO.setEmpemail(rs.getString("empemail"));
-				employeeVO.setPosition(rs.getInt("position"));
-				
-			}
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			deptVO = (EmployeeVO) session.get(EmployeeVO.class, empno);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-		return employeeVO;
+		return deptVO;
 	}
 
 	@Override
 	public List<EmployeeVO> getAll() {
-		List<EmployeeVO> list = new ArrayList<EmployeeVO>();
-		EmployeeVO employeeVO = null;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		List<EmployeeVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(GET_ALL_STMT);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVO �]�٬� Domain objects
-				employeeVO = new EmployeeVO();
-				employeeVO.setEmpno(rs.getInt("empno"));
-				employeeVO.setEmpname(rs.getString("empname"));
-				employeeVO.setEmpemail(rs.getString("empemail"));
-				employeeVO.setPosition(rs.getInt("position"));
-				
-				list.add(employeeVO); // Store the row in the list
-			}
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL_EMP);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return list;
-	}
-
-	@Override
-	public void leave(EmployeeVO employeeVO) {
-		// TODO Auto-generated method stub
-		
-	}
+	}	
 	
-	public List<EmployeeVO> google(String empemail) {
-		List<EmployeeVO> list = new ArrayList<EmployeeVO>();
-		EmployeeVO employeeVO = null;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+	@Override
+	public List<EmployeeVO> getExam() {
+		List<EmployeeVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement("SELECT empemail FROM employee where empemail = ?");
-			pstmt.setString(1, empemail);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {			
-				employeeVO = new EmployeeVO();
-				employeeVO.setEmpemail(rs.getString("empemail"));
-				list.add(employeeVO); // Store the row in the list
-			}
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL_EXAM);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return list;
-	}
+	}	
+	
+//	public static void main(String[] args) {
+//		EmployeeDAO dao = new EmployeeDAO();
+//		
+//		iii.team05.Employee.model.EmployeeVO deptVO = new iii.team05.Employee.model.EmployeeVO(); // 部門POJO
+//	
+//		
+//		
+//		List<EmployeeVO> list = dao.getAll();//查詢測試
+//		for (EmployeeVO aEmp : list) {
+//			System.out.print(aEmp.getEmpno() + ",");
+//			System.out.print(aEmp.getEmpname() + ",");
+//			System.out.print(aEmp.getEmpemail() + ",");
+//			System.out.print(aEmp.getPosition() + ",");
+//			
+//			System.out.println();
+//		}
+//		//dao.delete(6);//刪除測試
+//				
+//	}
+	
+	
+	
+		
 }

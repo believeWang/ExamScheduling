@@ -5,6 +5,8 @@ public class EmployeeVO  implements java.io.Serializable{
 	private String empname;
 	private String empemail;
 	private Integer position;
+	
+	
 	public Integer getEmpno() {
 		return empno;
 	}

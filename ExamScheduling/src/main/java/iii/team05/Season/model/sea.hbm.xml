@@ -3,18 +3,15 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="iii.team05.Employee.model.EmployeeVO" table="Employee" >
+    <class name="iii.team05.Season.model.SeasonVO" table="season" >
         
-        <id name="empno" column="empno">
+        <id name="seasonId" column="seasonId">
             <generator class="identity"/>
         </id>
         
-        <property name="empname" column="empname" />
-        <property name="empemail" column="empemail" />
-        <property name="position" column="position" />
-        
-        
-        
+        <property name="sum" column="sum" />
+        <property name="average" column="average" />
+     
         
     </class>
 </hibernate-mapping>

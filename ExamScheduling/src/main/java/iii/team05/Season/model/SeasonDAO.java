@@ -1,270 +1,109 @@
 package iii.team05.Season.model;
 
-import java.util.*;
-import java.sql.*;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import iii.team05.hibernate.util.HibernateUtil;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+
 
 public class SeasonDAO implements SeasonDAO_interface {
-
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/ESDB");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private static final String INSERT_STMT =
-			 "INSERT INTO Season (seasonId,sum,average) VALUES (?, ?, ?)";
-	private static final String GET_ALL_STMT =
-		      "SELECT seasonId,sum,average FROM season order by seasonId";
-	private static final String GET_ONE_STMT =
-		      "SELECT seasonId,sum,average FROM season where seasonId = ?";
-	private static final String DELETE =
-		      "DELETE FROM season where seasonId = ?";
-	private static final String UPDATE =
-		      "UPDATE season set sum=?, average=? where seasonId = ?";
+	
+	private static final String GET_ALL_SEA = "from SeasonVO order by seasonId";
 
 	@Override
 	public void insert(SeasonVO seasonVO) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(INSERT_STMT);
-
-			pstmt.setString(1, seasonVO.getSeasonId());
-			pstmt.setFloat(2, seasonVO.getSum());
-			pstmt.setFloat(3, seasonVO.getAverage());
-			
-
-			pstmt.executeUpdate();
-
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(seasonVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-
+		
 	}
 
 	@Override
 	public void update(SeasonVO seasonVO) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(UPDATE);
-
-			pstmt.setString(1, seasonVO.getSeasonId());
-			pstmt.setFloat(2, seasonVO.getSum());
-			pstmt.setFloat(3, seasonVO.getAverage());
-			
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			session.saveOrUpdate(seasonVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-
 	}
 
 	@Override
-	public void delete(String getSeasonId) {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
+	public void delete(String seasonId) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(DELETE);
-
-			pstmt.setString(1, getSeasonId);
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			SeasonVO seasonVO = (SeasonVO) session.get(SeasonVO.class, seasonId);
+			session.delete(seasonVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-
+		
 	}
 
 	@Override
 	public SeasonVO findByPrimaryKey(String seasonId) {
-
-		SeasonVO seasonVO = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		SeasonVO deptVO = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(GET_ONE_STMT);
-
-			pstmt.setString(1, seasonId);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVo �]�٬� Domain objects
-				seasonVO = new SeasonVO();
-				seasonVO.setSeasonId(rs.getString("seasonId"));
-				seasonVO.setSum(rs.getFloat("ename"));
-				seasonVO.setAverage(rs.getFloat("average"));
-				
-			}
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			deptVO = (SeasonVO) session.get(SeasonVO.class, seasonId);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
-		return seasonVO;
+		return deptVO;
 	}
 
 	@Override
 	public List<SeasonVO> getAll() {
-		List<SeasonVO> list = new ArrayList<SeasonVO>();
-		SeasonVO seasonVO = null;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+		List<SeasonVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(GET_ALL_STMT);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				// empVO �]�٬� Domain objects
-				seasonVO = new SeasonVO();
-				seasonVO.setSeasonId(rs.getString("seasonId"));
-				seasonVO.setSum(rs.getFloat("sum"));
-				seasonVO.setAverage(rs.getFloat("average"));
-				
-				
-				list.add(seasonVO); // Store the row in the list
-			}
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
+			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL_SEA);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
 		}
 		return list;
 	}
+	
+	public static void main(String[] args) {
+		SeasonDAO dao = new SeasonDAO();
+		
+		iii.team05.Season.model.SeasonVO seaVO = new iii.team05.Season.model.SeasonVO(); // 部門POJO
+	
+		
+		
+		List<SeasonVO> list = dao.getAll();//查詢測試
+		for (SeasonVO aSea : list) {
+			System.out.print(aSea.getSeasonId());
+			System.out.print(aSea.getSum() + ",");
+			System.out.print(aSea.getAverage());
+			
+			System.out.println();
+		}
+		//dao.delete(6);//刪除測試
+				
+	}
+	
 }
