@@ -16,8 +16,19 @@
 <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
 <script src="js/bootstrap.min.js"></script>
 
+
+<!-- google sing in -->
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script>
+	
+</script>
+
 </head>
 <body>
+<!-- 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
@@ -64,5 +75,24 @@
 			</div>
 		</div>
 	</div>
+-->
+	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+	
+	<script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      };
+    </script>
 </body>
 </html>
