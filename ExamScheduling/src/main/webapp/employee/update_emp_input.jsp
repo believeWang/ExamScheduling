@@ -1,44 +1,68 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="iii.team05.Employee.model.*"%>
 <%@ page import="java.util.*"%>
+<%@ page import="iii.team05.Employee.model.*"%>
 <%
-	EmployeeVO empVO = (EmployeeVO) request.getAttribute("employeeVO"); //EmpServlet.java (Concroller), ¦s¤JreqªºempVOª«¥ó (¥]¬AÀ°¦£¨ú¥XªºempVO, ¤]¥]¬A¿é¤J¸ê®Æ¿ù»~®ÉªºempVOª«¥ó)
+	EmployeeVO empVO = (EmployeeVO) request.getAttribute("employeeVO"); //EmpServlet.java (Concroller), å­˜å…¥reqçš„empVOç‰©ä»¶ (åŒ…æ‹¬å¹«å¿™å–å‡ºçš„empVO, ä¹ŸåŒ…æ‹¬è¼¸å…¥è³‡æ–™éŒ¯èª¤æ™‚çš„empVOç‰©ä»¶)
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>­û¤u¸ê®Æ­×§ï - update_emp_input.jsp</title></head>
+<title>å“¡å·¥è³‡æ–™ä¿®æ”¹ - update_emp_input.jsp</title></head>
+<link rel="stylesheet" type="text/css" href="js/calendar.css">
+<script language="JavaScript" src="js/calendarcode.js"></script>
+<div id="popupcalendar" class="text"></div>
 
+<body bgcolor='white'>
 
+<table border='1' cellpadding='5' cellspacing='0' width='400'>
+	<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
+		<td>
+		<h3>å“¡å·¥è³‡æ–™ä¿®æ”¹ - update_emp_input.jsp</h3>
+		<a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">å›é¦–é </a></td>
+	</tr>
+</table>
 
+<h3>è³‡æ–™ä¿®æ”¹:</h3>
+<%-- éŒ¯èª¤è¡¨åˆ— --%>
+<c:if test="${not empty errorMsgs}">
+	<font color='red'>è«‹ä¿®æ­£ä»¥ä¸‹éŒ¯èª¤:
+	<ul>
+		<c:forEach var="message" items="${errorMsgs}">
+			<li>${message}</li>
+		</c:forEach>
+	</ul>
+	</font>
+</c:if>
 
-<FORM METHOD="post" ACTION="emp/emp.do" name="form1">
+<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1">
 <table border="0">
 	<tr>
-		<td>­û¤u½s¸¹:<font color=red><b>*</b></font></td>
+		<td>å“¡å·¥ç·¨è™Ÿ:<font color=red><b>*</b></font></td>
 		<td><%=empVO.getEmpno()%></td>
 	</tr>
+	
 	<tr>
-		<td>­û¤u©m¦W:</td>
-		<td><input type="TEXT" name="empname" size="45" value="<%=empVO.getEmpname()%>" /></td>
+		<td>å§“å:</td>
+		<td><input type="TEXT" name="empname" size="45"	value="<%=empVO.getEmpname()%>" /></td>
 	</tr>
 	<tr>
-		<td>E-mail:</td>
+		<td>E-MAIL:</td>
 		<td><input type="TEXT" name="empemail" size="45"	value="<%=empVO.getEmpemail()%>" /></td>
 	</tr>
-	<
-	</tr>
 	<tr>
-		<td>Åv­­:</td>
+		<td>æ¬Šé™:</td>
 		<td><input type="TEXT" name="position" size="45"	value="<%=empVO.getPosition()%>" /></td>
 	</tr>
+
+	
 	
 </table>
 <br>
 <input type="hidden" name="action" value="update">
 <input type="hidden" name="empno" value="<%=empVO.getEmpno()%>">
-<input type="submit" value="°e¥X­×§ï"></FORM>
+<input type="submit" value="é€å‡ºä¿®æ”¹"></FORM>
 
 </body>
 </html>
