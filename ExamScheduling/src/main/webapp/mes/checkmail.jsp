@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<FORM METHOD="post" ACTION="CheckServlet"  >
+<FORM METHOD="post" ACTION="/ExamScheduling/mail/CheckServlet"  >
 <table>
 <tr>
 		<td>e-mail:</td>

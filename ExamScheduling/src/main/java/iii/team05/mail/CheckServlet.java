@@ -1,5 +1,6 @@
-package iii.team05.mes.controller;
+package iii.team05.mail;
 
+import iii.team05.Employee.model.EmployeeVO;
 import iii.team05.examinee.ecmodel.ECService;
 import iii.team05.examinee.ecmodel.ECVO;
 import iii.team05.mes.model.MesService;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CheckServlet
  */
-@WebServlet("/mes/CheckServlet")
+@WebServlet("/mail/CheckServlet")
 public class CheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,15 +44,24 @@ public class CheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		String ecemail = request.getParameter("ecemail");
-		System.out.println(ecemail);
 		ECService ecSvc = new ECService();
 		List<ECVO> ecVO =  ecSvc.check(ecemail);
+		String username = null;
+	 	 for (ECVO s : ecVO) {
+	 		username =s. getEcname();
+	 	 }
 		PrintWriter out=response.getWriter();
 		System.out.println(ecVO);
 		if(ecVO.size()==0){		
 			out.println("非資策會學生");
 		}else{
-			out.println("歡迎")	;	
+			out.println("歡迎" +username)	;
+			 String subject = "【註冊通知】感謝您使用偉康考試預約系統";
+			   String content = "Dear " + username + ", \n\n\t感謝您使用偉康考試預約系統，您的帳號及密碼如下，\n請妥善保存：\n\n帳號："
+			     + ecemail + "\n\n\n\n\n\n\n\n\t\t\t\t\t\t 感謝您使用偉康考試預約系統 敬上"
+			     + "\n\n\n\n\n\n**********此為系統自動發送之信件，請勿直接回覆！**********";
+			   Email ssm = new Email();
+			   ssm.sendEmail(ecemail, subject, content);
 		}
 	}
 
