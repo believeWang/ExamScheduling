@@ -4,24 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/jquery-1.2.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/jquery.lavalamp.js"></script>
+
 <title>考試預約系統Reception</title>
 		<style>
-       @import url('<%=request.getContextPath()%>/mes_css/main.css');     
+     @import url('<%=request.getContextPath()%>/mes/css/main.css');  
 		</style>
 </head>
 <body>
 
-     	<header>
- 		 <nav>
-       		<img src="<%=request.getContextPath()%>/mes_images/logo.jpg" style="float:left" />  
-       		<ul id="menu">	  			   
-        	 	    <li><a href="<%=request.getContextPath()%>/index.jsp">預約考試</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/index.jsp">前往考試</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/index.jsp">關於偉康</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/mes/LeaveMessage.jsp">聯絡我們</a></li>
-       		</ul>
-       	</nav>       	
-       </header>
+<%@ include file="header.jsp" %> 
 
 </body>
 </html>
+

@@ -1,0 +1,105 @@
+body {
+	background: #CCEEFF;
+}
+
+#allpage {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+#menu {
+	overflow: auto !important; /*!important,for IE7*/
+	overflow /**/: hidden;
+	/* for IE5,overflow為auto時,Box的寬度會加計scroll bar區塊的寬度,因此使用和Box Model Hack同樣的方式,只讓IE5將屬性當作hidden*/
+	width: 75%;
+	background-color: #000000;
+	border-bottom: 3px solid #cccccc;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	margin: 0 auto;
+}
+
+#menu li {
+	float: left;
+	list-style-type: none;
+	width: 12em; /*為了讓連結區域能依字型大小的變化自動放大,因此在指定width屬性時採用em為單位*/
+	height: 4em;
+	border-right: 1px solid #cccccc;
+	font-size: 25px;
+	font-color: #FFFFFF;
+}
+
+#menu li a {
+	display: block;
+	width: 100%;
+	line-height: 4em; /*讓文字上下空出適當的空白,不用padding屬性,直接將行Box的高度設的高一些*/
+	color: #ffffff;
+	text-decoration: none;
+	text-align: center;
+}
+
+#menu li a:hover {
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+fieldset {
+	width: 500px;
+	border: 1px solid #acd6ff;
+	margin: 10px auto 0;
+	border-radius: 15px;
+}
+
+.HeaderStyle {
+	position: relative;
+	height: 29px;
+	width: 421px;
+	background-color: #400040;
+	padding: 15px;
+	margin: 10px 0;
+	overflow: hidden;
+	border: 1px solid gray;
+	border-bottom: 3px solid #cccccc;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+.HeaderStyle li {
+	float: left;
+	list-style: none;
+}
+
+.HeaderStyle li.back {
+	border-bottom: 5px solid silver;
+	width: 9px;
+	height: 30px;
+	z-index: 8;
+	position: absolute;
+}
+
+.HeaderStyle li a {
+	font: bold 14px arial;
+	text-decoration: none;
+	color: #ffffff;
+	outline: none;
+	text-align: center;
+	top: 7px;
+	text-transform: uppercase;
+	letter-spacing: 0;
+	z-index: 10;
+	display: block;
+	float: left;
+	height: 30px;
+	position: relative;
+	overflow: hidden;
+	margin: auto 10px;
+}
+
+.HeaderStyle li a:hover, .HeaderStyle li a:active,
+	.HeaderStyle li a:visited {
+	border: none;
+}
