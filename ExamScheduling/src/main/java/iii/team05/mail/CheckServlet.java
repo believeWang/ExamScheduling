@@ -8,7 +8,9 @@ import iii.team05.mes.model.MesVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,6 +46,12 @@ public class CheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		String ecemail = request.getParameter("ecemail");
+		Map<String, String> errors = new HashMap<String, String>();
+		request.setAttribute("errors", errors);
+		
+		
+		if(ecemail.matches("(([A-Za-z0-9]+\\.?)+([A-Za-z0-9]+_?)+)+[A-Za-z0-9]+@([a-zA-Z0-9]+\\.)+(com|edu|gov)(\\.(tw|ch|hk))?")) 
+		  {
 		ECService ecSvc = new ECService();
 		List<ECVO> ecVO =  ecSvc.check(ecemail);
 		String username = null;
@@ -51,7 +59,7 @@ public class CheckServlet extends HttpServlet {
 	 		username =s. getEcname();
 	 	 }
 		PrintWriter out=response.getWriter();
-		System.out.println(ecVO);
+	//	System.out.println(ecVO);
 		if(ecVO.size()==0){		
 			out.println("非資策會學生");
 		}else{
@@ -62,7 +70,12 @@ public class CheckServlet extends HttpServlet {
 			     + "\n\n\n\n\n\n**********此為系統自動發送之信件，請勿直接回覆！**********";
 			   Email ssm = new Email();
 			   ssm.sendEmail(ecemail, subject, content);
-		}
+		     }
+	     }
+		else {
+			System.out.println("請確認信箱"); 
+		  } 
+		
 	}
 
 }

@@ -7,10 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<FORM METHOD="post" ACTION="test" name="form1" >
+<FORM METHOD="post" ACTION="/ExamScheduling/eclogin/signin"  >
+<table>
+<tr>
 		<td>e-mail:</td>
-		<td><input type="TEXT" name="msgmail" size="40" /></td>
-		<input type="submit" value="送出" >
+		<td><input type="TEXT" name="ecemail" size="40" /></td>
+	<td>${errors.ecemail}</td>
+	</tr>
+	</table>
+	<input type="submit" value="送出">
 </FORM>
 </body>
 </html>
