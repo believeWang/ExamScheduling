@@ -1,7 +1,6 @@
-package iii.team05.Section.model;
+package iii.team05.section.model;
 
 import java.util.*;
-import iii.team05.Event.model.EventVO;
 
 public interface SectionDAO_interface {
 	      public void insert(SectionVO sectionVO);  //新增

@@ -1,4 +1,4 @@
-package iii.team05.Section.controller;
+package iii.team05.section.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

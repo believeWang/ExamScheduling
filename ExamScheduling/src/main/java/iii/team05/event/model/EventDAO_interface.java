@@ -1,7 +1,7 @@
-package iii.team05.Event.model;
+package iii.team05.event.model;
 
 import java.util.*;
-import iii.team05.Event.model.EventVO;
+import iii.team05.event.model.EventVO;
 
 public interface EventDAO_interface {
 	      public void insert(EventVO eventVO);  //新增

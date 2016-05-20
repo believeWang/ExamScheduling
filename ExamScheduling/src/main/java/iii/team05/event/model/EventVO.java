@@ -1,6 +1,6 @@
-package iii.team05.Event.model;
+package iii.team05.event.model;
 /*
- drop table Event;
+ drop table Event_Exist;
 
  create table Event_Exist (
 	 eventid             int IDENTITY (1,1) not null,

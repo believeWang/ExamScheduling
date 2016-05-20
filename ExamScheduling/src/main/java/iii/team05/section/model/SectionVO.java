@@ -1,4 +1,4 @@
-package iii.team05.Section.model;
+package iii.team05.section.model;
 /*
 drop table Section;
 

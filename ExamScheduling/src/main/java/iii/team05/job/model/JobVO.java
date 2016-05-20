@@ -1,4 +1,4 @@
-package iii.team05.Job.model;
+package iii.team05.job.model;
 /*
 drop table Job;
 

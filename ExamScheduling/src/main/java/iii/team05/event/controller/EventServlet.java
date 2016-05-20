@@ -1,7 +1,7 @@
-package iii.team05.Event.controller;
+package iii.team05.event.controller;
 
-import iii.team05.Section.model.SectionDAO;
-import iii.team05.Section.model.SectionVO;
+import iii.team05.section.model.SectionDAO;
+import iii.team05.section.model.SectionVO;
 
 import java.util.List;
 import java.io.IOException;

@@ -67,7 +67,7 @@ public class GoogleCheck extends HttpServlet {
 	ow.write("code="+request.getParameter("code")+"&");
 	 ow.write("client_id=14162985850-ukk7ka9npfvhatl0vi7mccqgnhnq2ui0.apps.googleusercontent.com&");   // client_id
 	  ow.write("client_secret=TtLUTbLgWi_CAjDnvj04xasE&");   // client_serect
-	  ow.write("redirect_uri=http://localhost:8080/ExamScheduling/GoogleCheck&");   // redirect_uri
+	  ow.write("redirect_uri=http://localhost:8081/ExamScheduling/GoogleCheck&");   // redirect_uri
 	  ow.write("grant_type=authorization_code");  
 	  ow.close();
 	if(ct.getResponseCode()==HttpsURLConnection.HTTP_OK){

@@ -1,4 +1,4 @@
-package iii.team05.Job.model;
+package iii.team05.job.model;
 
 import java.util.*;
 import java.sql.*;
@@ -8,7 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import iii.team05.Job.model.JobVO;
+import iii.team05.job.model.JobVO;
 
 public class JobDAO implements JobDAO_interface {
 

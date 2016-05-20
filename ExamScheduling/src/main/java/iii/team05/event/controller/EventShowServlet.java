@@ -1,7 +1,7 @@
-package iii.team05.Event.controller;
+package iii.team05.event.controller;
 
-import iii.team05.Event.model.EventDAO;
-import iii.team05.Event.model.EventVO;
+import iii.team05.event.model.EventDAO;
+import iii.team05.event.model.EventVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,7 +56,7 @@ public class EventShowServlet extends HttpServlet {
 			    out.print("\"");
 			    out.print(evo.getStarttime());
 			    out.print("\",");
-			out.print("\"end\":");
+			    out.print("\"end\":");
 			    out.print("\"");
 			    out.print(evo.getEndtime());
 			    out.print("\",");

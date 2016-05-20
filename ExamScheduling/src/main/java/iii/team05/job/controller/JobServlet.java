@@ -1,9 +1,9 @@
-package iii.team05.Job.controller;
+package iii.team05.job.controller;
 
-import iii.team05.Job.model.JobDAO;
-import iii.team05.Job.model.JobVO;
-import iii.team05.Section.model.SectionDAO;
-import iii.team05.Section.model.SectionVO;
+import iii.team05.job.model.JobDAO;
+import iii.team05.job.model.JobVO;
+import iii.team05.section.model.SectionDAO;
+import iii.team05.section.model.SectionVO;
 
 import java.io.IOException;
 import java.util.List;

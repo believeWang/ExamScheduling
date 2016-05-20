@@ -1,7 +1,6 @@
-package iii.team05.Job.model;
+package iii.team05.job.model;
 
 import java.util.*;
-import iii.team05.Event.model.EventVO;
 
 public interface JobDAO_interface {
 	      public void insert(JobVO jobVO);  //新增

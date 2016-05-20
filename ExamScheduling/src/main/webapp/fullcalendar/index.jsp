@@ -2,7 +2,7 @@
 <%    request.setCharacterEncoding("UTF-8");  %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
-<%@ page import="iii.team05.Job.model.*"%>
+<%@ page import="iii.team05.job.model.*"%>
 <%-- 此頁採用 JSTL 與 EL 取值 --%>
 
 <%

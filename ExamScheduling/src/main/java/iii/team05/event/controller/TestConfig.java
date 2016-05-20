@@ -1,7 +1,7 @@
-package iii.team05.Event.controller;
+package iii.team05.event.controller;
 
-import iii.team05.Event.model.EventDAO;
-import iii.team05.Event.model.EventVO;
+import iii.team05.event.model.EventDAO;
+import iii.team05.event.model.EventVO;
 
 import java.io.IOException;
 import java.sql.Timestamp;

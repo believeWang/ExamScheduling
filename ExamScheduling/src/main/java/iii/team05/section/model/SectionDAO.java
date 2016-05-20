@@ -1,4 +1,4 @@
-package iii.team05.Section.model;
+package iii.team05.section.model;
 
 import java.util.*;
 import java.sql.*;
@@ -8,7 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import iii.team05.Section.model.SectionVO;
+import iii.team05.section.model.SectionVO;
 
 public class SectionDAO implements SectionDAO_interface {
 
