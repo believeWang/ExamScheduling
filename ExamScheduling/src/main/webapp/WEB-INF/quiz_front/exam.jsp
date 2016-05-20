@@ -21,7 +21,7 @@
   	top: 50%;
   	transform: translate(-50%, -50%);
     width: 60%;
-    border: 3px solid #73AD21;
+/*     border: 3px solid #73AD21; */
     padding: 10px;
     display:block;   
    
@@ -51,8 +51,14 @@ font-size: 3.375rem;
 
 }
 .buttons{
-margin:0 auto;
-text-align: center;
+
+	text-align: center;
+	width:100%;
+	height:100px;
+	position:absolute;
+	bottom:0;
+	left:0;
+
 
 }
 span[id*="Option"]{
@@ -75,12 +81,17 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 	var options = ${requestScope.options};   //選項
 	var questionType = ${requestScope.questionType}; //題型
 	var userAnswer = [];  //從Server回傳的考生選項
+	var singleDiv;
+	var mutiDiv;
+	var title;
 
 	$(function() {
-		//置中
-	
-		
-		
+		singleDiv=$('#singleChoice_div');
+		mutiDiv=$('#mutiChoice_div');
+		title=$('#title');
+		singleDiv.hide();
+		mutiDiv.hide();
+		title.hide();
 		//結束按鈕
 		$('#finishExam').click(
 				function() {
@@ -128,6 +139,15 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 	});
 	//取得題目  傳目前的題號(存答案用) 目標的題號(抓題目用) 考生的選擇(存考生答案用)
 	function getQuestion() {
+		
+		if (questionType == 0) {
+			//singleDiv.fadeOut(500);
+			singleDiv.hide();
+		}else{
+			//mutiDiv.fadeOut(500);
+			mutiDiv.hide();
+		}
+		title.hide();
 		//AJAX傳陣列回去
 		$.ajax({
 			url : '/ExamScheduling/Examing',
@@ -169,11 +189,15 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 		
 		
 		
+		
+		
 
 		if (questionType == 0) {
 			//單選
-			$("#singleChoice_div").show();
-			$("#mutiChoice_div").hide();
+			singleDiv.fadeIn(500);
+// 			$("#singleChoice_div").show();
+			
+			
 			//如果這題寫過
 			if (userAnswer.length > 0) {
 				for (var i = 0, max = options.length; i < max; i++) {
@@ -194,8 +218,8 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 
 		} else {
 			//多選
-			$("#singleChoice_div").hide();
-			$("#mutiChoice_div").show();
+			
+			mutiDiv.fadeIn(500);
 
 			if (userAnswer.length > 0) {
 				for (var i = 0, max = options.length; i < max; i++) {
@@ -217,7 +241,7 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 
 		}
 		//題目，題號
-		$('#title').html(questionTitle);
+		$('#title').html(questionTitle).fadeIn(500);;
 		$("#no").text(currentQuestion + "/" + totalNumberOfQuizQuestions);
 		//判斷下一題按鈕是否出現
 		if (currentQuestion > 1) {
@@ -341,6 +365,9 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 			<br/>
 		</div>
 
+		
+
+	</div>
 		<div class="buttons">
 
 				<input class="btn-primary" type="button" id="previous" value="Previous"	style="display: none" /> 
@@ -354,15 +381,6 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 
 
 		</div>
-		
-	
-	
-
-
-
-
-	</div>
-
 		
 
 

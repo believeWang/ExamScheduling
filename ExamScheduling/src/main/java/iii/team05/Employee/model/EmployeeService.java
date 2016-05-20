@@ -3,6 +3,7 @@ package iii.team05.Employee.model;
 import java.util.List;
 
 import iii.team05.Employee.model.EmployeeVO;
+import iii.team05.examinee.ecmodel.ECVO;
 import iii.team05.mes.model.MesVO;
 
 public class EmployeeService {
@@ -48,5 +49,11 @@ public class EmployeeService {
 		return dao.getExam();
 	}
 	
+	public List<EmployeeVO> check(String ecemail) {
+
+		return dao.google(ecemail);
+
+	}
+
 	
 }

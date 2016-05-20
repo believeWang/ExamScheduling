@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,6 +47,9 @@
 <input type="submit" value="送出留言" style="width:70px;height:30px;border:2px blue none;background:red" ></fieldset></FORM>
 <a href='ListAllMessage.jsp'><img src="<%=request.getContextPath()%>/mes/images/mes.png"/></a>
 </div>
+<c:if test="${status=='NG'}">
+<script>alert("你在這裡當駭客，你媽知道嗎!")</script>
+</c:if>
 </body>
 <script src='../js/jquery.min.js'></script>
 <script src="../js/bootstrap.min.js"></script>
