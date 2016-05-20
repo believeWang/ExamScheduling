@@ -7,12 +7,68 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
 <title>Quiz</title>
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src='js/jquery.min.js'></script>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
+<script src="js/bootstrap.min.js"></script>
 <style type="text/css">
-body {
-	background: url("exam_resourse/images/background.jpg");
+#content {
+	position: absolute;
+  	left: 50%;
+  	top: 50%;
+  	transform: translate(-50%, -50%);
+    width: 60%;
+/*     border: 3px solid #73AD21; */
+    padding: 10px;
+    display:block;   
+   
 }
+#title {
+    
+	font-size: 5.375rem;
+    line-height: 1.04;
+    letter-spacing: 0.01em;
+    
+    font-weight: bold;
+    
+    position: relative;
+    width: 88%;
+    max-width: 1520px;
+    margin: 0 auto;
+    text-align: center;
+}
+#singleChoice_div{
+font-size: 3.375rem;
+
+
+}
+#mutiChoice_div{
+font-size: 3.375rem;
+
+
+}
+.buttons{
+
+	text-align: center;
+	width:100%;
+	height:100px;
+	position:absolute;
+	bottom:0;
+	left:0;
+
+
+}
+span[id*="Option"]{
+cursor: pointer;
+}
+input[type="radio"]:checked+span{ font-weight: bold; } 
+input[type="radio"]:not(:checked)+span{ font-weight: normal; } 
+input[type="checkbox"]:checked+span{ font-weight: bold; } 
+input[type="checkbox"]:not(:checked)+span{ font-weight: normal; } 
 </style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript">
 	var tim;
 	var min = '${sessionScope.min}';//計時
@@ -25,8 +81,17 @@ body {
 	var options = ${requestScope.options};   //選項
 	var questionType = ${requestScope.questionType}; //題型
 	var userAnswer = [];  //從Server回傳的考生選項
+	var singleDiv;
+	var mutiDiv;
+	var title;
 
 	$(function() {
+		singleDiv=$('#singleChoice_div');
+		mutiDiv=$('#mutiChoice_div');
+		title=$('#title');
+		singleDiv.hide();
+		mutiDiv.hide();
+		title.hide();
 		//結束按鈕
 		$('#finishExam').click(
 				function() {
@@ -74,6 +139,15 @@ body {
 	});
 	//取得題目  傳目前的題號(存答案用) 目標的題號(抓題目用) 考生的選擇(存考生答案用)
 	function getQuestion() {
+		
+		if (questionType == 0) {
+			//singleDiv.fadeOut(500);
+			singleDiv.hide();
+		}else{
+			//mutiDiv.fadeOut(500);
+			mutiDiv.hide();
+		}
+		title.hide();
 		//AJAX傳陣列回去
 		$.ajax({
 			url : '/ExamScheduling/Examing',
@@ -115,11 +189,15 @@ body {
 		
 		
 		
+		
+		
 
 		if (questionType == 0) {
 			//單選
-			$("#singleChoice_div").show();
-			$("#mutiChoice_div").hide();
+			singleDiv.fadeIn(500);
+// 			$("#singleChoice_div").show();
+			
+			
 			//如果這題寫過
 			if (userAnswer.length > 0) {
 				for (var i = 0, max = options.length; i < max; i++) {
@@ -140,8 +218,8 @@ body {
 
 		} else {
 			//多選
-			$("#singleChoice_div").hide();
-			$("#mutiChoice_div").show();
+			
+			mutiDiv.fadeIn(500);
 
 			if (userAnswer.length > 0) {
 				for (var i = 0, max = options.length; i < max; i++) {
@@ -163,7 +241,7 @@ body {
 
 		}
 		//題目，題號
-		$('#title').html(questionTitle);
+		$('#title').html(questionTitle).fadeIn(500);;
 		$("#no").text(currentQuestion + "/" + totalNumberOfQuizQuestions);
 		//判斷下一題按鈕是否出現
 		if (currentQuestion > 1) {
@@ -250,59 +328,60 @@ body {
 
 	<div id="showtime" style="position: absolute; left: 800px; top: 20px"></div>
 
-	<div
-		style="position: absolute; width: 1000px; padding: 25px; height: 200px; border: 1px solid green; left: 100px; top: 60px">
-		<span id="title"></span><br /> <br />
+	<div  id="content">
+		<h1 id="title"></h1><br />
 
 		<div id="singleChoice_div">
 
-			<input type="radio" onclick="choose()" id="singleOption1"
-				name="Answer" value="1"><span id="singleOptionSpan1"></span>
-			<br /> <input type="radio" onclick="choose()" id="singleOption2"
-				name="Answer" value="2"><span id="singleOptionSpan2"></span>
-			<br /> <input type="radio" onclick="choose()" id="singleOption3"
-				name="Answer" value="3"><span id="singleOptionSpan3"></span>
-			<br /> <input type="radio" onclick="choose()" id="singleOption4"
-				name="Answer" value="4"><span id="singleOptionSpan4"></span>
-			<br /> <input type="radio" onclick="choose()" id="singleOption5"
-				name="Answer" value="5"><span id="singleOptionSpan5"></span>
+			<label for="singleOption1"><input type="radio" onclick="choose()" id="singleOption1" name="Answer" value="1">
+			<span id="singleOptionSpan1"></span></label>
+			<br /> 
+			<label for="singleOption2"><input type="radio" onclick="choose()" id="singleOption2" name="Answer" value="2">
+			<span id="singleOptionSpan2"></span></label>
+			<br /> 
+			<label for="singleOption3"><input type="radio" onclick="choose()" id="singleOption3" name="Answer" value="3">
+			<span id="singleOptionSpan3"></span></label>
+			<br /> 
+			<label for="singleOption4"><input type="radio" onclick="choose()" id="singleOption4" name="Answer" value="4">
+			<span id="singleOptionSpan4"></span></label>
+			<br /> 
+<!-- 			<label for="singleOption5"><input type="radio" onclick="choose()" id="singleOption5" name="Answer" value="5" disabled> -->
+<!-- 			<span id="singleOptionSpan5"></span></label> -->
 			<br /> <br />
 		</div>
 		<div id="mutiChoice_div">
-			<input type="checkbox" onclick="choose()" id="mutiOption1"
-				name="Answer" value="1"><span id="mutiOptionSpan1"></span> <br />
-			<input type="checkbox" onclick="choose()" id="mutiOption2"
-				name="Answer" value="2"><span id="mutiOptionSpan2"></span> <br />
-			<input type="checkbox" onclick="choose()" id="mutiOption3"
-				name="Answer" value="3"><span id="mutiOptionSpan3"></span> <br />
-			<input type="checkbox" onclick="choose()" id="mutiOption4"
-				name="Answer" value="4"><span id="mutiOptionSpan4"></span> <br />
-			<input type="checkbox" onclick="choose()" id="mutiOption5"
-				name="Answer" value="5"><span id="mutiOptionSpan5"></span> <br />
+			<label for="mutiOption1"><input type="checkbox" onclick="choose()" id="mutiOption1"
+				name="Answer" value="1"><span id="mutiOptionSpan1"></span> </label><br />
+			<label for="mutiOption2"><input type="checkbox" onclick="choose()" id="mutiOption2"
+				name="Answer" value="2"><span id="mutiOptionSpan2"></span></label> <br />
+			<label for="mutiOption3"><input type="checkbox" onclick="choose()" id="mutiOption3"
+				name="Answer" value="3"><span id="mutiOptionSpan3"></span></label> <br />
+			<label for="mutiOption4"><input type="checkbox" onclick="choose()" id="mutiOption4"
+				name="Answer" value="4"><span id="mutiOptionSpan4"></span></label> <br />
+<!-- 			<label for="mutiOption5"><input type="checkbox" onclick="choose()" id="mutiOption5" -->
+<!-- 				name="Answer" value="5"><span id="mutiOptionSpan5"></span> </label><br /> -->
 
+
+			<br/>
+		</div>
+
+		
+
+	</div>
+		<div class="buttons">
+
+				<input class="btn-primary" type="button" id="previous" value="Previous"	style="display: none" /> 
+				<a href="" id='finishExam'>finish</a>
+				<input class="btn-primary" type="button" id="next" value="Next" />
+				<br/>
+ 				<c:forEach var="i" begin="1" end="${sessionScope.totalNumberOfQuizQuestions}">
+					<input  class="btn-info" type="button" id="no${i}" value="${i}" onclick=jumpTo(this.value) />
+  
+				</c:forEach>
 
 
 		</div>
-
-
-		<input type="button" id="previous" value="Previous"	style="display: none" /> 
-			<input type="button" id="next" value="Next" />
-
-		<!-- 	 	 <input type="button" id="finish"  value="Finish Exam" /> -->
-		<a href="" id='finishExam'>finish</a>
-		</br>
-		</br>
-	
-	 <c:forEach var="i" begin="1" end="${sessionScope.totalNumberOfQuizQuestions}">
-	 <input type="button" id="no${i}" value="${i}" onclick=jumpTo(this.value) />
-  
-	</c:forEach>
-
-
-
-
-	</div>
-
+		
 
 
 </body>

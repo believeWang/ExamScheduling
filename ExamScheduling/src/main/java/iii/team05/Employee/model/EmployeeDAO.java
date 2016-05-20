@@ -10,7 +10,7 @@ import java.util.*;
 public class EmployeeDAO implements EmployeeDAO_interface {
 	private static final String GET_ALL_EMP = "from EmployeeVO where position=0 order by empno";
 	private static final String GET_ALL_EXAM = "from EmployeeVO where position=1 order by empno";
-
+	private static final String CHECK_MAIL = "from EmployeeVO where empemail = :empemail";							
 	@Override
 	public void insert(EmployeeVO employeeVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -101,6 +101,24 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 		return list;
 	}	
 	
+	public List<EmployeeVO> google(String empemail) {
+		List<EmployeeVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			System.out.println(empemail);
+			session.beginTransaction();
+			Query query = session.createQuery(CHECK_MAIL);
+			query.setParameter("empemail", empemail);			
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+		
+	}
+
 //	public static void main(String[] args) {
 //		EmployeeDAO dao = new EmployeeDAO();
 //		

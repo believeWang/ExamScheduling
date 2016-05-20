@@ -19,6 +19,9 @@
        	  	      <li><a href="<%=request.getContextPath()%>/index.jsp">輸入成績</a></li>
        		      <li><a href="<%=request.getContextPath()%>/index.jsp">編輯考題</a></li>
 		  	      <li><a href="<%=request.getContextPath()%>/mes/ListNotReplyMessage.jsp">留言板</a></li>
+
+       			<li><a>${GoogleUser}</a></li>
+
        		</ul>
        	</nav>       	
        </header>

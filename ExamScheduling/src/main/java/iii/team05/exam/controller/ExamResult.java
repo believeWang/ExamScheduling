@@ -1,6 +1,7 @@
 package iii.team05.exam.controller;
 
 import iii.team05.exam.model.ExamDetailVO;
+import iii.team05.exam.model.ExamService;
 import iii.team05.exam.model.OptionsVO;
 
 import java.io.IOException;
@@ -27,69 +28,14 @@ public class ExamResult extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		//檢查答案
-		checkAnswer(request);
+		new ExamService().checkAnswer(request,getServletContext());
 
 		request.getRequestDispatcher("/WEB-INF/quiz_front/result.jsp").forward(
 				request, response);
 
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-	}
+	
 
-	public void checkAnswer(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		ServletContext context = getServletContext();
-		
-		//考生的答案
-		@SuppressWarnings("unchecked")
-		Map<Long, boolean[]> answerMap = (Map<Long, boolean[]>) session
-				.getAttribute("answerMap");
-
-		String examno = (String) session.getAttribute("examno");
-//		// 測試用
-//		if (examno == null) {
-//			examno = "Java1";
-//		}
-		//標準答案
-		@SuppressWarnings("unchecked")
-		List<ExamDetailVO> questionList = (List<ExamDetailVO>) context
-				.getAttribute(examno);
-		//答對的題數
-		int rightCnt = 0;
-		
-		for (int i = 0, size = questionList.size(); i < size; i++) {
-			ExamDetailVO questions = questionList.get(i);
-			
-			//正確的答案 ex:  truetruefalsefalse
-			String rightAnswer = "";
-			for (OptionsVO options : questions.getOptions()) {
-				rightAnswer += options.getIsAnswer();
-			}
-			//System.out.print(rightAnswer+" ");
-			
-			//考生的答案
-			String studentAnswer = "";
-
-		
-			//System.out.println("answerMapget" + answerMap.get(new Long(i)));
-
-				//如果沒寫這題  為空NULL
-			if (answerMap.get(new Long(i)) != null) {
-				for (Boolean bo : answerMap.get(new Long(i))) {
-
-					studentAnswer += bo.toString();
-				}
-				//比對兩個字串是否相等
-				if (rightAnswer.equals(studentAnswer))
-					rightCnt++;
-			}
-			//System.out.println(studentAnswer);
-			// System.out.println("-------------");
-		}
-		request.setAttribute("rightCnt", rightCnt);
-
-	}
-
+	
 }

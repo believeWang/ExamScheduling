@@ -23,12 +23,12 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		 <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.json</groupId>
@@ -81,22 +81,29 @@
 			<artifactId>sqljdbc</artifactId>
 			<version>4.0</version>
 		</dependency>
-		
+
 		<dependency>
-		<groupId>javax</groupId>
-		<artifactId>javaee-api</artifactId>
-		<version>7.0</version>
-		<scope>provided</scope>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
 		</dependency>
-		<!-- scope的預設值compile:表示此jar是所有階段需要的, 部署時將一起被打包到jar/war裡面。
-		然後會與Tomcat裡的websocket-api發生衝突，故設定成provided:當運行時，此jar由Tomcat提供,
-		 部署時將不會打包到jar/war裡面。-->
-		 
+		<!-- scope的預設值compile:表示此jar是所有階段需要的, 部署時將一起被打包到jar/war裡面。 然後會與Tomcat裡的websocket-api發生衝突，故設定成provided:當運行時，此jar由Tomcat提供, 
+			部署時將不會打包到jar/war裡面。 -->
+
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.json</artifactId>
 			<version>1.0.4</version>
 		</dependency>
+
+		<!-- http://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -117,6 +124,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 			</plugin>
+
 
 
 			<plugin>
