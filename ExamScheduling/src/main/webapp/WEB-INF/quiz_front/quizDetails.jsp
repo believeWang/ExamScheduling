@@ -168,10 +168,10 @@ h1.main,p.demos {
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
-	-webkit-animation: fadeInRotate 1s linear 1s backwards;
-	-moz-animation: fadeInRotate 1s linear 1s backwards;
-	-ms-animation: fadeInRotate 1s linear 1s backwards;
-	animation: fadeInRotate 1s linear 1s backwards;
+	-webkit-animation: fadeInRotate 1s linear 7s backwards;
+	-moz-animation: fadeInRotate 1s linear 7s backwards;
+	-ms-animation: fadeInRotate 1s linear 7s backwards;
+	animation: fadeInRotate 1s linear 7s backwards;
 	-webkit-transform: scale(1) rotate(0deg);
 	-moz-transform: scale(1) rotate(0deg);
 	-o-transform: scale(1) rotate(0deg);
