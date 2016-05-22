@@ -1,19 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF8"
 	pageEncoding="UTF8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
-<title>Quiz</title>
+<title>Exam</title>
 
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 <script src='js/jquery.min.js'></script>
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
-<script src="js/bootstrap.min.js"></script>
+<!-- 自製radio button checkbox  -->
+<!-- <link rel="stylesheet" type="text/css" href="exam_resourse/css/normalize.css" /> -->
+<link rel="stylesheet" type="text/css" href="exam_resourse/css/demo.css" />
+<link rel="stylesheet" type="text/css" href="exam_resourse/css/component.css" />
+
+
 <style type="text/css">
 #content {
 	position: absolute;
@@ -21,54 +25,31 @@
   	top: 50%;
   	transform: translate(-50%, -50%);
     width: 60%;
-/*     border: 3px solid #73AD21; */
+
     padding: 10px;
     display:block;   
    
 }
-#title {
-    
-	font-size: 5.375rem;
-    line-height: 1.04;
-    letter-spacing: 0.01em;
-    
-    font-weight: bold;
-    
-    position: relative;
-    width: 88%;
-    max-width: 1520px;
-    margin: 0 auto;
-    text-align: center;
-}
-#singleChoice_div{
-font-size: 3.375rem;
 
 
-}
-#mutiChoice_div{
-font-size: 3.375rem;
-
-
-}
 .buttons{
 
-	text-align: center;
-	width:100%;
-	height:100px;
-	position:absolute;
-	bottom:0;
-	left:0;
-
+	 /* 設定footer的高度 */
+    height: 40px;
+    box-sizing: border-box;
+    /* 設定footer絕對位置在底部 */
+    position: absolute;
+    bottom: 50px;
+    /* 展開footer寬度 */
+    width: 100%;
+    text-align: center;
+	
 
 }
-span[id*="Option"]{
-cursor: pointer;
-}
-input[type="radio"]:checked+span{ font-weight: bold; } 
-input[type="radio"]:not(:checked)+span{ font-weight: normal; } 
-input[type="checkbox"]:checked+span{ font-weight: bold; } 
-input[type="checkbox"]:not(:checked)+span{ font-weight: normal; } 
+
+
 </style>
+
 <script language="javascript">
 	var tim;
 	var min = '${sessionScope.min}';//計時
@@ -124,8 +105,6 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 			targetQuestion--;
 			getQuestion();
 		});
-		//現在題號
-		$("#no").text(currentQuestion + "/" + totalNumberOfQuizQuestions);
 		//把第一題的按鈕diable
 		$("#no1").prop('disabled', true);
 		
@@ -185,17 +164,11 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 	}
 	//設置
 	function setQuestion() {
-		
-		
-		
-		
-		
-		
-
+		resetAll();
 		if (questionType == 0) {
 			//單選
 			singleDiv.fadeIn(500);
-// 			$("#singleChoice_div").show();
+//			$("#singleChoice_div").show();
 			
 			
 			//如果這題寫過
@@ -204,12 +177,15 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 					$('#singleOptionSpan' + (i + 1)).text(options[i]);
 					//將寫過的選項checked
 					if (userAnswer[i]) {
-						$('#singleOption' + (i + 1)).prop('checked', true);
+						var el =$('#singleOption' + (i + 1));
+						draw( el.get(0), 'circle' );
+						el.prop('checked', true);
 					} else {
 						$('#singleOption' + (i + 1)).prop('checked', false);
 					}
 				}
 			} else {
+				
 				for (var i = 0, max = options.length; i < max; i++) {
 					$('#singleOptionSpan' + (i + 1)).text(options[i]);
 					$('#singleOption' + (i + 1)).prop('checked', false);
@@ -226,12 +202,15 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 
 					$('#mutiOptionSpan' + (i + 1)).text(options[i]);
 					if (userAnswer[i]) {
-						$('#mutiOption' + (i + 1)).prop('checked', true);
+						var el=$('#mutiOption' + (i + 1));
+						draw( el.get(0), 'boxfill' );
+						el.prop('checked', true);
 					} else {
 						$('#mutiOption' + (i + 1)).prop('checked', false);
 					}
 				}
 			} else {
+				resetAll();
 				for (var i = 0, max = options.length; i < max; i++) {
 
 					$('#mutiOptionSpan' + (i + 1)).text(options[i]);
@@ -241,8 +220,8 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 
 		}
 		//題目，題號
-		$('#title').html(questionTitle).fadeIn(500);;
-		$("#no").text(currentQuestion + "/" + totalNumberOfQuizQuestions);
+		$('h2').html(questionTitle).fadeIn(500);;
+		$("#no").text("Current Question:"+currentQuestion + "/" + totalNumberOfQuizQuestions);
 		//判斷下一題按鈕是否出現
 		if (currentQuestion > 1) {
 
@@ -258,6 +237,16 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 		}
 		//寫過的陣列清空
 		userAnswer=[];
+	}
+	
+
+	function resetRadio( el ) {
+		Array.prototype.slice.call( document.querySelectorAll( 'input[type="radio"][name="' + el.getAttribute( 'name' ) + '"]' ) ).forEach( function( el ) { 
+			var path = el.parentNode.querySelector( 'svg > path' );
+			if( path ) {
+				path.parentNode.removeChild( path );
+			}
+		} );
 	}
 	//選擇
 	function choose() {
@@ -321,49 +310,63 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 
 <body onload="examTimer()">
 
-	<div style="position: absolute; left: 50px; top: 20px">
-
-		Current Question <span id="no">1</span>
+	<div class="codrops-top clearfix">
+		<span  id="no"></span>
+		<span id="showtime" class="right"></span>
 	</div>
-
-	<div id="showtime" style="position: absolute; left: 800px; top: 20px"></div>
+	
+	
 
 	<div  id="content">
-		<h1 id="title"></h1><br />
-
-		<div id="singleChoice_div">
-
-			<label for="singleOption1"><input type="radio" onclick="choose()" id="singleOption1" name="Answer" value="1">
-			<span id="singleOptionSpan1"></span></label>
-			<br /> 
-			<label for="singleOption2"><input type="radio" onclick="choose()" id="singleOption2" name="Answer" value="2">
-			<span id="singleOptionSpan2"></span></label>
-			<br /> 
-			<label for="singleOption3"><input type="radio" onclick="choose()" id="singleOption3" name="Answer" value="3">
-			<span id="singleOptionSpan3"></span></label>
-			<br /> 
-			<label for="singleOption4"><input type="radio" onclick="choose()" id="singleOption4" name="Answer" value="4">
-			<span id="singleOptionSpan4"></span></label>
-			<br /> 
-<!-- 			<label for="singleOption5"><input type="radio" onclick="choose()" id="singleOption5" name="Answer" value="5" disabled> -->
+		
+	
+		
+		<section id="singleChoice_div">
+			<form class="ac-custom ac-radio ac-circle" autocomplete="off">
+				<h2 id="title"></h2>
+				<ul>
+				<li><input type="radio"  id="singleOption1" name="Answer" value="1">
+				<label for="singleOption1" id="singleOptionSpan1"></label>
+				</li> 
+				<li><input type="radio"  id="singleOption2" name="Answer" value="2">
+				<label for="singleOption2" id="singleOptionSpan2"></label>
+				</li> 
+				<li><input type="radio"  id="singleOption3" name="Answer" value="3">
+				<label for="singleOption3" id="singleOptionSpan3"></label>
+				</li>
+				<li><input type="radio"  id="singleOption4" name="Answer" value="4">
+				<label for="singleOption4" id="singleOptionSpan4"></label>
+				</li> 
+<!-- 			<label for="singleOption5"><input type="radio"  id="singleOption5" name="Answer" value="5" disabled> -->
 <!-- 			<span id="singleOptionSpan5"></span></label> -->
-			<br /> <br />
-		</div>
-		<div id="mutiChoice_div">
-			<label for="mutiOption1"><input type="checkbox" onclick="choose()" id="mutiOption1"
-				name="Answer" value="1"><span id="mutiOptionSpan1"></span> </label><br />
-			<label for="mutiOption2"><input type="checkbox" onclick="choose()" id="mutiOption2"
-				name="Answer" value="2"><span id="mutiOptionSpan2"></span></label> <br />
-			<label for="mutiOption3"><input type="checkbox" onclick="choose()" id="mutiOption3"
-				name="Answer" value="3"><span id="mutiOptionSpan3"></span></label> <br />
-			<label for="mutiOption4"><input type="checkbox" onclick="choose()" id="mutiOption4"
-				name="Answer" value="4"><span id="mutiOptionSpan4"></span></label> <br />
-<!-- 			<label for="mutiOption5"><input type="checkbox" onclick="choose()" id="mutiOption5" -->
-<!-- 				name="Answer" value="5"><span id="mutiOptionSpan5"></span> </label><br /> -->
-
-
-			<br/>
-		</div>
+				
+				</ul>
+			</form>
+			</section>
+			<section id="mutiChoice_div">
+			<form class="ac-custom ac-checkbox ac-boxfill" autocomplete="off">
+				<h2 id="title"></h2>
+				<ul>
+				<li><input type="checkbox"  id="mutiOption1" name="Answer" value="1">
+				<label for="mutiOption1" id="mutiOptionSpan1"></label>
+				</li> 
+				<li><input type="checkbox"  id="mutiOption2" name="Answer" value="2">
+				<label for="mutiOption2" id="mutiOptionSpan2"></label>
+				</li> 
+				<li><input type="checkbox"  id="mutiOption3" name="Answer" value="3">
+				<label for="mutiOption3" id="mutiOptionSpan3"></label>
+				</li>
+				<li><input type="checkbox"  id="mutiOption4" name="Answer" value="4">
+				<label for="mutiOption4" id="mutiOptionSpan4"></label>
+				</li> 
+<!-- 			<label for="singleOption5"><input type="radio"  id="singleOption5" name="Answer" value="5" disabled> -->
+<!-- 			<span id="singleOptionSpan5"></span></label> -->
+				
+				</ul>
+			</form>
+			</section>
+		
+		
 
 		
 
@@ -371,7 +374,7 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 		<div class="buttons">
 
 				<input class="btn-primary" type="button" id="previous" value="Previous"	style="display: none" /> 
-				<a href="" id='finishExam'>finish</a>
+				<a class="btn btn-warning" href="" id='finishExam'>finish</a>
 				<input class="btn-primary" type="button" id="next" value="Next" />
 				<br/>
  				<c:forEach var="i" begin="1" end="${sessionScope.totalNumberOfQuizQuestions}">
@@ -385,4 +388,5 @@ input[type="checkbox"]:not(:checked)+span{ font-weight: normal; }
 
 
 </body>
+<script src="exam_resourse/js/svgcheckbx.js"></script>
 </html>
