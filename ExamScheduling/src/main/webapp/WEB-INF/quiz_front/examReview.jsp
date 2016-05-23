@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
-<link rel="stylesheet" type="text/css" href="exam_resourse/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/component.css" />
 
 <style type="text/css">
@@ -146,16 +145,26 @@ section.related {
 
 <body>
 <div class="container">
-<header><h1 >Quiz Reviewaa</h1></header>
+<header><h1 >Quiz Review</h1></header>
 	
 	
 <div  id="content">
+	
 	<c:forEach var="question" items="${requestScope.questionList}" varStatus="counter">
+	
+	<c:if test="${question.questionType eq'0'}">
 		
-			
-
+   		<c:set var="typeQ1" scope="page" value="ac-custom ac-radio ac-circle"/>
+   		<c:set var="typeQ2" scope="page" value="radio"/>
+	</c:if>
+	<c:if test="${question.questionType eq'1'}">
+	
+   		<c:set var="typeQ1" scope="page" value="ac-custom ac-checkbox ac-boxfill"/>
+   		<c:set var="typeQ2" scope="page" value="checkbox"/>
+	</c:if>
+	
 	<section>
-	<form class="ac-custom ac-radio ac-circle" autocomplete="off">
+	<form class="${typeQ1}" autocomplete="off">
 		<h2 id="title">${counter.count}. ${question.question}</h2>
 		<ul>
 		<c:forEach var="option" items="${question.options}"	varStatus="optionCounter">
@@ -164,11 +173,12 @@ section.related {
 			<c:choose>
 				<c:when
 					test="${answerMap[counter.count-1][optionCounter.count-1]}">
-					<li><input disabled checked  type="radio"><label >${option.optionsName}</label>
+				
+					<li><input disabled checked  type='${typeQ2}'><label >${option.optionsName}</label>
 				</c:when>
 
 				<c:otherwise>
-					<li><input disabled  type="radio"><label >${option.optionsName}</label>
+					<li><input disabled  type="${typeQ2}"><label >${option.optionsName}</label>
 
 
 				
