@@ -7,11 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<FORM METHOD="post" ACTION="/ExamScheduling/mail/CheckServlet"  >
+<FORM METHOD="post" ACTION="/ExamScheduling/eclogin/signin"  >
 <table>
 <tr>
 		<td>e-mail:</td>
 		<td><input type="TEXT" name="ecemail" size="40" /></td>
+	<td>${errors.ecemail}</td>
 	</tr>
 	</table>
 	<input type="submit" value="送出">

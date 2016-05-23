@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="exam_resourse/css/styles.css">
-<title>Insert title here</title>
+<title>ExamInfo</title>
     
-    <link rel="stylesheet" href="css/reset.css">
+   
 
     
         <style>
@@ -22,6 +22,9 @@
 body {
 	background: #310404 url(http://web-sonick.zz.mu/images/sl/red_texture.jpg) repeat top left;
 	font-family: 'Electrolize';
+}
+#cssmenu{
+z-index:2;
 }
 
 .container{
@@ -46,7 +49,8 @@ h1.main,p.demos {
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	z-index: 0;
+	
+	z-index: -1;
 	background: -webkit-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
 	background: -moz-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
 	background: -ms-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
@@ -58,7 +62,7 @@ h1.main,p.demos {
 	height: 100%;
 	left: 0px;
 	top: 0px;
-	z-index: 1000;
+	z-index: 0;
 }
 .sp-container h2 {
 	position: absolute;
@@ -353,7 +357,7 @@ h1.main,p.demos {
     </style>
 
     
-        <script src="exam_resourse/css/prefixfree.min.js"></script>
+        <script src="exam_resourse/js/prefixfree.min.js"></script>
 </head>
 <body>
 <div id='cssmenu'>
@@ -388,21 +392,6 @@ h1.main,p.demos {
 
 
 
-<!-- <div style="position:absolute;left:500px;top:170px"> -->
-<!-- <ul style="list-style-type:disc"> -->
-<!--  <li>Quiz contains  Multiple Choice Questions</li> -->
-<%--  <li>Total time for the Quiz is ${sessionScope.quizDuration} Minutes</li> --%>
-<!--  <li>You can finish the exam at any time</li> -->
-<!--  <li>Read the question carefully before answering</li> -->
-<!--  <li>You can change your answers before submitting</li> -->
-<!--  <li>Good luck for the test.</li> -->
-<!-- </ul>   -->
-<!-- <br><br><br> -->
-<!-- </div> -->
-
-<!-- <div  style="position:absolute;left:600px;top:350px"> -->
-<%-- <button onclick="location.href='${pageContext.request.contextPath}/Examing'">Start Exam</button> --%>
-<!-- </div> -->
 
 
 </body>
