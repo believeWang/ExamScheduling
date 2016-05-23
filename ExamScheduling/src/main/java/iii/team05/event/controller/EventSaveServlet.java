@@ -5,7 +5,6 @@ import iii.team05.event.model.EventVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
@@ -71,7 +70,7 @@ public class EventSaveServlet extends HttpServlet {
 		evo.setBgcolor("#337AB7");
 		evo.setTitle(title);
 		evo.setEcno("EEIT8501");
-		//evo.setEventremark();
+		//evo.setEventremark("");
 		
 		try{
 			

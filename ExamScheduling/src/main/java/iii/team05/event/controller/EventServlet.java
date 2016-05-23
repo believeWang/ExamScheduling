@@ -32,12 +32,14 @@ public class EventServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		System.out.println("doGetEvent");
 		request.setCharacterEncoding("UTF-8");
+		
 		String action = request.getParameter("action");
 		String jobid = request.getParameter("jobid");
 		String date = request.getParameter("date");
-		//System.out.println("action="+action+"jobid="+jobid+"date="+date);
+		System.out.println("action="+action+"jobid="+jobid+"date="+date);
 		
 		SectionDAO secDAO = new SectionDAO();
 		List<SectionVO> seclists = secDAO.getAll();		
