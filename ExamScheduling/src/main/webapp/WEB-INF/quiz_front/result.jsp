@@ -1,10 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF8"
-    pageEncoding="UTF8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <style type="text/css">
 body {
@@ -155,6 +158,7 @@ table.responsive-table{
     </tbody>
 </table>
 <h3 align="center"><a href='${pageContext.request.contextPath}/ExamReview'>Review Answers</a></h3><br>
+<h3 align="center"><a href='${pageContext.request.contextPath}'>Home</a></h3><br>
 </div>
 
 

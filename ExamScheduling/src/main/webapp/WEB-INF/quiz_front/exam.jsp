@@ -1,11 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF8"
-	pageEncoding="UTF8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% 
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0");
+%> 
 <!DOCTYPE html>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <title>Exam</title>
 
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -225,15 +233,15 @@
 		//判斷下一題按鈕是否出現
 		if (currentQuestion > 1) {
 
-			$("#previous").css('display', 'inline')
+			$("#previous").css('visibility', 'visible');
 		} else {
 
-			$("#previous").css('display', 'none')
+			$("#previous").css('visibility', 'hidden');
 		}
 		if (currentQuestion == totalNumberOfQuizQuestions) {
-			$("#next").css('display', 'none')
+			$("#next").css('visibility', 'hidden');
 		} else {
-			$("#next").css('display', 'inline')
+			$("#next").css('visibility', 'visible');
 		}
 		//寫過的陣列清空
 		userAnswer=[];
@@ -373,7 +381,7 @@
 	</div>
 		<div class="buttons">
 
-				<input class="btn-primary" type="button" id="previous" value="Previous"	style="display: none" /> 
+				<input class="btn-primary" type="button" id="previous" value="Previous"	style="visibility: hidden" /> 
 				<a class="btn btn-warning" href="" id='finishExam'>finish</a>
 				<input class="btn-primary" type="button" id="next" value="Next" />
 				<br/>

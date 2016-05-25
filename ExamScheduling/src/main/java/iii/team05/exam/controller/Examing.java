@@ -29,6 +29,13 @@ public class Examing extends HttpServlet {
 		
 		ExamService service =new ExamService();
 		HttpSession session = request.getSession();
+		//如果寫完
+		String isFinished=(String) session.getAttribute("status");
+		if("finished".equals(isFinished)){
+			response.sendRedirect("ExamResult");
+			return;
+		}
+			
 		// 下一個題號
 		String targetQuestion = request.getParameter("targetQuestion");
 		// 現在的題號
@@ -53,9 +60,8 @@ public class Examing extends HttpServlet {
 					// 結束 按下FINALL 有寫
 					service.putAnswerToList(session, Integer.parseInt(currentQuestion),
 							selected);
-
-				request.getRequestDispatcher("/ExamResult").forward(request,
-						response);
+				response.sendRedirect("ExamResult");
+			
 			} else {
 				// 初始第一次進來
 				service.initExam(session, request,getServletContext(),response);

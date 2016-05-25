@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
 <head>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="exam_resourse/css/styles.css">   
+
+ 
     <style type="text/css">
     
 body {
 	background: url("exam_resourse/images/background.jpg");
+	padding:0;
+	margin:0;
 }
 
 .button {
@@ -47,47 +49,63 @@ body {
 	background-color: #2ecc71;
 	box-shadow: 0px 3px 0px 0px #239a55;
 }
-
+table{
+	margin: 0 auto;
+}
 </style>
   
    <title>TechQ Online Quiz</title>
 </head>
 <body>
-
-<div id='cssmenu'>
-<ul>
-   <li class=''><a href='${pageContext.request.contextPath}'><span>Home</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/choose'><span>Exam</span></a></li>
+<%@ include file="../header/header.jsp" %>
+<!-- <div id='cssmenu'> -->
+<!-- <ul> -->
+<%--    <li class=''><a href='${pageContext.request.contextPath}'><span>Home</span></a></li> --%>
+<%--    <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li> --%>
+<%--    <li><a href='${pageContext.request.contextPath}/choose'><span>Exam</span></a></li> --%>
    
   
-</ul>
-</div>
+<!-- </ul> -->
+<!-- </div> -->
 
-<c:if test='${not empty sessionScope.ecno}'>
 
-<div style="position:absolute;top:70px;left:1100px">
-Logged as <a href="#" class="button username">${sessionScope.ecno}</a>
-</div>
 
-<div style="position:absolute;top:70px;left:1300px">
-<a href='${pageContext.request.contextPath}/LogoutServlet'>Logout</a>
-</div>
-
+<div class="content">
+<table cellpadding="0" cellspacing="50">
+<c:forEach var="examEntry" items="${applicationScope.examsMap}" varStatus="counter">
+<c:if test='${counter.count%2==1}'>
+<tr>
 </c:if>
 
-<div style="position:absolute;left:120px;top:60px">
-<table cellpadding="0" cellspacing="50">
+<c:choose>
+				<c:when
+					test='${not empty examEntry.value}'>
+				
+					<td><a href="TakeExam?test=${examEntry.key}"><img alt="${examEntry.key}" title="${examEntry.key}" height="200" width="200" src="${examEntry.value}"/></a></td>
+				</c:when>
 
-<tr>
-<td><a href="TakeExam?test=Java1"><img height="200" width="200" src="exam_resourse/images/java.png"/></a></td>
+				<c:otherwise>
+				<td><a href="TakeExam?test=${examEntry.key}"><img alt="${examEntry.key}" title="${examEntry.key}" height="200" width="200" src="exam_resourse/images/examImg.png"/></a></td>
+					
 
+
+				
+				</c:otherwise>
+			</c:choose>
+
+<c:if test='${counter.count%2==0}'>
 </tr>
+</c:if>
 
-<tr>
-<td><a href="TakeExam?test=Javascript1"><img height="200" width="200" src="exam_resourse/images/javascript.png"/></a></td>
 
-</tr>
+
+
+</c:forEach>
+
+<!-- <tr> -->
+<!-- <td><a href="TakeExam?test=Javascript1"><img height="200" width="200" src="exam_resourse/images/javascript.png"/></a></td> -->
+
+<!-- </tr> -->
 
 </table>
 </div>
