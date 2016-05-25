@@ -1,5 +1,7 @@
 package iii.team05.examinee.ecmodel;
 
+import iii.team05.mes.model.MesVO;
+
 import java.util.List;
 
 public class ECService {
@@ -31,4 +33,20 @@ public class ECService {
 		return ecDAO.mailcheck(ecemail);
 
 	}
+	
+	public ECVO updatePsd(String ecno,String ecpsd
+			) {
+			
+				ECVO ecVO = new ECVO();
+				ecVO.setEcno(ecno);
+//				ecVO.setEcname(ecname);
+//				ecVO.setEcemail(ecemail);
+				ecVO.setEcpsd(ecpsd);
+//				ecVO.setEcstatus(ecstatus);
+//				ecVO.setEcremark1(ecremark1);
+				ecDAO.updatepsd(ecVO);
+				return ecVO;
+			}
+		
+	
 }
