@@ -23,17 +23,15 @@
 <table align='center' border="1px">
 <c:forEach var="mesVO" items="${list}" varStatus="status">
 <tr>
-<td>留言者姓名:</td><td>${mesVO.msgname}</td>
+<th>留言者姓名</th>
+<th>留言者信箱</th>
+<th>留言時間</th>
+
 </tr>
 <tr>
-<td>留言者信箱</td><td>${mesVO.msgmail}</td>
-</tr>
-<tr>
-<td>留言時間</td><td>${mesVO.msgtime}</td>
-</tr>
-<tr>
-<td  colspan="2">${mesVO.msgcontent}</td>
-</tr>
+<td>${mesVO.msgname}</td>
+<td>${mesVO.msgmail}</td>
+<td>${mesVO.msgtime}</td>
 
 <td>
 
@@ -42,7 +40,6 @@
 			     <input type="hidden" name="messageid" value="${mesVO.messageid}">
 			     <input type="hidden" name="action"	value="getOne_Not_RePlay_Message"></FORM>
 </td>
-
 </c:forEach>
 </table>
 

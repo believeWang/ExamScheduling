@@ -13,31 +13,21 @@ MesVO mesVO = (MesVO) request.getAttribute("mesVO");
 </head>
 <body>
      
-<%@ include file="header.jsp" %>
+<%@ include file="/WEB-INF/header/header.jsp" %>
 
 
-
-<table border='1' bordercolor='#CCCCFF' width='600'>
-	<tr>
-		<th>留言者姓名</th>
-		<th>留言者MAIL</th>
-		<th>留言時間</th>
-		<th>留言內容</th>
-		<th>回覆者</th>
-		<th>回覆時間</th>
-		<th>回覆內容</th>
-	</tr>
-	<tr align='center' valign='middle'>
-		<td><%=mesVO.getMsgname()%></td>
-		<td><%=mesVO.getMsgmail()%></td>
-		<td><%=mesVO.getMsgtime()%></td>
-		<td><%=mesVO.getMsgcontent()%></td>
-		<td><%=mesVO.getRpname()%></td>
-		<td><%=mesVO.getRptime()%></td>
-		<td><%=mesVO.getRpcontent()%></td>
-	</tr>
-</table>
+<div style="border: 3px solid #acd6ff;width:500px;margin:50px 500px">
+留言時間:<%=mesVO.getMsgtime()%>&nbsp;<br>
+考生 <%=mesVO.getMsgname()%>:<br>
+<%=mesVO.getMsgcontent()%><br>
+<hr>
+回覆時間:<%=mesVO.getRptime()%><br>
+<%=mesVO.getRpname()%>:<br>
+<%=mesVO.getRpcontent()%><br>
+</div>
+<div style="width:500px;margin:0px 500px ">
 <a href='ListAllMessage.jsp'><input type="button" value="查看所有留言"></a>
 <a href='LeaveMessage.jsp'><input type="button" value="繼續留言"></a>
+</div>
 </body>
 </html>

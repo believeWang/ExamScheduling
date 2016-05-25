@@ -13,25 +13,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Reception</title>
-	<style>
-       @import url('<%=request.getContextPath()%>/mes/css/main.css');    
-	</style>
+<srcipt></srcipt>
 </head>
 <body>
-     	<header>
- 		 <nav>
-       		       		<img src="<%=request.getContextPath()%>/mes/images/logo.png" style="float:left" />  
-  
-       		<ul id="menu">	  			   
-       	 	    <li><a href="<%=request.getContextPath()%>/index.jsp">預約考試</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/index.jsp">前往考試</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/index.jsp">關於偉康</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/mes/LeaveMessage.jsp">聯絡我們</a></li>
-       		</ul>
-       	</nav>       	
-       </header>
-
-<table border='1' bordercolor='#CCCCFF' width='800'>
+   <%@ include file="/WEB-INF/header/header.jsp" %>
+<div style="margin: 50px 500px">
+<table border='1' bordercolor='#CCCCFF' width='800' >
 	<tr>
 		<th>刪除</th>
 		<th>留言者姓名</th>
@@ -66,12 +53,15 @@
 			 </c:otherwise>
 			</c:choose>
 			</td>
+<!-- 			<tr> -->
+<%-- 			<td colspan="5">${mesVO.rpcontent}</td> --%>
+<!-- 			</tr> -->
 		</tr>
 	</c:forEach>
 </table>
 
 <%@ include file="page2.file" %>
 <a href='LeaveMessage.jsp'><input type="button" value="繼續留言" ></a>
-
+</div>
 </body>
 </html>

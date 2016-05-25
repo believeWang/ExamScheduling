@@ -10,6 +10,7 @@ public class ExamVO implements java.io.Serializable {
 	private String examTitle;
 	private Integer quantities;	
 	private Integer duration ;
+	private byte[] examImg;
 	private Set<ExamDetailVO> examDetils = new LinkedHashSet<ExamDetailVO>();
 	
 	public Set<ExamDetailVO> getExamDetils() {
@@ -41,6 +42,12 @@ public class ExamVO implements java.io.Serializable {
 	}
 	public void setDuration(Integer duration) {
 		this.duration = duration;
+	}
+	public byte[] getExamImg() {
+		return examImg;
+	}
+	public void setExamImg(byte[] examImg) {
+		this.examImg = examImg;
 	}
 
 }

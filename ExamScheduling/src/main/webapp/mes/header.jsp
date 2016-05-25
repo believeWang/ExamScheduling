@@ -10,8 +10,8 @@
 @import url('<%=request.getContextPath()%>/mes/css/main.css');
 </style>
 
-<div style="background:black;height:80px">
-	<a href="<%=request.getContextPath()%>/Examiner.jsp"><img
+<div style="background:black;height:80px;">
+	<a href="<%=request.getContextPath()%>/index.jsp"><img
 		src="<%=request.getContextPath()%>/mes/images/logo.png" width="150px"
 		style="float: left" /></a>
 

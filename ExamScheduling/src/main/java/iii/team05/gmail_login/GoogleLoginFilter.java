@@ -36,7 +36,7 @@ public class GoogleLoginFilter implements Filter {
 			session.setAttribute("dest", url);
 			
 			String path =request.getContextPath();
-			response.sendRedirect("googlelogin.jsp");
+			response.sendRedirect("/ExamScheduling/gmail_login/login.do");
 		}
 	}
 
