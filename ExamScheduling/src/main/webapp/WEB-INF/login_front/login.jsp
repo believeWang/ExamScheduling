@@ -8,7 +8,7 @@
         HTML Document Structure
     </title>
     <link rel="stylesheet" type="text/css" href="exam_resourse/css/style.css" />
-    <link rel="stylesheet" href="exam_resourse/css/styles.css">
+
     <style type="text/css">
 body {
 	background: url("exam_resourse/images/background.jpg");
@@ -17,7 +17,6 @@ body {
 	top:153px; /* Positioning fix for slide-in, got lazy to think up of simpler method. */
 	background: rgba(65,72,72,0.75) url('exam_resourse/images/user-icon.png') no-repeat center;	
 }
-
 .pass-icon {
 	top:201px;
 	background: rgba(65,72,72,0.75) url('exam_resourse/images/pass-icon.png') no-repeat center;
@@ -27,17 +26,9 @@ body {
 </style>
 </head>
 <body>
+<%@ include file="../header/header.jsp" %>
 
-<div id='cssmenu'>
-<ul>
-   <li class=''><a href='${pageContext.request.contextPath}'><span>Home</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li>
-   <li class=''><a href='${pageContext.request.contextPath}/choose'><span>Exam</span></a></li>
-  
-</ul>
-</div>
-
-<div style="position:absolute;left:500px;top:75px">
+<div style="position:absolute;left:500px;top:20%">
 Don`t have an account, click here to <a href=''>申請帳號</a>
 <br/>
 <h3 align="center">${errorMessage}</h3>
@@ -66,7 +57,7 @@ Don`t have an account, click here to <a href=''>申請帳號</a>
 	</form>
 
 </div>
-<div class="gradient"></div>
+
 
 
 </body>

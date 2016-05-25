@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="exam_resourse/css/styles.css">
+
 <title>ExamInfo</title>
     
    
@@ -168,10 +168,10 @@ h1.main,p.demos {
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
-	-webkit-animation: fadeInRotate 1s linear 7s backwards;
-	-moz-animation: fadeInRotate 1s linear 7s backwards;
-	-ms-animation: fadeInRotate 1s linear 7s backwards;
-	animation: fadeInRotate 1s linear 7s backwards;
+	-webkit-animation: fadeInRotate 1s linear 1s backwards;
+	-moz-animation: fadeInRotate 1s linear 1s backwards;
+	-ms-animation: fadeInRotate 1s linear 1s backwards;
+	animation: fadeInRotate 1s linear 1s backwards;
 	-webkit-transform: scale(1) rotate(0deg);
 	-moz-transform: scale(1) rotate(0deg);
 	-o-transform: scale(1) rotate(0deg);
@@ -360,14 +360,8 @@ h1.main,p.demos {
         <script src="exam_resourse/js/prefixfree.min.js"></script>
 </head>
 <body>
-<div id='cssmenu'>
-<ul>
-   <li class=''><a href='${pageContext.request.contextPath}'><span>Home</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/choose'><span>Exam</span></a></li>
-</ul>
-</div>
-<br><br><br>
+<%@ include file="../header/header.jsp" %>
+
 <div class="container">
     <div class="header">
         <div class="clr"></div>
@@ -381,7 +375,7 @@ h1.main,p.demos {
 
             	<h2 class="frame-3">你有${sessionScope.quizDuration}分鐘的時間</h2>
 
-            	<h2 class="frame-4">現在!</h2>
+            	<h2 class="frame-4">NOW!</h2>
 
             	<h2 class="frame-5"><span>${sessionScope.examtitle}</span> <span>${sessionScope.quizDuration}分鐘</span> <span>${sessionScope.totalNumberOfQuizQuestions}題</span></h2>
 	<a class="sp-circle-link" href="${pageContext.request.contextPath}/Examing">考試!</a>

@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		    
 			
 		}else{
-			
+			System.out.println("查無此人");
 		}
 		
 	}
