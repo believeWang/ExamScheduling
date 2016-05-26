@@ -11,4 +11,15 @@
       maxIdle="4"
       maxWait="5000"
   />  
+ <!--                  SQLServer  AZURE                      -->
+<!--   <Resource name="jdbc/ESDB" type="javax.sql.DataSource" -->
+
+<!--       username="startbooksuser@startbookserver" password="P@ssw0rd" -->
+
+<!--       driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
+<!--       url="jdbc:sqlserver://startbookserver.database.windows.net:1433;database=esdb;"     -->
+<!--       maxActive="8" -->
+<!--       maxIdle="4" -->
+<!--       maxWait="5000" -->
+<!--   />   -->
 </Context>

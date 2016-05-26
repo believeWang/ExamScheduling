@@ -18,13 +18,14 @@ BODY STYLING
 *******************/
 
 * {
-	margin: 0;
-	padding: 0;
+	
 	border: none;
 	outline: none;
 }
 
 body {
+	margin: 0;
+	padding: 0;
 	background: url('${pageContext.request.contextPath}/images/background.jpg');
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight:300;

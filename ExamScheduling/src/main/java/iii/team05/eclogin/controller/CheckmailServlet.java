@@ -85,16 +85,16 @@ public class CheckmailServlet extends HttpServlet {
 //					}
 				
 			   //利用random隨機組成字元(char)及數字(int)共八個
-			   String cap1 = String.valueOf((char) (((Math.random()*26) + 65)));
-			   String cap2 = String.valueOf((char) (((Math.random()*26) + 65)));
-			   String cap3 = String.valueOf((char) (((Math.random()*26) + 65)));
+			   String cap1 = String.valueOf((char) ((Math.random()*26) + 65));
+			   String cap2 = String.valueOf((char) ((Math.random()*26) + 65));
+			   String cap3 = String.valueOf((char) ((Math.random()*26) + 65));
 				
-			   String num1 = String.valueOf((int) ((Math.random()*10)));
-			   String num2 = String.valueOf((int) ((Math.random()*10)));
-			   String num3 = String.valueOf((int) ((Math.random()*10)));
+			   String num1 = String.valueOf((int) (Math.random()*10));
+			   String num2 = String.valueOf((int) (Math.random()*10));
+			   String num3 = String.valueOf((int) (Math.random()*10));
 			   
-			   String low1 = String.valueOf((char) (((Math.random()*26) + 97)));
-			   String low2 = String.valueOf((char) (((Math.random()*26) + 97)));
+			   String low1 = String.valueOf((char) ((Math.random()*26) + 97));
+			   String low2 = String.valueOf((char) ((Math.random()*26) + 97));
 			   
 			   String ecpsd = cap1+cap2+cap3+num1+num2+num3+low1+low2;
 			   System.out.println(ecpsd);
@@ -109,15 +109,7 @@ public class CheckmailServlet extends HttpServlet {
 				     + "\n\n\n\n\n\n**********此為系統自動發送之信件，請勿直接回覆！**********";
 				   Email ssm = new Email();
 				   ssm.sendEmail(ecemail, subject, content);
-				   
-				   
 
-//					String subject = "【註冊通知】感謝您使用偉康考試預約系統";
-//					   String content = "Dear " + username + ", \n\n\t感謝您使用偉康考試預約系統，您的帳號及密碼如下，\n請妥善保存：\n\n帳號："
-//					     + ecemail + "\n\n\n\n\n\n\n\n\t\t\t\t\t\t 感謝您使用偉康考試預約系統 敬上"
-//					     + "\n\n\n\n\n\n**********此為系統自動發送之信件，請勿直接回覆！**********";
-//					   Email ssm = new Email();
-//					   ssm.sendEmail(ecemail, subject, content);
 			}
 		  }
 		else {
