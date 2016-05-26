@@ -8,6 +8,7 @@ import org.hibernate.Session;
 
 
 
+
 import iii.team05.hibernate.util.*;
 
 public class ECHibernateDAO implements ECDao_interface{
@@ -87,22 +88,41 @@ public class ECHibernateDAO implements ECDao_interface{
 	}
 
 	/*emial驗證*/
-public List<ECVO> mailcheck(String ecemail){
-	List<ECVO> list = null;
-	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	try {
-	session.beginTransaction();
-	Query query = session.createQuery("from ECVO where ecemail = :ecemail");
-	query.setParameter("ecemail", ecemail);
-	 list = query.list();
-	 session.getTransaction().commit();
-	 System.out.println(ecemail);
-	} catch (RuntimeException ex) {
-		session.getTransaction().rollback();
-		throw ex;
+    public List<ECVO> mailcheck(String ecemail){
+		List<ECVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+		session.beginTransaction();
+		Query query = session.createQuery("from ECVO where ecemail = :ecemail");
+		query.setParameter("ecemail", ecemail);
+		 list = query.list();
+		 session.getTransaction().commit();
+		 System.out.println(ecemail);
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+		
 	}
-	return list;
-	
-}
+    
+    /*ecpsd密碼寫入*/
+	public void updatepsd(ECVO ecVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("update ECVO set ecpsd = :ecpsd where ecno=:ecno");
+			String ecno=ecVO.getEcno();
+			String ecpsd=ecVO.getEcpsd();
+			query.setParameter("ecpsd",ecpsd);
+			query.setParameter("ecno",ecno);
+			query.executeUpdate();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
+	}
 
 }
