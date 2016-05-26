@@ -36,7 +36,7 @@ public class LoginOut extends HttpServlet {
 		request.setAttribute("loginout", "您已經成功登出");
 	//	response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index2.jsp"));
 		RequestDispatcher failureView = request
-				.getRequestDispatcher("/Examiner.jsp");
+				.getRequestDispatcher("/index.jsp");
 		failureView.forward(request, response);	 
 	}
 

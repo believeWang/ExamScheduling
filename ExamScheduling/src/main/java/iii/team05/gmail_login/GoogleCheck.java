@@ -130,9 +130,9 @@ public class GoogleCheck extends HttpServlet {
 			}else if(pos==0){		
 				errors.put("loginNg", "您沒有使用本系統的權限，請洽系統管理員");
 				RequestDispatcher failureView = request
-						.getRequestDispatcher("Examiner.jsp");
+						.getRequestDispatcher("index.jsp");
 				failureView.forward(request, response);
-			}else{
+			}else if(pos==1){
 				HttpSession session = request.getSession();
 				  session.setAttribute("GoogleUser", name);
 				String from=  (String) session.getAttribute("dest");
@@ -149,6 +149,10 @@ public class GoogleCheck extends HttpServlet {
 					}
 				
 
+			}else{
+				HttpSession session = request.getSession();
+				  session.setAttribute("GoogleUser", name);
+				  response.sendRedirect(response.encodeRedirectURL("sa.jsp"));
 			}
 	}
 
