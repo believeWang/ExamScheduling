@@ -2,13 +2,15 @@ package iii.team05.Employee.controller;
 
 import iii.team05.Employee.model.EmployeeService;
 import iii.team05.Employee.model.EmployeeVO;
+
 import java.io.*;
 import java.util.*;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-@WebServlet("/emp/emp.do")
+@WebServlet("/emp/emp.do")                                                                                                                                                      
 public class EmpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +23,7 @@ public class EmpServlet extends HttpServlet {
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		
+		System.out.print("action:"+action);
 		if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp的請求
 			
 			List<String> errorMsgs = new LinkedList<String>();
@@ -39,7 +41,7 @@ public class EmpServlet extends HttpServlet {
 
 				/*************************** 3.查詢完成,準備轉交(Send the Success view) ************/
 				req.setAttribute("employeeVO", empVO); // 資料庫取出的empVO物件,存入req
-				System.out.println(empno);
+				
 				String url = "/employee/update_emp_input.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
 			
@@ -54,8 +56,9 @@ public class EmpServlet extends HttpServlet {
 				
 			}
 		} // 來自listAllEmp.jsp的請求 結束標籤
+		
 		/*******************************************************************************************************************************/
-		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
+		if ("update(old)".equals(action)) { // 來自update_emp_input.jsp的請求
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -68,12 +71,10 @@ public class EmpServlet extends HttpServlet {
 				
 				String empname = req.getParameter("empname").trim();
 				String empemail = req.getParameter("empemail").trim();
-				// Integer position = new
-				// Integer(req.getParameter("position").trim());
-
 				Integer position = null;
 				try {
 					position = new Integer(req.getParameter("position").trim());
+				
 				} catch (NumberFormatException e) {
 					position = 0;
 					errorMsgs.add("請填數字.");
@@ -228,10 +229,88 @@ public class EmpServlet extends HttpServlet {
 				
 			}
 		}
-		
-		
-		
+if ("update1".equals(action)) { // 來自update_emp_input.jsp的請求
+			
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
 
+			try {
+				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
+				Integer empno = new Integer(req.getParameter("empno").trim());
+				Integer position = new Integer(req.getParameter("position").trim());				
+				EmployeeVO empVO = new EmployeeVO();
+				empVO.setEmpno(empno);
+				empVO.setPosition(position);				
+				position = 1;
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					req.setAttribute("empVO", empVO); // 含有輸入格式錯誤的empVO物件,也存入req
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/employee/update_emp_input.jsp");
+					failureView.forward(req, res);
+					return; // 程式中斷
+				}
+
+				/*************************** 2.開始修改資料 *****************************************/
+				EmployeeService empSvc = new EmployeeService();
+				empVO = empSvc.updateEmp2( empno, position);
+				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
+				req.setAttribute("employeeVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
+				String url = "/employee/Examiner2.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+				successView.forward(req, res);
+
+				/*************************** 其他可能的錯誤處理 *************************************/
+			} catch (Exception e) {
+				errorMsgs.add("修改資料失敗:" + e.getMessage());
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/employee/update_emp_input.jsp");
+				failureView.forward(req, res);
+			}
+		}
+if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
+	
+	List<String> errorMsgs = new LinkedList<String>();
+	// Store this set in the request scope, in case we need to
+	// send the ErrorPage view.
+	req.setAttribute("errorMsgs", errorMsgs);
+
+	try {
+		/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
+		Integer empno = new Integer(req.getParameter("empno").trim());
+		Integer position = new Integer(req.getParameter("position").trim());				
+		EmployeeVO empVO = new EmployeeVO();
+		empVO.setEmpno(empno);
+		empVO.setPosition(position);				
+		position = 0;
+		// Send the use back to the form, if there were errors
+		if (!errorMsgs.isEmpty()) {
+			req.setAttribute("empVO", empVO); // 含有輸入格式錯誤的empVO物件,也存入req
+			RequestDispatcher failureView = req
+					.getRequestDispatcher("/employee/update_emp_input.jsp");
+			failureView.forward(req, res);
+			return; // 程式中斷
+		}
+
+		/*************************** 2.開始修改資料 *****************************************/
+		EmployeeService empSvc = new EmployeeService();
+		empVO = empSvc.updateEmp2( empno, position);
+		/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
+		req.setAttribute("employeeVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
+		String url = "/employee/Emptable2.jsp";
+		RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+		successView.forward(req, res);
+
+		/*************************** 其他可能的錯誤處理 *************************************/
+	} catch (Exception e) {
+		errorMsgs.add("修改資料失敗:" + e.getMessage());
+		RequestDispatcher failureView = req
+				.getRequestDispatcher("/employee/update_emp_input.jsp");
+		failureView.forward(req, res);
+	}
+}
 	}
 
 }

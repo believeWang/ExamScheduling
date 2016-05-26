@@ -3,12 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="iii.team05.Employee.model.*"%>
+
+
 <%
 	EmployeeService empSvc = new EmployeeService();
 	List<EmployeeVO> list = empSvc.getAll();
 	pageContext.setAttribute("list", list);
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,9 +23,9 @@
 <body>
 <div><fieldset>
 			<legend>員工表格</legend>
+<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1">
 <table class=table4_9>
-				<tr>
-<!-- 					<th>delet</th> -->
+                 <tr>				
 					<th>empno</th>
 					<th>empname</th>
 					<th>empemail</th>
@@ -32,29 +33,25 @@
 					<th>update</th>
 				</tr>
 
-				<%@ include file="page1.file"%>
-				<c:forEach var="EmployeeVO" items="${list}" begin="<%=pageIndex%>"end="<%=pageIndex+rowsPerPage-1%>">	
-					<tr align='center' valign='middle'>
+	<c:forEach var="EmpVO" items="${list}">
+			<tr>
 
-						<td>${EmployeeVO.empno}</td>
-						<td>${EmployeeVO.empname}</td>
-						<td>${EmployeeVO.empemail}</td>
-						<td>${EmployeeVO.position}</td>
-						<td>
-							<FORM METHOD="post"	ACTION="<%=request.getContextPath()%>/emp/emp.do">
-								<input type="submit" value="修改"> 
-								<input type="hidden" name="empno" value="${EmployeeVO.empno}"> 
-								<input type="hidden" name="action" value="getOne_For_Update">
-							</FORM>
-						</td>
-					</tr>
-				</c:forEach>
+	<td>${EmpVO.empno}</td>
+	<td>${EmpVO.empname}</td>
+	<td>${EmpVO.empemail}</td>
+	
+	<td><input type="TEXT" name="position" 	 value="${EmpVO.position} "readonly/></td>
+	
 
-			</table>
-
+	    <input type="hidden" name="empno" value="${EmpVO.empno}">
+	    <input type="hidden" name="action" value="update1">
+		<td><input type="submit" value="送出修改"></td></tr>
+        </c:forEach>
+	</table>
+</FORM>
 		</fieldset>
-		<a href='<%=request.getContextPath()%>/employee/Examiner.jsp'>返回考官表格</a>
+		<a href='<%=request.getContextPath()%>/employee/Emptable2.jsp'>返回考官表格</a>
 		<a href="<%=request.getContextPath()%>/employee/student_upd.jsp">查詢考生諮詢</a>
-		<%@ include file="page2.file"%>
+<%-- 		<%@ include file="page2.file"%> --%>
 </body>
 </html>

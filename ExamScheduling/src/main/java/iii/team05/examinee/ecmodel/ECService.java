@@ -31,4 +31,6 @@ public class ECService {
 		return ecDAO.mailcheck(ecemail);
 
 	}
+
+	
 }
