@@ -13,40 +13,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Backstage</title>
-		<style>
-       @import url('<%=request.getContextPath()%>/mes/css/main.css');
-		</style>
 </head>
 <body>
 
-     	<header>
- 		       		<img src="<%=request.getContextPath()%>/mes/images/logo.png" style="float:left" />  
-
- 		 <nav>
-       		<ul id="menu">	   
-       	  	      <li><a href="<%=request.getContextPath()%>/index.jsp">輸入成績</a></li>
-       		      <li><a href="<%=request.getContextPath()%>/index.jsp">編輯考題</a></li>
-		  	      <li><a href="<%=request.getContextPath()%>/mes/ListNotReplyMessage.jsp">留言板</a></li>
-       		</ul>
-       	</nav>       	
-       </header>
+     <%@ include file="header.jsp" %>
 
 
 
 <table align='center' border="1px">
 <c:forEach var="mesVO" items="${list}" varStatus="status">
 <tr>
-<td>留言者姓名:</td><td>${mesVO.msgname}</td>
+<th>留言者姓名</th>
+<th>留言者信箱</th>
+<th>留言時間</th>
+
 </tr>
 <tr>
-<td>留言者信箱</td><td>${mesVO.msgmail}</td>
-</tr>
-<tr>
-<td>留言時間</td><td>${mesVO.msgtime}</td>
-</tr>
-<tr>
-<td  colspan="2">${mesVO.msgcontent}</td>
-</tr>
+<td>${mesVO.msgname}</td>
+<td>${mesVO.msgmail}</td>
+<td>${mesVO.msgtime}</td>
 
 <td>
 
@@ -55,7 +40,6 @@
 			     <input type="hidden" name="messageid" value="${mesVO.messageid}">
 			     <input type="hidden" name="action"	value="getOne_Not_RePlay_Message"></FORM>
 </td>
-
 </c:forEach>
 </table>
 
