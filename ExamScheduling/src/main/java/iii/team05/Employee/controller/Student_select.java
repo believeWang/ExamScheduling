@@ -83,10 +83,8 @@ public class Student_select extends HttpServlet {
 				String ecno = req.getParameter("ecno").trim();
 				Integer lab = new Integer(req.getParameter("lab").trim());
 				Integer interview = new Integer(req.getParameter("interview").trim());
-				
 				Integer onlineex = new Integer(req.getParameter("onlineex").trim());
 				Integer labtime = new Integer(req.getParameter("labtime").trim());;	
-				
 				ScoreVO scoVO = new ScoreVO();
 				scoVO.setEcno(ecno);
 				scoVO.setLab(lab);

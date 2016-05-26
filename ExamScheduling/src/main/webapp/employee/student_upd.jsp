@@ -13,8 +13,16 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>學生資訊</title>
+</head>
+<style>
+@import url('<%=request.getContextPath()%>/employee/main.css');
+</style>
 
-
+<body>
+<%@ include file="/mes/sa_header.jsp" %>
 <%-- 錯誤表列 --%>
 <c:if test="${not empty errorMsgs}">
 	<font color='red'>請修正以下錯誤:
@@ -25,8 +33,9 @@
 	</ul>
 	</font>
 </c:if>
-
-<table border='1' bordercolor='#CCCCFF' width='800'>
+<div ><fieldset> 
+					<legend>學生資訊</legend>
+<table  class=table4_9  style="width:800px;" >
 	<tr>
 		<th>學號</th>
 		<th>學生姓名</th>
@@ -40,6 +49,7 @@
 	</tr>
 	<%@ include file="page1.file" %> 
 	<c:forEach var="ECVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+<%-- 	<c:forEach var="ECVO" items="${list}" > --%>
 		<tr align='center' valign='middle'>
 			<td>${ECVO.ecno}</td>
 			<td>${ECVO.ecname}</td>
@@ -58,18 +68,11 @@
 			    
 			  </FORM>
 			</td>
-			
-<!-- 			<td> -->
-<%-- 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Student_select.do"> --%>
-<!-- 			     <input type="submit" value="修改"> -->
-<%-- 			     <input type="hidden" name="ecno" value="${ECVO.ecno}"> --%>
-<!-- 			     <input type="hidden" name="action"	value="getOne_For_Update"></FORM> -->
-<!-- 			</td> -->
-			
+						
 		</tr>
 	</c:forEach>
 	
-	
+	</fieldset></div>
 	
 	
 </table>

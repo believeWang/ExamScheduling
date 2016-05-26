@@ -11,6 +11,9 @@
 		<property name="examTitle" column="examTitle" />
 		<property name="quantities" column="quantities" />
 		<property name="duration" column="duration" />
+		 <property name="examImg" type="binary">
+            <column name="examimg"  />
+        </property>
 
 		<set name="examDetils" table="ExamDetail" lazy="false" cascade="all"
 			inverse="true">

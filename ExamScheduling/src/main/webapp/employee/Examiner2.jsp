@@ -14,23 +14,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>員工表格</title>
+<title>主考官表格</title>
 </head>
 <style>
 @import url('<%=request.getContextPath()%>/employee/main.css');
 </style>
 
 <body>
+<%@ include file="/mes/sa_header.jsp" %>
 <div><fieldset>
-			<legend>員工表格</legend>
+			<legend>主考官表格</legend>
 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1">
-<table class=table4_9>
+<table class=table4_9 style="width:800px">
                  <tr>				
-					<th>empno</th>
-					<th>empname</th>
-					<th>empemail</th>
-					<th>position</th>
-					<th>update</th>
+					<th>編號</th>
+					<th>主考官姓名</th>
+					<th>E-mail</th>
+					<th>權限</th>
+					<th>修改</th>
 				</tr>
 
 	<c:forEach var="EmpVO" items="${list}">
@@ -40,7 +41,7 @@
 	<td>${EmpVO.empname}</td>
 	<td>${EmpVO.empemail}</td>
 	
-	<td><input type="TEXT" name="position" 	 value="${EmpVO.position} "readonly/></td>
+	<td><input type="TEXT" name="position" value="${EmpVO.position} "readonly/></td>
 	
 
 	    <input type="hidden" name="empno" value="${EmpVO.empno}">
@@ -49,7 +50,7 @@
         </c:forEach>
 	</table>
 </FORM>
-		</fieldset>
+		</fieldset></div>
 		<a href='<%=request.getContextPath()%>/employee/Emptable2.jsp'>返回考官表格</a>
 		<a href="<%=request.getContextPath()%>/employee/student_upd.jsp">查詢考生諮詢</a>
 <%-- 		<%@ include file="page2.file"%> --%>

@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,6 +28,7 @@ public class ExamService {
 	
 	public void putExamDetailInRequest(String examno, HttpServletRequest request) {
 		HttpSession session=request.getSession();
+		session.setAttribute("status", "examing");
 		ExamVO examVO = examDAO.findByPrimaryKey(examno);
 		//考試編號
 		session.setAttribute("examno", examno);
@@ -44,13 +47,20 @@ public class ExamService {
 		return examDAO.getAll();
 	}
 	// 初始化
-		public void initExam(HttpSession session, HttpServletRequest request,ServletContext context) {
+		public void initExam(HttpSession session, HttpServletRequest request,ServletContext context,HttpServletResponse response) throws ServletException, IOException {
+			//設定考試狀態
 			
 			// 取得選擇得考試
 			 String examno=(String)session.getAttribute("examno");
 			// 測試用
 			//String examno = "Java1";
 
+			 if (examno==null) {
+				 response.sendRedirect("choose");
+//					RequestDispatcher dispatcher = request
+//							.getRequestDispatcher("/WEB-INF/quiz_front/choose.jsp");
+//					dispatcher.forward(request, response);
+				}
 			// 考題列表
 			@SuppressWarnings("unchecked")
 			List<ExamDetailVO> questionList = (List<ExamDetailVO>) context
@@ -170,7 +180,8 @@ public class ExamService {
 		public void checkAnswer(HttpServletRequest request,ServletContext context) {
 			HttpSession session = request.getSession();
 		
-			
+			session.setAttribute("status", "finished");
+			String isFinished=(String) session.getAttribute("status");
 			//考生的答案
 			@SuppressWarnings("unchecked")
 			Map<Long, boolean[]> answerMap = (Map<Long, boolean[]>) session

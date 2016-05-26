@@ -57,6 +57,7 @@ public class GoogleCheck extends HttpServlet {
 		String token = null;
 		String email = null;
 		String name = null;
+		int pos = 0;
 		response.setContentType("text/html; charset=UTF-8");
 		URL ut =new URL("https://accounts.google.com/o/oauth2/token");
 		HttpsURLConnection ct=(HttpsURLConnection) ut.openConnection();
@@ -67,7 +68,7 @@ public class GoogleCheck extends HttpServlet {
 	ow.write("code="+request.getParameter("code")+"&");
 	 ow.write("client_id=14162985850-ukk7ka9npfvhatl0vi7mccqgnhnq2ui0.apps.googleusercontent.com&");   // client_id
 	  ow.write("client_secret=TtLUTbLgWi_CAjDnvj04xasE&");   // client_serect
-	  ow.write("redirect_uri=http://localhost:8080/ExamScheduling/GoogleCheck&");   // redirect_uri
+	  ow.write("redirect_uri=http://localhost:8081/ExamScheduling/GoogleCheck&");   // redirect_uri
 	  ow.write("grant_type=authorization_code");  
 	  ow.close();
 	if(ct.getResponseCode()==HttpsURLConnection.HTTP_OK){
@@ -106,7 +107,7 @@ public class GoogleCheck extends HttpServlet {
 		   // 把上面取回來的資料，放進JSONObject中，以方便我們直接存取到想要的參數
 		   JSONObject jo = new JSONObject(sbLines.toString());		    
 		  email =jo.getString("email");
-		  name =jo.getString("name");
+//		  name =jo.getString("name");
 		  } catch (JSONException e) {
 		   e.printStackTrace();
 		  }
@@ -114,25 +115,44 @@ public class GoogleCheck extends HttpServlet {
 			EmployeeService emSvc = new EmployeeService();
 			List<EmployeeVO> ecVO =  emSvc.check(email);
 
-			int pos = 0;
+
 		 	 for (EmployeeVO s : ecVO) {
 		 		pos=s.getPosition();
 		 	 }
-			
+		 	 for (EmployeeVO s : ecVO) {
+		 		name=s.getEmpname();
+		 	 }
 		 	if(ecVO.size()==0){
 				errors.put("loginNg", "您非我司員工");
 				RequestDispatcher failureView = request
-						.getRequestDispatcher("index.jsp");
+						.getRequestDispatcher("Examiner.jsp");
 				failureView.forward(request, response);
 			}else if(pos==0){		
 				errors.put("loginNg", "您沒有使用本系統的權限，請洽系統管理員");
 				RequestDispatcher failureView = request
 						.getRequestDispatcher("index.jsp");
 				failureView.forward(request, response);
+			}else if(pos==1){
+				HttpSession session = request.getSession();
+				  session.setAttribute("GoogleUser", name);
+				String from=  (String) session.getAttribute("dest");
+					System.out.println(from);
+				if(from==null){
+//				RequestDispatcher failureView = request
+//				.getRequestDispatcher("mes/index2.jsp");
+//				failureView.forward(request, response);
+			  response.sendRedirect(response.encodeRedirectURL("Examiner.jsp"));				
+					}else{
+						System.out.println("sss");
+						response.sendRedirect(response.encodeRedirectURL(from));
+						
+					}
+				
+
 			}else{
 				HttpSession session = request.getSession();
 				  session.setAttribute("GoogleUser", name);
-				  response.sendRedirect(response.encodeRedirectURL("mes/index2.jsp"));
+				  response.sendRedirect(response.encodeRedirectURL("sa.jsp"));
 			}
 	}
 

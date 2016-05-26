@@ -6,17 +6,19 @@
 
 <% 
  ScoreVO scoreVO = (ScoreVO) request.getAttribute("scoreVO");
-
 %> 
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
-
+<style>
+@import url('<%=request.getContextPath()%>/employee/main.css');
+</style>
+<body>
+<%@ include file="/mes/sa_header.jsp" %>
+<div><fieldset>
+			<legend>學員分數輸入</legend>
 
 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/sco/sco.do" name="form1">
-<table border="0">
+<table class=table4_9>
 	<tr>
 		<td>學號:<font color=red><b>*</b></font></td>
 		<td><%=scoreVO.getEcno()%></td>
@@ -47,7 +49,7 @@
 <input type="hidden" name="action" value="update">
 <input type="hidden" name="ecno" value="<%=scoreVO.getEcno()%>">
 <input type="submit" value="送出修改"></FORM>
-
+</fieldset></div>
 </body>
 
 </html>

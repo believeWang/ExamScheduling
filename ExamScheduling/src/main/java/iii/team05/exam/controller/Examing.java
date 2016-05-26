@@ -4,6 +4,7 @@ import iii.team05.exam.model.ExamService;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,8 +26,16 @@ public class Examing extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
 		ExamService service =new ExamService();
 		HttpSession session = request.getSession();
+		//如果寫完
+		String isFinished=(String) session.getAttribute("status");
+		if("finished".equals(isFinished)){
+			response.sendRedirect("ExamResult");
+			return;
+		}
+			
 		// 下一個題號
 		String targetQuestion = request.getParameter("targetQuestion");
 		// 現在的題號
@@ -51,12 +60,11 @@ public class Examing extends HttpServlet {
 					// 結束 按下FINALL 有寫
 					service.putAnswerToList(session, Integer.parseInt(currentQuestion),
 							selected);
-
-				request.getRequestDispatcher("/ExamResult").forward(request,
-						response);
+				response.sendRedirect("ExamResult");
+			
 			} else {
 				// 初始第一次進來
-				service.initExam(session, request,getServletContext());
+				service.initExam(session, request,getServletContext(),response);
 				request.getRequestDispatcher("/WEB-INF/quiz_front/exam.jsp")
 						.forward(request, response);
 			}

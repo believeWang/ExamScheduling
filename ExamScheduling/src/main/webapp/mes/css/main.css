@@ -1,5 +1,5 @@
 body {
-	background: #CCEEFF;
+	background: #c0c0c0;
 }
 
 #allpage {
@@ -12,8 +12,6 @@ body {
 	overflow /**/: hidden;
 	/* for IE5,overflow為auto時,Box的寬度會加計scroll bar區塊的寬度,因此使用和Box Model Hack同樣的方式,只讓IE5將屬性當作hidden*/
 	width: 75%;
-	background-color: #000000;
-	border-bottom: 3px solid #cccccc;
 	border-top-right-radius: 15px;
 	border-top-left-radius: 15px;
 	border-bottom-right-radius: 15px;
@@ -53,19 +51,13 @@ fieldset {
 }
 
 .HeaderStyle {
-	position: relative;
-	height: 29px;
-	width: 421px;
-	background-color: #400040;
-	padding: 15px;
-	margin: 10px 0;
+/* 	position: relative; */
+/* 	height: 29px; */
+/* 	width: 300px; */
+	padding: 15px 100px;
+	margin: 0px auto;
 	overflow: hidden;
-	border: 1px solid gray;
-	border-bottom: 3px solid #cccccc;
-	border-top-right-radius: 15px;
-	border-top-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-	border-bottom-left-radius: 15px;
+
 }
 
 .HeaderStyle li {
@@ -80,9 +72,9 @@ fieldset {
 	z-index: 8;
 	position: absolute;
 }
-
+a:link,a:visited{color:#ffffff} 
 .HeaderStyle li a {
-	font: bold 14px arial;
+	font: bold 20px arial;
 	text-decoration: none;
 	color: #ffffff;
 	outline: none;
