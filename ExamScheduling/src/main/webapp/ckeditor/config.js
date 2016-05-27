@@ -8,8 +8,15 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 
-	config.filebrowserImageUploadUrl = './upload.php?type=img'; 
-    config.filebrowserFlashUploadUrl = './upload.php?type=flash';
+ 
+	config.filebrowserBrowseUrl ='../ckfinder/ckfinder.html';
+	config.filebrowserImageBrowseUrl ='../ckfinder/ckfinder.html?Type=Images';
+	config.filebrowserFlashBrowseUrl ='../ckfinder/ckfinder.html?Type=Flash'; 
+	config.filebrowserUploadUrl ='../ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files';
+	config.filebrowserImageUploadUrl ='../ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images';
+	config.filebrowserFlashUploadUrl ='../ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash';
+	
+	
 	config.allowedContent=true;
 	config.toolbar = 'xxxx';
 	config.toolbar_Basic =
@@ -23,7 +30,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.toolbar_Full =
 		 [
 		  { name: 'document', items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },
-		  { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+		  { name: 'clipboard', items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
 		  { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },
 		  { name: 'forms', items : [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
 		   'HiddenField' ] },
@@ -47,7 +54,7 @@ CKEDITOR.editorConfig = function( config ) {
 		  { name: 'links', items : [ 'Link','Unlink' ] },
 		  '/',
 		  { name: 'insert', items : [ 'Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak' ] },		  
-		  { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+		  { name: 'clipboard', items : [ 'Cut','Copy','Paste','-','Undo','Redo' ] },
 		  { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker' ] },		  		  
 		  { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-' ] },
 		  { name: 'document', items : [ 'Source','-','Print' ] }
