@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 
 @WebFilter(
-		urlPatterns={"/pages/*"}
+		urlPatterns={"/mes/ListNotReplyMessage.jsp","/sa.jsp"}
 		)
 public class GoogleLoginFilter implements Filter {
 
@@ -36,7 +36,7 @@ public class GoogleLoginFilter implements Filter {
 			session.setAttribute("dest", url);
 			
 			String path =request.getContextPath();
-			response.sendRedirect(path+"/secure/login.jsp");
+			response.sendRedirect("/ExamScheduling/gmail_login/login.do");
 		}
 	}
 

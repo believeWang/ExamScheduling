@@ -1,12 +1,12 @@
   <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
+<!-- <head> -->
 <!-- 	<link rel="stylesheet" href="header/css/demo.css"> -->
-	<link rel="stylesheet" href="header/css/header-user-dropdown.css">
+	<link rel="stylesheet" href="/ExamScheduling/header/css/header-user-dropdown.css">
 	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 
-<script src="js/jquery.min.js"></script>
+<!-- <script src="/ExamScheduling/js/jquery.min.js"></script> -->
 <script>
 
 	$(document).ready(function(){
@@ -34,6 +34,7 @@
 	});
 
 </script>
+<!-- </head> -->
 
 <header class="header-user-dropdown">
 
@@ -41,10 +42,10 @@
 		<h1><a href="${pageContext.request.contextPath}">Web<span>Comm</span></a></h1>
 
 		<nav>
-			<a href="<%=request.getContextPath()%>/fullcalendar/JobServlet?jobid=1">預約考試</a>
+			<a href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet?jobid=1">預約考試</a>
 			<a href="${pageContext.request.contextPath}/choose">前往考試</a>
 			<a href="#">關於緯康</a>
-			<a href="#">聯絡我們 </a>
+			<a href="<%=request.getContextPath()%>/mes/LeaveMessage.jsp">聯絡我們 </a>
 	
 <!-- 			<span class="header-new-feature">new</span> -->
 		</nav>

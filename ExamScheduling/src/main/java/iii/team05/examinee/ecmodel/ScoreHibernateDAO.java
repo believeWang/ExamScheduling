@@ -70,7 +70,7 @@ public class ScoreHibernateDAO implements ScoreDao_interface{
 		return scoreVO;
 	}
 
-	@Override
+	@Override	
 	public List<ScoreVO> getAll() {
 		List<ScoreVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();

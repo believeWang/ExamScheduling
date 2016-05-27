@@ -34,30 +34,18 @@ public class JobServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("doJobServlet");
+		System.out.println("doJobServlet");
 		request.setCharacterEncoding("UTF-8");
-		String jobid = request.getParameter("jobid");
-		//String ecemail = request.getParameter("ecemail");  //考生Email
 		
-		//撈主考官id
-		//int jobid = Integer.parseInt(jobid);
-		//Job_ErDAO jober = new Job_ErDAO();
-		//JobVO jerVo = jober.findByPrimaryKey(jobid);//要寫一個用jobid撈這個id全部的主考官id
+		JobDAO jobDAO = new JobDAO();
+		List<JobVO> joblists = jobDAO.getAll();
 		
-		JobDAO jbDAO = new JobDAO();
-		List<JobVO> jblists = jbDAO.getAll();
 		
-		//SectionDAO secDAO = new SectionDAO();
-		//List<SectionVO> seclists = secDAO.getAll();
 		
-		request.setAttribute("jdlists", jblists);
-		request.setAttribute("jobid", jobid);
-		//request.setAttribute("seclists", seclists);
-		//request.setAttribute("ecemail", ecemail);  //考生
-		//request.setAttribute("empno", empno);  //架設這是主考官id
-		RequestDispatcher failureView = request.getRequestDispatcher("/fullcalendar/index.jsp");
-		failureView.forward(request, response);
-		return;
+		request.setAttribute("joblists", joblists);
+		
+		RequestDispatcher jb = request.getRequestDispatcher("/job/job_lists.jsp");
+		jb.forward(request, response);
 	}
 
 	/**

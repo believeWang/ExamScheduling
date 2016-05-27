@@ -2,11 +2,14 @@ package iii.team05.event.controller;
 
 import iii.team05.event.model.EventDAO;
 import iii.team05.event.model.EventVO;
+import iii.team05.job.model.JobDAO;
+import iii.team05.job.model.JobVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,46 +35,30 @@ public class EventShowServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.print("doGET111");
+		//System.out.print("doGET");
+		request.setCharacterEncoding("UTF-8");
+		String jobid = request.getParameter("jobid");
+		//String ecemail = request.getParameter("ecemail");  //考生Email
 		
-		response.setContentType("text/html; charset=UTF-8"); 
-		PrintWriter out = response.getWriter();
+		//撈主考官id
+		//int jobid = Integer.parseInt(jobid);
+		//Job_ErDAO jober = new Job_ErDAO();
+		//JobVO jerVo = jober.findByPrimaryKey(jobid);//要寫一個用jobid撈這個id全部的主考官id
 		
-		EventDAO edao = new EventDAO();
-		List<EventVO> elists = edao.getAll();
+		JobDAO jbDAO = new JobDAO();
+		List<JobVO> jblists = jbDAO.getAll();
 		
-		out.print("[");
-			for(EventVO evo: elists){
-				out.print("{");
-				
-				out.print("\"id\":");
-			    out.print("\"");
-			    out.print(evo.getEventid());
-			    out.print("\",");
-			    out.print("\"title\":");
-			    out.print("\"");
-			    out.print(evo.getTitle());
-			    out.print("\",");
-			    out.print("\"start\":");
-			    out.print("\"");
-			    out.print(evo.getStarttime());
-			    out.print("\",");
-			    out.print("\"end\":");
-			    out.print("\"");
-			    out.print(evo.getEndtime());
-			    out.print("\",");
-			    out.print("\"color\":");
-			    out.print("\"");
-				out.print(evo.getBgcolor());
-				out.print("\"");
-				if(elists.size()-1 == elists.indexOf(evo)){
-					out.print("}");
-				}else{
-					out.print("},");	
-				}
-			}
-		out.print("]");
+		//SectionDAO secDAO = new SectionDAO();
+		//List<SectionVO> seclists = secDAO.getAll();
 		
+		request.setAttribute("jdlists", jblists);
+		request.setAttribute("jobid", jobid);
+		//request.setAttribute("seclists", seclists);
+		//request.setAttribute("ecemail", ecemail);  //考生
+		//request.setAttribute("empno", empno);  //架設這是主考官id
+		RequestDispatcher failureView = request.getRequestDispatcher("/fullcalendar/index.jsp");
+		failureView.forward(request, response);
+		//return;
 	}
 
 	/**

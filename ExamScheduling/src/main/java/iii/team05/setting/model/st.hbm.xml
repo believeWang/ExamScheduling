@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="iii.team05.setting.model.STVO" table="Setting">
+
+		<id name="setid" column="setid">
+		<generator class="identity"/>
+		</id>
+
+		<property name="period" column="period" />
+		<property name="ecnum" column="ecnum" />
+		<property name="ernum" column="ernum" />
+		<property name="emailtemplate" column="emailtemplate" />
+
+	</class>
+</hibernate-mapping>

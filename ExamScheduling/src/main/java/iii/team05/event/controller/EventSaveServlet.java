@@ -33,6 +33,7 @@ public class EventSaveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -44,47 +45,101 @@ public class EventSaveServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-		String date = request.getParameter("date");
-		String jobid = request.getParameter("jobid");
-		String ecemail = request.getParameter("ecemail");
-		String empno = request.getParameter("empno");
-		String section = request.getParameter("section");  //time
-		String title = request.getParameter("title");
-		//System.out.println(date+" "+section);
 		
-		Timestamp ts = new Timestamp(System.currentTimeMillis());  
-		String datetime = date+" "+section;
-        try {  
-            ts = Timestamp.valueOf(datetime);  
-            System.out.println(ts);  
-        } catch (Exception e) {  
-            e.printStackTrace();  
-        }  
-		
-		
-		
-		EventVO evo = new EventVO();
-		evo.setEmpno(1);
-		evo.setStarttime(ts);
-		evo.setEndtime(ts);
-		evo.setBgcolor("#337AB7");
-		evo.setTitle(title);
-		evo.setEcno("EEIT8501");
-		//evo.setEventremark("");
-		
-		try{
+		if("add".equals(action)){
+			String date = request.getParameter("date");
+			String jobid = request.getParameter("jobid");
+			String ecemail = request.getParameter("ecemail");
+			String empno = request.getParameter("empno");
+			String section = request.getParameter("section");  //time
+			String title = request.getParameter("title");
+			String remark = request.getParameter("remark");
+			//System.out.println(date+" "+section);
 			
-			EventDAO edao = new EventDAO();
-			edao.insert(evo);
+			Timestamp ts = new Timestamp(System.currentTimeMillis());  
+			String datetime = date+" "+section;
+	        try {  
+	            ts = Timestamp.valueOf(datetime);  
+	            System.out.println(ts);  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        }  
 			
-			out.println("1");
+			EventVO evo = new EventVO();
+			evo.setEmpno(1);
+			evo.setStarttime(ts);
+			evo.setEndtime(ts);
+			evo.setBgcolor("#337AB7");
+			evo.setTitle(title);
+			evo.setEcno("EEIT8501");
+			evo.setEventremark(remark);
 			
-		}catch(Exception e){
-			out.println("寫入失敗");
-			e.printStackTrace();
+			try{
+				EventDAO edao = new EventDAO();
+				edao.insert(evo);
+				out.println("1");
+				
+			}catch(Exception e){
+				out.println("寫入失敗");
+				e.printStackTrace();
+			}
+		}
+		if("edit".equals(action)){
+			String id = request.getParameter("id");
+			String date = request.getParameter("date");
+			String section = request.getParameter("section");  //time
+			String title = request.getParameter("title");
+			String remark = request.getParameter("remark");
+			
+			int id_int = Integer.valueOf(id);
+			
+			Timestamp ts = new Timestamp(System.currentTimeMillis());  
+			String datetime = date+" "+section;
+	        try {  
+	            ts = Timestamp.valueOf(datetime);  
+	            System.out.println(ts);  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        }  
+	        
+	        EventVO evo = new EventVO();
+			evo.setEmpno(1);
+			evo.setStarttime(ts);
+			evo.setEndtime(ts);
+			evo.setBgcolor("#337AB7");
+			evo.setTitle(title);
+			evo.setEcno("EEIT8501");
+			evo.setEventremark(remark);
+			evo.setEventid(id_int);
+			
+			try{
+				EventDAO edao = new EventDAO();
+				edao.update(evo);
+				out.println("1");
+				
+			}catch(Exception e){
+				out.println("寫入失敗");
+				e.printStackTrace();
+			}
+	        
 		}
 		
-		System.out.println("action="+action+"date="+date+"section="+section+"jobid="+jobid+"ecemail="+ecemail+"empno="+empno);
+		if("del".equals(action)){
+			//System.out.println("do del");
+			String id = request.getParameter("id");
+			int id_int = Integer.valueOf(id);
+			
+			try{
+				EventDAO edao = new EventDAO();
+				edao.delete(id_int);
+				out.println("1");
+				
+			}catch(Exception e){
+				out.println("寫入失敗");
+				e.printStackTrace();
+			}
+		}
+		//System.out.println("action="+action+"date="+date+"section="+section+"jobid="+jobid+"ecemail="+ecemail+"empno="+empno);
 	}
 
 }
