@@ -5,17 +5,9 @@
 <hibernate-configuration>
 
 	<session-factory>
-        
-        <!-- 連線池c3p0設定-->
-		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=ESDB</property>
-		<property name="hibernate.connection.username">sa</property>
-		<property name="hibernate.connection.password">P@ssw0rd</property>       
-		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
-		<property name="hibernate.c3p0.min_size">5</property>
-		<property name="hibernate.c3p0.max_size">20</property>
-		<property name="hibernate.c3p0.timeout">1800</property>
-		<property name="hibernate.c3p0.max_statements">50</property>
+
+ 		<!-- JNDI連線池 (Apache Tomcat 連線池DBCP)設定 -->
+		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/ESDB</property>
         
 		<!--SQL方言,以下使用SQLServer -->
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
@@ -33,8 +25,9 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 
 		<!--Java物件與資料庫表格的映射檔 -->
-
 		<mapping resource="iii/team05/mes/model/mes.hbm.xml" />
+
+
 		<mapping resource="iii/team05/examinee/ecmodel/ec.hbm.xml" />
 		<mapping resource="iii/team05/examinee/ecmodel/es.hbm.xml" />
 		<mapping resource="iii/team05/examinee/ecmodel/score.hbm.xml" />
@@ -43,7 +36,10 @@
 		<mapping resource="iii/team05/exam/model/options.hbm.xml" />
 		<mapping resource="iii/team05/Employee/model/emp.hbm.xml" />
 		<mapping resource="iii/team05/Season/model/sea.hbm.xml" />
-		<mapping resource="iii/team05/setting/model/st.hbm.xml" /> 
+		
+
+
+		
 
 	</session-factory>
 	

@@ -24,7 +24,7 @@ fieldset {
 <table border="0">
 	<tr>
 		<td>姓名:</td>
-		<td><input type="TEXT" name="msgname" size="40"  /></td>
+		<td><input type="TEXT" name="msgname" size="40"  value=""/></td>
 	</tr>
 	<tr>
 		<td>e-mail:</td>
