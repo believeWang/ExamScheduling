@@ -33,7 +33,7 @@ public class ECService {
 		return ecDAO.mailcheck(ecemail);
 
 	}
-	
+	/*寫入密碼*/
 	public ECVO updatePsd(String ecno,String ecpsd
 			) {
 			
@@ -48,5 +48,4 @@ public class ECService {
 				return ecVO;
 			}
 		
-	
 }

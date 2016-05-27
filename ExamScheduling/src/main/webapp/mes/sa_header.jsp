@@ -20,8 +20,8 @@
 
 		<li>
 		<li><a>Banner設定</a></li>
-		<li><a>主考官設定</a></li>
-		<li><a>考生設定</a></li>
+		<li><a href="/ExamScheduling/employee/Examiner2.jsp">主考官設定</a></li>
+		<li><a href="/ExamScheduling/employee/student_upd.jsp">考生設定</a></li>
 		<li><a>設定</a></li>
 	<div style="float:right;color:white">
 		<c:choose>

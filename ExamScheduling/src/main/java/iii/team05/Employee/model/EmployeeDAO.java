@@ -116,6 +116,7 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 		return list;
 		
 	}
+
 	
 	public void insertToken(EmployeeVO emVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -152,6 +153,7 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 //		//dao.delete(6);//刪除測試
 //				
 //	}
+
 	
 	
 	
