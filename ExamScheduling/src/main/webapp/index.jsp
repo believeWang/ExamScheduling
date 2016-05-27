@@ -15,6 +15,7 @@
 <h1><a href="<%=request.getContextPath()%>/aboutedit.jsp">公司簡介編輯</a></h1>
 <h1><a href="<%=request.getContextPath()%>/mes/googlelogin.jsp">Google登入</a></h1>
 <h1><a href="<%=request.getContextPath()%>/validate/checkmail.jsp">mail驗證</a></h1>
+<h1><a href="<%=request.getContextPath()%>/ExamEdit">考試編輯</a></h1>
 ${googleLoginErrors.loginNg}
 </body>
 </html> 
