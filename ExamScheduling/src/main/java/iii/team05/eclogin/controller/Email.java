@@ -1,4 +1,4 @@
-package iii.team05.mail;
+package iii.team05.eclogin.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;

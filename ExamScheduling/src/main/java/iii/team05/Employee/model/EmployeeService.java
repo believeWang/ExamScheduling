@@ -2,10 +2,6 @@ package iii.team05.Employee.model;
 
 import java.util.List;
 
-import iii.team05.Employee.model.EmployeeVO;
-import iii.team05.examinee.ecmodel.ECVO;
-import iii.team05.mes.model.MesVO;
-
 public class EmployeeService {
 
 	private EmployeeDAO dao;
@@ -35,12 +31,24 @@ public class EmployeeService {
 		dao.update(empVO);
 		return empVO;
 	}
+	public EmployeeVO updateEmp2(Integer empno,Integer position) {
+		EmployeeVO newVO = new EmployeeVO();
+		EmployeeVO oldVO = getOneEmp(empno);
+		newVO.setEmpno(empno);
+		newVO.setEmpname(oldVO.getEmpname());
+		newVO.setEmpemail(oldVO.getEmpemail());	
+		newVO.setPosition(position);
+		dao.update(newVO);
+		return newVO;
+	}
 	public void deleteEmp(Integer empno) {
 		 dao.delete(empno);
 		 }
 	public EmployeeVO getOneEmp(Integer empno) {
 		return dao.findByPrimaryKey(empno);
 	}
+	
+	
 	public List<EmployeeVO> getAll() {
 		return dao.getAll();
 	}

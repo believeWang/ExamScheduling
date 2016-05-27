@@ -4,26 +4,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-		<style>
-     	  @import url('<%=request.getContextPath()%>/mes/css/main.css');
-		</style>
+<style type="text/css">
+fieldset {
+	width: 500px;
+	border: 1px solid #acd6ff;
+	margin: 100px auto 0;
+	border-radius: 15px;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Reception</title>
 </head>
 <body>
- 
-     	<header>
- 		 <nav>
-       		       		<img src="<%=request.getContextPath()%>/mes/images/logo.png" style="float:left" />  
-
-       		<ul id="menu">	  			   
-       	 	    <li><a href="<%=request.getContextPath()%>/index.jsp">預約考試</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/index.jsp">前往考試</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/index.jsp">關於偉康</a></li>
-       		    <li><a href="<%=request.getContextPath()%>/mes/LeaveMessage.jsp">聯絡我們</a></li>
-       		</ul>
-       	</nav>       	
-       </header>
+<%@ include file="/WEB-INF/header/header.jsp" %>
 <div>
  <FORM METHOD="post" ACTION="mes.do" name="form1" >
 <fieldset>
@@ -31,7 +24,7 @@
 <table border="0">
 	<tr>
 		<td>姓名:</td>
-		<td><input type="TEXT" name="msgname" size="40"  /></td>
+		<td><input type="TEXT" name="msgname" size="40"  value=""/></td>
 	</tr>
 	<tr>
 		<td>e-mail:</td>
@@ -39,7 +32,7 @@
 	</tr>
 	<tr>
 		<td>留言:</td>
-		<td><textarea cols="40" rows="5" id="area1" name="msgcontent"></textarea></td>
+		<td><textarea cols="40" rows="10" id="area1" name="msgcontent"></textarea></td>
 	</tr>
 </table>
 

@@ -119,25 +119,25 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 		
 	}
 
-//	public static void main(String[] args) {
-//		EmployeeDAO dao = new EmployeeDAO();
-//		
-//		iii.team05.Employee.model.EmployeeVO deptVO = new iii.team05.Employee.model.EmployeeVO(); // 部門POJO
-//	
-//		
-//		
-//		List<EmployeeVO> list = dao.getAll();//查詢測試
-//		for (EmployeeVO aEmp : list) {
-//			System.out.print(aEmp.getEmpno() + ",");
-//			System.out.print(aEmp.getEmpname() + ",");
-//			System.out.print(aEmp.getEmpemail() + ",");
-//			System.out.print(aEmp.getPosition() + ",");
-//			
-//			System.out.println();
-//		}
-//		//dao.delete(6);//刪除測試
-//				
-//	}
+	public static void main(String[] args) {
+		EmployeeDAO dao = new EmployeeDAO();
+		
+		iii.team05.Employee.model.EmployeeVO deptVO = new iii.team05.Employee.model.EmployeeVO(); // 部門POJO
+	
+		
+		
+		List<EmployeeVO> list = dao.getAll();//查詢測試
+		for (EmployeeVO aEmp : list) {
+			System.out.print(aEmp.getEmpno() + ",");
+			System.out.print(aEmp.getEmpname() + ",");
+			System.out.print(aEmp.getEmpemail() + ",");
+			System.out.print(aEmp.getPosition() + ",");
+			
+			System.out.println();
+		}
+		//dao.delete(6);//刪除測試
+				
+	}
 	
 	
 	

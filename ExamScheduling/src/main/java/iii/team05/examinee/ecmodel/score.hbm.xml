@@ -5,10 +5,8 @@
 <hibernate-mapping>
     <class name="iii.team05.examinee.ecmodel.ScoreVO" table="Score">
         
-        <id name="ecno" column="ecno">       
-        </id>
-        <one-to-one name="eCVO" class="iii.team05.examinee.ecmodel.ECVO"
-			constrained="true"></one-to-one>
+        <id name="ecno" column="ecno"></id>
+        <one-to-one name="eCVO" class="iii.team05.examinee.ecmodel.ECVO" constrained="true"></one-to-one>
         <property name="lab" column="lab" />
         <property name="interview" column="interview" />
         <property name="labtime" column="labtime" />
