@@ -226,10 +226,37 @@ public class EmpServlet extends HttpServlet {
 				
 			}
 		}
-		
-		
-		
+if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp的請求
+			
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
 
+			try {
+				/*************************** 1.接收請求參數 ****************************************/
+				
+				Integer empno = new Integer(req.getParameter("empno"));
+				/*************************** 2.開始查詢資料 ****************************************/
+				EmployeeService empSvc = new EmployeeService();
+				EmployeeVO empVO = empSvc.getOneEmp(empno);
+
+				/*************************** 3.查詢完成,準備轉交(Send the Success view) ************/
+				req.setAttribute("employeeVO", empVO); // 資料庫取出的empVO物件,存入req
+				System.out.println(empno);
+				String url = "/employee/update_emp_input.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
+																				// update_emp_input.jsp
+				successView.forward(req, res);
+
+				/*************************** 其他可能的錯誤處理 **********************************/
+			} catch (Exception e) {
+				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/employee/update_emp_input.jsp");
+				failureView.forward(req, res);
+			}
+		} // 來自listAllEmp.jsp的請求 結束標籤
 	}
 
 }

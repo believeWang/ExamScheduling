@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 
 @WebFilter(
-		urlPatterns={"/mes/ListNotReplyMessage.jsp"}
+		urlPatterns={"/mes/ListNotReplyMessage.jsp","/sa.jsp"}
 		)
 public class GoogleLoginFilter implements Filter {
 

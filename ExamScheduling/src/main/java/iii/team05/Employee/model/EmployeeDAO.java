@@ -1,8 +1,6 @@
 package iii.team05.Employee.model;
 
 import org.hibernate.*;
-
-
 import iii.team05.hibernate.util.*;
 
 import java.util.*;
@@ -118,7 +116,23 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 		return list;
 		
 	}
-
+	
+	public void insertToken(EmployeeVO emVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("update EmployeeVO set token = :token where empemail=:empemail");
+			String empemail=emVO.getEmpemail();
+			String token=emVO.getToken();
+			query.setParameter("token",token);
+			query.setParameter("empemail",empemail);
+			query.executeUpdate();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+	}
 //	public static void main(String[] args) {
 //		EmployeeDAO dao = new EmployeeDAO();
 //		
