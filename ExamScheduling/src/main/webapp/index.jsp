@@ -14,5 +14,6 @@
 <h1><a href="<%=request.getContextPath()%>/aboutedit.jsp">公司簡介編輯</a></h1>
 <h1><a href="<%=request.getContextPath()%>/Examiner.jsp">主考官登入</a></h1>
 <h1><a href="<%=request.getContextPath()%>/validate/checkmail.jsp">mail驗證</a></h1>
+<h1><a href="<%=request.getContextPath()%>/validate/editmail.jsp">編輯E-mail</a></h1>
 </body>
 </html> 
