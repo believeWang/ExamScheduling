@@ -1,4 +1,4 @@
-package iii.team05.job.controller;
+package iii.team05.Job.controller;
 
 import iii.team05.event.model.EventDAO;
 import iii.team05.job.model.JobDAO;
