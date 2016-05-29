@@ -49,5 +49,12 @@ public class ExamVO implements java.io.Serializable {
 	public void setExamImg(byte[] examImg) {
 		this.examImg = examImg;
 	}
+	@Override
+	public String toString(){
+		String str="examno:"+examno+" examTitle:"+examTitle+" quantities:"+quantities+" getDuration:"+duration;
+		str+="{"+examDetils+"}";
+				
+		return str;
+	}
 
 }
