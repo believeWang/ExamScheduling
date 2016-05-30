@@ -27,11 +27,11 @@
 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1">
 <table class=table4_9 style="width:800px">
                  <tr>				
-					<th>編號</th>
+					<th>員工編號</th>
 					<th>主考官姓名</th>
 					<th>E-mail</th>
 					<th>權限</th>
-					<th>修改</th>
+<!-- 					<th>修改</th> -->
 				</tr>
 
 	<c:forEach var="EmpVO" items="${list}">
@@ -41,7 +41,7 @@
 	<td>${EmpVO.empname}</td>
 	<td>${EmpVO.empemail}</td>
 	
-	<td><input type="TEXT" name="position" value="${EmpVO.position} "readonly/></td>
+<%-- 		<td><input type="TEXT" name="position" value="${EmpVO.position} "readonly/></td> --%>
 	
 
 	    <input type="hidden" name="empno" value="${EmpVO.empno}">
