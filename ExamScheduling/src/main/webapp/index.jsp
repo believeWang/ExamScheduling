@@ -6,10 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ESS</title>
 
+
+
 <h1><a href="<%=request.getContextPath()%>/employee/Emptable2.jsp">主考官</a></h1>
-<h1><a href="<%=request.getContextPath()%>/choose">考試系統</a></h1>
+<h1><a href="<%=request.getContextPath()%>/fullcalendar/index.jsp">前台</a></h1>
+
 <h1><a href="<%=request.getContextPath()%>/test.jsp">後台登入</a></h1>
 <h1><a href="<%=request.getContextPath()%>/validate/checkmail.jsp">mail驗證</a></h1>
+
 ${googleLoginErrors.loginNg}
 </body>
 </html> 

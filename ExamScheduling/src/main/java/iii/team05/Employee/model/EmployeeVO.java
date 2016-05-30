@@ -5,8 +5,9 @@ public class EmployeeVO  implements java.io.Serializable{
 	private String empname;
 	private String empemail;
 	private Integer position;
+	private String token;
 	
-	
+
 	public Integer getEmpno() {
 		return empno;
 	}
@@ -32,6 +33,11 @@ public class EmployeeVO  implements java.io.Serializable{
 		this.position = position;
 	}
 	
-	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	
 }

@@ -13,8 +13,8 @@ public class ECVO implements java.io.Serializable{
 	public String getEcno() {
 		return ecno;
 	}
-	public void setEcno(String ecno) {
-		this.ecno = ecno;
+	public void setEcno(String ecno2) {
+		this.ecno = ecno2;
 	}
 	public ESVO geteSVO() {
 		return eSVO;

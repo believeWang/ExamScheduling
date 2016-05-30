@@ -12,7 +12,7 @@
         <property name="empname" column="empname" />
         <property name="empemail" column="empemail" />
         <property name="position" column="position" />
-        
+        <property name="token" column="token" />
         
         
         

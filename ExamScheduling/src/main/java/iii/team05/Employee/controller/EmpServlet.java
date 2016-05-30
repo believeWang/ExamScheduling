@@ -175,7 +175,10 @@ public class EmpServlet extends HttpServlet {
 				
 			}
 		}
+
+
 if ("update1".equals(action)) { // 來自update_emp_input.jsp的請求
+
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -183,6 +186,7 @@ if ("update1".equals(action)) { // 來自update_emp_input.jsp的請求
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
+
 				/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 				Integer empno = new Integer(req.getParameter("empno").trim());
 			//	Integer position = new Integer(req.getParameter("position").trim());				

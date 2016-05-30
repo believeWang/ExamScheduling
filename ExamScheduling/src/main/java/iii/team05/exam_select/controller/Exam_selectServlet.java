@@ -22,7 +22,7 @@ public class Exam_selectServlet extends HttpServlet {
 		String onlineex  = req.getParameter("onlineex");
 		ScoreVO scovo= new ScoreVO();
 		
-		scovo.setEcno(1);
+		scovo.setEcno("EEIT8501");
 		scovo.setLab(1);
 		scovo.setInterview(1);
 		scovo.setOnlineex(1);
