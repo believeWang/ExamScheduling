@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<FORM METHOD="post" ACTION="/ExamScheduling/eclogin/signin"  >
-<table>
-<tr>
+<FORM METHOD="post" ACTION="/ExamScheduling/eclogin/cheakmail"  >
+  <table>
+	<tr>
 		<td>e-mail:</td>
 		<td><input type="TEXT" name="ecemail" size="40" /></td>
-	<td>${errors.ecemail}</td>
+	    <td>${errors.ecemail}</td>
 	</tr>
-	</table>
+  </table>
 	<input type="submit" value="送出">
 </FORM>
 </body>
