@@ -9,7 +9,7 @@
 		<generator class="identity"/>
 		</id>
 
-		<property name="aboutid" column="aboutid" />
+		
 		<property name="aboutname" column="aboutname" />
 		<property name="aboutcontent" column="aboutcontent" />
 

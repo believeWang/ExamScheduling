@@ -46,6 +46,12 @@
 		<mapping resource="iii/team05/setting/model/st.hbm.xml" /> 
 		<mapping resource="iii/team05/abouteditor/ab.hbm.xml" /> 
 
+
+
+
+
+
+
 	</session-factory>
 	
 </hibernate-configuration>
