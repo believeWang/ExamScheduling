@@ -9,7 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class AbouteditorDAO implements AbouteditorInterface{
-	private static final String GET_ALL_STMT = "from STVO order by setid";
+	private static final String GET_ALL_STMT = "from AbouteditorVO order by aboutid";
 
 	@Override
 	public void insert(AbouteditorVO abvo) {
