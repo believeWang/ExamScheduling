@@ -44,6 +44,7 @@
 		<mapping resource="iii/team05/Employee/model/emp.hbm.xml" />
 		<mapping resource="iii/team05/Season/model/sea.hbm.xml" />
 		<mapping resource="iii/team05/setting/model/st.hbm.xml" /> 
+		<mapping resource="iii/team05/abouteditor/ab.hbm.xml" /> 
 
 	</session-factory>
 	
