@@ -60,8 +60,8 @@ public class AbouteditorDAO implements AbouteditorInterface{
 	}
 	
 
-	/*讀取mail內文*/
-	public void querymail(AbouteditorVO abVO) {
+	/*讀取about內文*/
+	public void queryabout(AbouteditorVO abVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -77,8 +77,8 @@ public class AbouteditorDAO implements AbouteditorInterface{
 		
 	}
 	
-    /*mail內文更新寫入*/
-	public void updatemail(AbouteditorVO abVO) {
+    /*about內文更新寫入*/
+	public void updateabout(AbouteditorVO abVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
