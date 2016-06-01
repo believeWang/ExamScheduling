@@ -8,5 +8,4 @@ public interface STDao_interface {
     public void delete(String setid);
     public STVO findByPrimaryKey(String setid);
     public List<STVO> getAll();
-
 }

@@ -8,6 +8,8 @@ import iii.team05.examinee.ecmodel.ECVO;
 
 
 
+import iii.team05.setting.model.STVO;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
@@ -25,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CheckmailServlet
  */
-@WebServlet("/eclogin/signin")
+@WebServlet("/eclogin/cheakmail")
 public class CheckmailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -52,13 +54,13 @@ public class CheckmailServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		String ecemail = request.getParameter("ecemail");
-		System.out.println(ecemail);
+		System.out.println(ecemail); //測試收到請求內容的資料
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 //		MessageDigest mDsgest = null;
 		if(ecemail.matches("(([A-Za-z0-9]+\\.?)+([A-Za-z0-9]+_?)+)+[A-Za-z0-9]+@([a-zA-Z0-9]+\\.)+(com|edu|gov)(\\.(tw|ch|hk))?")) 
 		    {
-			System.out.println("OK");
+			System.out.println("maile格式驗證 OK");
 			
 			ECService ecSvc = new ECService();
 			List<ECVO> ecVO =  ecSvc.check(ecemail);
@@ -97,11 +99,14 @@ public class CheckmailServlet extends HttpServlet {
 			   String low2 = String.valueOf((char) ((Math.random()*26) + 97));
 			   
 			   String ecpsd = cap1+cap2+cap3+num1+num2+num3+low1+low2;
-			   System.out.println(ecpsd);
+			   System.out.println("random隨機密碼:"+ecpsd);
 
 			   ecSvc.updatePsd(ecno,ecpsd);
 			   System.out.println();
 
+				
+
+			   
 				
 				String subject = "【註冊通知】感謝您使用偉康考試預約系統";
 				String content = "Dear " + username + ", \n\n\t感謝您使用偉康考試預約系統，您的帳號及密碼如下，\n請妥善保存：\n\n帳號："

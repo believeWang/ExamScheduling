@@ -39,7 +39,7 @@
 	</tr>
 <tr>
 		<td>測驗時間:</td>
-		<td><input type="TEXT" name="labtime" size="45"	value="<%=scoreVO.getLabtime()%>" readonly/></td>
+		<td><input type="TEXT" name="labtime" size="45"	value="<%=scoreVO.getLabtime()%>" /></td>
 	</tr>
 
 	

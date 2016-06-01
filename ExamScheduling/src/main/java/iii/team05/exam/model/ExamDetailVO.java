@@ -50,6 +50,12 @@ public class ExamDetailVO implements java.io.Serializable {
 	public void setExamno(String examno) {
 		this.examno = examno;
 	}
-	
+	@Override
+	public String toString(){
+		String str="\nquestionType:"+questionType+" question:"+question;
+		str+="{"+options+"}";
+				
+		return str;
+	}
 
 }

@@ -34,13 +34,16 @@ public class EmployeeService {
 		empVO.setPosition(position);
 		dao.update(empVO);
 		return empVO;
+
 	}
+
 	public EmployeeVO updateEmp2(Integer empno,Integer position) {
 		EmployeeVO newVO = new EmployeeVO();
-		EmployeeVO oldVO = getOneEmp(empno);
+//		EmployeeVO oldVO = getOneEmp(empno);
 		newVO.setEmpno(empno);
-		newVO.setEmpname(oldVO.getEmpname());
-		newVO.setEmpemail(oldVO.getEmpemail());	
+//		newVO.setEmpname(oldVO.getEmpname());
+//		newVO.setEmpemail(oldVO.getEmpemail());	
+	//	newVO.setPosition(oldVO.getPosition());	
 		newVO.setPosition(position);
 		dao.update(newVO);
 		return newVO;
