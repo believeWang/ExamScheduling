@@ -7,7 +7,6 @@
 <script type="text/javascript"	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="/ExamScheduling/mes/js/mqttws31.js" type="text/javascript"></script>
 <script src="/ExamScheduling/chat/js/jquery.qqFace.js"type="text/javascript"></script>
-
 <script type="text/javascript">
 	$(function() {
 		$('.emotion').qqFace({
@@ -15,6 +14,7 @@
 			assign : 'messageText', //给那个控件赋值
 			path : 'tiger/' //表情存放的路径
 		});
+	});
 	//查看结果
 	function replace_em(str) {
 		str = str.replace(/\</g, '&lt;');
@@ -63,7 +63,6 @@
 	function sendMessage() {
 		var value = document.getElementById("messageText").value;
 		var name = document.getElementById("messageName").value;
-
 		message = new Paho.MQTT.Message(name + " : " + value);
 		message.destinationName = "/ESS";
 		client.send(message);

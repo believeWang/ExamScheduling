@@ -62,7 +62,6 @@
 	function sendMessage() {
 		var value = document.getElementById("messageText").value;
 		var name = document.getElementById("messageName").value;
-
 		message = new Paho.MQTT.Message(name + " : " + value);
 		message.destinationName = "/ESS";
 // 		message.retained = true;
