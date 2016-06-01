@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<script type="text/javascript"	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="/ExamScheduling/mes/js/mqttws31.js" type="text/javascript"></script>
-<script src="/ExamScheduling/chat/js/jquery.qqFace.js"type="text/javascript"></script>
-
+<script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function() {
 		$('.emotion').qqFace({
@@ -15,6 +14,7 @@
 			assign : 'messageText', //给那个控件赋值
 			path : 'tiger/' //表情存放的路径
 		});
+	});
 	//查看结果
 	function replace_em(str) {
 		str = str.replace(/\</g, '&lt;');
@@ -27,20 +27,19 @@
 	var wsbroker = "test.mosquitto.org"; //mqtt websocket enabled broker
 	var wsport = 8080 // port for above
 // 	var clientid = "myclientid_" + parseInt(Math.random() * 100, 10);
-	var clientid = "${GoogleUser}"
+	var clientid ="${ecno}";
 	var client = new Paho.MQTT.Client(wsbroker, wsport, clientid);
 	client.onConnectionLost = function(responseObject) {
 		console.log("connection lost: " + responseObject.errorMessage);
 	};
 	client.onMessageArrived = function(message) {
 		var messageArray= message.payloadString.split(":");
-		var checkId="主考官  "+clientid+" ";
+		var checkId="考生  "+clientid+" ";
 		if(messageArray[0]==checkId){		
 			$("#show").append("<h4 style='color:blue; text-align:right;'>"+replace_em(messageArray[1]) + "</br>");
 		}else{
 			$("#show").append(replace_em(message.payloadString) + "</br>");
 		}
-		
 	};
 
 	var options = {
@@ -66,11 +65,10 @@
 
 		message = new Paho.MQTT.Message(name + " : " + value);
 		message.destinationName = "/ESS";
+// 		message.retained = true;
 		client.send(message);
 		messageText.value = "";
-
 	}
-	
 </script>
 <style>
 span.emotion {
@@ -104,22 +102,26 @@ span.emotion:hover {
 .qqFace table td img:hover {
 	border: 1px #0066cc solid;
 }
-#show{width:400px;} 
+
+#show {
+	width: 400px;
+}
 </style>
 </head>
-<body onload="init();" >
-<div style="background: white">
-	<input type="hidden" id="messageName" value="主考官  ${GoogleUser}">
-	</br>
-	<div contenteditable="false" id="show" ></div>
-	<!--  	<textarea id="messagesUser" readonly="readonly" rows="10" cols="15"></textarea>  -->
-	</br>
-	<input type="text" id="messageText" name="messageText" size="45">
-	<p>
-		<input type="button" class="sub_btn" value="send"
-			onclick="sendMessage();"><span class="emotion">表情</span>
-	</p>
-</div>
+<body onload="init();">
+	<%@ include file="/WEB-INF/header/header.jsp"%>
+	<div style="margin: 50px 500px">
+		<div style="background: white">
+			<input type="hidden" id="messageName" size="50" value="考生  ${ecno}">
+			</br>
+			<div contenteditable="false" id="show"></div>
+			</br> <input type="text" id="messageText" name="messageText" size="50">
+			<p>
+				<input type="button" class="sub_btn" value="send"
+					onclick="sendMessage();"><span class="emotion">表情</span>
+			</p>
+		</div>
+	</div>
 </body>
 
 </html>

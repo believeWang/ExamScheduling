@@ -8,6 +8,18 @@
 	src="<%=request.getContextPath()%>/mes/js/jquery.lavalamp.js"></script>
 <style>
 @import url('<%=request.getContextPath()%>/mes/css/main.css');
+iframe {
+ /* 設定footer的高度 */
+    height: 200;
+    box-sizing: border-box;
+    /* 設定footer絕對位置在底部 */
+    position: absolute;
+    bottom: 50px;
+    /* 展開footer寬度 */
+    width: 450;
+    text-align: center;
+ 
+}
 </style>
 
 <div style="background:black;height:80px;">
@@ -41,3 +53,5 @@
 	</ul>
 	
 </div>
+
+<iframe src="/ExamScheduling/chat/mqtt.jsp" width="450" height="200" ></iframe>
