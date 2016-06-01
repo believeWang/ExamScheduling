@@ -10,7 +10,9 @@ MesVO mesVO = (MesVO) request.getAttribute("mesVO");
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Backstage</title>
+<style type="text/css">
 
+</style>
 </head>
 <body>
 <%@ include file="header.jsp" %>

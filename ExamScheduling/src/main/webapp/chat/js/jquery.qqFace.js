@@ -61,7 +61,7 @@ jQuery.fn.extend({
 			var node = this; 
 			var selection, range, doc, win; 
 			if ((doc = node.ownerDocument) && (win = doc.defaultView) && typeof win.getSelection != 'undefined' && typeof doc.createRange != 'undefined' && (selection = window.getSelection()) && typeof selection.removeAllRanges != 'undefined'){ 
-				range = doc.createRange(); 
+//				range = doc.createRange(); 
 				range.selectNode(node); 
 				if(i == 0){ 
 					selection.removeAllRanges(); 
@@ -75,10 +75,10 @@ jQuery.fn.extend({
 	}, 
 
 	setCaret: function(){ 
-		if(!$.browser.msie) return; 
+//		if(!$.browser.msie) return; 
 		var initSetCaret = function(){ 
 			var textObj = $(this).get(0); 
-			textObj.caretPos = document.selection.createRange().duplicate(); 
+//			textObj.caretPos = document.selection.createRange().duplicate(); 
 		}; 
 		$(this).click(initSetCaret).select(initSetCaret).keyup(initSetCaret); 
 	}, 

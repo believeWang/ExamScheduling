@@ -14,7 +14,17 @@
 			assign : 'messageText', //给那个控件赋值
 			path : 'tiger/' //表情存放的路径
 		});
+
+		$("#show").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
+			  if (event.type == "mouseenter") {
+			    $(this).css({"overflow-y": "scroll"}); //滑鼠進入
+			  } else {
+//	 		    $(this).scrollTop(0).css({"overflow-y": "hidden"}); //滑鼠離開
+			  }
+			});
+		
 	});
+
 	//查看结果
 	function replace_em(str) {
 		str = str.replace(/\</g, '&lt;');
@@ -62,11 +72,13 @@
 	function sendMessage() {
 		var value = document.getElementById("messageText").value;
 		var name = document.getElementById("messageName").value;
+	if(value!=""){
 		message = new Paho.MQTT.Message(name + " : " + value);
 		message.destinationName = "/ESS";
 // 		message.retained = true;
 		client.send(message);
 		messageText.value = "";
+	}
 	}
 </script>
 <style>
@@ -113,7 +125,7 @@ span.emotion:hover {
 		<div style="background: white">
 			<input type="hidden" id="messageName" size="50" value="考生  ${ecno}">
 			</br>
-			<div contenteditable="false" id="show"></div>
+			<div contenteditable="false" id="show" style="width: 450px;height:450px;"></div>
 			</br> <input type="text" id="messageText" name="messageText" size="50">
 			<p>
 				<input type="button" class="sub_btn" value="send"

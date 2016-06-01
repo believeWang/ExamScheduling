@@ -19,7 +19,7 @@ fieldset {
 <%@ include file="/WEB-INF/header/header.jsp" %>
 <div>
  <FORM METHOD="post" ACTION="mes.do" name="form1" >
-<fieldset>
+<fieldset >
 <legend>留言板</legend>
 <table border="0">
 	<tr>
