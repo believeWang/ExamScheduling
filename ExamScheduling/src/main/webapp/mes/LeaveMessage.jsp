@@ -19,7 +19,7 @@ fieldset {
 <%@ include file="/WEB-INF/header/header.jsp" %>
 <div>
  <FORM METHOD="post" ACTION="mes.do" name="form1" >
-<fieldset>
+<fieldset >
 <legend>留言板</legend>
 <table border="0">
 	<tr>
@@ -38,7 +38,8 @@ fieldset {
 
 <input type="hidden" name="action" value="leave">
 <input type="submit" value="送出留言" style="width:70px;height:30px;border:2px blue none;background:red" ></fieldset></FORM>
-<a href='ListAllMessage.jsp'><img src="<%=request.getContextPath()%>/mes/images/mes.png"/></a>
+<a href='ListAllMessage.jsp'><img src="<%=request.getContextPath()%>/mes/images/mes.png"/></a></br>
+<a href='<%=request.getContextPath()%>/chat/mqtt31.jsp'><img src="<%=request.getContextPath()%>/mes/images/MQTT.png" style="width:200px;height:200px "/></a>
 </div>
 <c:if test="${status=='NG'}">
 <script>alert("你在這裡當駭客，你媽知道嗎!")</script>

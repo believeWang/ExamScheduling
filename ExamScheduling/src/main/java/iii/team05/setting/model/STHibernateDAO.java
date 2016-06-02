@@ -19,9 +19,16 @@ public class STHibernateDAO implements STDao_interface{
 	}
 
 	@Override
-	public void update(STVO stvo) {
-		// TODO Auto-generated method stub
-		
+	public void update(STVO stVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.saveOrUpdate(stVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
 	}
 
 	@Override
@@ -70,5 +77,23 @@ public class STHibernateDAO implements STDao_interface{
 		}
 		
 	}
-
+	
+    /*mail內文更新寫入*/
+	public void updatemail(STVO stVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("update STVO set emailtemplate = :emailtemplate");
+			String emailtemplate=stVO.getEmailtemplate();
+//			Integer setid=stVO.getSetid();
+			query.setParameter("emailtemplate",emailtemplate);
+//			query.setParameter("setid",setid);
+			query.executeUpdate();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
+	}
 }

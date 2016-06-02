@@ -107,7 +107,7 @@ public class GoogleCheck extends HttpServlet {
 		  try {
 		   // 把上面取回來的資料，放進JSONObject中，以方便我們直接存取到想要的參數
 		   JSONObject jo = new JSONObject(sbLines.toString());		    
-		  email =jo.getString("email");
+		   email =jo.getString("email");
 //		  name =jo.getString("name");
 		  } catch (JSONException e) {
 		   e.printStackTrace();

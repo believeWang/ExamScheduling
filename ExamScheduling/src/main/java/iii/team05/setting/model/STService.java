@@ -1,5 +1,7 @@
 package iii.team05.setting.model;
 
+import iii.team05.examinee.ecmodel.ECVO;
+
 import java.util.List;
 
 
@@ -26,7 +28,19 @@ public class STService {
 		return stDAO.getAll();
 
 	}
+
+
+	
+	public STVO updateMail(String emailtemplate) {
+			
+				STVO stVO = new STVO();
+				stVO.setEmailtemplate(emailtemplate);
+				stDAO.updatemail(stVO);
+				return stVO;
+			}
+	
+}
 	
 		
 	
-}
+
