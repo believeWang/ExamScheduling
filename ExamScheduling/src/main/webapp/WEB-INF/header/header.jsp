@@ -45,7 +45,7 @@
 			<a href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet?jobid=1">預約考試</a>
 			<a href="${pageContext.request.contextPath}/choose">前往考試</a>
 			<a href="#">關於緯康</a>
-			<a href="<%=request.getContextPath()%>/mes/LeaveMessage.jsp">聯絡我們 </a>
+			<a href="<%=request.getContextPath()%>/MesTurn?turn=LM">聯絡我們 </a>
 	
 <!-- 			<span class="header-new-feature">new</span> -->
 		</nav>
