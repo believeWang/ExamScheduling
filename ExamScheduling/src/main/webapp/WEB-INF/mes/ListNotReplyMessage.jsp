@@ -16,7 +16,7 @@
 </head>
 <body>
 
-     <%@ include file="header.jsp" %>
+     <%@ include file="/mes/header.jsp" %>
 
 
 

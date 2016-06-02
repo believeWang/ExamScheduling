@@ -26,8 +26,8 @@ MesVO mesVO = (MesVO) request.getAttribute("mesVO");
 <%=mesVO.getRpcontent()%><br>
 </div>
 <div style="width:500px;margin:0px 500px ">
-<a href='ListAllMessage.jsp'><input type="button" value="查看所有留言"></a>
-<a href='LeaveMessage.jsp'><input type="button" value="繼續留言"></a>
+<a href='<%=request.getContextPath()%>/MesTurn?turn=LAM'><input type="button" value="查看所有留言"></a>
+<a href='<%=request.getContextPath()%>/MesTurn?turn=LM'><input type="button" value="繼續留言"></a>
 </div>
 </body>
 </html>

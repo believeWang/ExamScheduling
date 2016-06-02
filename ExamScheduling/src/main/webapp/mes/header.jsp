@@ -53,7 +53,8 @@ $(function() {
 		<li>
 		<li><a>輸入成績</a></li>
 		<li><a>編輯考題</a></li>
-		<li><a href="<%=request.getContextPath()%>/mes/ListNotReplyMessage.jsp">留言板</a></li>
+<%-- 		<li><a href="<%=request.getContextPath()%>/mes/ListNotReplyMessage.jsp">留言板</a></li> --%>
+	<li><a href="<%=request.getContextPath()%>/MesTurn?turn=LNRM">留言板</a></li>
 	<div style="float:right;color:white">
 		<c:choose>
 			<c:when test="${GoogleUser!=null}">
@@ -79,7 +80,7 @@ $(function() {
     <input type="checkbox" id="checkboxid"  value="0" ><span>提醒通知<span>
   <div id="effect" class="ui-widget-content ui-corner-all" style="width: 450px;height:450px;">
 <!-- <iframe src="/ExamScheduling/chat/mqtt.jsp" width="450" height="200" ></iframe> -->
-<%@ include file="/chat/mqtt.jsp" %>
+<%@ include file="/WEB-INF/chat/mqtt.jsp" %>
 </div>
 
 </div>

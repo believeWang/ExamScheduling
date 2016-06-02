@@ -18,6 +18,4 @@
   <listener>
     <listener-class>iii.team05.exam.model.ContextListener</listener-class>
   </listener>
-
 </web-app>
-

@@ -61,7 +61,7 @@
 </table>
 
 <%@ include file="page2.file" %>
-<a href='LeaveMessage.jsp'><input type="button" value="繼續留言" ></a>
+<a href='<%=request.getContextPath()%>/MesTurn?turn=LM'><input type="button" value="繼續留言" ></a>
 </div>
 </body>
 </html>

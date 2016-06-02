@@ -5,14 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="/ExamScheduling/mes/js/mqttws31.js" type="text/javascript"></script>
+<script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
 <script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function() {
 		$('.emotion').qqFace({
 			id : 'facebox', //表情盒子的ID
 			assign : 'messageText', //给那个控件赋值
-			path : 'tiger/' //表情存放的路径
+			path : '/ExamScheduling/chat/tiger/' //表情存放的路径
 		});
 
 		$("#show").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
@@ -31,7 +31,7 @@
 		str = str.replace(/\>/g, '&gt;');
 		str = str.replace(/\n/g, '<br/>');
 		str = str.replace(/\[em_([0-9]*)\]/g,
-				'<img src="tiger/$1.gif" border="0" />');
+				'<img src="/ExamScheduling/chat/tiger/$1.gif" border="0" />');
 		return str;
 	}
 	var wsbroker = "test.mosquitto.org"; //mqtt websocket enabled broker
@@ -85,7 +85,7 @@
 span.emotion {
 	width: 42px;
 	height: 20px;
-	background: url(icon.gif) no-repeat 2px 2px;
+	background: url(/ExamScheduling/chat/icon.gif) no-repeat 2px 2px;
 	padding-left: 20px;
 	cursor: pointer
 }
@@ -120,7 +120,7 @@ span.emotion:hover {
 </style>
 </head>
 <body onload="init();">
-	<%@ include file="/WEB-INF/header/header.jsp"%>
+	<%@ include file="/WEB-INF/header/header.jsp" %>
 	<div style="margin: 50px 500px">
 		<div style="background: white">
 			<input type="hidden" id="messageName" size="50" value="考生  ${ecno}">
