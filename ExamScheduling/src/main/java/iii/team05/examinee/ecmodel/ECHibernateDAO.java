@@ -87,6 +87,23 @@ public class ECHibernateDAO implements ECDao_interface{
 		
 	}
 
+	public List<ECVO> getEEIT(String eeitName) {
+		List<ECVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from ECVO where ecno LIKE  :eeitName");
+			query.setParameter("eeitName", "%" + eeitName + "%");
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+		
+	}
+
 	/*emial驗證*/
     public List<ECVO> mailcheck(String ecemail){
 		List<ECVO> list = null;

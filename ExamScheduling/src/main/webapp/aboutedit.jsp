@@ -17,7 +17,7 @@
 <h2>公司簡介 - 編輯頁面</h2>
 <hr>
 <br>
-<FORM METHOD="get" ACTION="/ExamScheduling/aboutedit"  >
+<FORM METHOD="post" ACTION="/ExamScheduling/aboutedit"  >
 <textarea class="ckeditor" cols="80" id="content" name=content rows="12">${about}</textarea>
 <input type=submit value="Submit">
 <input type="hidden" name="action" value="Editor_Update">

@@ -35,7 +35,7 @@ public class AbouteditorServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String action = request.getParameter("action");
+		
 		AboutService abSvc = new AboutService();
 		
 			
@@ -54,11 +54,6 @@ public class AbouteditorServlet extends HttpServlet {
 	        return ;                                   // forward()之後會有一個return敘述	
 		  }
 		
-		  if ("Editor_Update".equals(action)){
-			  aboutcontent = request.getParameter("content");
-			  System.out.println(aboutcontent);             //測試editmail.jsp有傳更新資料進來
-			  abSvc.updateAbout(aboutcontent);            //呼叫STService的updatemail()方法工作
-		  }
 		
 }
 	
@@ -67,7 +62,15 @@ public class AbouteditorServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String action = request.getParameter("action"); 
+		AboutService abSvc = new AboutService();
+		String aboutcontent= null;
+		if ("Editor_Update".equals(action)){
+			  aboutcontent = request.getParameter("content");
+			  System.out.println(aboutcontent);             //測試editmail.jsp有傳更新資料進來
+			  abSvc.updateAbout(aboutcontent);            //呼叫STService的updatemail()方法工作
+		  }
+		
 	}
 
 }

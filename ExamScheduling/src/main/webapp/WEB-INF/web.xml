@@ -18,6 +18,15 @@
   <listener>
     <listener-class>iii.team05.exam.model.ContextListener</listener-class>
   </listener>
-
+  <servlet>
+    <servlet-name>PoiServlet</servlet-name>
+    <servlet-class>com.wf.web.PoiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PoiServlet</servlet-name>
+    <url-pattern>/poitest.jspx</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>
-
