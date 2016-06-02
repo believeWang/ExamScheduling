@@ -1,6 +1,5 @@
 package iii.team05.exam.model;
 
-import iii.team05.examinee.ecmodel.ECVO;
 import iii.team05.hibernate.util.HibernateUtil;
 
 import java.util.List;
