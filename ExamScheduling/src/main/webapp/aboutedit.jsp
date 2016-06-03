@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 	<script type="text/javascript"
@@ -23,9 +23,9 @@
 <input type="hidden" name="action" value="Editor_Update">
 <input type=button value="Cancel">
 <script>
-		CKEDITOR.replace( 'content', {
-			height: 260
-		} );
+// 		CKEDITOR.replace( 'content', {
+// 			height: 260
+// 		} );
 	</script>
 </FORM>
 </html>

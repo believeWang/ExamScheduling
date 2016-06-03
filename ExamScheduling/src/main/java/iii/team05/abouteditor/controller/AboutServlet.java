@@ -26,25 +26,26 @@ public class AboutServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AboutService abSvc = new AboutService();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		List<AbouteditorVO> AboutArticle = abSvc.query();
 		String aboutcontent= null;
 		for(AbouteditorVO s:AboutArticle){
 			aboutcontent = s.getAboutcontent();
-			System.out.println(aboutcontent);
-		
+			System.out.println(aboutcontent+"333");
+		}
 
-		request.setAttribute("about", aboutcontent);     // 將第一項資訊放入request物件內
+		request.setAttribute("aboutcontent", aboutcontent);     // 將第一項資訊放入request物件內
         RequestDispatcher rd =                     // 準備將移轉程式的執行順序
-               request.getRequestDispatcher("/aboutedit.jsp");
-        rd.forward(request, response);             // 移轉程式的執行順序
-        return ;                                   // forward()之後會有一個return敘述	
-	  }
+               request.getRequestDispatcher("/about.jsp");
+        rd.forward(request,response);             // 移轉程式的執行順序
+	  
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 }

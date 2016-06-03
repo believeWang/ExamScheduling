@@ -9,7 +9,7 @@
 </head>
 <body>
 <div>
-${about}
+${aboutcontent}
 </div>
 </body>
 </html>
