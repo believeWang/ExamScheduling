@@ -44,12 +44,14 @@ public class InsertExcel extends HttpServlet {
 		// ServletContext context = getServletContext();
 		// String excelFile = "/WEB-INF/datastore/WebcommEEIT_1.0.xlsx";
 
+
 		String method = request.getParameter("_m");
 		if ("poi_down".equals(method)) {
 			poi_down(request, response);
 		} else if ("poi_upload".equals(method)) {
 			poi_upload(request, response);
 		}
+
 
 	}
 

@@ -6,13 +6,13 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Edit mail</title>
-</head>
 <body>
 <h2>E-mail-編輯頁面</h2>
 <FORM METHOD="get" ACTION="/ExamScheduling/setting/editmail"  >
-<textarea class="ckeditor" cols="80" id="content" name=content rows="12">${mail}</textarea>
-<input type=submit value="讀取mail內文" >
-<input type="hidden" name="action" value="Mail_Content_Query">
+
+<textarea class="ckeditor" cols="80" id="subject" name=subject rows="12">${mail}</textarea>
+<input type=submit value="Submit">
+<input type="hidden" name="action" value="Mail_Subject_Update">
 </FORM>
 </body>
 </html>

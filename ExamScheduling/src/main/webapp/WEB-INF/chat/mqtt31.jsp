@@ -7,6 +7,9 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
 <script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript">
 	$(function() {
 		$('.emotion').qqFace({
@@ -15,13 +18,7 @@
 			path : '/ExamScheduling/chat/tiger/' //表情存放的路径
 		});
 
-		$("#show").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
-			  if (event.type == "mouseenter") {
-			    $(this).css({"overflow-y": "scroll"}); //滑鼠進入
-			  } else {
-//	 		    $(this).scrollTop(0).css({"overflow-y": "hidden"}); //滑鼠離開
-			  }
-			});
+
 		
 	});
 
@@ -125,11 +122,11 @@ span.emotion:hover {
 		<div style="background: white">
 			<input type="hidden" id="messageName" size="50" value="考生  ${ecno}">
 			</br>
-			<div contenteditable="false" id="show" style="width: 450px;height:450px;"></div>
-			</br> <input type="text" id="messageText" name="messageText" size="50">
+			<div contenteditable="false" id="show" style="width:700px;height:300px; overflow:scroll"></div>
+			</br> <input type="text" id="messageText" name="messageText" >
 			<p>
-				<input type="button" class="sub_btn" value="send"
-					onclick="sendMessage();"><span class="emotion">表情</span>
+				<span class="emotion">表情</span>
+				<a class="waves-effect waves-light btn" onclick="sendMessage();"><i class="large material-icons">mode_edit</i></a>
 			</p>
 		</div>
 	</div>

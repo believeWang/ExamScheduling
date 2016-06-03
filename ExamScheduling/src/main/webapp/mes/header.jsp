@@ -7,7 +7,6 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link href="/ExamScheduling/chat/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
 <style>
 @import url('<%=request.getContextPath()%>/mes/css/main.css');
 #mqtt {
