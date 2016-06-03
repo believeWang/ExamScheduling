@@ -1,47 +1,10 @@
-body {
-	background: #c0c0c0;
-}
 
 #allpage {
 	width: 1024px;
 	margin: 0 auto;
 }
 
-#menu {
-	overflow: auto !important; /*!important,for IE7*/
-	overflow /**/: hidden;
-	/* for IE5,overflow為auto時,Box的寬度會加計scroll bar區塊的寬度,因此使用和Box Model Hack同樣的方式,只讓IE5將屬性當作hidden*/
-	width: 75%;
-	border-top-right-radius: 15px;
-	border-top-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-	border-bottom-left-radius: 15px;
-	margin: 0 auto;
-}
 
-#menu li {
-	float: left;
-	list-style-type: none;
-	width: 12em; /*為了讓連結區域能依字型大小的變化自動放大,因此在指定width屬性時採用em為單位*/
-	height: 4em;
-	border-right: 1px solid #cccccc;
-	font-size: 25px;
-	font-color: #FFFFFF;
-}
-
-#menu li a {
-	display: block;
-	width: 100%;
-	line-height: 4em; /*讓文字上下空出適當的空白,不用padding屬性,直接將行Box的高度設的高一些*/
-	color: #ffffff;
-	text-decoration: none;
-	text-align: center;
-}
-
-#menu li a:hover {
-	color: #000000;
-	background-color: #FFFFFF;
-}
 
 fieldset {
 	width: 500px;
