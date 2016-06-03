@@ -49,6 +49,14 @@ public class ECService {
 				ecDAO.updatepsd(ecVO);
 				return ecVO;
 			}
+	public List<String>getAllClass() {
+		return ecDAO.getAllClass();
+		
+	}
+	public List<ECVO> getEEIT(String eeitName) {
+		return ecDAO.getEEIT(eeitName);
+		
+	}
 	
 		
 }

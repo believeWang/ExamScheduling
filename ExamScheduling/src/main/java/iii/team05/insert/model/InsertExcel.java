@@ -1,6 +1,7 @@
 package iii.team05.insert.model;
 
 import iii.team05.examinee.ecmodel.ECHibernateDAO;
+import iii.team05.examinee.ecmodel.ECService;
 import iii.team05.examinee.ecmodel.ECVO;
 import iii.team05.examinee.ecmodel.ESVO;
 import iii.team05.examinee.ecmodel.ScoreVO;
@@ -41,22 +42,38 @@ public class InsertExcel extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		// ServletContext context = getServletContext();
-		// String excelFile = "/WEB-INF/datastore/WebcommEEIT_1.0.xlsx";
-
-
+		String iiiClass = request.getParameter("iiiClass");
 		String method = request.getParameter("_m");
-		if ("poi_down".equals(method)) {
-			poi_down(request, response);
-		} else if ("poi_upload".equals(method)) {
-			poi_upload(request, response);
-		}
 
+		ECService ecService = new ECService();
+		List<String> allClass = ecService.getAllClass();
+
+		if ("poi_upload".equals(method)) {
+			poi_upload(request, response);
+		} else {
+			if (iiiClass == null && method == null) { // 初始化
+				request.setAttribute("allClass", allClass);
+
+			} else {
+
+				for (String cs : allClass) {
+					if (cs.equals(iiiClass)) {
+						// 把這個班級的人
+						List<ECVO> showclass = ecService.getEEIT(cs);
+						request.setAttribute("showclass", showclass);	
+			
+						break;
+					}
+				}
+
+				if ("poi_down".equals(method)) {
+					poi_down(request, response);
+				}
+			}
+		}
 
 	}
 
-	
-	
 	private void poi_upload(HttpServletRequest request,
 			HttpServletResponse response) {
 		if (ServletFileUpload.isMultipartContent(request)) {
@@ -82,16 +99,13 @@ public class InsertExcel extends HttpServlet {
 						System.out
 								.println("\n---------------------------------------");
 
-						if (".xls".equals(excelContentType)||".xlsx".equals(excelContentType)) {
-//							POIFSFileSystem fileSystem = new POIFSFileSystem(
-//									item.getInputStream());
-							
-							// 原本讀的
-							// InputStream inp =
-							// context.getResourceAsStream(excelFile);
-
+						if (".xls".equals(excelContentType)
+								|| ".xlsx".equals(excelContentType)) {
+							// POIFSFileSystem fileSystem = new POIFSFileSystem(
+							// item.getInputStream());
 							// 從輸入流創建Workbook
-							XSSFWorkbook workbook = new XSSFWorkbook(item.getInputStream());
+							XSSFWorkbook workbook = new XSSFWorkbook(
+									item.getInputStream());
 							// 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始）
 							XSSFSheet sheet1 = workbook.getSheetAt(0);
 							// 取得Sheet表中所包含的總row數
@@ -161,14 +175,16 @@ public class InsertExcel extends HttpServlet {
 								;
 
 								// 期望薪資
-								Integer essalary = getIntFromString(transform(row, 14));
+								Integer essalary = getIntFromString(transform(
+										row, 14));
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float essalaryf =
 								// Float.parseFloat(transform(row, 14));
 								// Integer essalary = (int) essalaryf;
 
 								// Final Ranking
-								Integer esranking = getIntFromString(transform(row, 15));
+								Integer esranking = getIntFromString(transform(
+										row, 15));
 
 								// 備註2
 								String esremark2 = transform(row, 16);
@@ -177,21 +193,24 @@ public class InsertExcel extends HttpServlet {
 								Integer lab = getIntFromString(transform(row, 9));
 
 								// 面試分數
-								Integer interview = getIntFromString(transform(row, 11));
+								Integer interview = getIntFromString(transform(
+										row, 11));
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float interviewf =
 								// Float.parseFloat(transform(row, 11));
 								// Integer interview = (int) interviewf;
 
 								// 上機考時間(分鐘)
-								Integer labtime = getIntFromString(transform(row, 10));
+								Integer labtime = getIntFromString(transform(
+										row, 10));
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float labtimef =
 								// Float.parseFloat(transform(row, 10));
 								// Integer labtime = (int) labtimef;
 
 								// 線上測驗分數
-								Integer onlineex = getIntFromString(transform(row, 12));
+								Integer onlineex = getIntFromString(transform(
+										row, 12));
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float onlineexf =
 								// Float.parseFloat(transform(row, 12));
@@ -326,7 +345,8 @@ public class InsertExcel extends HttpServlet {
 			newrow.createCell(8).setCellValue(ecVO.getEcstatus());
 			newrow.createCell(9).setCellValue(ecVO.getScoreVO().getLab());
 			newrow.createCell(10).setCellValue(ecVO.getScoreVO().getLabtime());
-			newrow.createCell(11).setCellValue(ecVO.getScoreVO().getInterview());
+			newrow.createCell(11)
+					.setCellValue(ecVO.getScoreVO().getInterview());
 			newrow.createCell(12).setCellValue(ecVO.getScoreVO().getOnlineex());
 			newrow.createCell(13).setCellValue(
 					ecVO.getScoreVO().getLab()
@@ -401,13 +421,13 @@ public class InsertExcel extends HttpServlet {
 	 *      response)
 	 */
 
-//	private double parse(String cell) {
-//		if (cell != null && cell.trim().length() > 0) {
-//			return Double.parseDouble(cell);
-//		} else {
-//			return 0.0;
-//		}
-//	}
+	// private double parse(String cell) {
+	// if (cell != null && cell.trim().length() > 0) {
+	// return Double.parseDouble(cell);
+	// } else {
+	// return 0.0;
+	// }
+	// }
 
 	private int getIntFromString(String cell) {
 		int result = 0;

@@ -21,9 +21,6 @@
 <title>班級表單上傳與下載</title>
 <style type="text/css">
 html {
-	height: 100%;
-	width: 100%;
-	margin: 0;
 	padding-left: 10%;
 	padding-right: 10%;
 }
@@ -31,13 +28,36 @@ html {
 </head>
 <body>
 	<h2>班級表單上傳與下載</h2>
-	<a href="poitest.jspx?_m=poi_down">下载</a>
-	<br>
-	<hr>
-	<form action="poitest.jspx?_m=poi_upload" method="post"
-		enctype="multipart/form-data">
-		<input type="file" name="file"> <input type="submit"
-			value="上傳" class="btn btn-info">
-	</form>
+	<div class="row">
+		<div class="col-md-2">
+			<div>
+				<ul class="list-group">
+					<c:forEach var="ecclass" items="${allclass}">
+						<a href="InsertExcel?iiiClass=${allclass.ecclass}">
+							<li class="list-group-item">${allclass.ecclass}</li>
+						</a>
+
+					</c:forEach>
+				</ul>
+			</div>
+			<div>
+				<h4>上傳新班級名單</h4>
+				<form action="poitest.jspx?_m=poi_upload" method="post"
+					enctype="multipart/form-data">
+					<input type="file" name="file"> <input type="submit"
+						value="上傳" class="btn btn-info">
+				</form>
+				<hr>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div>
+				<h2>班級詳細資料</h2>
+				<p>show all students of this class</p> 
+				<a href="poitest.jspx?_m=poi_down">下载目前班級為Excel檔</a>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
