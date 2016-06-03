@@ -38,6 +38,7 @@ public class InsertExcel extends HttpServlet {
 		String excelFile = "/WEB-INF/data_test/WebcommEEIT_1.0.xlsx";
 
 		try {
+			String excel=request.getServletPath();
 			InputStream inp = context.getResourceAsStream(excelFile);
 
 			// 從輸入流創建Workbook

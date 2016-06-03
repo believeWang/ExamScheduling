@@ -9,6 +9,8 @@ import org.hibernate.Session;
 
 
 
+
+
 import iii.team05.hibernate.util.*;
 
 public class ECHibernateDAO implements ECDao_interface{
@@ -123,6 +125,24 @@ public class ECHibernateDAO implements ECDao_interface{
 			throw ex;
 		}
 		
+	}
+
+	public void getEEIT(ECVO examineeCatVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.saveOrUpdate(examineeCatVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
+	}
+
+	public List<ECVO> setEEIT(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
