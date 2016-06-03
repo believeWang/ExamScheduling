@@ -19,13 +19,9 @@
 <br>
 <FORM METHOD="post" ACTION="/ExamScheduling/aboutedit"  >
 <textarea class="ckeditor" cols="80" id="content" name=content rows="12">${about}</textarea>
-<input type=submit value="Submit">
-<input type="hidden" name="action" value="Editor_Update">
+<input type=submit value="Submit" >
+<input type="hidden" name="action" value="Editor_Update"> 
 <input type=button value="Cancel">
-<script>
-// 		CKEDITOR.replace( 'content', {
-// 			height: 260
-// 		} );
-	</script>
+
 </FORM>
 </html>
