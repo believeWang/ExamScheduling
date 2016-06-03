@@ -10,10 +10,23 @@
 <body>
 <h2>E-mail-編輯頁面</h2>
 <FORM METHOD="get" ACTION="/ExamScheduling/setting/editmail"  >
+
 <textarea class="ckeditor" cols="80" id="content" name=content rows="12">${mail}</textarea>
-<input type=submit value="讀取mail內文" >
-<input type="hidden" name="action" value="Mail_Content_Query">
-</FORM>
+
+<!-- 單獨取出mail內文寫法 -->
+<!-- <input type=submit value="讀取mail內文" > -->
+<!-- <input type="hidden" name="action" value="Mail_Content_Query"> -->
+
+
+<!-- 利用java script onchange做下拉選單給值抓資料庫寫法 -->
+<select name="action" onchange="functionname(this.options[this.options.selectedIndex].value)">
+<option value="">請選擇</option>
+<option value="Mail_Content_Query">修改mail內文</option>
+<option value="Mail_Subject_Query">修改mail主旨</option>
+</select> 
+<input type=submit value="讀取" >
+
+</FORM> 
 </body>
 </html>
 
