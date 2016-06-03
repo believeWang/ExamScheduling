@@ -36,29 +36,49 @@ public class EditmailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		STService stSvc = new STService();
-		
+
+		  if ("Mail_Subject_Query".equals(action)){     // 來自loadmail.jsp的action查詢請求 
+				List<STVO> mailArticle = stSvc.query();
+				String subject= null;
+				for(STVO s:mailArticle){
+					subject = s.getEmailsubject();
+					System.out.println(subject);
+	      }
+				request.setAttribute("mail", subject);     // 將第一項資訊放入request物件內
+		        RequestDispatcher rd =                     // 準備將移轉程式的執行順序
+		               request.getRequestDispatcher("/setting/editsubject.jsp");
+		        rd.forward(request, response);             // 移轉程式的執行順序
+		        return ;                                   // forward()之後會有一個return敘述	
+		  } 
 			
-		  if ("Mail_Content_Query".equals(action)){     // 來自loadmail.jsp的查詢請求
+		  if ("Mail_Content_Query".equals(action)){    // 來自loadmail.jsp的action查詢請求 
 			List<STVO> mailArticle = stSvc.query();
 			String content= null;
 			for(STVO s:mailArticle){
-			 content = s.getEmailtemplate();
+			 content = s.getEmailcontent();
 				System.out.println(content);
 			}
-	
-			request.setAttribute("mail", content);     // 將第一項資訊放入request物件內
-	        RequestDispatcher rd =                     // 準備將移轉程式的執行順序
-	               request.getRequestDispatcher("/setting/editmail.jsp");
-	        rd.forward(request, response);             // 移轉程式的執行順序
-	        return ;                                   // forward()之後會有一個return敘述	
+			request.setAttribute("mail", content);        // 將第一項資訊放入request物件內
+	        RequestDispatcher rd =                        // 準備將移轉程式的執行順序
+	               request.getRequestDispatcher("/setting/editcontent.jsp");
+	        rd.forward(request, response);                // 移轉程式的執行順序
+	        return ;                                      // forward()之後會有一個return敘述	
+		  }
+		  
+		  
+		  if ("Mail_Subject_Update".equals(action)){
+			  String emailsubject = request.getParameter("subject");
+			  System.out.println(emailsubject);            //測試editmail.jsp有傳更新資料進來
+			  stSvc.updateMailsubject(emailsubject);       //呼叫STService的updatemail()方法工作
 		  }
 		
 		  if ("Mail_Content_Update".equals(action)){
-			  String emailtemplate = request.getParameter("content");
-			  System.out.println(emailtemplate);             //測試editmail.jsp有傳更新資料進來
-			  stSvc.updateMail(emailtemplate);            //呼叫STService的updatemail()方法工作
+			  String emailcontent = request.getParameter("content");
+			  System.out.println(emailcontent);            //測試editmail.jsp有傳更新資料進來
+			  stSvc.updateMailcontent(emailcontent);       //呼叫STService的updatemail()方法工作
 		  }
-		
+		 
+		  
 }
 	
 
