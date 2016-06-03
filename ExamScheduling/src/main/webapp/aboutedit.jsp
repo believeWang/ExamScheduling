@@ -3,6 +3,10 @@
 <!DOCTYPE>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript"
 	src="//cdn.ckeditor.com/4.5.9/full/ckeditor.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

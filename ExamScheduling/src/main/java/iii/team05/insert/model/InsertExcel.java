@@ -6,9 +6,7 @@ import iii.team05.examinee.ecmodel.ESVO;
 import iii.team05.examinee.ecmodel.ScoreVO;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -28,7 +26,6 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -346,6 +343,7 @@ public class InsertExcel extends HttpServlet {
 			System.out.println("下载成功");
 			stream.flush();
 			stream.close();
+			workbook.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -401,14 +399,13 @@ public class InsertExcel extends HttpServlet {
 	 *      response)
 	 */
 
-	private double parse(String cell) {
-		if (cell != null && cell.trim().length() > 0) {
-			return Double.parseDouble(cell);
-		} else {
-			return 0.0;
-		}
-
-	}
+//	private double parse(String cell) {
+//		if (cell != null && cell.trim().length() > 0) {
+//			return Double.parseDouble(cell);
+//		} else {
+//			return 0.0;
+//		}
+//	}
 
 	private int getIntFromString(String cell) {
 		int result = 0;
