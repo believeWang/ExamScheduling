@@ -1,4 +1,4 @@
-package iii.team05.job.model;
+package iii.team05.jober.model;
 
 import iii.team05.hibernate.util.HibernateUtil;
 
@@ -7,14 +7,14 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class JobDAO implements JobDAO_interface{
-	private static final String GET_ALL_STMT = "FROM JobVO";
+public class JobErDAO implements JobErDAO_interface{
+	private static final String GET_ALL_STMT = "from OptionsVO order by optionsno";
 	@Override
-	public void insert(JobVO jobVO) {
+	public void insert(JobErVO jobErVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();//創建Session()
 		try {
 			session.beginTransaction();//1
-			session.saveOrUpdate(jobVO);
+			session.saveOrUpdate(jobErVO);
 			session.getTransaction().commit();//2
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();//3
@@ -24,11 +24,11 @@ public class JobDAO implements JobDAO_interface{
 	}
 
 	@Override
-	public void update(JobVO jobVO) {
+	public void update(JobErVO jobErVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(jobVO);
+			session.saveOrUpdate(jobErVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -38,12 +38,12 @@ public class JobDAO implements JobDAO_interface{
 	}
 
 	@Override
-	public void delete(Integer jobid) {
+	public void delete(Integer id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			JobVO jobVO = (JobVO) session.get(JobVO.class, jobid);			
-			session.delete(jobid);
+			JobErVO jobErVO = (JobErVO) session.get(JobErVO.class, id);			
+			session.delete(id);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -53,23 +53,23 @@ public class JobDAO implements JobDAO_interface{
 	}
 
 	@Override
-	public JobVO findByPrimaryKey(Integer jobid) {
-		JobVO jobVO = null;
+	public JobErVO findByPrimaryKey(Integer id) {
+		JobErVO jobErVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			jobVO = (JobVO) session.get(JobVO.class, jobid);
+			jobErVO = (JobErVO) session.get(JobErVO.class, id);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return jobVO;
+		return jobErVO;
 	}
 
 	@Override
-	public List<JobVO> getAll() {
-		List<JobVO> list = null;
+	public List<JobErVO> getAll() {
+		List<JobErVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
