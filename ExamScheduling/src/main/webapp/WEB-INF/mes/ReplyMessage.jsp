@@ -15,7 +15,7 @@ MesVO mesVO = (MesVO) request.getAttribute("mesVO");
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="/mes/header.jsp" %>>
 
 <FORM METHOD="post" ACTION="mes.do" name="form2">
 <table align='center' border="1px">

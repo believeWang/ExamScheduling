@@ -7,6 +7,13 @@ public class ECVO implements java.io.Serializable{
 	private String ecpsd;
 	private Boolean ecstatus;
 	private String ecremark1;
+	private String ecclass;
+	public String getEcclass() {
+		return ecclass;
+	}
+	public void setEcclass(String ecclass) {
+		this.ecclass = ecclass;
+	}
 	private ESVO eSVO;
 	private ScoreVO scoreVO;
 	

@@ -1,10 +1,6 @@
-package iii.team05.section.controller;
-
-import iii.team05.section.model.SectionDAO;
-import iii.team05.section.model.SectionVO;
+package iii.team05.mes.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SectionServlet
+ * Servlet implementation class MesTurn
  */
-@WebServlet("/section/SectionServlet")
-public class SectionServlet extends HttpServlet {
+@WebServlet("/MesTurn")
+public class MesTurn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SectionServlet() {
+    public MesTurn() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,8 +29,29 @@ public class SectionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		doPost(request, response);
+		String turn=request.getParameter("turn");
+		switch (turn) {
+		case "LM":
+			request.getRequestDispatcher("/WEB-INF/mes/LeaveMessage.jsp").forward(request, response);	
+			break;
+		case "LAM":
+			request.getRequestDispatcher("/WEB-INF/mes/ListAllMessage.jsp").forward(request, response);	
+			break;
+		case "LNRM":
+			request.getRequestDispatcher("/WEB-INF/mes/ListNotReplyMessage.jsp").forward(request, response);
+			break;
+		case "LOM":
+			request.getRequestDispatcher("/WEB-INF/mes/ListOneMessage.jsp").forward(request, response);
+			break;
+		case "RM":
+			request.getRequestDispatcher("/WEB-INF/mes/ReplyMessage.jsp").forward(request, response);
+			break;
+		case "MQTT":
+			request.getRequestDispatcher("/WEB-INF/chat/mqtt31.jsp").forward(request, response);
+			break;
+		default:
+			break;
+		}
 	}
 
 	/**
@@ -42,21 +59,6 @@ public class SectionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		
-		SectionDAO sectionDAO = new SectionDAO();
-		List<SectionVO> sectionlists = sectionDAO.getAll();
-		
-		for(SectionVO sectionVO : sectionlists){
-			System.out.println(sectionVO.getSectiontime());
-			System.out.println(sectionVO.getSectionStatus());
-		}
-		
-		request.setAttribute("sectionlists", sectionlists);
-		
-		RequestDispatcher jb = request.getRequestDispatcher("/section/section_lists.jsp");
-		jb.forward(request, response);
-		
 	}
 
 }
