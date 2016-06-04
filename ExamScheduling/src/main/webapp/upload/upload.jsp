@@ -28,6 +28,7 @@ html {
 </head>
 <body>
 	<h2>班級表單上傳與下載</h2>
+	<hr>
 	<div class="row">
 		<div class="col-md-3">
 			<div>
@@ -35,8 +36,9 @@ html {
 				<table>
 					<c:forEach var="showclasslist" items="${allClass}" varStatus="loopCounter">
 						<tr>
-						<td>${loopCounter.count }</td>
-						<td>${showclasslist}</td>
+						
+						<td><a href="http://tw.yahoo.com">${showclasslist}</a></td>
+						
 						</tr>
 					</c:forEach>
 					</table>
