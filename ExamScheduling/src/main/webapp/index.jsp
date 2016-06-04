@@ -13,7 +13,7 @@
 <h1><a href="<%=request.getContextPath()%>/aboutedit">公司簡介編輯</a></h1>
 <h1><a href="<%=request.getContextPath()%>/recaptcha.jsp">後台登入</a></h1>
 <h1><a href="<%=request.getContextPath()%>/validate/checkmail.jsp">mail驗證</a></h1>
-
+<h1><a href="<%=request.getContextPath()%>/upload/poitest.jspx">上傳下載excel檔</a></h1>
 
 
 ${googleLoginErrors.loginNg}

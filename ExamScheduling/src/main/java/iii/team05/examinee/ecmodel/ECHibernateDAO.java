@@ -90,6 +90,7 @@ public class ECHibernateDAO implements ECDao_interface{
 		
 	}
 
+	//取得班級名稱
 	public List<ECVO> getEEIT(String eeitName) {
 		List<ECVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();

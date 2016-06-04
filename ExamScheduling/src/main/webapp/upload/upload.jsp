@@ -5,7 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -29,16 +29,17 @@ html {
 <body>
 	<h2>班級表單上傳與下載</h2>
 	<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<div>
-				<ul class="list-group">
-					<c:forEach var="ecclass" items="${allclass}">
-						<a href="InsertExcel?iiiClass=${allclass.ecclass}">
-							<li class="list-group-item">${allclass.ecclass}</li>
-						</a>
-
+			<h4>班級列表</h4>
+				<table>
+					<c:forEach var="showclasslist" items="${allClass}" varStatus="loopCounter">
+						<tr>
+						<td>${loopCounter.count }</td>
+						<td>${showclasslist}</td>
+						</tr>
 					</c:forEach>
-				</ul>
+					</table>
 			</div>
 			<div>
 				<h4>上傳新班級名單</h4>
@@ -50,7 +51,7 @@ html {
 				<hr>
 			</div>
 		</div>
-		<div class="col-md-10">
+		<div class="col-md-9">
 			<div>
 				<h2>班級詳細資料</h2>
 				<p>show all students of this class</p> 

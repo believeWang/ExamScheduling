@@ -18,7 +18,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -47,13 +46,15 @@ public class InsertExcel extends HttpServlet {
 
 		ECService ecService = new ECService();
 		List<String> allClass = ecService.getAllClass();
-
+		for(String all : allClass){
+		}
 		if ("poi_upload".equals(method)) {
 			poi_upload(request, response);
+			
 		} else {
 			if (iiiClass == null && method == null) { // 初始化
 				request.setAttribute("allClass", allClass);
-
+				request.getRequestDispatcher("/upload/upload.jsp").forward(request, response);
 			} else {
 
 				for (String cs : allClass) {
@@ -71,7 +72,7 @@ public class InsertExcel extends HttpServlet {
 				}
 			}
 		}
-
+		
 	}
 
 	private void poi_upload(HttpServletRequest request,
@@ -122,8 +123,7 @@ public class InsertExcel extends HttpServlet {
 
 								for (int j = 0; j < row
 										.getPhysicalNumberOfCells(); j++) {
-									// System.out.println(row.getCell(j));
-									System.out.println(transform(row, j));
+							
 								}
 
 								// ECVO ECVO 也稱為 Domain objects
@@ -147,12 +147,17 @@ public class InsertExcel extends HttpServlet {
 								// 是否已約上機
 								// Boolean ecstatus = new
 								// Boolean(row.getCell(8).toString());
-								Boolean ecstatus = new Boolean(
-										transform(row, 8));
-
+								String status =(transform(row, 8));
+								Boolean ecstatus;
+								if("是".equals(status)){
+									ecstatus = true;
+								}else{
+									ecstatus=false;
+								}
+								//班級
+								String ecclass = ecno.substring(0, 6);
 								// 組別
-								float esteamf = Float.parseFloat(transform(row,
-										0));
+								float esteamf = Float.parseFloat(transform(row,0));
 								Integer esteam = (int) esteamf;
 								// 年次
 								float esbirthf = Float.parseFloat(transform(
@@ -161,9 +166,13 @@ public class InsertExcel extends HttpServlet {
 								// 畢業學校
 								String esschool = transform(row, 5);
 								// 性別
-								Boolean essex = new Boolean(transform(row, 6));
-								System.out.println(esschool);
-								System.out.println(essex);
+								String sex =(transform(row, 6));
+								Boolean essex;
+								if("男".equals(sex)){
+								 essex = true;
+								}else{
+									essex=false;
+								}
 								// 最快可以上班日期
 								XSSFCell dateCell = row.getCell(13);
 								java.sql.Date eshiredate = null;
@@ -173,7 +182,6 @@ public class InsertExcel extends HttpServlet {
 											.getDateCellValue().getTime());
 								}
 								;
-
 								// 期望薪資
 								Integer essalary = getIntFromString(transform(
 										row, 14));
@@ -185,13 +193,10 @@ public class InsertExcel extends HttpServlet {
 								// Final Ranking
 								Integer esranking = getIntFromString(transform(
 										row, 15));
-
 								// 備註2
 								String esremark2 = transform(row, 16);
-
 								// 上機考分數
 								Integer lab = getIntFromString(transform(row, 9));
-
 								// 面試分數
 								Integer interview = getIntFromString(transform(
 										row, 11));
@@ -221,6 +226,7 @@ public class InsertExcel extends HttpServlet {
 								ecvo.setEcemail(ecemail);
 								ecvo.setEcremark1(ecremark1);
 								ecvo.setEcstatus(ecstatus);
+								ecvo.setEcclass(ecclass);
 
 								esvo.setEcno(ecno);
 								esvo.setEsteam(esteam);
@@ -244,13 +250,13 @@ public class InsertExcel extends HttpServlet {
 								ecvo.seteSVO(esvo);
 								ecvo.setScoreVO(scoreVO);
 								// 載入進資料庫
-								dao.insert(ecvo);
-
+								dao.insert(ecvo);						
 							}
+	
+							request.getRequestDispatcher("uploadSucessed.jsp").forward(request, response);
 						}
 					}
 				}
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
