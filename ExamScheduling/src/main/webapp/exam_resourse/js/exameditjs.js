@@ -1,4 +1,10 @@
 var form = $('#myForm');
+
+
+
+
+
+
 // 改變單選多選
 form.on('change', '.mySelect', function(e) {
 
@@ -28,11 +34,37 @@ form.on('change', '.mySelect', function(e) {
 
 });
 
-var numberOfQuestion = 1;
-var idNum = 1;
+
 var jqueryNumberOfQuestion = $('#numberOfQuestion');
+var numberOfQuestion =jqueryNumberOfQuestion.val();
+var idNum = jqueryNumberOfQuestion.val();
 var addBtn = $('#addQuestion');
 var ul = $('ul[class="section table-of-contents"]');
+
+if(numberOfQuestion>1){
+	for(var i=2;i<=numberOfQuestion;i++){
+		
+		if (numberOfQuestion < 10)
+			ul.append('<li><a href="#q' + i + '">0' + i
+					+ '</a><i id="i' + i
+					+ '" class="tiny material-icons">delete</i></li>');
+		else
+			ul.append('<li><a href="#q' + i + '">' + i
+					+ '</a><i id="i' + i
+					+ '" class="tiny material-icons">delete</i></li>');
+
+	
+		
+	}
+	$('.scrollspy').scrollSpy();
+}
+
+
+
+
+
+
+
 // submit前把總題數傳進去
 form.submit(function() {
 	jqueryNumberOfQuestion.val(idNum);
@@ -116,48 +148,81 @@ function appendText() {
 	$('.scrollspy').scrollSpy();
 }
 // 刪除
-var rightUl = $('ul[class="section table-of-contents"]');
-rightUl.on("click", "i[id*='i']", function() {
-	numberOfQuestion--;
 
+ul.on("click", "i[id*='i']", function() {
 	var questionNO = $(this).attr('id');
 	questionNO = parseInt(questionNO.replace("i", ""));
+	swal({
+		  title: 'Are you sure?',
+		  text: "確定刪除此題嗎?",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: "刪除",   
+		  cancelButtonText: "取消",   
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: false
+		}).then(function(isConfirm) {
+		  if (isConfirm === true) {
+			  numberOfQuestion--;
 
-	//			
-	$('input[name="group' + questionNO + '"]').parent().parent().remove();
-	$('textarea[name="title' + questionNO + '"]').parent().parent().remove();
 
-	rightUl.children('li').each(function(index, value) {
-		if (index == 0)
-			return;
-		value = $(value);
+          	//			
+          	$('input[name="group' + questionNO + '"]').parent().parent().remove();
+          	$('textarea[name="title' + questionNO + '"]').parent().parent().remove();
 
-		var valueId = value.children('i').attr('id');
-		valueId = parseInt(valueId.replace("i", ""));
+          	ul.children('li').each(function(index, value) {
+          		if (index == 0)
+          			return;
+          		value = $(value);
 
-		if (valueId == questionNO) {
-			value.remove();
-		} else if (valueId > questionNO) {
-			// value.children('i').attr('id','i'+(index-1));
-			if (index < 10)
-				value.children('a').text('0' + (index - 1));
-			else
-				value.children('a').text(index - 1);
-		}
-		// $(value).children('i').attr('id','i'+index);
-		// .attr("id","newId");
-	});
+          		var valueId = value.children('i').attr('id');
+          		valueId = parseInt(valueId.replace("i", ""));
+
+          		if (valueId == questionNO) {
+          			value.remove();
+          		} else if (valueId > questionNO) {
+          			// value.children('i').attr('id','i'+(index-1));
+          			if (index < 10)
+          				value.children('a').text('0' + (index - 1));
+          			else
+          				value.children('a').text(index - 1);
+          		}
+          		// $(value).children('i').attr('id','i'+index);
+          		// .attr("id","newId");
+          	});
+              swal("Deleted!", "成功刪除", "success");   
+		  } else if (isConfirm === false) {
+		    swal(
+		      'Cancelled',
+		      'Your imaginary file is safe :)',
+		      'error'
+		    );
+		  } else {
+			  swal("Cancelled", "取消", "error");  
+		  }
+		})
+	
+	
+	
+	
+	
 });
 // 資料驗證
 
 $(function() {
-
+	jQuery.validator.addMethod("noChinese", function(value, element) {
+		  return this.optional(element) || /^[a-zA-Z0-9]+$/i.test(value);
+		}, "只能數字或英文"); 
 	form.validate({
 		onkeyup : false,
 		rules : {
 			
 			examno : {
 				minlength : 2,
+				noChinese:true,
 				"remote" : {
 					url : 'ExamEdit',
 					type : "post",
@@ -199,3 +264,5 @@ $(function() {
 		}
 	})
 })
+
+

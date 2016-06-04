@@ -9,6 +9,7 @@ public class OptionsVO implements java.io.Serializable {
 	private Boolean isAnswer;
 	private Integer detailno;
 	private ExamDetailVO examDetail;
+	private ExamVO examVO;
 	public ExamDetailVO getExamDetail() {
 		return examDetail;
 	}
@@ -45,6 +46,12 @@ public class OptionsVO implements java.io.Serializable {
 		
 				
 		return str;
+	}
+	public ExamVO getExamVO() {
+		return examVO;
+	}
+	public void setExamVO(ExamVO examVO) {
+		this.examVO = examVO;
 	}
 
 }
