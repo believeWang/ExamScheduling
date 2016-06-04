@@ -22,6 +22,8 @@
                 <column name="jobid" not-null="true" />
             </many-to-many>
         </set>
+        <property name="token" column="token" />
+        
         
         
     </class>

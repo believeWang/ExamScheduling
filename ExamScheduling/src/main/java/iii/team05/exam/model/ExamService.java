@@ -25,6 +25,10 @@ public class ExamService {
     public ExamVO getExam(String examno){
     	return examDAO.findByPrimaryKey(examno);
     }
+    public void insetExam(ExamVO examVO){
+    	System.out.println(examVO.getExamImg().length);
+    	 examDAO.insert(examVO);
+    }
 	
 	public void putExamDetailInRequest(String examno, HttpServletRequest request) {
 		HttpSession session=request.getSession();

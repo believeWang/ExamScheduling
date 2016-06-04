@@ -12,7 +12,8 @@
 		<property name="period" column="period" />
 		<property name="ecnum" column="ecnum" />
 		<property name="ernum" column="ernum" />
-		<property name="emailtemplate" column="emailtemplate" />
+		<property name="emailsubject" column="emailsubject" />
+		<property name="emailcontent" column="emailcontent" />
 
 	</class>
 </hibernate-mapping>

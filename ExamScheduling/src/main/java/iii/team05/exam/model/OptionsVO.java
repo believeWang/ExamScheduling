@@ -39,6 +39,12 @@ public class OptionsVO implements java.io.Serializable {
 	public void setDetailno(Integer detailno) {
 		this.detailno = detailno;
 	}
-	
+	@Override
+	public String toString(){
+		String str="optionsName:"+optionsName+" isAnswer:"+isAnswer;
+		
+				
+		return str;
+	}
 
 }

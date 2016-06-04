@@ -58,6 +58,7 @@ public class GoogleCheck extends HttpServlet {
 		String email = null;
 		String name = null;
 		int pos = 0;
+		String empToken=null;
 		response.setContentType("text/html; charset=UTF-8");
 		URL ut =new URL("https://accounts.google.com/o/oauth2/token");
 		HttpsURLConnection ct=(HttpsURLConnection) ut.openConnection();
@@ -106,7 +107,7 @@ public class GoogleCheck extends HttpServlet {
 		  try {
 		   // 把上面取回來的資料，放進JSONObject中，以方便我們直接存取到想要的參數
 		   JSONObject jo = new JSONObject(sbLines.toString());		    
-		  email =jo.getString("email");
+		   email =jo.getString("email");
 //		  name =jo.getString("name");
 		  } catch (JSONException e) {
 		   e.printStackTrace();
@@ -114,13 +115,16 @@ public class GoogleCheck extends HttpServlet {
 		 }
 			EmployeeService emSvc = new EmployeeService();
 			List<EmployeeVO> ecVO =  emSvc.check(email);
-
+			
 
 		 	 for (EmployeeVO s : ecVO) {
 		 		pos=s.getPosition();
 		 	 }
 		 	 for (EmployeeVO s : ecVO) {
 		 		name=s.getEmpname();
+		 	 }
+		 	for (EmployeeVO s : ecVO) {
+		 		empToken = s.getToken();
 		 	 }
 		 	if(ecVO.size()==0){
 				errors.put("loginNg", "您非我司員工");
@@ -134,16 +138,18 @@ public class GoogleCheck extends HttpServlet {
 				failureView.forward(request, response);
 			}else if(pos==1){
 				HttpSession session = request.getSession();
-				  session.setAttribute("GoogleUser", name);
+				session.setAttribute("GoogleUser", name);
+				session.setAttribute("GoogleEmail", email);
 				String from=  (String) session.getAttribute("dest");
-					System.out.println(from);
 				if(from==null){
 //				RequestDispatcher failureView = request
 //				.getRequestDispatcher("mes/index2.jsp");
 //				failureView.forward(request, response);
-			  response.sendRedirect(response.encodeRedirectURL("Examiner.jsp"));				
+					if(empToken==null){
+					emSvc.insertToken(email, token);				
+					}
+					response.sendRedirect(response.encodeRedirectURL("Examiner.jsp"));				
 					}else{
-						System.out.println("sss");
 						response.sendRedirect(response.encodeRedirectURL(from));
 						
 					}
@@ -151,8 +157,18 @@ public class GoogleCheck extends HttpServlet {
 
 			}else{
 				HttpSession session = request.getSession();
-				  session.setAttribute("GoogleUser", name);
-				  response.sendRedirect(response.encodeRedirectURL("sa.jsp"));
+				session.setAttribute("GoogleUser", name);
+				session.setAttribute("GoogleEmail", email);
+				String from=  (String) session.getAttribute("dest");
+				  if(from==null){
+							if(empToken==null){
+							emSvc.insertToken(email, token);				
+							}
+							response.sendRedirect(response.encodeRedirectURL("sa.jsp"));				
+							}else{
+								response.sendRedirect(response.encodeRedirectURL(from));
+								
+							}
 			}
 	}
 

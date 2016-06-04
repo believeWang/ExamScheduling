@@ -66,6 +66,20 @@
 			<version>1.2</version>
 		</dependency>
 
+		<!--InsertExcel needed- http://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
+		<!-- <dependency> -->
+		<!-- <groupId>net.sourceforge.jexcelapi</groupId> -->
+		<!-- <artifactId>jxl</artifactId> -->
+		<!-- <version>2.6.12</version> -->
+		<!-- </dependency> -->
+
+		<!-- http://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.14</version>
+		</dependency>
+
 
 		<!-- JDBC sqldriver 4.0 API -->
 		<!-- 1.Run Configuration -->
@@ -81,7 +95,6 @@
 			<artifactId>sqljdbc</artifactId>
 			<version>4.0</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>javax</groupId>
@@ -103,6 +116,14 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
+		</dependency>
+
+		
+		<!-- http://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
 		</dependency>
 
 

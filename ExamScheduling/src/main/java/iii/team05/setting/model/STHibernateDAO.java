@@ -19,9 +19,16 @@ public class STHibernateDAO implements STDao_interface{
 	}
 
 	@Override
-	public void update(STVO stvo) {
-		// TODO Auto-generated method stub
-		
+	public void update(STVO stVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			session.saveOrUpdate(stVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
 	}
 
 	@Override
@@ -59,9 +66,9 @@ public class STHibernateDAO implements STDao_interface{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("from STVO where emailtemplate=:emailtemplate");
-			String emailtemplate=stVO.getEmailtemplate();
-			query.setParameter("emailtemplate",emailtemplate);
+			Query query = session.createQuery("from STVO where emailcontent=:emailcontent");
+			String emailcontent=stVO.getEmailcontent();
+			query.setParameter("emailcontent",emailcontent);
 			query.executeUpdate();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
@@ -70,5 +77,42 @@ public class STHibernateDAO implements STDao_interface{
 		}
 		
 	}
-
+	
+	/*mail主旨更新寫入*/
+	public void updatemailsubject(STVO stVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("update STVO set emailsubject = :emailsubject");
+			String emailsubject=stVO.getEmailsubject();
+//			Integer setid=stVO.getSetid();
+			query.setParameter("emailsubject",emailsubject);
+//			query.setParameter("setid",setid);
+			query.executeUpdate();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
+	}
+	
+    /*mail內文更新寫入*/
+	public void updatemailcontent(STVO stVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("update STVO set emailcontent = :emailcontent");
+			String emailcontent=stVO.getEmailcontent();
+//			Integer setid=stVO.getSetid();
+			query.setParameter("emailcontent",emailcontent);
+//			query.setParameter("setid",setid);
+			query.executeUpdate();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
+	}
 }

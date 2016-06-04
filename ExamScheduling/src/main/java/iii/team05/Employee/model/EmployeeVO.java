@@ -11,6 +11,7 @@ public class EmployeeVO  implements java.io.Serializable{
 	private String empemail;
 	private Integer position;
 	private Set<JobVO> job = new HashSet<JobVO>(0);
+	private String token;
 	
 	public Set<JobVO> getJob() {
 		return job;
@@ -18,6 +19,7 @@ public class EmployeeVO  implements java.io.Serializable{
 	public void setJob(Set<JobVO> job) {
 		this.job = job;
 	}
+
 	public Integer getEmpno() {
 		return empno;
 	}
@@ -43,6 +45,11 @@ public class EmployeeVO  implements java.io.Serializable{
 		this.position = position;
 	}
 	
-	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	
 }

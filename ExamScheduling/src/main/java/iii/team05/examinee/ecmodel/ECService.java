@@ -1,6 +1,8 @@
 package iii.team05.examinee.ecmodel;
 
-import iii.team05.mes.model.MesVO;
+
+
+import iii.team05.setting.model.STVO;
 
 import java.util.List;
 
@@ -47,5 +49,6 @@ public class ECService {
 				ecDAO.updatepsd(ecVO);
 				return ecVO;
 			}
+	
 		
 }
