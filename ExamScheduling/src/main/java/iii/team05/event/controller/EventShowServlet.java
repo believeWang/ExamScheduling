@@ -54,7 +54,7 @@ public class EventShowServlet extends HttpServlet {
 		}
 		
 		//SectionDAO secDAO = new SectionDAO();
-		//List<SectionVO> seclists = secDAO.getAll();
+		//List<SectionVO> seclists = secDAO.getAll(); 
 		
 		request.setAttribute("jdlists", jdlists);
 		request.setAttribute("jobid", jobid);

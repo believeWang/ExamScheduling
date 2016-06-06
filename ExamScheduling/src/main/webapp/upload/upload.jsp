@@ -5,7 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -32,16 +32,17 @@ html {
 	<div class="row">
 		<div class="col-md-3">
 			<div>
-			<h4>班級列表</h4>
+				<h4>班級列表</h4>
 				<table>
-					<c:forEach var="showclasslist" items="${allClass}" varStatus="loopCounter">
+					<c:forEach var="showclasslist" items="${allClass}"
+						varStatus="loopCounter">
 						<tr>
-						
-						<td><a href="http://tw.yahoo.com">${showclasslist}</a></td>
-						
+
+							<td><a href="poitest.jspx?iiiClass=${showclasslist}">${showclasslist}</a></td>
+
 						</tr>
 					</c:forEach>
-					</table>
+				</table>
 			</div>
 			<div>
 				<h4>上傳新班級名單</h4>
@@ -56,7 +57,16 @@ html {
 		<div class="col-md-9">
 			<div>
 				<h2>班級詳細資料</h2>
-				<p>show all students of this class</p> 
+				<p>show all students of this class</p>
+				<div>
+					<c:forEach var="showClass" items="${showClass}">
+						<tr>
+
+							<td>${showClass}</td>
+
+						</tr>
+					</c:forEach>
+				</div>
 				<a href="poitest.jspx?_m=poi_down">下载目前班級為Excel檔</a>
 			</div>
 		</div>
