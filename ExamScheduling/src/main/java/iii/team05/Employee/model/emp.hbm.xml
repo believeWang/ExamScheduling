@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="iii.team05.Employee.model.EmployeeVO" table="Employee" >
+        
+        <id name="empno" column="empno">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="empname" column="empname" />
+        <property name="empemail" column="empemail" />
+        <property name="position" column="position" />
+        <property name="token" column="token" />
+        
+        
+        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="iii.team05.examinee.ecmodel.ECVO" table="Examinee_Cat">
+
+		<id name="ecno" column="ecno">
+		</id>
+
+		<property name="ecname" column="ecname" />
+		<property name="ecemail" column="ecemail" />
+		<property name="ecpsd" column="ecpsd" />
+		<property name="ecstatus" column="ecstatus" />
+		<property name="ecremark1" column="ecremark1" />
+		
+		<one-to-one name="eSVO" class="iii.team05.examinee.ecmodel.ESVO"
+			cascade="all"></one-to-one>
+
+		<one-to-one name="scoreVO" class="iii.team05.examinee.ecmodel.ScoreVO"
+			cascade="all"></one-to-one>
+	</class>
+</hibernate-mapping>
