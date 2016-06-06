@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <script type="text/javascript" src="<%=request.getContextPath()%>/mes/js/jquery-1.2.3.min.js"></script> --%>
-<script type="text/javascript"	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>	 -->
+<%@ include file="/WEB-INF/cdn.file"%>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link href="/ExamScheduling/chat/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <style>
 @import url('<%=request.getContextPath()%>/mes/css/main.css');
 #mqtt {

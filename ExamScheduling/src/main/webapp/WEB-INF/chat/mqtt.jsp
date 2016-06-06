@@ -4,19 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
-<script src="/ExamScheduling/chat/js/jquery.qqFace.js"
-	type="text/javascript"></script>
-<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.css"
-	rel="stylesheet" type="text/css" />
-<script type="text/javascript"
-	src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.js"></script>
+<script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
+<link href="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.js"></script>
 <!-- <script type="text/javascript"> -->
 <!-- // 	PNotify.prototype.options.styling = "bootstrap3"; -->
 <!-- </script> -->
