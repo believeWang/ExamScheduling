@@ -17,9 +17,9 @@
 	src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.js"></script>
-<script type="text/javascript">
-	PNotify.prototype.options.styling = "bootstrap3";
-</script>
+<!-- <script type="text/javascript"> -->
+<!-- // 	PNotify.prototype.options.styling = "bootstrap3"; -->
+<!-- </script> -->
 
 
 <script type="text/javascript">
@@ -75,7 +75,8 @@
 				});
 			}
 		}
-
+		var div = document.getElementById("show");
+		div.scrollTop = div.scrollHeight;
 	};
 
 	var options = {
@@ -148,12 +149,16 @@ span.emotion:hover {
 	<div style="background: white;">
 		<input type="hidden" id="messageName" value="主考官  ${GoogleUser}">
 		</br>
-		<div contenteditable="false" id="show"></div>
+		<div contenteditable="false" id="show" style="width: 450px;height:450px; overflow:scroll;border-style:outset;"></div>
 		<!--  	<textarea id="messagesUser" readonly="readonly" rows="10" cols="15"></textarea>  -->
 		</br> <input type="text" id="messageText" name="messageText" size="45">
 		<p>
-			<input type="button" class="sub_btn" value="send"
-				onclick="sendMessage();"><span class="emotion">表情</span>
+<!-- 			<input type="button" class="sub_btn" value="send" onclick="sendMessage();"> -->
+				<span class="emotion">表情</span>
+				<button class="light-blue darken-2 waves-light btn" type="submit"
+									onclick="sendMessage();">
+									送出<i class="material-icons right">mode_edit</i>
+								</button>
 
 		</p>
 	</div>

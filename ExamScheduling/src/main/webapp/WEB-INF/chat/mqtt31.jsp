@@ -4,12 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<%@ include file="/WEB-INF/cdn.file"%>
 <script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
 <script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript">
 	$(function() {
 		$('.emotion').qqFace({
@@ -18,7 +15,7 @@
 			path : '/ExamScheduling/chat/tiger/' //表情存放的路径
 		});
 
-
+		$("[data-toggle='tooltip']").tooltip();
 		
 	});
 
@@ -44,9 +41,12 @@
 		var checkId="考生  "+clientid+" ";
 		if(messageArray[0]==checkId){		
 			$("#show").append("<h4 style='color:blue; text-align:right;'>"+replace_em(messageArray[1]) + "</br>");
+
 		}else{
 			$("#show").append(replace_em(message.payloadString) + "</br>");
 		}
+		var div = document.getElementById("show");
+		div.scrollTop = div.scrollHeight;
 	};
 
 	var options = {
@@ -122,14 +122,24 @@ span.emotion:hover {
 		<div style="background: white">
 			<input type="hidden" id="messageName" size="50" value="考生  ${ecno}">
 			</br>
-			<div contenteditable="false" id="show" style="width:700px;height:300px; overflow:scroll"></div>
+			<div contenteditable="false" id="show" style="width:700px;height:300px; overflow:scroll;border-style:inset;" ></div>
 			</br> <input type="text" id="messageText" name="messageText" >
-			<p>
+			<p style="float: right">
 				<span class="emotion">表情</span>
-				<a class="waves-effect waves-light btn" onclick="sendMessage();"><i class="large material-icons">mode_edit</i></a>
+<!-- 				<a class="blue darken-1 waves-light btn" onclick="sendMessage();"><i class="large material-icons">mode_edit</i></a> -->
+					<button class="light-blue darken-2 waves-light btn" type="submit" onclick="sendMessage();">
+					送出<i class="material-icons right">mode_edit</i></button>
 			</p>
 		</div>
 	</div>
+ <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red">
+     <i class="large material-icons">contact_phone</i>
+    </a>
+    <ul>
+      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LAM' class="btn-floating green" data-toggle="tooltip" title="留言板" ><i class="material-icons">comment</i></a></li>
+      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LM' class="btn-floating blue" data-toggle="tooltip" title="留言" ><i class="material-icons">library_add</i></a></li>
+    </ul>
+  </div>
 </body>
-
 </html>
