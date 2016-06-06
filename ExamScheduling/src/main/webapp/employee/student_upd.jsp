@@ -70,7 +70,7 @@
 			</td>
 						
 		</tr>
-	
+
 	</c:forEach>
 	
 	</fieldset></div>

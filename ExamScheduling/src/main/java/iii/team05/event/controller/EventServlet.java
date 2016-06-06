@@ -47,8 +47,9 @@ public class EventServlet extends HttpServlet {
 			//System.out.println("action="+action+"jobid="+jobid+"date="+date);
 			
 			SectionDAO secDAO = new SectionDAO();
-			List<SectionVO> seclists = secDAO.getAll();
-			
+
+			List<SectionVO> seclists = secDAO.getAll();		
+
 			
 			//檢查用
 //			for(SectionVO selist : seclists){

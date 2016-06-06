@@ -57,6 +57,7 @@ public class GoogleCheck extends HttpServlet {
 		String token = null;
 		String email = null;
 		String name = null;
+
 		int empno = 0;
 		int pos = 0;
 		String empToken=null;
@@ -160,6 +161,7 @@ public class GoogleCheck extends HttpServlet {
 				session.setAttribute("GoogleEmail", email);
 				
 				String from =  (String) session.getAttribute("dest");
+
 				  if(from==null){
 							if(empToken==null){
 							emSvc.insertToken(email, token);				

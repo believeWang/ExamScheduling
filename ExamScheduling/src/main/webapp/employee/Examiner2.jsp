@@ -32,6 +32,7 @@
 					<th>E-mail</th>
 					<th>權限</th>
 
+
 				</tr>
 
 	<c:forEach var="EmpVO" items="${list}">
@@ -53,5 +54,6 @@
 		</fieldset></div>
 		<a href='<%=request.getContextPath()%>/employee/Emptable2.jsp'>返回員工清單</a>
 	
+=======
 </body>
 </html>

@@ -21,53 +21,63 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/aboutedit")
 public class AbouteditorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AbouteditorServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AbouteditorServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		AboutService abSvc = new AboutService();
+		// 來自jsp的查詢請求
+		List<AbouteditorVO> AboutArticle = abSvc.query();
+		String aboutcontent = null;
+		for (AbouteditorVO s : AboutArticle) {
+			aboutcontent = s.getAboutcontent();
+//			System.out.println(aboutcontent);
+		}
+			request.setAttribute("about", aboutcontent); // 將第一項資訊放入request物件內
+			RequestDispatcher rd = // 準備將移轉程式的執行順序
+			request.getRequestDispatcher("/aboutedit.jsp");
+			rd.forward(request, response); // 移轉程式的執行順序
+		
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-		AboutService abSvc = new AboutService();
-		
-			
-		      // 來自loadmail.jsp的查詢請求
-			List<AbouteditorVO> AboutArticle = abSvc.query();
-			String aboutcontent= null;
-			for(AbouteditorVO s:AboutArticle){
-				aboutcontent = s.getAboutcontent();
-				System.out.println(aboutcontent);
-			
-	
-			request.setAttribute("about", aboutcontent);     // 將第一項資訊放入request物件內
-	        RequestDispatcher rd =                     // 準備將移轉程式的執行順序
-	               request.getRequestDispatcher("/aboutedit.jsp");
-	        rd.forward(request, response);             // 移轉程式的執行順序
-	        return ;                                   // forward()之後會有一個return敘述	
-		  }
-		
-		  if ("Editor_Update".equals(action)){
-			  aboutcontent = request.getParameter("content");
-			  System.out.println(aboutcontent);             //測試editmail.jsp有傳更新資料進來
-			  abSvc.updateAbout(aboutcontent);            //呼叫STService的updatemail()方法工作
-		  }
-		
-}
-	
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		AboutService abSvc = new AboutService();
+		String aboutcontent = request.getParameter("content");
+		System.out.println(aboutcontent);
+		if ("Editor_Update".equals(action)) {
+			abSvc.updateAbout(aboutcontent);// 呼叫Service
+//			request.getRequestDispatcher("/about.jsp");
+			response.sendRedirect("/ExamScheduling/AboutServlet"); 
+
+
+		}
+			 
+		
+
+
 	}
 
 }

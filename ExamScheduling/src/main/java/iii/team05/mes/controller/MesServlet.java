@@ -46,12 +46,13 @@ public class MesServlet extends HttpServlet {
 						System.currentTimeMillis());
 				String msgcontent = request.getParameter("msgcontent");
 
-				if (msgcontent.contains("<Script>")) {
+
+				if (msgcontent.contains("<script>")) {
 					response.setContentType("text/html; charset=UTF-8");
 					request.setAttribute("status", "NG");
 					RequestDispatcher failureView = request
-							.getRequestDispatcher("/mes/LeaveMessage.jsp");
-					failureView.forward(request, response);
+					.getRequestDispatcher("/WEB-INF/mes/LeaveMessage.jsp");
+			failureView.forward(request, response);
 
 				} else {
 					MesVO mesVO = new MesVO();
@@ -66,16 +67,17 @@ public class MesServlet extends HttpServlet {
 							msgcontent);
 
 					/* 新增完成,準備轉交 */
-					String url = "ListAllMessage.jsp";
+//					String url = "ListAllMessage.jsp";
 					// RequestDispatcher successView = request
 					// .getRequestDispatcher(url);
 					// successView.forward(request, response);
-					response.sendRedirect(response.encodeRedirectURL(url));
+					response.sendRedirect(response.encodeRedirectURL("/ExamScheduling/MesTurn?turn=LAM"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				e.printStackTrace();
 				RequestDispatcher failureView = request
-						.getRequestDispatcher("/mes/LeaveMessage.jsp");
+						.getRequestDispatcher("/WEB-INF/mes/LeaveMessage.jsp");
 				failureView.forward(request, response);
 			}
 
@@ -109,16 +111,16 @@ public class MesServlet extends HttpServlet {
 				mesVO = mesSvc.replyMessage(messageid, msgname, msgmail,
 						msgtime, msgcontent, rpname, rptime, rpcontent);
 
-				String url = "ListNotReplyMessage.jsp";
+//				String url = "ListNotReplyMessage.jsp";
 				// RequestDispatcher successView = request
 				// .getRequestDispatcher(url);
 				// successView.forward(request, response);
-				response.sendRedirect(response.encodeRedirectURL(url));
+				response.sendRedirect(response.encodeRedirectURL("/ExamScheduling/MesTurn?turn=LNRM"));
 
 			} catch (Exception e) {
 				e.printStackTrace();
 				RequestDispatcher failureView = request
-						.getRequestDispatcher("/mes/ListNotReplyMessage.jsp");
+						.getRequestDispatcher("/WEB-INF/mes/ListNotReplyMessage.jsp");
 				failureView.forward(request, response);
 
 			}
@@ -133,7 +135,7 @@ public class MesServlet extends HttpServlet {
 				MesService empSvc = new MesService();
 				MesVO mesVO = empSvc.getOneMes(messageid);
 				request.setAttribute("mesVO", mesVO);
-				String url = "/mes/ListOneMessage.jsp";
+				String url = "/WEB-INF/mes/ListOneMessage.jsp";
 				RequestDispatcher successView = request
 						.getRequestDispatcher(url);
 				successView.forward(request, response);
@@ -151,7 +153,7 @@ public class MesServlet extends HttpServlet {
 				MesVO mesVO = empSvc.getOneMes(messageid);
 				request.setAttribute("mesVO", mesVO);
 
-				String url = "/mes/ReplyMessage.jsp";
+				String url = "/WEB-INF/mes/ReplyMessage.jsp";
 				RequestDispatcher successView = request
 						.getRequestDispatcher(url);
 				successView.forward(request, response);
@@ -170,14 +172,15 @@ public class MesServlet extends HttpServlet {
 				MesService empSvc = new MesService();
 				empSvc.deleteMes(messageid);
 
-				String url = "/mes/ListAllMessage.jsp";
+				String url = "/WEB-INF/mes/ListAllMessage.jsp";
 				RequestDispatcher successView = request
 						.getRequestDispatcher(url);
 				successView.forward(request, response);
 
 			} catch (Exception e) {
 				RequestDispatcher failureView = request
-						.getRequestDispatcher("/mes/ListAllMessage.jsp");
+						.getRequestDispatcher("/WEB-INF/mes/ListAllMessage.jsp");
+
 				failureView.forward(request, response);
 			}
 		}

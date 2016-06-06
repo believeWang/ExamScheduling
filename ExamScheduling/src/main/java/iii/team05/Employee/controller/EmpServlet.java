@@ -23,7 +23,8 @@ public class EmpServlet extends HttpServlet {
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		
+
+		System.out.print("action:"+action);
 		if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp的請求
 			
 			List<String> errorMsgs = new LinkedList<String>();
@@ -52,7 +53,6 @@ public class EmpServlet extends HttpServlet {
 				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/employee/update_emp_input.jsp");
-				
 				failureView.forward(req, res);
 				
 			}
@@ -268,5 +268,6 @@ if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 }
 
 	}
-	
+
+
 }

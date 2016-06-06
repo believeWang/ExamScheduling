@@ -1,6 +1,7 @@
 package iii.team05.examinee.ecmodel;
 
 
+import iii.team05.setting.model.STVO;
 
 import java.util.List;
 
@@ -47,11 +48,15 @@ public class ECService {
 				ecDAO.updatepsd(ecVO);
 				return ecVO;
 			}
-	/*讀出mail內文*/
-	public List<ECVO> queryemailtemplate() {
-
-		return ecDAO.getAll();
-
+	public List<String>getAllClass() {
+		return ecDAO.getAllClass();
+		
 	}
+	public List<ECVO> getEEIT(String eeitName) {
+		return ecDAO.getEEIT(eeitName);
+		
+	}
+	
+
 		
 }

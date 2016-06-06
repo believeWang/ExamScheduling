@@ -30,14 +30,23 @@ public class STService {
 	}
 
 
-	
-	public STVO updateMail(String emailtemplate) {
+
+	public STVO updateMailsubject(String emailsubject) {
 			
 				STVO stVO = new STVO();
-				stVO.setEmailtemplate(emailtemplate);
-				stDAO.updatemail(stVO);
+				stVO.setEmailsubject(emailsubject);
+				stDAO.updatemailsubject(stVO);
 				return stVO;
 			}
+	
+	public STVO updateMailcontent(String emailcontent) {
+		
+				STVO stVO = new STVO();
+				stVO.setEmailcontent(emailcontent);
+				stDAO.updatemailcontent(stVO);
+				return stVO;
+	        }
+
 	
 }
 	

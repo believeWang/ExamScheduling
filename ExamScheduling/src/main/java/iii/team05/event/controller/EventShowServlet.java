@@ -2,7 +2,8 @@ package iii.team05.event.controller;
 
 import iii.team05.event.model.EventDAO;
 import iii.team05.event.model.EventVO;
-import iii.team05.job.model.JobDAO;
+
+import iii.team05.job.model.Job111DAO;
 import iii.team05.job.model.JobVO;
 
 import java.io.IOException;
@@ -45,13 +46,19 @@ public class EventShowServlet extends HttpServlet {
 		//Job_ErDAO jober = new Job_ErDAO();
 		//JobVO jerVo = jober.findByPrimaryKey(jobid);//要寫一個用jobid撈這個id全部的主考官id
 		
-		JobDAO jbDAO = new JobDAO();
-		List<JobVO> jblists = jbDAO.getAll();
+		Job111DAO jbDAO = new Job111DAO();
+		List<JobVO> jdlists = jbDAO.getAll();
+		
+		for(JobVO job : jdlists){
+			System.out.println(job.getJobid());
+			System.out.println(job.getJobname());
+		}
 		
 		//SectionDAO secDAO = new SectionDAO();
 		//List<SectionVO> seclists = secDAO.getAll();
 		
-		request.setAttribute("jdlists", jblists);
+		request.setAttribute("jdlists", jdlists);
+
 		request.setAttribute("jobid", jobid);
 		//request.setAttribute("seclists", seclists);
 		//request.setAttribute("ecemail", ecemail);  //考生

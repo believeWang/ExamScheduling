@@ -28,6 +28,7 @@ public class EventDAO implements EventDAO_interface {
 	private static final String GET_ONE_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist where eventid = ?";
 	private static final String DELETE_STMT = "DELETE FROM Event_Exist where eventid = ?";
 	private static final String UPDATE_STMT = "UPDATE Event_Exist set empno=?, starttime=?, endtime=?, bgcolor=?, title=?, ecno=?, eventremark=?  where eventid = ?";
+
 	private static final String GET_ALL_SCORE = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist";
 	private static final String GET_EMP_BYNO = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist where empno=?";
 
@@ -476,5 +477,5 @@ public class EventDAO implements EventDAO_interface {
 //	}
 //	
 	
-	
+
 }

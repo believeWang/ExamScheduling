@@ -5,20 +5,15 @@
 <%@ page import="iii.team05.job.model.*"%>
 <%-- 此頁採用 JSTL 與 EL 取值 --%>
 
-<%
-    JobDAO jobSer = new JobDAO();
-    List<JobVO> lists = jobSer.getAll();
-    pageContext.setAttribute("lists",lists);
-%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
+<script src='../js/jquery.min.js'></script>
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <script src='../js/moment.min.js'></script>
-<script src='../js/jquery.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
 <!--燈箱樣式效果-->
 <link rel="stylesheet" type="text/css" href="../css/jquery.fancybox.css">
@@ -51,7 +46,7 @@
 <script>
 	
 	$(document).ready(function() { 
-	    
+		
 	    $('#calendar').fullCalendar({ 
 	        header:{
 	        	left: 'title today',
@@ -131,10 +126,9 @@
 		<div class="row">
 			<div class="col-md-2">
 				<ul class="list-group">
-					<c:forEach var="job" items="${lists}">
-						<a href="EventShowServlet?jobid=${job.jobid}">
-						<li class="list-group-item 
-						<c:if test="${job.jobid == jobid}">active</c:if>" >${job.jobname}</li></a><!-- active -->
+					<c:forEach var="job" items="${jdlists}">
+						<a href="EventShowServlet?jobid=${job.jobid}"><li class="list-group-item <c:if test="${job.jobid == jobid}">active</c:if>" >${job.jobname}</li></a><!-- active -->
+
 					</c:forEach>
 				</ul>
 			</div>

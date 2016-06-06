@@ -1,13 +1,14 @@
 package iii.team05.setting.model;
 
 public class STVO {
-	
+
 	private Integer setid;
 	private Integer period;
 	private Integer ecnum;
 	private Integer ernum;
-	private String  emailtemplate;
-	
+	private String  emailsubject;
+	private String  emailcontent;
+
 	
 	public Integer getSetid() {
 		return setid;
@@ -33,12 +34,18 @@ public class STVO {
 	public void setErnum(Integer ernum) {
 		this.ernum = ernum;
 	}
-	public String getEmailtemplate() {
-		return emailtemplate;
+	public String getEmailsubject() {
+		return emailsubject;
 	}
-	public void setEmailtemplate(String emailtemplate) {
-		this.emailtemplate = emailtemplate;
+	public void setEmailsubject(String emailsubject) {
+		this.emailsubject = emailsubject;
 	}
-	
-	
+	public String getEmailcontent() {
+		return emailcontent;
+	}
+	public void setEmailcontent(String emailcontent) {
+		this.emailcontent = emailcontent;
+	}
+
+
 }

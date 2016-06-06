@@ -8,6 +8,7 @@ import iii.team05.examinee.ecmodel.ECVO;
 
 
 
+import iii.team05.setting.model.STService;
 import iii.team05.setting.model.STVO;
 
 import java.io.IOException;
@@ -17,6 +18,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,9 +78,10 @@ public class CheckmailServlet extends HttpServlet {
 			PrintWriter out=response.getWriter();
 			System.out.println(ecVO);
 			if(ecVO.size()==0){		
-				out.println("非資策會學生");
+				errors.put("ecemail", "<h5 style='color:red'>"+"非資策會學生請聯絡管理者處理"+"</h5>");
+				request.getRequestDispatcher("/validate/checkmail.jsp").forward(request, response);
 			}else{
-				out.println("歡迎");
+				out.println("等考生登入頁面做好跳轉至此");
 //隱碼設定				
 //				try {
 //						 mDsgest=MessageDigest.getInstance("MD5");
@@ -100,29 +104,66 @@ public class CheckmailServlet extends HttpServlet {
 			   
 			   String ecpsd = cap1+cap2+cap3+num1+num2+num3+low1+low2;
 			   System.out.println("random隨機密碼:"+ecpsd);
-
 			   ecSvc.updatePsd(ecno,ecpsd);
-			   System.out.println();
-
-				
-
 			   
+			   STService stSvc = new STService();
+			   
+			   //取出資料庫subject(主旨)的值
+			   List<STVO> mailSubject = stSvc.query();
+				String subject= null;
+				for(STVO s:mailSubject){
+				 subject = s.getEmailsubject();
+					System.out.println(subject);			
+				}
+				//呼叫下方delHTMLTag方法將前端的各種符號格式去除後return至subject
+				subject=delHTMLTag(subject);
+			
 				
-				String subject = "【註冊通知】感謝您使用偉康考試預約系統";
-				String content = "Dear " + username + ", \n\n\t感謝您使用偉康考試預約系統，您的帳號及密碼如下，\n請妥善保存：\n\n帳號："
-				     + ecemail + "\n\n密碼：" + ecpsd + "\n\n\n\n\n\n\n\n\t\t\t\t\t\t 感謝您使用偉康考試預約系統 敬上"
-				     + "\n\n\n\n\n\n**********此為系統自動發送之信件，請勿直接回覆！**********";
-				   Email ssm = new Email();
-				   ssm.sendEmail(ecemail, subject, content);
+				//取出資料庫content(內文)的值
+			   List<STVO> mailArticle = stSvc.query();
+				String content= null;
+				for(STVO s:mailArticle){
+				 content = s.getEmailcontent();
+					System.out.println(content);			
+				}
+				
+//				String subject = "感謝您使用偉康考試預約系統";
+//				String content = "Dear " + username + ", \n\n\t感謝您使用偉康考試預約系統，您的帳號及密碼如下，\n請妥善保存：\n\n帳號："
+//				     + ecemail + "\n\n密碼：" + ecpsd + "\n\n\n\n\n\n\n\n\t\t\t\t\t\t 感謝您使用偉康考試預約系統 敬上"
+//				     + "\n\n\n\n\n\n**********此為系統自動發送之信件，請勿直接回覆！**********";
+				   
+				//啟動Email()方法傳mail內各值進去
+				Email ssm = new Email();
+				ssm.sendEmail(ecemail, subject, content+"</br>"+"帳號:"+ecemail+"</br>"+"\t"+"密碼:"+ecpsd);
 
 			}
 		  }
 		else {
-			errors.put("ecemail", "E-mail格式錯誤");
-			request.getRequestDispatcher(
-					"/validate/checkmail.jsp").forward(request, response);
+			errors.put("ecemail", "<h5 style='color:red'>"+"E-mail格式錯誤"+"</h5>");
+			request.getRequestDispatcher("/validate/checkmail.jsp").forward(request, response);
 		} 
 	
 	}
+	
+		public static String delHTMLTag(String htmlStr){ 
+	        String regEx_script="<script[^>]*?>[\\s\\S]*?<\\/script>"; //定義script的正則表示式 
+	        String regEx_style="<style[^>]*?>[\\s\\S]*?<\\/style>"; //定義style的正則表示式
+	        String regEx_html="<[^>]+>"; //定義HTML標籤的正則表示式
+	        
+	        Pattern p_script=Pattern.compile(regEx_script,Pattern.CASE_INSENSITIVE); 
+	        Matcher m_script=p_script.matcher(htmlStr); 
+	        htmlStr=m_script.replaceAll(""); //過濾script標籤 
+	        
+	        Pattern p_style=Pattern.compile(regEx_style,Pattern.CASE_INSENSITIVE); 
+	        Matcher m_style=p_style.matcher(htmlStr); 
+	        htmlStr=m_style.replaceAll(""); //過濾style標籤 
+	        
+	        Pattern p_html=Pattern.compile(regEx_html,Pattern.CASE_INSENSITIVE); 
+	        Matcher m_html=p_html.matcher(htmlStr); 
+	        htmlStr=m_html.replaceAll(""); //過濾html標籤 
+	
+	       return htmlStr.trim(); //返回文本字符串
+       
+         } 
 
 }

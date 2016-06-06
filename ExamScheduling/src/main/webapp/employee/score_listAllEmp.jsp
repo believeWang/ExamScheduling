@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ page import="iii.team05.Employee.model.*"%>
 
 
@@ -48,6 +49,7 @@
 <input type="hidden" name="ecno" value="${student_data.ecno}">
 <input type="submit" value="送出修改"></FORM>
  </c:forEach>
+
 </fieldset></div>
 </body>
 
