@@ -1,5 +1,6 @@
 package iii.team05.job.controller;
 
+
 import iii.team05.Employee.model.EmployeeDAO;
 import iii.team05.Employee.model.EmployeeVO;
 import iii.team05.job.model.Job111DAO;
@@ -83,6 +84,7 @@ public class JobServlet extends HttpServlet {
 		request.setAttribute("joblists", joblists);
 		request.setAttribute("emplists", emplists); 
 //		request.setAttribute("jobErlists", jobErlists); 
+
 		
 		RequestDispatcher jb = request.getRequestDispatcher("/job/job_lists.jsp");
 		jb.forward(request, response);

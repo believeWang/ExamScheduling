@@ -20,6 +20,11 @@ import iii.team05.examinee.ecmodel.ScoreHibernateDAO;
 import iii.team05.examinee.ecmodel.ECVO;
 import iii.team05.examinee.ecmodel.ECHibernateDAO;
 
+import iii.team05.section.model.SectionDAO;
+import iii.team05.section.model.SectionVO;
+import iii.team05.event.model.EventDAO;
+import iii.team05.event.model.EventVO;
+
  @WebServlet("/sco/sco.do")
 public class Student_select extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -110,7 +115,7 @@ public class Student_select extends HttpServlet {
 				scoVO = scorSvc.updateSco(ecno,lab, interview,labtime, onlineex);
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("scoreVO", scoVO); // 資料庫update成功後,正確的的empVO物件,存入req
-				String url = "/employee/student_upd.jsp";
+				String url = "/employee/calender.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
 				successView.forward(req, res);
 
@@ -122,13 +127,7 @@ public class Student_select extends HttpServlet {
 				failureView.forward(req, res);
 			}
 		}
-			
-			
-			
-			
-			
-			
-			
+
 		
 		
 	}

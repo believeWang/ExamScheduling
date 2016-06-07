@@ -2,6 +2,7 @@ package iii.team05.event.controller;
 
 import iii.team05.event.model.EventDAO;
 import iii.team05.event.model.EventVO;
+
 import iii.team05.job.model.Job111DAO;
 import iii.team05.job.model.JobVO;
 
@@ -57,6 +58,7 @@ public class EventShowServlet extends HttpServlet {
 		//List<SectionVO> seclists = secDAO.getAll(); 
 		
 		request.setAttribute("jdlists", jdlists);
+
 		request.setAttribute("jobid", jobid);
 		//request.setAttribute("seclists", seclists);
 		//request.setAttribute("ecemail", ecemail);  //考生

@@ -1,5 +1,6 @@
 package iii.team05.section.controller;
 
+
 import iii.team05.section.model.SectionDAO;
 import iii.team05.section.model.SectionVO;
 
@@ -57,6 +58,7 @@ public class SectionServlet extends HttpServlet {
 		RequestDispatcher jb = request.getRequestDispatcher("/section/section_lists.jsp");
 		jb.forward(request, response);
 		
+
 	}
 
 }

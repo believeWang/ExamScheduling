@@ -84,7 +84,9 @@ public class AbouteditorDAO implements AbouteditorInterface{
 			session.beginTransaction();
 			Query query = session.createQuery("update AbouteditorVO set aboutcontent = :aboutcontent");
 			String aboutcontent=abVO.getAboutcontent();
+
 			query.setParameter("aboutcontent", aboutcontent);
+
 			query.executeUpdate();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -437,5 +438,6 @@ a[href|='#q'] {color =red;width =35px;
 	});
 </script>
 <script src="exam_resourse/js/exameditjs.js"></script>
+
 
 </html>

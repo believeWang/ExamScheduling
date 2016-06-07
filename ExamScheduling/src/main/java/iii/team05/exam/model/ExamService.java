@@ -1,6 +1,7 @@
 package iii.team05.exam.model;
 
 import java.io.IOException;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -288,5 +289,6 @@ public class ExamService {
 		 context.setAttribute("examsMap", examsMap);
 		 context.setAttribute("allExams", allExams);
 	}
+
 
 }

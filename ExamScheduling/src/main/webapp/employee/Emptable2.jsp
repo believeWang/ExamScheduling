@@ -30,7 +30,7 @@ pageContext.setAttribute("list", list);
 					<th>員工編號</th>
 					<th>員工姓名</th>
 					<th>E-mail</th>
-<!-- 					<th>權限</th> -->
+
 					<th>修改</th>
 				</tr>
 
@@ -40,20 +40,17 @@ pageContext.setAttribute("list", list);
 	<td>${EmpVO.empno}</td>
 	<td>${EmpVO.empname}</td>
 	<td>${EmpVO.empemail}</td>
-<%-- 	<td>${EmpVO.position}</td> --%>
-	
-<%-- 	<td><input type="TEXT" name="position" 	 value="${EmpVO.position} "readonly/></td> --%>
-	
-
 	    <input type="hidden" name="empno" value="${EmpVO.empno}">
 	    <input type="hidden" name="action" value="update">
 		<td><input type="submit" value="增加考官"></td></tr>
         </c:forEach>
 	</table>
+	
 </FORM>
 		</fieldset></div>
 		<a href='<%=request.getContextPath()%>/employee/Examiner2.jsp'>返回考官表格</a>
-		<a href="<%=request.getContextPath()%>/employee/student_upd.jsp">查詢考生諮詢</a>
-<%-- 		<%@ include file="page2.file"%> --%>
+		<a href="<%=request.getContextPath()%>/employee/calender.jsp">查詢考生排程</a>
+		 
+
 </body>
 </html>

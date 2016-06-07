@@ -1,6 +1,7 @@
 package iii.team05.insert.model;
 
 import iii.team05.examinee.ecmodel.ECHibernateDAO;
+
 import iii.team05.examinee.ecmodel.ECService;
 import iii.team05.examinee.ecmodel.ECVO;
 import iii.team05.examinee.ecmodel.ESVO;
@@ -435,6 +436,7 @@ public class InsertExcel extends HttpServlet {
 	// return 0.0;
 	// }
 	// }
+
 
 	private int getIntFromString(String cell) {
 		int result = 0;

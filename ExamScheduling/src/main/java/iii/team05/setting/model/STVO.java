@@ -1,6 +1,7 @@
 package iii.team05.setting.model;
 
 public class STVO {
+
 	private Integer setid;
 	private Integer period;
 	private Integer ecnum;
@@ -45,5 +46,6 @@ public class STVO {
 	public void setEmailcontent(String emailcontent) {
 		this.emailcontent = emailcontent;
 	}
+
 
 }
