@@ -135,7 +135,7 @@ public class ECHibernateDAO implements ECDao_interface{
 			session.beginTransaction();
 			Query query = session.createQuery("update ECVO set ecpsd = :ecpsd where ecno=:ecno");
 			String ecno=ecVO.getEcno();
-			String ecpsd=ecVO.getEcpsd();
+			byte[] ecpsd=ecVO.getEcpsd();
 			query.setParameter("ecpsd",ecpsd);
 			query.setParameter("ecno",ecno);
 			query.executeUpdate();

@@ -57,7 +57,7 @@
 				}else{
 					checkbox.val("1");
 				}
-				console.log(chexval);
+
 			});
 			if (chexval == "1") {
 				new PNotify({

@@ -4,7 +4,7 @@ public class ECVO implements java.io.Serializable{
 	private String ecno;
 	private String ecname;
 	private String ecemail;
-	private String ecpsd;
+	private byte[] ecpsd;
 	private Boolean ecstatus;
 	private String ecremark1;
 
@@ -49,10 +49,10 @@ public class ECVO implements java.io.Serializable{
 	public void setEcemail(String ecmail) {
 		this.ecemail = ecmail;
 	}
-	public String getEcpsd() {
+	public byte[] getEcpsd() {
 		return ecpsd;
 	}
-	public void setEcpsd(String ecpsd) {
+	public void setEcpsd(byte[] ecpsd) {
 		this.ecpsd = ecpsd;
 	}
 	public Boolean getEcstatus() {

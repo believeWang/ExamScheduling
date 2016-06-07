@@ -1,8 +1,6 @@
 package iii.team05.examinee.ecmodel;
 
-
-import iii.team05.setting.model.STVO;
-
+import java.util.Arrays;
 import java.util.List;
 
 public class ECService {
@@ -12,10 +10,10 @@ public class ECService {
 		ecDAO = new ECHibernateDAO();
 	}
 
-	public boolean hasAccount(String ecno, String psd) {
+	public boolean hasAccount(String ecno, byte[] psd) {
 
 		ECVO ecVO = ecDAO.findByPrimaryKey(ecno);
-		if (ecVO != null && ecVO.getEcpsd().equals(psd))
+		if (ecVO != null && Arrays.equals(ecVO.getEcpsd(), psd))
 			return true;
 		else
 			return false;
@@ -35,7 +33,7 @@ public class ECService {
 
 	}
 	/*寫入密碼*/
-	public ECVO updatePsd(String ecno,String ecpsd
+	public ECVO updatePsd(String ecno,byte[] ecpsd
 			) {
 			
 				ECVO ecVO = new ECVO();
