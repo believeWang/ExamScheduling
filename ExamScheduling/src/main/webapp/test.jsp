@@ -5,16 +5,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="refresh" content="20 ; url=/ExamScheduling/gmail_login/login.do">
+<link rel="stylesheet" type="text/css" href="header/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="header/css/component1.css" />
+		<script src="header/js/modernizr-2.6.2.min.js"></script>
 <title>ESS</title>
 <body>
-<a href="<%=request.getContextPath()%>/gmail_login/login.do">SKIP>></a>
-<div style="position: fixed; z-index: -99; width: 100%; height: 100%">
-  <iframe frameborder="0" height="100%" width="100%" 
-    src="https://www.youtube.com/embed/AsCCZbsj7Mg?autoplay=1&controls=0&showinfo=0&autohide=1">
-  </iframe>
-</div>
-
-
+			<div class="component">
+				<!-- Start Nav Structure -->
+				<button class="cn-button" id="cn-button">+</button>
+				<div class="cn-wrapper" id="cn-wrapper">
+				    <ul>
+				      <li><a href="#"><span class="icon-picture"></span></a></li>
+				      <li><a href="#"><span class="icon-headphones"></span></a></li>
+				      <li><a href="#"><span class="icon-home"></span></a></li>
+				      <li><a href="#"><span class="icon-facetime-video"></span></a></li>
+				      <li><a href="#"><span class="icon-envelope-alt"></span></a></li>
+				     </ul>
+				</div>
+				<div id="cn-overlay" class="cn-overlay"></div>
+				<!-- End Nav Structure -->
+			</div>
+		<script src="header/js/polyfills.js"></script>
+		<script src="header/js/demo1.js"></script>
 </body>
 </html> 
