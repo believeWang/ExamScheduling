@@ -1,21 +1,13 @@
 package iii.team05.eclogin.controller;
 
-import iii.team05.examinee.ecmodel.ECHibernateDAO;
+
 import iii.team05.examinee.ecmodel.ECService;
 import iii.team05.examinee.ecmodel.ECVO;
-
-
-
-
-
 import iii.team05.login_front.controller.PasswordMd5;
 import iii.team05.setting.model.STService;
 import iii.team05.setting.model.STVO;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,15 +75,6 @@ public class CheckmailServlet extends HttpServlet {
 				request.getRequestDispatcher("/validate/checkmail.jsp").forward(request, response);
 			}else{
 				out.println("等考生登入頁面做好跳轉至此");
-//隱碼設定				
-//				try {
-//						 mDsgest=MessageDigest.getInstance("MD5");
-//					} catch (NoSuchAlgorithmException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-				
-			   //利用random隨機組成字元(char)及數字(int)共八個
 			   String cap1 = String.valueOf((char) ((Math.random()*26) + 65));
 			   String cap2 = String.valueOf((char) ((Math.random()*26) + 65));
 			   String cap3 = String.valueOf((char) ((Math.random()*26) + 65));
@@ -105,7 +88,8 @@ public class CheckmailServlet extends HttpServlet {
 			   
 			   String ecpsd = cap1+cap2+cap3+num1+num2+num3+low1+low2;
 			   System.out.println("random隨機密碼:"+ecpsd);
-				PasswordMd5 p5 =new PasswordMd5();
+				
+			   PasswordMd5 p5 =new PasswordMd5();//MD5加密
 				byte[] bytepsd=p5.encryption(ecpsd);
 
 			   ecSvc.updatePsd(ecno,bytepsd);
@@ -169,4 +153,5 @@ public class CheckmailServlet extends HttpServlet {
 	       return htmlStr.trim(); //返回文本字符串
        
          } 
+
 }

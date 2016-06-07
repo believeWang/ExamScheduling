@@ -1,5 +1,6 @@
 package iii.team05.job.model;
 
+
 import iii.team05.Employee.model.EmployeeVO;
 
 import java.util.HashSet;
@@ -30,6 +31,7 @@ public class JobVO  implements java.io.Serializable{
 	}
 	public void setEmployee(Set<EmployeeVO> employee) {
 		this.employee = employee;
+
 	}
 	public String getJobname() {
 		return jobname;

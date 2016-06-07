@@ -66,6 +66,7 @@ public class STHibernateDAO implements STDao_interface{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
+
 			Query query = session.createQuery("from STVO where emailcontent=:emailcontent");
 			String emailcontent=stVO.getEmailcontent();
 			query.setParameter("emailcontent",emailcontent);
@@ -106,6 +107,7 @@ public class STHibernateDAO implements STDao_interface{
 			String emailcontent=stVO.getEmailcontent();
 //			Integer setid=stVO.getSetid();
 			query.setParameter("emailcontent",emailcontent);
+
 //			query.setParameter("setid",setid);
 			query.executeUpdate();
 			session.getTransaction().commit();

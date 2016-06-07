@@ -1,6 +1,5 @@
 package iii.team05.examinee.ecmodel;
 
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -56,5 +55,6 @@ public class ECService {
 		
 	}
 	
+
 		
 }

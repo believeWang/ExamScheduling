@@ -7,6 +7,7 @@ public class ECVO implements java.io.Serializable{
 	private byte[] ecpsd;
 	private Boolean ecstatus;
 	private String ecremark1;
+
 	private String ecclass;
 	public String getEcclass() {
 		return ecclass;
@@ -14,6 +15,7 @@ public class ECVO implements java.io.Serializable{
 	public void setEcclass(String ecclass) {
 		this.ecclass = ecclass;
 	}
+
 	private ESVO eSVO;
 	private ScoreVO scoreVO;
 	

@@ -44,6 +44,7 @@ public class MesServlet extends HttpServlet {
 				java.sql.Timestamp msgtime = new java.sql.Timestamp(
 						System.currentTimeMillis());
 				String msgcontent = request.getParameter("msgcontent");
+
 				if (msgcontent.contains("<script>")) {
 					response.setContentType("text/html; charset=UTF-8");
 					request.setAttribute("status", "NG");
@@ -178,6 +179,7 @@ public class MesServlet extends HttpServlet {
 			} catch (Exception e) {
 				RequestDispatcher failureView = request
 						.getRequestDispatcher("/WEB-INF/mes/ListAllMessage.jsp");
+
 				failureView.forward(request, response);
 			}
 		}

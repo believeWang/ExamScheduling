@@ -13,7 +13,9 @@
 		<property name="ecpsd" column="ecpsd" />
 		<property name="ecstatus" column="ecstatus" />
 		<property name="ecremark1" column="ecremark1" />
+
 		<property name="ecclass" column="ecclass" />
+
 		
 		<one-to-one name="eSVO" class="iii.team05.examinee.ecmodel.ESVO"
 			cascade="all"></one-to-one>

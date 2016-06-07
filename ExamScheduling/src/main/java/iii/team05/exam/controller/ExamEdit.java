@@ -6,6 +6,7 @@ import iii.team05.exam.model.ExamVO;
 import iii.team05.exam.model.OptionsVO;
 
 import java.io.IOException;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -169,6 +170,7 @@ public class ExamEdit extends HttpServlet {
 		service.insetExam(examVO);
 		new ExamService().putAllExamToContex(getServletContext());
 	//	 System.out.println(examVO);
+
 	}
 
 }

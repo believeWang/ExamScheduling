@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <style>
  fieldset{
     	width:600px;
@@ -32,6 +33,7 @@
   </table>
 	<input type="submit" value="送出">
 	</fieldset>
+
 </FORM>
 </body>
 </html>

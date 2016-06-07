@@ -14,6 +14,5 @@
 <h1><a href="<%=request.getContextPath()%>/validate/checkmail.jsp">mail驗證</a></h1>
 <h1><a href="<%=request.getContextPath()%>/upload/poitest.jspx">上傳下載excel檔</a></h1>
 <h1><a href="<%=request.getContextPath()%>/google_map.jsp">GoogleMap</a></h1>
-
 </body>
 </html> 

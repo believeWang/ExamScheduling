@@ -29,6 +29,11 @@ public class EventDAO implements EventDAO_interface {
 	private static final String DELETE_STMT = "DELETE FROM Event_Exist where eventid = ?";
 	private static final String UPDATE_STMT = "UPDATE Event_Exist set empno=?, starttime=?, endtime=?, bgcolor=?, title=?, ecno=?, eventremark=?  where eventid = ?";
 
+	private static final String GET_ALL_SCORE = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist";
+	private static final String GET_EMP_BYNO = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist where empno=?";
+
+	
+	
 	@Override
 	public void insert(EventVO eventVO) {
 
@@ -288,5 +293,189 @@ public class EventDAO implements EventDAO_interface {
 		}
 		return list;
 	}
+	@Override
+	public List<EventVO> getAll_score() {
+		List<EventVO> list = new ArrayList<EventVO>();
+		EventVO eventVO = null;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ALL_SCORE);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				eventVO = new EventVO();
+				eventVO.setEventid(rs.getInt("eventid"));
+				eventVO.setEmpno(rs.getInt("empno"));
+				eventVO.setStarttime(rs.getTimestamp("starttime"));
+				eventVO.setEndtime(rs.getTimestamp("endtime"));
+				eventVO.setBgcolor(rs.getString("bgcolor"));
+				eventVO.setTitle(rs.getString("title"));
+				eventVO.setEcno(rs.getString("ecno"));
+				eventVO.setEventremark(rs.getString("eventremark"));
+				list.add(eventVO); // Store the row in the list
+			}
+
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+	
+	
+	@Override
+	public List<EventVO> getEmpEvent(Integer empno) {
+		
+		List<EventVO> list = new ArrayList<EventVO>();
+		EventVO eventVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_EMP_BYNO);
+			pstmt.setInt(1, empno);
+			rs = pstmt.executeQuery();
+			
+
+			while (rs.next()) {
+				eventVO = new EventVO();
+				eventVO.setEventid(rs.getInt("eventid"));
+				eventVO.setEmpno(rs.getInt("empno"));
+				eventVO.setStarttime(rs.getTimestamp("starttime"));
+				eventVO.setEndtime(rs.getTimestamp("endtime"));
+				eventVO.setBgcolor(rs.getString("bgcolor"));
+				eventVO.setTitle(rs.getString("title"));
+				eventVO.setEcno(rs.getString("ecno"));
+				eventVO.setEventremark(rs.getString("eventremark"));
+				list.add(eventVO); // Store the row in the list
+			}
+
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+	
+	
+
+//	@Override
+//	public List<EventVO> getEmpEvent(Integer empno) {
+//		
+//		List<EventVO> list = new ArrayList<EventVO>();
+//		EventVO eventVO = null;
+//		Connection con = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//
+//		try {
+//
+//			con = ds.getConnection();
+//			pstmt = con.prepareStatement(GET_EMP_BYNO);
+//			pstmt.setInt(1, empno);
+//			rs = pstmt.executeQuery();
+//			
+//
+//			while (rs.next()) {
+//				eventVO = new EventVO();
+//				eventVO.setEventid(rs.getInt("eventid"));
+//				eventVO.setEmpno(rs.getInt("empno"));
+//				eventVO.setStarttime(rs.getTimestamp("starttime"));
+//				eventVO.setEndtime(rs.getTimestamp("endtime"));
+//				eventVO.setBgcolor(rs.getString("bgcolor"));
+//				eventVO.setTitle(rs.getString("title"));
+//				eventVO.setEcno(rs.getString("ecno"));
+//				eventVO.setEventremark(rs.getString("eventremark"));
+//				list.add(eventVO); // Store the row in the list
+//			}
+//
+//			// Handle any SQL errors
+//		} catch (SQLException se) {
+//			throw new RuntimeException("A database error occured. "
+//					+ se.getMessage());
+//		} finally {
+//			if (rs != null) {
+//				try {
+//					rs.close();
+//				} catch (SQLException se) {
+//					se.printStackTrace(System.err);
+//				}
+//			}
+//			if (pstmt != null) {
+//				try {
+//					pstmt.close();
+//				} catch (SQLException se) {
+//					se.printStackTrace(System.err);
+//				}
+//			}
+//			if (con != null) {
+//				try {
+//					con.close();
+//				} catch (Exception e) {
+//					e.printStackTrace(System.err);
+//				}
+//			}
+//		}
+//		return list;
+//	}
+//	
+	
 
 }

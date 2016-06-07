@@ -1,6 +1,7 @@
 package iii.team05.examinee.ecmodel;
 
 
+
 import java.util.List;
 
 import org.hibernate.Query;
@@ -178,6 +179,24 @@ public class ECHibernateDAO implements ECDao_interface{
 			throw ex;
 		}
 		return list;
+
+	}
+	public List<ECVO> SAM(String ecno){
+		List<ECVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+		session.beginTransaction();
+		Query query = session.createQuery("from ECVO where ecno = :ecno");
+		query.setParameter("ecno", ecno);
+		 list = query.list();
+		 session.getTransaction().commit();
+		 System.out.println(ecno);
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+		
 	}
 
 

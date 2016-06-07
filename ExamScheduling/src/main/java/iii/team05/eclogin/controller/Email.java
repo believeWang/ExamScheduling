@@ -6,6 +6,7 @@ import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -78,4 +79,5 @@ public class Email {
 			e.printStackTrace();
 		}
 	}
+
 }

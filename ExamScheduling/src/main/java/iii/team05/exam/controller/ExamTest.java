@@ -28,6 +28,7 @@ public class ExamTest extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		testHibernateInsert(response);
 		//testHibernateUpdate(response);
 		//testHibernateDelete(response);
@@ -50,6 +51,7 @@ public class ExamTest extends HttpServlet {
 		ExamDetailVO eDVO =new ExamDetailVO();
 		Set<OptionsVO> optionsSet = new HashSet<OptionsVO>();
 		eDVO.setDetailno(1);
+
 		eDVO.setOptions(optionsSet);
 		eDVO.setQuestionType(0);
 		eDVO.setQuestion("What does CSS stands for ?");

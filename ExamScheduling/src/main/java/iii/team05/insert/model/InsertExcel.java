@@ -1,6 +1,7 @@
 package iii.team05.insert.model;
 
 import iii.team05.examinee.ecmodel.ECHibernateDAO;
+
 import iii.team05.examinee.ecmodel.ECService;
 import iii.team05.examinee.ecmodel.ECVO;
 import iii.team05.examinee.ecmodel.ESVO;
@@ -43,29 +44,30 @@ public class InsertExcel extends HttpServlet {
 
 		String iiiClass = request.getParameter("iiiClass");
 		String method = request.getParameter("_m");
-
 		ECService ecService = new ECService();
 		List<String> allClass = ecService.getAllClass();
-		for(String all : allClass){
-		}
+
+		for(String all : allClass){}
 		if ("poi_upload".equals(method)) {
 			poi_upload(request, response);
 			
 		} else {
-			if (iiiClass == null && method == null) { // 初始化
+			if (method == null) { // 初始化
 				request.setAttribute("allClass", allClass);
 				request.getRequestDispatcher("/upload/upload.jsp").forward(request, response);
-			} else {
-
+			} 
 				for (String cs : allClass) {
 					if (cs.equals(iiiClass)) {
-						// 把這個班級的人
-						List<ECVO> showclass = ecService.getEEIT(cs);
-						request.setAttribute("showclass", showclass);	
-			
+						// show這個班級的詳細資料
+						System.out.println(iiiClass);
+						System.out.println(cs);
+//						List<ECVO> showClass = ecService.getEEIT(cs);
+//						request.setAttribute("showClass", showClass);
+//						System.out.println(showClass);
+						//request.getRequestDispatcher("/upload/upload.jsp").forward(request, response);
 						break;
 					}
-				}
+				
 
 				if ("poi_down".equals(method)) {
 					poi_down(request, response);
@@ -434,6 +436,7 @@ public class InsertExcel extends HttpServlet {
 	// return 0.0;
 	// }
 	// }
+
 
 	private int getIntFromString(String cell) {
 		int result = 0;

@@ -30,7 +30,7 @@ public class STService {
 	}
 
 
-	
+
 	public STVO updateMailsubject(String emailsubject) {
 			
 				STVO stVO = new STVO();
@@ -46,6 +46,7 @@ public class STService {
 				stDAO.updatemailcontent(stVO);
 				return stVO;
 	        }
+
 	
 }
 	

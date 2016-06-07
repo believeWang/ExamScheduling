@@ -57,6 +57,8 @@ public class GoogleCheck extends HttpServlet {
 		String token = null;
 		String email = null;
 		String name = null;
+
+		int empno = 0;
 		int pos = 0;
 		String empToken=null;
 		response.setContentType("text/html; charset=UTF-8");
@@ -107,7 +109,7 @@ public class GoogleCheck extends HttpServlet {
 		  try {
 		   // 把上面取回來的資料，放進JSONObject中，以方便我們直接存取到想要的參數
 		   JSONObject jo = new JSONObject(sbLines.toString());		    
-		   email =jo.getString("email");
+		  email =jo.getString("email");
 //		  name =jo.getString("name");
 		  } catch (JSONException e) {
 		   e.printStackTrace();
@@ -119,12 +121,9 @@ public class GoogleCheck extends HttpServlet {
 
 		 	 for (EmployeeVO s : ecVO) {
 		 		pos=s.getPosition();
-		 	 }
-		 	 for (EmployeeVO s : ecVO) {
-		 		name=s.getEmpname();
-		 	 }
-		 	for (EmployeeVO s : ecVO) {
 		 		empToken = s.getToken();
+		 		name=s.getEmpname();
+		 		empno=s.getEmpno();
 		 	 }
 		 	if(ecVO.size()==0){
 				errors.put("loginNg", "您非我司員工");
@@ -140,6 +139,7 @@ public class GoogleCheck extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("GoogleUser", name);
 				session.setAttribute("GoogleEmail", email);
+				session.setAttribute("EmpNO", empno);
 				String from=  (String) session.getAttribute("dest");
 				if(from==null){
 //				RequestDispatcher failureView = request
@@ -159,7 +159,9 @@ public class GoogleCheck extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("GoogleUser", name);
 				session.setAttribute("GoogleEmail", email);
-				String from=  (String) session.getAttribute("dest");
+				
+				String from =  (String) session.getAttribute("dest");
+
 				  if(from==null){
 							if(empToken==null){
 							emSvc.insertToken(email, token);				

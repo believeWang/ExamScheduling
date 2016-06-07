@@ -31,7 +31,8 @@
 					<th>主考官姓名</th>
 					<th>E-mail</th>
 					<th>權限</th>
-<!-- 					<th>修改</th> -->
+
+
 				</tr>
 
 	<c:forEach var="EmpVO" items="${list}">
@@ -41,18 +42,18 @@
 	<td>${EmpVO.empname}</td>
 	<td>${EmpVO.empemail}</td>
 	
-<%-- 		<td><input type="TEXT" name="position" value="${EmpVO.position} "readonly/></td> --%>
-	
-
 	    <input type="hidden" name="empno" value="${EmpVO.empno}">
 	    <input type="hidden" name="action" value="update1">
-		<td><input type="submit" value="送出修改"></td></tr>
+		<td><input type="submit" value="取消"></td></tr>
         </c:forEach>
 	</table>
 </FORM>
+
+	
+		
 		</fieldset></div>
-		<a href='<%=request.getContextPath()%>/employee/Emptable2.jsp'>返回考官表格</a>
-		<a href="<%=request.getContextPath()%>/employee/student_upd.jsp">查詢考生諮詢</a>
-<%-- 		<%@ include file="page2.file"%> --%>
+		<a href='<%=request.getContextPath()%>/employee/Emptable2.jsp'>返回員工清單</a>
+	
+=======
 </body>
 </html>

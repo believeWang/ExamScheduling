@@ -1,5 +1,6 @@
 package iii.team05.Employee.model;
 
+
 import iii.team05.job.model.JobVO;
 
 import java.util.HashSet;
@@ -19,6 +20,7 @@ public class EmployeeVO  implements java.io.Serializable{
 	public void setJob(Set<JobVO> job) {
 		this.job = job;
 	}
+
 
 	public Integer getEmpno() {
 		return empno;

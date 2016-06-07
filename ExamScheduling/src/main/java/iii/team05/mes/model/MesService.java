@@ -24,6 +24,7 @@ public class MesService {
 		dao.leave(mesVO);
 		return mesVO;
 	}
+
 	public MesVO replyMessage(Integer messageid,String msgname,	String msgmail, Timestamp msgtime, String msgcontent,
 			String rpname, java.sql.Timestamp rptime, String rpcontent) {
 
