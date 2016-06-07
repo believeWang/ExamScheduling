@@ -15,7 +15,7 @@
 <body>
 <%@ include file="/WEB-INF/header/header.jsp" %>
 <div style="margin: 200px 500px">
- <FORM METHOD="post" ACTION="mes/mes.do" name="form1" >
+ <FORM METHOD="post" ACTION="/ExamScheduling/mes/mes.do" name="form1" >
 <h1 class="center-align">請輸入留言</h1>
 <table border="0" class="table">
 	<tr>

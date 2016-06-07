@@ -5,15 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ESS</title>
-
+</head>
+<body>
 <h1><a href="<%=request.getContextPath()%>/employee/Emptable2.jsp">主考官</a></h1>
 <h1><a href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet?jobid=1">前台</a></h1>
 <h1><a href="<%=request.getContextPath()%>/aboutedit">公司簡介編輯</a></h1>
 <h1><a href="<%=request.getContextPath()%>/recaptcha.jsp">後台登入</a></h1>
 <h1><a href="<%=request.getContextPath()%>/validate/checkmail.jsp">mail驗證</a></h1>
 <h1><a href="<%=request.getContextPath()%>/upload/poitest.jspx">上傳下載excel檔</a></h1>
+<h1><a href="<%=request.getContextPath()%>/google_map.jsp">GoogleMap</a></h1>
 
-
-${googleLoginErrors.loginNg}
 </body>
 </html> 

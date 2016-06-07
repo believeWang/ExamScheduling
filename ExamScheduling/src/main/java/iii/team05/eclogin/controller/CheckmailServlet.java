@@ -8,6 +8,7 @@ import iii.team05.examinee.ecmodel.ECVO;
 
 
 
+import iii.team05.login_front.controller.PasswordMd5;
 import iii.team05.setting.model.STService;
 import iii.team05.setting.model.STVO;
 
@@ -104,7 +105,10 @@ public class CheckmailServlet extends HttpServlet {
 			   
 			   String ecpsd = cap1+cap2+cap3+num1+num2+num3+low1+low2;
 			   System.out.println("random隨機密碼:"+ecpsd);
-			   ecSvc.updatePsd(ecno,ecpsd);
+				PasswordMd5 p5 =new PasswordMd5();
+				byte[] bytepsd=p5.encryption(ecpsd);
+
+			   ecSvc.updatePsd(ecno,bytepsd);
 			   
 			   STService stSvc = new STService();
 			   
@@ -134,7 +138,7 @@ public class CheckmailServlet extends HttpServlet {
 				   
 				//啟動Email()方法傳mail內各值進去
 				Email ssm = new Email();
-				ssm.sendEmail(ecemail, subject, content+"</br>"+"帳號:"+ecemail+"</br>"+"\t"+"密碼:"+ecpsd);
+				ssm.sendEmail(ecemail, subject, content+"</br>"+"帳號:"+ecno+"</br>"+"\t"+"密碼:"+ecpsd);
 
 			}
 		  }

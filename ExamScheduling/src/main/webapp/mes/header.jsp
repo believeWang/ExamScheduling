@@ -23,7 +23,7 @@
 $(function() {
 	$("#effect").hide();
 	$("#button").click(function() {
-  	$("#effect").slideToggle(100);
+  	$("#effect").slideToggle(500);
 	});
 	
 });
