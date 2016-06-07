@@ -47,7 +47,7 @@ public class InsertExcel extends HttpServlet {
 		ECService ecService = new ECService();
 		List<String> allClass = ecService.getAllClass();
 
-		for(String all : allClass){}
+		
 		if ("poi_upload".equals(method)) {
 			poi_upload(request, response);
 			
@@ -61,9 +61,9 @@ public class InsertExcel extends HttpServlet {
 						// show這個班級的詳細資料
 						System.out.println(iiiClass);
 						System.out.println(cs);
-//						List<ECVO> showClass = ecService.getEEIT(cs);
-//						request.setAttribute("showClass", showClass);
-//						System.out.println(showClass);
+						List<ECVO> showClass = ecService.getEEIT(cs);
+						request.setAttribute("showClass", showClass);
+						System.out.println(showClass);
 						//request.getRequestDispatcher("/upload/upload.jsp").forward(request, response);
 						break;
 					}
@@ -72,10 +72,11 @@ public class InsertExcel extends HttpServlet {
 				if ("poi_down".equals(method)) {
 					poi_down(request, response);
 				}
-			}
+				}
+				}
 		}
 		
-	}
+	
 
 	private void poi_upload(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -202,6 +203,7 @@ public class InsertExcel extends HttpServlet {
 								// 面試分數
 								Integer interview = getIntFromString(transform(
 										row, 11));
+								//System.out.println("interview:"+interview);
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float interviewf =
 								// Float.parseFloat(transform(row, 11));
