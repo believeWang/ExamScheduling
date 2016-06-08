@@ -32,6 +32,7 @@
 				<th>留言時間</th>
 
 			</tr>
+			
 			<c:forEach var="mesVO" items="${list}" varStatus="counter">
 
 				<tr>
