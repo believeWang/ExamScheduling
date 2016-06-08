@@ -10,11 +10,7 @@
 <h1><a href="<%=request.getContextPath()%>/employee/Emptable2.jsp">主考官</a></h1>
 <h1><a href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet?jobid=1">前台</a></h1>
 <h1><a href="<%=request.getContextPath()%>/aboutedit">公司簡介編輯</a></h1>
-<h1><a href="<%=request.getContextPath()%>/recaptcha.jsp">後台登入</a></h1>
-<h1><a href="<%=request.getContextPath()%>/validate/checkmail.jsp">mail驗證</a></h1>
-<h1><a href="<%=request.getContextPath()%>/section/SectionServlet">設定/時間區段</a></h1>
-<h1><a href="<%=request.getContextPath()%>/job/JobServlet">設定/職缺(位)設定</a></h1>
-
+<h1><a href="<%=request.getContextPath()%>/Examiner.jsp">後台登入</a></h1>
 <h1><a href="<%=request.getContextPath()%>/validate/checkmail.jsp">mail驗證</a></h1>
 <h1><a href="<%=request.getContextPath()%>/upload/poitest.jspx">上傳下載excel檔</a></h1>
 <h1><a href="<%=request.getContextPath()%>/google_map.jsp">GoogleMap</a></h1>

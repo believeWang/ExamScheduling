@@ -33,7 +33,7 @@ import org.json.JSONObject;
 
 
 /**
- * Servlet implementation class GoogleCheck
+ * Servlet implementation class GoogleChecks
  */
 @WebServlet("/GoogleCheck")
 public class GoogleCheck extends HttpServlet {
@@ -98,7 +98,6 @@ public class GoogleCheck extends HttpServlet {
 		 //如果認證成功
 		 if (connObtainUserInfo.getResponseCode() == HttpURLConnection.HTTP_OK){
 		  StringBuilder sbLines   = new StringBuilder("");
-		   
 		  // 取得Google回傳的資料(JSON格式)
 		  BufferedReader reader = 
 		   new BufferedReader(new InputStreamReader(connObtainUserInfo.getInputStream(),"utf-8"));
