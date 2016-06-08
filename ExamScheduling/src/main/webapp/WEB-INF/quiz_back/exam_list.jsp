@@ -10,13 +10,24 @@
 <!-- 自訂 -->
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/examstyle.min.css" />
 <%@ include file="../cdn.file" %>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+    $(".button-collapse").sideNav();
+  });
+
+
+
+</script>
 </head>
 <body>
+<%@ include file="../header/slidenav.jsp" %>
   <!-- START CONTENT -->
       <section id="content">
-        
-       
-        
+               
 
         <!--start container-->
         <div class="container">

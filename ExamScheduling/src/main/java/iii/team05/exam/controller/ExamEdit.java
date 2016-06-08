@@ -109,7 +109,7 @@ public class ExamEdit extends HttpServlet {
 		if(filePart!=null&&filePart.getSize()!=0)		
 			examVO.setExamImg(IOUtils.toByteArray(filePart.getInputStream()));
 		else{
-			System.out.println(examVO.getExamno());
+			//System.out.println(examVO.getExamno());
 			ExamVO oldVO=service.getExam(examVO.getExamno());
 			if(oldVO!=null&&oldVO.getExamImg()!=null)
 				examVO.setExamImg(oldVO.getExamImg());
@@ -133,7 +133,7 @@ public class ExamEdit extends HttpServlet {
 					.getParameter("questiontype" + i));
 			examDetailVO.setDetailno(realNum);
 			examDetailVO.setQuestion(tempTitle);
-			System.out.println(tempTitle);
+			//System.out.println(tempTitle);
 			examDetailVO.setQuestionType(questionType);
 			examDetailVO.setExamVO(examVO);
 
@@ -168,7 +168,7 @@ public class ExamEdit extends HttpServlet {
 		examVO.setQuantities(realNum);
 		examVO.setExamDetils(questions);
 		service.insetExam(examVO);
-		new ExamService().putAllExamToContex(getServletContext());
+		service.putAllExamToContex(getServletContext());
 	//	 System.out.println(examVO);
 
 	}
