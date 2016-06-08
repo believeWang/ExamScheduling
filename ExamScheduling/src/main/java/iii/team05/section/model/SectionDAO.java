@@ -24,10 +24,10 @@ public class SectionDAO implements SectionDAO_interface {
 	}
 
 	private static final String INSERT_STMT = "INSERT INTO Section (sectiontime, sectionStatus) VALUES (?, ?)";
-	private static final String GET_ALL_STMT = "SELECT sectiontime, sectionStatus FROM Section";
-	private static final String GET_ONE_STMT = "SELEC sectiontime, sectionStatus FROM Section where sectiontime = ?";
-	private static final String DELETE_STMT = "DELETE FROM Section where sectiontime = ?";
-	private static final String UPDATE_STMT = "UPDATE Section set sectionStatus=? where sectiontime = ?";
+	private static final String GET_ALL_STMT = "SELECT sectionid, sectiontime, sectionStatus FROM Section";
+	private static final String GET_ONE_STMT = "SELECT sectionid, sectiontime, sectionStatus FROM Section where sectionid = ?";
+	private static final String DELETE_STMT = "DELETE FROM Section where sectionid = ?";
+	private static final String UPDATE_STMT = "UPDATE Section set sectiontime=?, sectionStatus=? where sectionid = ?";
 
 	@Override
 	public void insert(SectionVO sectionVO) {
@@ -41,7 +41,7 @@ public class SectionDAO implements SectionDAO_interface {
 			pstmt = con.prepareStatement(INSERT_STMT);
 
 			pstmt.setTime(1, sectionVO.getSectiontime());
-			pstmt.setDouble(2, sectionVO.getSectionStatus());
+			pstmt.setBoolean(2, sectionVO.getSectionStatus());
 
 			pstmt.executeUpdate();
 
@@ -79,8 +79,9 @@ public class SectionDAO implements SectionDAO_interface {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE_STMT);
 			
-			pstmt.setDouble(1, sectionVO.getSectionStatus());
-			pstmt.setTime(2, sectionVO.getSectiontime());
+			pstmt.setTime(1, sectionVO.getSectiontime());
+			pstmt.setBoolean(2, sectionVO.getSectionStatus());
+			pstmt.setInt(3, sectionVO.getSectionid());
 
 			pstmt.executeUpdate();
 
@@ -109,7 +110,7 @@ public class SectionDAO implements SectionDAO_interface {
 	}
 
 	@Override
-	public void delete(java.sql.Time sectiontime) {
+	public void delete(Integer sectionid) {
 		int updateCount_EMPs = 0;
 
 		Connection con = null;
@@ -120,10 +121,10 @@ public class SectionDAO implements SectionDAO_interface {
 			con = ds.getConnection();
 			
 			pstmt = con.prepareStatement(DELETE_STMT);
-			pstmt.setTime(1, sectiontime);
+			pstmt.setInt(1, sectionid);
 			updateCount_EMPs = pstmt.executeUpdate();
 			
-			System.out.println("刪除事件id＝" + sectiontime +"有"+ updateCount_EMPs
+			System.out.println("刪除事件id＝" + sectionid +"有"+ updateCount_EMPs
 					+ "筆被刪除");
 			
 			// Handle any SQL errors
@@ -159,7 +160,7 @@ public class SectionDAO implements SectionDAO_interface {
 	}
 
 	@Override
-	public SectionVO findByPrimaryKey(java.sql.Time sectiontime) {
+	public SectionVO findByPrimaryKey(Integer sectionid) {
 
 		SectionVO sectionVO = null;
 		Connection con = null;
@@ -171,15 +172,16 @@ public class SectionDAO implements SectionDAO_interface {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(GET_ONE_STMT);
 			
-			pstmt.setTime(1, sectiontime);
+			pstmt.setInt(1, sectionid);
 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				
 				sectionVO = new SectionVO();
+				sectionVO.setSectionid(rs.getInt("sectionid"));
 				sectionVO.setSectiontime(rs.getTime("sectiontime"));
-				sectionVO.setSectionStatus(rs.getDouble("sectionStatus"));
+				sectionVO.setSectionStatus(rs.getBoolean("sectionStatus"));
 				
 			}
 
@@ -231,8 +233,9 @@ public class SectionDAO implements SectionDAO_interface {
 
 			while (rs.next()) {
 				sectionVO = new SectionVO();
+				sectionVO.setSectionid(rs.getInt("sectionid"));
 				sectionVO.setSectiontime(rs.getTime("sectiontime"));
-				sectionVO.setSectionStatus(rs.getDouble("sectionStatus"));
+				sectionVO.setSectionStatus(rs.getBoolean("sectionStatus"));
 				list.add(sectionVO); // Store the row in the list
 			}
 

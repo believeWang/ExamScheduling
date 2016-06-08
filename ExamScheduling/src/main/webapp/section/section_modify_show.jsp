@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,7 +20,6 @@
 
 </head>
 <body>
-
 <div class="container-fluid">
 	
 	<div class="row">
@@ -49,37 +48,44 @@
 	  	
 	  	<div class="col-md-6">
 	  		<h3 class="text-center">預約時段設定</h3>
-<!-- 	  		<a href="#" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a> -->
-	  		<a href="SectionDoServlet?action=add" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
+<!-- 	  	<a href="SectionDoServlet?action=add" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
 	  		<div id="users-contain" class="ui-widget"><!-- start -->
+	  		<form action="SectionSaveServlet" method="post">
+	  		<input type="hidden" name="action" value="modify">
+	  		<input type="hidden" name="id" value="${sectionVO.sectionid}">
 	  		<table id="users" class="table  table-bordered">
-	  			<thead>
-		  			<tr>
-		  				<td>序號</td>
-		  				<td>時段</td>
-		  				<td>啟用狀態</td>
-		  				<td></td>
-		  			</tr>
-	  			</thead>
-	  			<tbody>
-		  			<c:forEach var="section" items="${sectionlists}" varStatus="loop">
-		  			<tr>
-		  				<td>${loop.index+1}</td>
-		  				<input type="hidden" name="index" value="${loop.count}" class="index">
-		  				<td>${section.sectiontime}</td>
-		  				<td>
-		  					<c:if test="${section.sectionStatus == true}">啟用中</c:if>
-		  					<c:if test="${section.sectionStatus == false}">未啟用</c:if>
-	  					</td>
-		  				<td>
-							<a href="SectionDoServlet?action=modify&id=${section.sectionid}" class="edit-section"><span class="glyphicon glyphicon-pencil" aria-hidden="true">修改</span></a>
-							 / 
-							<a href="SectionDoServlet?action=delete&id=${section.sectionid}" class="del-section"><span class="glyphicon glyphicon-trash" aria-hidden="true">刪除</span></a>
-						</td>
-		  			</tr>
-		  			</c:forEach>
-	  			</tbody>
+				<tr>
+					<td>時段</td>
+					<td>
+						小時：
+						<select name="hour" class="form-control">
+							<c:forEach var="i" begin="1" end="24">
+								<option value="${i}" <c:if test="${time_array[0] == i}">selected</c:if> >${i}</option>
+							</c:forEach>
+						</select>
+						分鐘：
+						<select name="minute" class="form-control">
+							<c:forEach var="i2" begin="00" end="60" step="10">
+								<option value="${i2}" <c:if test="${time_array[1] == i2}">selected</c:if> >${i2}</option>
+							</c:forEach>
+							
+						</select>
+						
+					</td>
+				</tr>
+	  			<tr>
+					<td>啟用</td>
+					<td>
+						<input type="checkbox" name="sectionStatus" value="1" <c:if test="${sectionVO.sectionStatus == true}">checked</c:if> />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="送出" />
+					</td>
+				</tr>
 	  		</table>
+	  		</form>
 	  		</div><!-- end -->
 	  	</div>
 	  	
@@ -88,6 +94,5 @@
 	</div>
 
 </div>
-
 </body>
 </html>
