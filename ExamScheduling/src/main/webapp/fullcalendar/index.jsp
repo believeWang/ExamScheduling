@@ -5,6 +5,7 @@
 <%@ page import="iii.team05.job.model.*"%>
 <%-- 此頁採用 JSTL 與 EL 取值 --%>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -127,6 +128,7 @@
 				<ul class="list-group">
 					<c:forEach var="job" items="${jdlists}">
 						<a href="EventShowServlet?jobid=${job.jobid}"><li class="list-group-item <c:if test="${job.jobid == jobid}">active</c:if>" >${job.jobname}</li></a><!-- active -->
+
 					</c:forEach>
 				</ul>
 			</div>

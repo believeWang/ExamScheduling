@@ -7,8 +7,13 @@
 
 		<composite-id>
 			<key-property name="optionsno" column="optionsno" />
-			<key-many-to-one name="examDetail"
-				class="iii.team05.exam.model.ExamDetailVO" column="detailno" lazy="false"/>
+
+			
+			<key-many-to-one name="examDetail" class="iii.team05.exam.model.ExamDetailVO" >
+     				<column name="detailno" />
+     					<column name="examno" />
+  			</key-many-to-one>
+
 		</composite-id>
 
 		<property name="optionsName" column="optionsName" />

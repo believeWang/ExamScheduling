@@ -12,6 +12,7 @@
         <property name="empname" column="empname" />
         <property name="empemail" column="empemail" />
         <property name="position" column="position" />
+
         
         <set name="job" table="Job_Er" 
         	inverse="false" lazy="false" fetch="select" cascade="all" >
@@ -28,3 +29,4 @@
         
     </class>
 </hibernate-mapping>
+

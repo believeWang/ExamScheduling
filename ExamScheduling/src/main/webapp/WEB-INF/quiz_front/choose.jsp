@@ -58,22 +58,13 @@ table{
 </head>
 <body>
 <%@ include file="../header/header.jsp" %>
-<!-- <div id='cssmenu'> -->
-<!-- <ul> -->
-<%--    <li class=''><a href='${pageContext.request.contextPath}'><span>Home</span></a></li> --%>
-<%--    <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li> --%>
-<%--    <li><a href='${pageContext.request.contextPath}/choose'><span>Exam</span></a></li> --%>
-   
-  
-<!-- </ul> -->
-<!-- </div> -->
 
 
 
 <div class="content">
 <table cellpadding="0" cellspacing="50">
 <c:forEach var="examEntry" items="${applicationScope.examsMap}" varStatus="counter">
-<c:if test='${counter.count%2==1}'>
+<c:if test='${counter.count%4==1}'>
 <tr>
 </c:if>
 
@@ -93,7 +84,7 @@ table{
 				</c:otherwise>
 			</c:choose>
 
-<c:if test='${counter.count%2==0}'>
+<c:if test='${counter.count%4==0}'>
 </tr>
 </c:if>
 
@@ -102,10 +93,7 @@ table{
 
 </c:forEach>
 
-<!-- <tr> -->
-<!-- <td><a href="TakeExam?test=Javascript1"><img height="200" width="200" src="exam_resourse/images/javascript.png"/></a></td> -->
 
-<!-- </tr> -->
 
 </table>
 </div>

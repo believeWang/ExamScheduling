@@ -1,5 +1,6 @@
 package iii.team05.Employee.model;
 
+
 import java.util.*;
 
 public interface EmployeeDAO_interface {
@@ -9,6 +10,7 @@ public interface EmployeeDAO_interface {
           public EmployeeVO findByPrimaryKey(Integer empno);
           public List<EmployeeVO> getAll();
           public List<EmployeeVO> getExam();
+
          
 		
 }

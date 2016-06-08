@@ -4,22 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
-<script src="/ExamScheduling/chat/js/jquery.qqFace.js"
-	type="text/javascript"></script>
-<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.css"
-	rel="stylesheet" type="text/css" />
-<script type="text/javascript"
-	src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.js"></script>
-<script type="text/javascript">
-	PNotify.prototype.options.styling = "bootstrap3";
-</script>
+<script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
+<link href="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="//cdn.bootcss.com/pnotify/2.0.0/pnotify.all.min.js"></script>
+<!-- <script type="text/javascript"> -->
+<!-- // 	PNotify.prototype.options.styling = "bootstrap3"; -->
+<!-- </script> -->
 
 
 <script type="text/javascript">
@@ -66,7 +57,7 @@
 				}else{
 					checkbox.val("1");
 				}
-				console.log(chexval);
+
 			});
 			if (chexval == "1") {
 				new PNotify({
@@ -75,7 +66,8 @@
 				});
 			}
 		}
-
+		var div = document.getElementById("show");
+		div.scrollTop = div.scrollHeight;
 	};
 
 	var options = {
@@ -148,12 +140,16 @@ span.emotion:hover {
 	<div style="background: white;">
 		<input type="hidden" id="messageName" value="主考官  ${GoogleUser}">
 		</br>
-		<div contenteditable="false" id="show"></div>
+		<div contenteditable="false" id="show" style="width: 450px;height:450px; overflow:scroll;border-style:outset;"></div>
 		<!--  	<textarea id="messagesUser" readonly="readonly" rows="10" cols="15"></textarea>  -->
 		</br> <input type="text" id="messageText" name="messageText" size="45">
 		<p>
-			<input type="button" class="sub_btn" value="send"
-				onclick="sendMessage();"><span class="emotion">表情</span>
+<!-- 			<input type="button" class="sub_btn" value="send" onclick="sendMessage();"> -->
+				<span class="emotion">表情</span>
+				<button class="light-blue darken-2 waves-light btn" type="submit"
+									onclick="sendMessage();">
+									送出<i class="material-icons right">mode_edit</i>
+								</button>
 
 		</p>
 	</div>

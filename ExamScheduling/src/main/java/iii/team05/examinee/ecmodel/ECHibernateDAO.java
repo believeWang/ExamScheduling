@@ -1,6 +1,7 @@
 package iii.team05.examinee.ecmodel;
 
 
+
 import java.util.List;
 
 import org.hibernate.Query;
@@ -15,6 +16,7 @@ import iii.team05.hibernate.util.*;
 
 public class ECHibernateDAO implements ECDao_interface{
 	private static final String GET_ALL_STMT = "from ECVO order by ecno";
+	private static final String GET_ALL_CLASS = "select distinct ecclass  from Examinee_Cat  ";
 	@Override
 	public void insert(ECVO examineeCatVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -89,6 +91,7 @@ public class ECHibernateDAO implements ECDao_interface{
 		
 	}
 
+	//取得班級名稱
 	public List<ECVO> getEEIT(String eeitName) {
 		List<ECVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -132,7 +135,7 @@ public class ECHibernateDAO implements ECDao_interface{
 			session.beginTransaction();
 			Query query = session.createQuery("update ECVO set ecpsd = :ecpsd where ecno=:ecno");
 			String ecno=ecVO.getEcno();
-			String ecpsd=ecVO.getEcpsd();
+			byte[] ecpsd=ecVO.getEcpsd();
 			query.setParameter("ecpsd",ecpsd);
 			query.setParameter("ecno",ecno);
 			query.executeUpdate();
@@ -160,6 +163,40 @@ public class ECHibernateDAO implements ECDao_interface{
 	public List<ECVO> setEEIT(String string) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public List<String>getAllClass(){
+		List<String> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+		session.beginTransaction();
+		Query query = session.createSQLQuery(GET_ALL_CLASS);
+		
+		 list = query.list();
+		 session.getTransaction().commit();
+		
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+
+	}
+	public List<ECVO> SAM(String ecno){
+		List<ECVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+		session.beginTransaction();
+		Query query = session.createQuery("from ECVO where ecno = :ecno");
+		query.setParameter("ecno", ecno);
+		 list = query.list();
+		 session.getTransaction().commit();
+		 System.out.println(ecno);
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+		
 	}
 
 

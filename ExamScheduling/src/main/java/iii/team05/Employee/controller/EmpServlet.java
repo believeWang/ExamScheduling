@@ -23,6 +23,7 @@ public class EmpServlet extends HttpServlet {
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+
 		System.out.print("action:"+action);
 		if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp的請求
 			
@@ -267,5 +268,6 @@ if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 }
 
 	}
+
 
 }

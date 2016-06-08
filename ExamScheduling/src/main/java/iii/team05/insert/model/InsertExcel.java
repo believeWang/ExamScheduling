@@ -1,12 +1,14 @@
 package iii.team05.insert.model;
 
 import iii.team05.examinee.ecmodel.ECHibernateDAO;
+import iii.team05.examinee.ecmodel.ECService;
 import iii.team05.examinee.ecmodel.ECVO;
 import iii.team05.examinee.ecmodel.ESVO;
 import iii.team05.examinee.ecmodel.ScoreVO;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -23,6 +25,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -30,6 +33,10 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class InsertExcel
@@ -41,22 +48,94 @@ public class InsertExcel extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		// ServletContext context = getServletContext();
-		// String excelFile = "/WEB-INF/datastore/WebcommEEIT_1.0.xlsx";
-
-
+		String iiiClass = request.getParameter("iiiClass");
 		String method = request.getParameter("_m");
-		if ("poi_down".equals(method)) {
-			poi_down(request, response);
-		} else if ("poi_upload".equals(method)) {
+		ECService ecService = new ECService();
+		List<String> allClass = ecService.getAllClass();
+
+		if (method == null && iiiClass == null) {
+			// init
+			request.setAttribute("allClass", allClass);
+			request.getRequestDispatcher("/upload/upload.jsp").forward(request,
+					response);
+		} else if (method == null) {
+			response.setContentType("application/json;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			// 顯示學生資料-->傳回學生資料(AJAX)
+			List<ECVO> showClass = new ECHibernateDAO().getEEIT(iiiClass);
+			JSONArray ary = new JSONArray();
+		
+			 for(ECVO ecVO:showClass){
+			 ESVO esVO=ecVO.geteSVO();
+			 ScoreVO scoreVO=ecVO.getScoreVO();
+			 ecVO.seteSVO(null);
+			 ecVO.setScoreVO(null);
+			 esVO.seteCVO(null);
+			 scoreVO.seteCVO(null);
+			String gson1=new Gson().toJson(ecVO);
+			String gson2=new Gson().toJson(esVO);
+			String gson3=new Gson().toJson(scoreVO);
+				// System.out.println(gson);
+			 ary.put(gson1);
+			 ary.put(gson2);
+			 ary.put(gson3);
+			 //System.out.println(ecVO.geteSVO().getEsschool());
+			 }
+//				String str = "{\"allClass\":[";
+//			for (int i = 0; i < showClass.size(); i++) {
+//				str += showClass.get(i).toString();
+//				if (i != showClass.size() - 1) {
+//					str+=",";
+//				}
+//
+//			}
+//			str += "]}";
+			 System.out.println(ary);
+			out.print(ary);
+			// 設定屬性,方便在JSP 顯示商品
+		} else if (iiiClass == null && method.equals("poi_upload")) {
+			// 上傳
 			poi_upload(request, response);
+		} else if (method.equals("poi_down")) {
+			// 下載
+			
+			poi_down(request, response,iiiClass);
+			
 		}
+		//
+		// if ("poi_upload".equals(method)) {
+		// poi_upload(request, response);
+		// } else {
+		// if (method == null&&iiiClass==null) { // 初始化
+		// request.setAttribute("allClass", allClass);
+		// request.getRequestDispatcher("/upload/upload.jsp").forward(request,
+		// response);
+		// }
+		// for (String cs : allClass) {
+		// if (cs.equals(iiiClass)) {
+		// // show這個班級的詳細資料
+		// System.out.println(iiiClass);
+		// System.out.println(cs);
+		// // List<ECVO> showClass = ecService.getEEIT(cs);
+		// // request.setAttribute("showClass", showClass);
+		// // System.out.println(showClass);
+		// //
+		// //request.getRequestDispatcher("/upload/upload.jsp").forward(request,
+		// response);
+		// // break;
 
+		// List<ECVO> showClass = new ECHibernateDAO().getEEIT("EEIT85");
+		// request.setAttribute("showClass", showClass); //設定屬性,方便在JSP 顯示商品
+		// //int i = 1;
+		// for (ECVO ecVO : showClass) {
 
+		// if ("poi_down".equals(method)) {
+		// poi_down(request, response);
+		// }
+		// }
+		// }
 	}
 
-	
-	
 	private void poi_upload(HttpServletRequest request,
 			HttpServletResponse response) {
 		if (ServletFileUpload.isMultipartContent(request)) {
@@ -82,16 +161,13 @@ public class InsertExcel extends HttpServlet {
 						System.out
 								.println("\n---------------------------------------");
 
-						if (".xls".equals(excelContentType)||".xlsx".equals(excelContentType)) {
-//							POIFSFileSystem fileSystem = new POIFSFileSystem(
-//									item.getInputStream());
-							
-							// 原本讀的
-							// InputStream inp =
-							// context.getResourceAsStream(excelFile);
-
+						if (".xls".equals(excelContentType)
+								|| ".xlsx".equals(excelContentType)) {
+							// POIFSFileSystem fileSystem = new POIFSFileSystem(
+							// item.getInputStream());
 							// 從輸入流創建Workbook
-							XSSFWorkbook workbook = new XSSFWorkbook(item.getInputStream());
+							XSSFWorkbook workbook = new XSSFWorkbook(
+									item.getInputStream());
 							// 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始）
 							XSSFSheet sheet1 = workbook.getSheetAt(0);
 							// 取得Sheet表中所包含的總row數
@@ -108,8 +184,7 @@ public class InsertExcel extends HttpServlet {
 
 								for (int j = 0; j < row
 										.getPhysicalNumberOfCells(); j++) {
-									// System.out.println(row.getCell(j));
-									System.out.println(transform(row, j));
+
 								}
 
 								// ECVO ECVO 也稱為 Domain objects
@@ -133,9 +208,15 @@ public class InsertExcel extends HttpServlet {
 								// 是否已約上機
 								// Boolean ecstatus = new
 								// Boolean(row.getCell(8).toString());
-								Boolean ecstatus = new Boolean(
-										transform(row, 8));
-
+								String status = (transform(row, 8));
+								Boolean ecstatus;
+								if ("是".equals(status)) {
+									ecstatus = true;
+								} else {
+									ecstatus = false;
+								}
+								// 班級
+								String ecclass = ecno.substring(0, 6);
 								// 組別
 								float esteamf = Float.parseFloat(transform(row,
 										0));
@@ -147,9 +228,13 @@ public class InsertExcel extends HttpServlet {
 								// 畢業學校
 								String esschool = transform(row, 5);
 								// 性別
-								Boolean essex = new Boolean(transform(row, 6));
-								System.out.println(esschool);
-								System.out.println(essex);
+								String sex = (transform(row, 6));
+								Boolean essex;
+								if ("男".equals(sex)) {
+									essex = true;
+								} else {
+									essex = false;
+								}
 								// 最快可以上班日期
 								XSSFCell dateCell = row.getCell(13);
 								java.sql.Date eshiredate = null;
@@ -159,39 +244,41 @@ public class InsertExcel extends HttpServlet {
 											.getDateCellValue().getTime());
 								}
 								;
-
 								// 期望薪資
-								Integer essalary = getIntFromString(transform(row, 14));
+								Integer essalary = getIntFromString(transform(
+										row, 14));
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float essalaryf =
 								// Float.parseFloat(transform(row, 14));
 								// Integer essalary = (int) essalaryf;
 
 								// Final Ranking
-								Integer esranking = getIntFromString(transform(row, 15));
-
+								Integer esranking = getIntFromString(transform(
+										row, 15));
 								// 備註2
 								String esremark2 = transform(row, 16);
-
 								// 上機考分數
 								Integer lab = getIntFromString(transform(row, 9));
-
 								// 面試分數
-								Integer interview = getIntFromString(transform(row, 11));
+								Integer interview = getIntFromString(transform(
+										row, 11));
+								// System.out.println("interview:"+interview);
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float interviewf =
 								// Float.parseFloat(transform(row, 11));
 								// Integer interview = (int) interviewf;
 
 								// 上機考時間(分鐘)
-								Integer labtime = getIntFromString(transform(row, 10));
+								Integer labtime = getIntFromString(transform(
+										row, 10));
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float labtimef =
 								// Float.parseFloat(transform(row, 10));
 								// Integer labtime = (int) labtimef;
 
 								// 線上測驗分數
-								Integer onlineex = getIntFromString(transform(row, 12));
+								Integer onlineex = getIntFromString(transform(
+										row, 12));
 								// 呼叫getIntFromString來用, 取代以下兩行
 								// float onlineexf =
 								// Float.parseFloat(transform(row, 12));
@@ -202,6 +289,7 @@ public class InsertExcel extends HttpServlet {
 								ecvo.setEcemail(ecemail);
 								ecvo.setEcremark1(ecremark1);
 								ecvo.setEcstatus(ecstatus);
+								ecvo.setEcclass(ecclass);
 
 								esvo.setEcno(ecno);
 								esvo.setEsteam(esteam);
@@ -226,12 +314,13 @@ public class InsertExcel extends HttpServlet {
 								ecvo.setScoreVO(scoreVO);
 								// 載入進資料庫
 								dao.insert(ecvo);
-
 							}
+
+							request.getRequestDispatcher("uploadSucessed.jsp")
+									.forward(request, response);
 						}
 					}
 				}
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -239,7 +328,7 @@ public class InsertExcel extends HttpServlet {
 	}
 
 	private void poi_down(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response,String iiiClass) {
 		response.setContentType("application/vnd.ms-excel;charset=UTF-8");
 		response.setHeader("Content-Disposition",
 				"attachment;filename=data.xls");
@@ -258,14 +347,14 @@ public class InsertExcel extends HttpServlet {
 		// 設定寬度
 		sheet.setColumnWidth(0, 1000);
 		sheet.setColumnWidth(4, 1000);
-		sheet.setColumnWidth(5, 7000); // 學校
+		sheet.setColumnWidth(5, 6000); // 學校
 		sheet.setColumnWidth(6, 1000);
 		sheet.setColumnWidth(7, 7000); // email
 		sheet.setColumnWidth(8, 3000);
 		sheet.setColumnWidth(9, 2000);
 		sheet.setColumnWidth(10, 2000);
 		sheet.setColumnWidth(12, 2000);
-		sheet.setColumnWidth(14, 3000);
+		sheet.setColumnWidth(14, 6000);//最快到職日期
 		sheet.setColumnWidth(15, 2000);
 		sheet.setColumnWidth(17, 7000);
 		// 表頭
@@ -307,9 +396,11 @@ public class InsertExcel extends HttpServlet {
 		cell17.setCellValue("Final Ranking");
 		HSSFCell cell18 = row.createCell(17);
 		cell18.setCellValue("備註");
-
-		List<ECVO> eeitList = new ECHibernateDAO().getEEIT("EEIT85");
-
+		System.out.println(iiiClass);
+		
+//		iiiClass = request.getParameter("iiiClass");
+		List<ECVO> eeitList = new ECHibernateDAO().getEEIT(iiiClass);
+	
 		int i = 1;
 		for (ECVO ecVO : eeitList) {
 			HSSFRow newrow = sheet.createRow(i);
@@ -319,21 +410,38 @@ public class InsertExcel extends HttpServlet {
 			newrow.createCell(3).setCellValue(ecVO.getEcname());
 			newrow.createCell(4).setCellValue(ecVO.geteSVO().getEsbirth());
 			newrow.createCell(5).setCellValue(ecVO.geteSVO().getEsschool());
-
-			newrow.createCell(6).setCellValue(ecVO.geteSVO().getEssex());
+			if (ecVO.geteSVO().getEssex()==true) {
+				newrow.createCell(6).setCellValue("男");
+			} else {
+				newrow.createCell(6).setCellValue("女");
+			}
 			newrow.createCell(7).setCellValue(ecVO.getEcemail());
-
-			newrow.createCell(8).setCellValue(ecVO.getEcstatus());
+			if (true==ecVO.getEcstatus()) {
+				newrow.createCell(8).setCellValue("是");
+			} else {
+				newrow.createCell(8).setCellValue("否");
+			}
+			
 			newrow.createCell(9).setCellValue(ecVO.getScoreVO().getLab());
+			
 			newrow.createCell(10).setCellValue(ecVO.getScoreVO().getLabtime());
-			newrow.createCell(11).setCellValue(ecVO.getScoreVO().getInterview());
+			newrow.createCell(11)
+					.setCellValue(ecVO.getScoreVO().getInterview());
 			newrow.createCell(12).setCellValue(ecVO.getScoreVO().getOnlineex());
 			newrow.createCell(13).setCellValue(
 					ecVO.getScoreVO().getLab()
 							+ ecVO.getScoreVO().getOnlineex()
 							+ ecVO.getScoreVO().getInterview());
-
-			// newrow.createCell(14).setCellValue(ecVO.geteSVO().getEshiredate().getTime());
+			if (ecVO.geteSVO().getEshiredate()!=null) {
+				HSSFCellStyle cellStyle = workbook.createCellStyle();
+				 HSSFDataFormat format= workbook.createDataFormat();
+		            cellStyle.setDataFormat(format.getFormat("yyyy年m月d日"));
+		           HSSFCell myCell= newrow.createCell(14);
+		           myCell.setCellStyle(cellStyle);
+		           myCell.setCellValue(ecVO.geteSVO().getEshiredate());
+			} else {
+				newrow.createCell(14).setCellValue("");
+			}		
 			newrow.createCell(15).setCellValue(ecVO.geteSVO().getEssalary());
 			newrow.createCell(16).setCellValue(ecVO.geteSVO().getEsranking());
 			newrow.createCell(17).setCellValue(ecVO.geteSVO().getEsremark2());
@@ -387,7 +495,7 @@ public class InsertExcel extends HttpServlet {
 	}
 
 	private String transform(XSSFRow row, int index) {
-		String result = "";
+		String result = " ";
 
 		if (row.getCell(index) != null) {
 			result = row.getCell(index).toString();
@@ -401,13 +509,13 @@ public class InsertExcel extends HttpServlet {
 	 *      response)
 	 */
 
-//	private double parse(String cell) {
-//		if (cell != null && cell.trim().length() > 0) {
-//			return Double.parseDouble(cell);
-//		} else {
-//			return 0.0;
-//		}
-//	}
+	// private double parse(String cell) {
+	// if (cell != null && cell.trim().length() > 0) {
+	// return Double.parseDouble(cell);
+	// } else {
+	// return 0.0;
+	// }
+	// }
 
 	private int getIntFromString(String cell) {
 		int result = 0;

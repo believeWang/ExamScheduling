@@ -4,24 +4,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style type="text/css">
-fieldset {
-	width: 500px;
-	border: 1px solid #acd6ff;
-	margin: 100px auto 0;
-	border-radius: 15px;
-}
-</style>
+<%@ include file="/WEB-INF/cdn.file"%>
+  <script type="text/javascript">
+  $(function () { $("[data-toggle='tooltip']").tooltip(); });
+  </script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Reception</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/header/header.jsp" %>
-<div>
- <FORM METHOD="post" ACTION="mes/mes.do" name="form1" >
-<fieldset >
-<legend>留言板</legend>
-<table border="0">
+<div style="margin: 200px 500px">
+ <FORM METHOD="post" ACTION="/ExamScheduling/mes/mes.do" name="form1" >
+<h1 class="center-align">請輸入留言</h1>
+<table border="0" class="table">
 	<tr>
 		<td>姓名:</td>
 		<td><input type="TEXT" name="msgname" size="40"  value=""/></td>
@@ -32,20 +28,28 @@ fieldset {
 	</tr>
 	<tr>
 		<td>留言:</td>
-		<td><textarea cols="40" rows="10" id="area1" name="msgcontent"></textarea></td>
+		<td><textarea cols="40" rows="20" id="area1" name="msgcontent"></textarea></td>
 	</tr>
 </table>
 
 <input type="hidden" name="action" value="leave">
-<input type="submit" value="送出留言" style="width:70px;height:30px;border:2px blue none;background:red" ></fieldset></FORM>
-<a href='<%=request.getContextPath()%>/MesTurn?turn=LAM'><img src="<%=request.getContextPath()%>/mes/images/mes.png"/></a></br>
-<a href='<%=request.getContextPath()%>/MesTurn?turn=MQTT'><img src="<%=request.getContextPath()%>/mes/images/MQTT.png" style="width:200px;height:200px "/></a>
+<button class="light-blue darken-2 waves-light btn" type="submit" style="float: right;">
+						送出<i class="material-icons right">mode_edit</i>
+							</button>
+</FORM>
 </div>
+ <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">contact_phone</i>
+    </a>
+    <ul>
+      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LAM' class="btn-floating green" data-toggle="tooltip" title="留言板" ><i class="material-icons">comment</i></a></li>
+      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=MQTT' class="btn-floating blue darken-1" data-toggle="tooltip" title="即時通訊"><i class="material-icons">question_answer</i></a></li>
+    </ul>
+  </div>
 <c:if test="${status=='NG'}">
 <script>alert("你在這裡當駭客，你媽知道嗎!")</script>
 </c:if>
 </body>
-<script src='../js/jquery.min.js'></script>
-<script src="../js/bootstrap.min.js"></script>
 </html>
 

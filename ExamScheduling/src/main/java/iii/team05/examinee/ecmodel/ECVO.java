@@ -4,9 +4,18 @@ public class ECVO implements java.io.Serializable{
 	private String ecno;
 	private String ecname;
 	private String ecemail;
-	private String ecpsd;
+	private byte[] ecpsd;
 	private Boolean ecstatus;
 	private String ecremark1;
+
+	private String ecclass;
+	public String getEcclass() {
+		return ecclass;
+	}
+	public void setEcclass(String ecclass) {
+		this.ecclass = ecclass;
+	}
+
 	private ESVO eSVO;
 	private ScoreVO scoreVO;
 	
@@ -40,10 +49,10 @@ public class ECVO implements java.io.Serializable{
 	public void setEcemail(String ecmail) {
 		this.ecemail = ecmail;
 	}
-	public String getEcpsd() {
+	public byte[] getEcpsd() {
 		return ecpsd;
 	}
-	public void setEcpsd(String ecpsd) {
+	public void setEcpsd(byte[] ecpsd) {
 		this.ecpsd = ecpsd;
 	}
 	public Boolean getEcstatus() {
@@ -57,5 +66,30 @@ public class ECVO implements java.io.Serializable{
 	}
 	public void setEcremark1(String ecremark1) {
 		this.ecremark1 = ecremark1;
+	}
+	@Override
+	public String toString(){
+		String str="{"+"\"esteam\":\""+eSVO.getEsteam()+
+				"\",ecremark1:\""+ecremark1+
+				"\",ecno:\""+ecno+
+				"\",ecname:"+ecname+
+				",esbirth:"+eSVO.getEsbirth()+				
+				",esschool:"+eSVO.getEsschool()+
+				",essex:"+eSVO.getEssex()+
+				",ecemail:"+ecemail+
+				",ecstatus:"+ecstatus+
+				",lab:"+scoreVO.getLab()+
+				",labtime:"+scoreVO.getLabtime()+
+				",interview:"+scoreVO.getInterview()+
+				",onlineex:"+scoreVO.getOnlineex()+
+				//"total"+
+				",eshiredat:"+eSVO.getEshiredate()+
+				",essalary:"+eSVO.getEssalary()+
+				",esranking:"+eSVO.getEsranking()+
+				",esremark2:"+eSVO.getEsremark2()+
+				"}";
+		
+				
+		return str;
 	}
 }

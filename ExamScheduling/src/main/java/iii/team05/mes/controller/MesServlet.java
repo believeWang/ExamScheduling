@@ -4,10 +4,9 @@ import iii.team05.mes.model.MesService;
 import iii.team05.mes.model.MesVO;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import java.io.PrintWriter;
-import java.util.LinkedList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -89,6 +88,7 @@ public class MesServlet extends HttpServlet {
 						"messageid").trim());
 				String msgname = request.getParameter("msgname");
 				String msgmail = request.getParameter("msgmail");
+				
 				java.sql.Timestamp msgtime = java.sql.Timestamp.valueOf(request
 						.getParameter("msgtime"));
 				String msgcontent = request.getParameter("msgcontent");
@@ -179,11 +179,33 @@ public class MesServlet extends HttpServlet {
 			} catch (Exception e) {
 				RequestDispatcher failureView = request
 						.getRequestDispatcher("/WEB-INF/mes/ListAllMessage.jsp");
+
 				failureView.forward(request, response);
 			}
 		}
 
 
 	}
+    public static java.sql.Timestamp strToDate() {
 
+        java.util.Date result;
+
+        try {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM");
+
+            sdf.setLenient(false);
+            Date date=new Date();
+            result = sdf.parse(String.valueOf(date));
+            System.out.println("ss"+result);
+
+        } catch (Exception e) {
+
+            return null;
+
+        }
+
+        return new java.sql.Timestamp(result.getTime());
+
+    }
 }

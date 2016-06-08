@@ -23,7 +23,9 @@ public class LoginServlet extends HttpServlet {
 		String ecno=request.getParameter("username");
 		String psd=request.getParameter("password");	
 		ECService ecService =new ECService();
-		boolean hasAccount=ecService.hasAccount(ecno, psd);
+		PasswordMd5 p5 =new PasswordMd5();
+		byte[] bytepsd=p5.encryption(psd);
+		boolean hasAccount=ecService.hasAccount(ecno, bytepsd);
 		if(hasAccount){
 			 HttpSession session=request.getSession();
 		     session.setAttribute("ecno",ecno);

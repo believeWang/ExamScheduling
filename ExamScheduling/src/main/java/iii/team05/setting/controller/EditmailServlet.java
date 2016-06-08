@@ -37,6 +37,7 @@ public class EditmailServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		STService stSvc = new STService();
 
+
 		  if ("Mail_Subject_Query".equals(action)){     // 來自loadmail.jsp的action查詢請求 
 				List<STVO> mailArticle = stSvc.query();
 				String subject= null;
@@ -77,8 +78,7 @@ public class EditmailServlet extends HttpServlet {
 			  System.out.println(emailcontent);            //測試editmail.jsp有傳更新資料進來
 			  stSvc.updateMailcontent(emailcontent);       //呼叫STService的updatemail()方法工作
 		  }
-		 
-		  
+
 }
 	
 

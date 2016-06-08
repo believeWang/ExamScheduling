@@ -75,5 +75,5 @@ public class EventVO  implements java.io.Serializable{
 	public void setEventremark(String eventremark) {
 		this.eventremark = eventremark;
 	}
-	
+
 }

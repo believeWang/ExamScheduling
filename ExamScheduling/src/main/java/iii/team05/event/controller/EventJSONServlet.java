@@ -36,6 +36,7 @@ public class EventJSONServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
+
 		
 		EventDAO edao = new EventDAO();
 		List<EventVO> elists = edao.getAll();
@@ -52,6 +53,7 @@ public class EventJSONServlet extends HttpServlet {
 			    out.print("\"");
 			    out.print(evo.getTitle());
 			    out.print("\",");
+
 			    out.print("\"start\":");
 			    out.print("\"");
 			    out.print(evo.getStarttime());
