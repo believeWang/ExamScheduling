@@ -5,12 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ include file="/WEB-INF/cdn.file"%>
+<%@ include file="WEB-INF/header/slide_mqtt.file" %>
 <title>考試預約系統Reception</title>
 </head>
 <body>
-<div >
- <%@ include file="mes/header.jsp" %>
-</div>
+
+<%@ include file="WEB-INF/header/slidenav.jsp" %>
+
+
 
 </body>
 </html>

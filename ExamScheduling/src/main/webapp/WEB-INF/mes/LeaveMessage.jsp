@@ -5,16 +5,12 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
-  <script type="text/javascript">
-  $(function () { $("[data-toggle='tooltip']").tooltip(); });
-  </script>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Reception</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/header/header.jsp" %>
-<div style="margin: 200px 500px">
+<div style="margin: 100px 500px">
  <FORM METHOD="post" ACTION="/ExamScheduling/mes/mes.do" name="form1" >
 <h1 class="center-align">請輸入留言</h1>
 <table border="0" class="table">
@@ -28,7 +24,7 @@
 	</tr>
 	<tr>
 		<td>留言:</td>
-		<td><textarea cols="40" rows="20" id="area1" name="msgcontent"></textarea></td>
+		<td><textarea cols="40" rows="20" id="area1" name="msgcontent" class="materialize-textarea"></textarea></td>
 	</tr>
 </table>
 
@@ -43,13 +39,18 @@
       <i class="large material-icons">contact_phone</i>
     </a>
     <ul>
-      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LAM' class="btn-floating green" data-toggle="tooltip" title="留言板" ><i class="material-icons">comment</i></a></li>
-      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=MQTT' class="btn-floating blue darken-1" data-toggle="tooltip" title="即時通訊"><i class="material-icons">question_answer</i></a></li>
+      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LAM' class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="留言板" ><i class="material-icons">comment</i></a></li>
+      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=MQTT' class="btn-floating blue darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="即時通訊"><i class="material-icons">question_answer</i></a></li>
     </ul>
   </div>
 <c:if test="${status=='NG'}">
 <script>alert("你在這裡當駭客，你媽知道嗎!")</script>
 </c:if>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>
 </html>
 

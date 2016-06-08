@@ -22,7 +22,8 @@
 <title>考試預約系統Backstage</title>
 </head>
 <body>
-	<%@ include file="/mes/header.jsp"%>
+<%@ include file="/WEB-INF/header/slidenav.jsp" %>
+<%@ include file="/WEB-INF/header/slide_mqtt.file" %>
 	<div style="margin: 50px 500px">
 		<table class="table">
 			<tr>
@@ -31,6 +32,7 @@
 				<th>留言時間</th>
 
 			</tr>
+			
 			<c:forEach var="mesVO" items="${list}" varStatus="counter">
 
 				<tr>
@@ -50,7 +52,7 @@
 					<td colspan ="4" id="content${counter.index}">
 						${mesVO.msgcontent}<br>
 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/mes/mes.do">
-							<textarea cols="40" rows="5" id="area1" name="rpcontent"></textarea>
+							<textarea cols="40" rows="5" id="area1" name="rpcontent" class="materialize-textarea"></textarea>
 							<input type="hidden" name="messageid" value="${mesVO.messageid}">
 							<input type="hidden" name="msgname" value="${mesVO.msgname}">
 							<input type="hidden" name="msgmail" value="${mesVO.msgmail}">

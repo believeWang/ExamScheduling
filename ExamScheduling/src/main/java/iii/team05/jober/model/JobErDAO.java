@@ -8,7 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class JobErDAO implements JobErDAO_interface{
-	private static final String GET_ALL_STMT = "from OptionsVO order by optionsno";
+	private static final String GET_ALL_STMT = "from Job_Er order by empno";
 	@Override
 	public void insert(JobErVO jobErVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();//創建Session()
@@ -38,12 +38,13 @@ public class JobErDAO implements JobErDAO_interface{
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Integer jobid) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			JobErVO jobErVO = (JobErVO) session.get(JobErVO.class, id);			
-			session.delete(id);
+			JobErVO jobErVO = (JobErVO) session.get(JobErVO.class, jobid);			
+			session.delete(jobErVO);
+			System.out.println(session);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();

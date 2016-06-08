@@ -10,13 +10,13 @@
 <!-- 自訂 -->
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/examstyle.min.css" />
 <%@ include file="../cdn.file" %>
+<%@ include file="../header/slide_mqtt.file" %>
 </head>
 <body>
+<%@ include file="../header/slidenav.jsp" %>
   <!-- START CONTENT -->
       <section id="content">
-        
-       
-        
+               
 
         <!--start container-->
         <div class="container">

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<%@ include file="/WEB-INF/cdn.file"%>
  
     <style type="text/css">
     
