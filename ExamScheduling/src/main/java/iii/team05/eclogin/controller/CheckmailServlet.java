@@ -59,7 +59,7 @@ public class CheckmailServlet extends HttpServlet {
 			System.out.println("maile格式驗證 OK");
 			
 			ECService ecSvc = new ECService();
-			List<ECVO> ecVO =  ecSvc.check(ecemail);
+			List<ECVO> ecVO = ecSvc.check(ecemail);
 			String username = null;
 			String ecno = null;
 			for (ECVO s : ecVO) {

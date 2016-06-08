@@ -17,7 +17,6 @@
   </resource-ref>
   <listener>
     <listener-class>iii.team05.exam.model.ContextListener</listener-class>
-
   </listener>
   <servlet>
     <servlet-name>PoiServlet</servlet-name>
@@ -30,7 +29,4 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-
-
 </web-app>
-

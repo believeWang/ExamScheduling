@@ -21,8 +21,8 @@
 <!-- 利用java script onchange做下拉選單給值抓資料庫寫法 -->
 <select name="action" onchange="functionname(this.options[this.options.selectedIndex].value)">
 <option value="">請選擇</option>
-<option value="Mail_Content_Query">修改mail內文</option>
 <option value="Mail_Subject_Query">修改mail主旨</option>
+<option value="Mail_Content_Query">修改mail內文</option>
 </select> 
 <input type=submit value="讀取" >
 
