@@ -4,7 +4,9 @@ import iii.team05.Employee.model.EmployeeDAO;
 import iii.team05.Employee.model.EmployeeVO;
 import iii.team05.event.model.EventDAO;
 import iii.team05.job.model.Job111DAO;
+import iii.team05.job.model.JobDAO;
 import iii.team05.job.model.JobVO;
+import iii.team05.jober.model.JobErDAO;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,49 +41,30 @@ public class JobDoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		
-		if ("add".equals(action)) {
-			//System.out.println("do add");
+		if ("delete".equals(action)) {
 			
+			String id = request.getParameter("id");
+			int jobid = Integer.valueOf(id);
+			
+			//刪除 子表jober
+			JobErDAO jobErDAO = new JobErDAO();
+			jobErDAO.delete(jobid);
+			
+			//刪除 主表job
+			JobDAO jobDAO = new JobDAO();
+			jobDAO.delete(jobid);
+			
+			//撈全部 job
+			List<JobVO> joblists = jobDAO.getAll();
+			
+			//撈所有主考官
 			EmployeeDAO empDAO = new EmployeeDAO();
 			List<EmployeeVO> emplists = empDAO.getExam();
 			
-//			for(EmployeeVO datas : emplists){
-//				System.out.println(datas.getEmpno());
-//				System.out.println(datas.getEmpname());
-//				System.out.println(datas.getPosition());
-//				System.out.println(datas.getEmpemail());
-//				System.out.println(" ");
-//			}
+			request.setAttribute("emplists", emplists); 
+			request.setAttribute("joblists", joblists);
 			
-			request.setAttribute("action", action);
-			request.setAttribute("emplists", emplists);
-			
-			RequestDispatcher jb = request.getRequestDispatcher("/job/job_show.jsp");
-			jb.forward(request, response);
-		}
-		
-		if ("update".equals(action)) {
-			System.out.println("do update");
-			
-			String id_str = request.getParameter("id");
-			int id = Integer.valueOf(id_str);
-			
-			EmployeeDAO empDAO = new EmployeeDAO();
-			List<EmployeeVO> emplists = empDAO.getExam();
-			
-			for(EmployeeVO datas : emplists){
-				System.out.println(datas.getEmpno());
-				System.out.println(datas.getEmpname());
-				System.out.println(datas.getPosition());
-				System.out.println(datas.getEmpemail());
-				System.out.println(" ");
-			}
-			
-			request.setAttribute("action", action);
-			request.setAttribute("id", id);
-			request.setAttribute("emplists", emplists);
-			
-			RequestDispatcher jb = request.getRequestDispatcher("/job/job_show.jsp");
+			RequestDispatcher jb = request.getRequestDispatcher("/job/job_lists.jsp");
 			jb.forward(request, response);
 		}
 		

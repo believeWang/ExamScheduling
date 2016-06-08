@@ -9,13 +9,14 @@ import org.hibernate.Session;
 
 public class JobDAO implements JobDAO_interface{
 	private static final String GET_ALL_STMT = "FROM JobVO";
+	
 	@Override
 	public void insert(JobVO jobVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();//創建Session()
 		try {
 			session.beginTransaction();//1
 			session.saveOrUpdate(jobVO);
-			session.getTransaction().commit();//2
+			session.getTransaction().commit();//2.
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();//3
 			throw ex;
@@ -43,7 +44,7 @@ public class JobDAO implements JobDAO_interface{
 		try {
 			session.beginTransaction();
 			JobVO jobVO = (JobVO) session.get(JobVO.class, jobid);			
-			session.delete(jobid);
+			session.delete(jobVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -81,6 +82,23 @@ public class JobDAO implements JobDAO_interface{
 			throw ex;
 		}
 		return list;
+	}
+	
+	@Override
+	public int insert_return_id(JobVO jobVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();//創建Session()
+		try {
+			session.beginTransaction();//1
+			session.saveOrUpdate(jobVO);
+			session.getTransaction().commit();//2.
+			
+			int id = jobVO.getJobid();
+			return id;
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();//3
+			throw ex;
+		}
+		
 	}
 
 }

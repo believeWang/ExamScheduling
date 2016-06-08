@@ -265,49 +265,49 @@ public class Job111DAO implements JobDAO_interface {
 		return list;
 	}
 	
-//	@Override
-//	public int insert_return_id(JobVO jobVO) {
-//
-//		Connection con = null;
-//		PreparedStatement pstmt = null;
-//
-//		try {
-//
-//			con = ds.getConnection();
-//			pstmt = con.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
-//
-//			pstmt.setString(1, jobVO.getJobname());
-//
-//			pstmt.executeUpdate();
-//			
-//			int autoIncKeyFromApi = -1;
-//		    ResultSet rs = pstmt.getGeneratedKeys();
-//		    if (rs.next()) {
-//		      autoIncKeyFromApi = rs.getInt(1);
-//		    }
-//		    return autoIncKeyFromApi;
-//			
-//			// Handle any SQL errors
-//		} catch (SQLException se) {
-//			throw new RuntimeException("A database error occured. " + se.getMessage());
-//			// Clean up JDBC resources
-//		} finally {
-//			if (pstmt != null) {
-//				try {
-//					pstmt.close();
-//				} catch (SQLException se) {
-//					se.printStackTrace(System.err);
-//				}
-//			}
-//			if (con != null) {
-//				try {
-//					con.close();
-//				} catch (Exception e) {
-//					e.printStackTrace(System.err);
-//				}
-//			}
-//		}
-//
-//	}
+	@Override
+	public int insert_return_id(JobVO jobVO) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
+
+			pstmt.setString(1, jobVO.getJobname());
+
+			pstmt.executeUpdate();
+			
+			int autoIncKeyFromApi = -1;
+		    ResultSet rs = pstmt.getGeneratedKeys();
+		    if (rs.next()) {
+		      autoIncKeyFromApi = rs.getInt(1);
+		    }
+		    return autoIncKeyFromApi;
+			
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
 
 }

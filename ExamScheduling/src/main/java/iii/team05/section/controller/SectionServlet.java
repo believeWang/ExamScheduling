@@ -48,6 +48,7 @@ public class SectionServlet extends HttpServlet {
 		List<SectionVO> sectionlists = sectionDAO.getAll();
 		
 		for(SectionVO sectionVO : sectionlists){
+			System.out.println(sectionVO.getSectionid());
 			System.out.println(sectionVO.getSectiontime());
 			System.out.println(sectionVO.getSectionStatus());
 		}
