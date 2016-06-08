@@ -15,13 +15,7 @@ response.setHeader("Expires", "0");
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <title>Exam</title>
-
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
-<script src='js/jquery.min.js'></script>
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- 自製radio button checkbox  -->
-<!-- <link rel="stylesheet" type="text/css" href="exam_resourse/css/normalize.css" /> -->
+<%@ include file="../cdn_bootstrap.file" %>
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/demo.css" />
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/component.css" />
 

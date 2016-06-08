@@ -7,29 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>編輯考試</title>
-<!-- materialize設計 -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-<!-- ICON -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!-- sweetalert css -->
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.jsdelivr.net/sweetalert2/3.2.3/sweetalert2.min.css" />
+<%@ include file="../cdn.file" %>
 <link rel="stylesheet" type="text/css"
 	href="exam_resourse/css/custom_form.css" />
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
-<!-- JQUERY驗證 -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
-<!--sweetalert js  -->
-<script
-	src="https://cdn.jsdelivr.net/sweetalert2/3.2.3/sweetalert2.min.js"></script>
+
 
 <style>
 ul {
