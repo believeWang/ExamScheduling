@@ -22,7 +22,8 @@
 <title>考試預約系統Backstage</title>
 </head>
 <body>
- <%@ include file="/mes/header.jsp" %>
+<%@ include file="/WEB-INF/header/slidenav.jsp" %>
+<%@ include file="/WEB-INF/header/slide_mqtt.file" %>
 	<div style="margin: 50px 500px">
 		<table class="table">
 			<tr>

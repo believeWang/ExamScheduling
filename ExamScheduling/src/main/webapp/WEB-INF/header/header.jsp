@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
 <style type="text/css">
 #mwt_mwt_slider_scroll {
 	top: 0;
@@ -51,8 +48,7 @@ body {
 	background: url("/ExamScheduling/exam_resourse/images/background.jpg");
 }
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%@ include file="/WEB-INF/cdn.file"%>
+<%-- <%@ include file="/WEB-INF/cdn.file"%> --%>
 <link rel="stylesheet" type="text/css"
 	href="/ExamScheduling/header/css/component1.css" />
 <script src="/ExamScheduling/header/js/modernizr-2.6.2.min.js"></script>
@@ -81,8 +77,6 @@ body {
 		$('.modal-trigger').leanModal();
 	});
 </script>
-<title>ESS</title>
-<body>
 	<div class="component">
 		<!-- Start Nav Structure -->
 		<button class="cn-button" id="cn-button">+</button>
@@ -151,10 +145,8 @@ body {
 		<div class="modal-content">
 			<form name="login-form" class="login-form" action="LoginServlet"
 				method="post">
-
-				<input name="username" type="text" class="input username" /> <input
-					name="password" type="password" class="input password" />
-
+				帳號:<input name="username" type="text" class="input username" /> 
+				密碼:<input name="password" type="password" class="input password" />
 
 				<button class="light-blue darken-2 waves-light btn" type="submit"
 					style="float: right;">
@@ -167,10 +159,10 @@ body {
 	</div>
 	<script src="/ExamScheduling/header/js/polyfills.js"></script>
 	<script src="/ExamScheduling/header/js/demo1.js"></script>
-</body>
+
 <script type="text/javascript">
 $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
   });
 </script>
-</html>
+
