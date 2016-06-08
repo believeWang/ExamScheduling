@@ -32,7 +32,7 @@ public class ExamList extends HttpServlet {
 		ExamService service=new ExamService();
 		
 		service.deleteExam(examno);
-		new ExamService().putAllExamToContex(getServletContext());
+		service.putAllExamToContex(getServletContext());
 	}
 
 }

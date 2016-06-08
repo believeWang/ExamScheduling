@@ -50,7 +50,7 @@ public class ScoreVO implements java.io.Serializable{
 		this.onlineex = onlineex;
 	}
 
-	
+
 	
 	
 		
