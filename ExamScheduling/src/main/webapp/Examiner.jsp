@@ -9,7 +9,7 @@
 </head>
 <body>
 <div >
- <%@ include file="mes/header.jsp" %>
+ <%@ include file="/mes/header.jsp" %>
 </div>
 
 </body>

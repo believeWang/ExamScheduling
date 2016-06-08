@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<%@ include file="/WEB-INF/cdn.file"%>
+<%-- <%@ include file="/WEB-INF/cdn.file"%> --%>
+<%@ include file="/WEB-INF/header/header.jsp" %>
 <script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
 <script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -40,7 +41,7 @@
 		var messageArray= message.payloadString.split(":");
 		var checkId="考生  "+clientid+" ";
 		if(messageArray[0]==checkId){		
-			$("#show").append("<h4 style='color:blue; text-align:right;'>"+replace_em(messageArray[1]) + "</br>");
+			$("#show").append("<h6 style='color:blue; text-align:right;'>"+replace_em(messageArray[1]) + "</h6></br>");
 
 		}else{
 			$("#show").append(replace_em(message.payloadString) + "</br>");
@@ -117,8 +118,8 @@ span.emotion:hover {
 </style>
 </head>
 <body onload="init();">
-	<%@ include file="/WEB-INF/header/header.jsp" %>
-	<div style="margin: 50px 500px">
+<%-- 	<%@ include file="/WEB-INF/header/header.jsp" %> --%>
+	<div style="margin: 100px 500px">
 		<div style="background: white">
 			<input type="hidden" id="messageName" size="50" value="考生  ${ecno}">
 			</br>
@@ -137,9 +138,14 @@ span.emotion:hover {
      <i class="large material-icons">contact_phone</i>
     </a>
     <ul>
-      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LAM' class="btn-floating green" data-toggle="tooltip" title="留言板" ><i class="material-icons">comment</i></a></li>
-      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LM' class="btn-floating blue" data-toggle="tooltip" title="留言" ><i class="material-icons">library_add</i></a></li>
+      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LAM' class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="留言板" ><i class="material-icons">comment</i></a></li>
+      <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LM' class="btn-floating blue darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="留言" ><i class="material-icons">library_add</i></a></li>
     </ul>
   </div>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>
 </html>
