@@ -79,7 +79,6 @@ public class ESVO implements java.io.Serializable{
 		this.esremark2 = esremark2;
 	}
 	
-		
 	
 	
 	
