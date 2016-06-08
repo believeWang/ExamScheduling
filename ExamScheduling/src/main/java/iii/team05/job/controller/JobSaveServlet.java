@@ -10,7 +10,9 @@ import iii.team05.jober.model.JobErVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -61,44 +63,49 @@ public class JobSaveServlet extends HttpServlet {
 		int empno = Integer.valueOf(employee);
 		
 		if(id == null){
-			//add
+			//jobVO
 			JobVO jobVO = new JobVO();
 			jobVO.setJobname(jobname);
 			
+			Set<EmployeeVO> employee_set = new HashSet<EmployeeVO>();
+			EmployeeDAO empDAO = new EmployeeDAO();
+			EmployeeVO empVO = empDAO.findByPrimaryKey(empno);
+			employee_set.add(empVO);
+			
+			jobVO.setEmployee(employee_set);
+			
+			//新增job並返回當前ID
 			JobDAO jobDAO = new JobDAO();
 			int jobid = jobDAO.insert_return_id(jobVO);
 			
+			//塞資料進job_ErVO
+//			JobErVO jobErVO = new JobErVO();
+//			jobErVO.setJobid(jobid);  //等job inser into 取 pk鍵
+//			jobErVO.setEmpno(empno);
 			
-			JobErVO jobErVO = new JobErVO();
-			jobErVO.setJobid(jobid);  //等job inser into 取 pk鍵
-			jobErVO.setEmpno(empno);
+//			JobErDAO jobErDAO = new JobErDAO();
+//			jobErDAO.insert(jobErVO);
 			
-			JobErDAO jobErDAO = new JobErDAO();
-			jobErDAO.insert(jobErVO);
-			
+			//撈資料數目
 			List<JobVO> count = jobDAO.getAll();
 			int size = count.size();
 			String size_str = String.valueOf(size);
 			
-			
+			//撈指定的單筆job
 			JobVO jobData = jobDAO.findByPrimaryKey(jobid);
 			String Jobid = jobData.getJobid().toString();
 			
+			//字串轉JSON
 			List<String> target = new ArrayList();
 			target.add(Jobid);
 			target.add(jobData.getJobname());
-//			System.out.println(jobData.getJobid());
-//			System.out.println(jobData.getJobname());
 			for(EmployeeVO emp : jobData.getEmployee()){
-//				System.out.println(emp.getEmpname());
 				target.add(emp.getEmpname());
 			}
 			target.add(size_str);
 			
 			Gson gson = new Gson();
-			//String jobJSON = gson.toJson(jobVO);
 			String jobJSON2 = gson.toJson(target);
-			//out.print(jobJSON);
 			out.print(jobJSON2);
 			
 		}else{

@@ -52,6 +52,21 @@ public class JobDAO implements JobDAO_interface{
 		}
 		
 	}
+	
+	@Override
+	public void delete_VO(JobVO jobVO) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			//JobVO jobVO = (JobVO) session.get(JobVO.class, jobid);			
+			session.delete(jobVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		
+	}
 
 	@Override
 	public JobVO findByPrimaryKey(Integer jobid) {

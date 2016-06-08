@@ -48,11 +48,13 @@ public class JobDoServlet extends HttpServlet {
 			
 			//刪除 子表jober
 			JobErDAO jobErDAO = new JobErDAO();
-			jobErDAO.delete(jobid);
+			//jobErDAO.delete(jobid);
 			
 			//刪除 主表job
 			JobDAO jobDAO = new JobDAO();
-			jobDAO.delete(jobid);
+			JobVO jobVO = jobDAO.findByPrimaryKey(jobid);
+			jobVO.setEmployee(null);
+			jobDAO.delete_VO(jobVO);
 			
 			//撈全部 job
 			List<JobVO> joblists = jobDAO.getAll();

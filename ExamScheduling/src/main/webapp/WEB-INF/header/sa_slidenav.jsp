@@ -39,8 +39,8 @@
         <li class="bold"><a class="collapsible-header active waves-effect waves-teal">設定</a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="collapsible.html">關於緯康</a></li>
-                  <li><a href="dialogs.html">輪播圖</a></li>
+                  <li><a href="job/JobServlet">職缺管理</a></li>
+                  <li><a href="section/SectionServlet">時段管理</a></li>
                  
                 </ul>
               </div>

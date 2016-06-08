@@ -15,7 +15,7 @@
 
         
         <set name="job" table="Job_Er" 
-        	inverse="false" lazy="false" fetch="select" cascade="all" >
+        	inverse="true" lazy="false" fetch="select" cascade="all" >
             <key>
                 <column name="empno" not-null="true" />
             </key>
