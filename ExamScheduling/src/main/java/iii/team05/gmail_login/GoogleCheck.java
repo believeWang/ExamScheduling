@@ -127,7 +127,7 @@ public class GoogleCheck extends HttpServlet {
 		 	if(ecVO.size()==0){
 				errors.put("loginNg", "您非我司員工");
 				RequestDispatcher failureView = request
-						.getRequestDispatcher("Examiner.jsp");
+						.getRequestDispatcher("recaptcha.jsp");
 				failureView.forward(request, response);
 			}else if(pos==0){		
 				errors.put("loginNg", "您沒有使用本系統的權限，請洽系統管理員");

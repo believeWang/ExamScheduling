@@ -4,8 +4,11 @@ import iii.team05.mes.model.MesService;
 import iii.team05.mes.model.MesVO;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+
 
 
 import javax.servlet.RequestDispatcher;
@@ -35,14 +38,16 @@ public class MesServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-
+		 DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		/* 留言 */
 		if ("leave".equals(action)) {
 			try {
 				String msgname = request.getParameter("msgname");
 				String msgmail = request.getParameter("msgmail");
-				java.sql.Timestamp msgtime = new java.sql.Timestamp(
+				java.sql.Timestamp msgtime1 = new java.sql.Timestamp(
 						System.currentTimeMillis());
+				String msgtime = sdf.format(msgtime1);
+				
 				String msgcontent = request.getParameter("msgcontent");
 
 				if (msgcontent.contains("<script>")) {
@@ -89,12 +94,12 @@ public class MesServlet extends HttpServlet {
 				String msgname = request.getParameter("msgname");
 				String msgmail = request.getParameter("msgmail");
 				
-				java.sql.Timestamp msgtime = java.sql.Timestamp.valueOf(request
-						.getParameter("msgtime"));
+				String msgtime = request.getParameter("msgtime");
 				String msgcontent = request.getParameter("msgcontent");
 				String rpname = request.getParameter("rpname");
-				java.sql.Timestamp rptime = new java.sql.Timestamp(
+				java.sql.Timestamp rptime1 = new java.sql.Timestamp(
 						System.currentTimeMillis());
+				String rptime = sdf.format(rptime1);
 				String rpcontent = request.getParameter("rpcontent");
 				MesVO mesVO = new MesVO();
 				mesVO.setMessageid(messageid);
