@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<table border="0">    
+ <tr>
+  <%if (rowsPerPage<rowNumber) {%>
+    <%if(pageIndex>=rowsPerPage){%>
+        <td><A href="<%=request.getContextPath()%>/MesTurn?turn=LAM&whichPage=1"><button class="btn-floating blue" type="submit">
+  			<i class="material-icons right">skip_previous</i></button></A>&nbsp;</td>
+        <td><A href="<%=request.getContextPath()%>/MesTurn?turn=LAM&whichPage=<%=whichPage-1%>"><button class="btn-floating blue" type="submit">
+  			<i class="material-icons right">fast_rewind</i></button></A>&nbsp;</td>
+    <%}%>
+  
+    <%if(pageIndex<pageIndexArray[pageNumber-1]){%>
+        <td><A href="<%=request.getContextPath()%>/MesTurn?turn=LAM&whichPage=<%=whichPage+1%>"><button class="btn-floating blue" type="submit">
+  			<i class="material-icons right">fast_forward</i></button></A>&nbsp;</td>
+        <td><A href="<%=request.getContextPath()%>/MesTurn?turn=LAM&whichPage=<%=pageNumber%>"><button class="btn-floating blue" type="submit">
+  			<i class="material-icons right">skip_next</i></button></A>&nbsp;</td>
+    <%}%>
+  <%}%>  
+ </tr>
+</table> 
+<%if ( pageNumber > 1) {%>
+<table border="0">   
+ <tr> 
+    <!--    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>-->
+   <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/MesTurn?turn=LAM">   
+        <td>        
+           <select size="1" name="whichPage" class="browser-default">
+        <%for (int i=1; i<=pageNumber; i++){%>
+           <option value="<%=i%>">跳至第<%=i%>頁
+        <%}%> 
+           </select>
+           <button class="btn blue lighten-1 waves-light" type="submit">前往<i class="material-icons right">send</i>
+        </td>
+   </FORM>
+ </tr>
+</table>
+<%}%>

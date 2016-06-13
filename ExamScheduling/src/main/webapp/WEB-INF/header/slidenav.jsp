@@ -63,7 +63,6 @@
 					</br>
 					<div contenteditable="false" id="show"
 						style="width: 450px; height: 450px; overflow: scroll; border-style: outset;"></div>
-					 	<textarea id="messagesUser" readonly="readonly" rows="10" cols="15"></textarea> 
 					</br> <input type="text" id="messageText" name="messageText" size="45">
 					<p>
 						<span class="emotion">表情</span>

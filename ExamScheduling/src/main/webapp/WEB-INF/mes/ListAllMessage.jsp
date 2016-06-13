@@ -55,7 +55,9 @@ border-bottom:1px solid #313030;
 					</td>
 					<td>${mesVO.msgname}</td>
 					<td>${mesVO.msgmail}</td>
-					<td>${mesVO.msgtime}</td>
+					<td id="timeid">
+					${mesVO.msgtime}
+					</td>
 					<c:choose>
 							<c:when test="${mesVO.rpcontent==null}">
 							<td>
