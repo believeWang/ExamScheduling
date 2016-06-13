@@ -43,12 +43,12 @@
 		var checkId = "主考官  " + clientid + " ";
 		if (messageArray[0] == checkId) {
 			$("#show").append(
-					"<h4 style='color:blue; text-align:right;'>"
-							+ replace_em(messageArray[1]) + "</h4></br>");
+					"<h6 style='color:blue; text-align:right;'>"
+							+ replace_em(messageArray[1]) + "</h6></br>");
 		} else {
 			$("#show").append(
-					"<h4 style='text-align:left;'>"
-							+ replace_em(message.payloadString) + "</h4></br>");
+					"<h6 style='text-align:left;'>"
+							+ replace_em(message.payloadString) + "</h6></br>");
 			var checkbox=$("#checkboxid");
 			var chexval=checkbox.val();
 			checkbox.change(function() {
@@ -61,7 +61,7 @@
 			});
 			if (chexval == "1") {
 				new PNotify({
-					title : messageArray[0] + '表示',
+					title :"<h5>"+ messageArray[0] + ':</h5>',
 					text : replace_em(messageArray[1])
 				});
 			}
@@ -144,7 +144,6 @@ span.emotion:hover {
 		<!--  	<textarea id="messagesUser" readonly="readonly" rows="10" cols="15"></textarea>  -->
 		</br> <input type="text" id="messageText" name="messageText" size="45">
 		<p>
-<!-- 			<input type="button" class="sub_btn" value="send" onclick="sendMessage();"> -->
 				<span class="emotion">表情</span>
 				<button class="light-blue darken-2 waves-light btn" type="submit"
 									onclick="sendMessage();">

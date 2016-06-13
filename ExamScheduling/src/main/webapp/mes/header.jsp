@@ -37,10 +37,9 @@ $(function() {
 
 	<ul class="HeaderStyle" id="header">
 
-		<li>
+		
 		<li><a>輸入成績</a></li>
 		<li><a>編輯考題</a></li>
-<%-- 		<li><a href="<%=request.getContextPath()%>/mes/ListNotReplyMessage.jsp">留言板</a></li> --%>
 	<li><a href="<%=request.getContextPath()%>/MesTurn?turn=LNRM">留言板</a></li>
 	<div style="float:right;color:white">
 		<c:choose>

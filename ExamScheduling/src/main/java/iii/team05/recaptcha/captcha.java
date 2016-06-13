@@ -61,8 +61,9 @@ public class captcha extends HttpServlet {
 		       		webdata=webdata+inputLine;
 		   in.close();
 		   if(webdata.indexOf("true")>0){
+			  
 			   msg="Pass";
-		   RequestDispatcher failureView = request
+			   RequestDispatcher failureView = request
 					.getRequestDispatcher("/gmail_login/login.do");
 			failureView.forward(request, response);
 		   } else if(webdata.indexOf("missing-input-response")>0){
@@ -74,6 +75,7 @@ public class captcha extends HttpServlet {
 		   }else {
 			   msg="發生錯誤，請稍候在試";
 				   session.setAttribute("CaptchaErro", msg);
+
 				   RequestDispatcher failureView = request
 							.getRequestDispatcher("/recaptcha.jsp");
 					failureView.forward(request, response);
