@@ -33,7 +33,7 @@ import org.json.JSONObject;
 
 
 /**
- * Servlet implementation class GoogleCheck
+ * Servlet implementation class GoogleChecks
  */
 @WebServlet("/GoogleCheck")
 public class GoogleCheck extends HttpServlet {
@@ -98,7 +98,6 @@ public class GoogleCheck extends HttpServlet {
 		 //如果認證成功
 		 if (connObtainUserInfo.getResponseCode() == HttpURLConnection.HTTP_OK){
 		  StringBuilder sbLines   = new StringBuilder("");
-		   
 		  // 取得Google回傳的資料(JSON格式)
 		  BufferedReader reader = 
 		   new BufferedReader(new InputStreamReader(connObtainUserInfo.getInputStream(),"utf-8"));
@@ -128,7 +127,7 @@ public class GoogleCheck extends HttpServlet {
 		 	if(ecVO.size()==0){
 				errors.put("loginNg", "您非我司員工");
 				RequestDispatcher failureView = request
-						.getRequestDispatcher("Examiner.jsp");
+						.getRequestDispatcher("recaptcha.jsp");
 				failureView.forward(request, response);
 			}else if(pos==0){		
 				errors.put("loginNg", "您沒有使用本系統的權限，請洽系統管理員");

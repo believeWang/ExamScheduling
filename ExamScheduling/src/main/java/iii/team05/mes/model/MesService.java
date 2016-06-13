@@ -14,7 +14,7 @@ public class MesService {
 	}
 
 	public MesVO leaveMessage(String msgname, String msgmail,
-			java.sql.Timestamp msgtime, String msgcontent) {
+			String msgtime, String msgcontent) {
 
 		MesVO mesVO = new MesVO();
 		mesVO.setMsgname(msgname);
@@ -25,8 +25,8 @@ public class MesService {
 		return mesVO;
 	}
 
-	public MesVO replyMessage(Integer messageid,String msgname,	String msgmail, Timestamp msgtime, String msgcontent,
-			String rpname, java.sql.Timestamp rptime, String rpcontent) {
+	public MesVO replyMessage(Integer messageid,String msgname,	String msgmail, String msgtime, String msgcontent,
+			String rpname, String rptime, String rpcontent) {
 
 		MesVO mesVO = new MesVO();
 		mesVO.setMessageid(messageid);

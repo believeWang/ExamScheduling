@@ -18,75 +18,6 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-<script>
-$(function(){
-	//dialog start
-	var dialog, form,
-	 
-    // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-    emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-    date = $( "#datepicker111" ),
-    active = $( "#active" ),
-    index = $( ".index" ),
-    allFields = $( [] ).add( date ).add( active ).add( index ),
-    tips = $( ".validateTips" );
-	
-	function addSection() {
-	//alert(password.val());
-      var valid = true;
-      allFields.removeClass( "ui-state-error" );
- 		
-      if ( valid ) {
-        $( "#users tbody" ).append( "<tr>" +
-          "<td>" + index.val() + "</td>" +
-          "<td>" + date.val() + "</td>" +
-          "<td>" + active.val() + "</td>" +
-          "<td>" + "<a href='#' class='edit-section ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover'><span class='glyphicon glyphicon-pencil' aria-hidden='true'>修改</span></a>" + "/" +
-          		   "<a href='#' class='del-section ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover'><span class='glyphicon glyphicon-pencil' aria-hidden='true'>刪除</span></a>" +
-          "</td>" +
-        "</tr>" );
-        dialog.dialog( "close" );
-      }
-      return valid;
-    }
-	dialog = $( "#dialog-form" ).dialog({
-      autoOpen: false,
-      height: 300,
-      width: 350,
-      modal: true,
-      buttons: {
-        "送出": addSection,//
-        "結束": function() {
-          dialog.dialog( "close" );
-        }
-      },
-      close: function() {
-        form[ 0 ].reset();
-        allFields.removeClass( "ui-state-error" );
-      }
-    });
- 
-    form = dialog.find( "form" ).on( "submit", function( event ) {
-      event.preventDefault();
-      addSection();
-    });
- 
-    $( "#create-section" ).button().on( "click", function() {
-      dialog.dialog( "open" );
-    });
-    $( ".edit-section" ).button().on( "click", function() {
-      dialog.dialog( "open" );
-    });
-    $( ".del-section" ).button().on( "click", function() {
-      dialog.dialog( "open" );
-    });
-    
-    //datepicker
-    $(function() {
-      $( "#datepicker" ).datepicker();
-    });
-});
-</script>
 </head>
 <body>
 
@@ -118,8 +49,8 @@ $(function(){
 	  	
 	  	<div class="col-md-6">
 	  		<h3 class="text-center">預約時段設定</h3>
-	  		<a href="#" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
-	  		
+<!-- 	  		<a href="#" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a> -->
+	  		<a href="SectionDoServlet?action=add" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
 	  		<div id="users-contain" class="ui-widget"><!-- start -->
 	  		<table id="users" class="table  table-bordered">
 	  			<thead>
@@ -136,34 +67,20 @@ $(function(){
 		  				<td>${loop.index+1}</td>
 		  				<input type="hidden" name="index" value="${loop.count}" class="index">
 		  				<td>${section.sectiontime}</td>
-		  				<td><c:if test="${section.sectionStatus == '1'}">啟用中</c:if>
-		  					<c:if test="${section.sectionStatus == '0'}">未啟用</c:if></td>
 		  				<td>
-							<a href="#" class="edit-section"><span class="glyphicon glyphicon-pencil" aria-hidden="true">修改</span></a>
+		  					<c:if test="${section.sectionStatus == true}">啟用中</c:if>
+		  					<c:if test="${section.sectionStatus == false}">未啟用</c:if>
+	  					</td>
+		  				<td>
+							<a href="SectionDoServlet?action=modify&id=${section.sectionid}" class="edit-section"><span class="glyphicon glyphicon-pencil" aria-hidden="true">修改</span></a>
 							 / 
-							<a href="#" class="del-section"><span class="glyphicon glyphicon-trash" aria-hidden="true">刪除</span></a>
+							<a href="SectionDoServlet?action=delete&id=${section.sectionid}" class="del-section"><span class="glyphicon glyphicon-trash" aria-hidden="true">刪除</span></a>
 						</td>
 		  			</tr>
 		  			</c:forEach>
 	  			</tbody>
 	  		</table>
 	  		</div><!-- end -->
-	  		<div id="dialog-form" title="Create new user"><!-- jquery-ui -->
-			  <p class="validateTips text-center">時段設定</p>
-			 
-			  <form>
-			    <fieldset>
-			      <label for="datepicker111">時段:</label><br />
-<!-- 			      <input type="text" name="section" id="datepicker" value="" class="text ui-widget-content ui-corner-all"><br /><br /> -->
-			      <input type="text" name="section" id="datepicker111" value="" class="text ui-widget-content ui-corner-all"><br /><br />
-			      <label for="active">啟用:</label><br />
-			      <input type="checkbox" name="active" id="active" value="1" class="text ui-widget-content ui-corner-all"><br />
-			      
-			      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-			      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-			    </fieldset>
-			  </form>
-			</div><!-- jquery-ui -->
 	  	</div>
 	  	
 	  	<div class="col-md-3"></div>

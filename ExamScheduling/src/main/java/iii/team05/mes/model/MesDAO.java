@@ -69,6 +69,7 @@ public class MesDAO implements MesDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_MES);
 			list = query.list();
+			System.out.println(list.size());
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();

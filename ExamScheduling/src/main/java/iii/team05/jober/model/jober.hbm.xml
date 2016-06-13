@@ -4,7 +4,12 @@
 
 <hibernate-mapping>
 	<class name="iii.team05.jober.model.JobErVO" table="Job_Er">
-
+<!-- 		<id name="joberid" column="joberid"> -->
+<!--             <generator class="identity"/> -->
+<!--         </id> -->
+        
+<!--         <property name="jobid" column="jobid" /> -->
+<!--         <property name="empno" column="empno" /> -->
 		<composite-id>
 			<key-many-to-one name="jobid"
 				class="iii.team05.job.model.JobVO" column="jobid" lazy="false"/>

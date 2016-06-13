@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 @WebFilter(
 
-		urlPatterns={"/mes/ListNotReplyMessage.jsp","/sa.jsp","/chat/mqtt.jsp"}
+		urlPatterns={"/Examiner.jsp","/WEB-INF/mes/ListNotReplyMessage.jsp","/WEB-INF/quiz_back/exam_list.jsp"}
 
 		)
 public class GoogleLoginFilter implements Filter {
@@ -36,9 +36,7 @@ public class GoogleLoginFilter implements Filter {
 		}else{
 			String url =request.getRequestURI();
 			session.setAttribute("dest", url);
-			
-			String path =request.getContextPath();
-			response.sendRedirect("/ExamScheduling/gmail_login/login.do");
+			response.sendRedirect("/ExamScheduling/recaptcha.jsp");
 		}
 	}
 

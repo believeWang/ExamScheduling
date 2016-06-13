@@ -26,7 +26,7 @@ body {
 </style>
 </head>
 <body>
-<%@ include file="../header/header.jsp" %>
+<%-- <%@ include file="../header/header.jsp" %> --%>
 
 <div style="position:absolute;left:500px;top:20%">
 Don`t have an account, click here to <a href=''>申請帳號</a>

@@ -30,7 +30,7 @@ border-bottom:1px solid #313030;
 </head>
 <body>
 	<%@ include file="/WEB-INF/header/header.jsp"%>
-	<div style="margin: 50px 500px">
+	<div style="margin: 100px 500px">
 		<table class="table">
 			<tr>
 				<th>刪除</th>
@@ -55,11 +55,13 @@ border-bottom:1px solid #313030;
 					</td>
 					<td>${mesVO.msgname}</td>
 					<td>${mesVO.msgmail}</td>
-					<td>${mesVO.msgtime}</td>
+					<td id="timeid">
+					${mesVO.msgtime}
+					</td>
 					<c:choose>
 							<c:when test="${mesVO.rpcontent==null}">
 							<td>
-								<h5 style="color: blue">尚未處理</h5>
+								<h6 style="color: blue">尚未處理</h6>
 							</td>
 							</c:when>
 							<c:otherwise>
@@ -98,13 +100,17 @@ border-bottom:1px solid #313030;
 		</a>
 		<ul>
 			<li><a href='<%=request.getContextPath()%>/MesTurn?turn=LM'
-				class="btn-floating green" data-toggle="tooltip" title="留言"><i
+				class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="留言"><i
 					class="material-icons">library_add</i></a></li>
 			<li><a href='<%=request.getContextPath()%>/MesTurn?turn=MQTT'
-				class="btn-floating blue darken-1" data-toggle="tooltip"
-				title="即時通訊"><i class="material-icons">question_answer</i></a></li>
+				class="btn-floating blue darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="即時通訊"><i class="material-icons">question_answer</i></a></li>
 		</ul>
 	</div>
 
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>
 </html>

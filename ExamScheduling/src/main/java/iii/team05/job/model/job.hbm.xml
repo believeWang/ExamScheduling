@@ -12,7 +12,7 @@
         <property name="jobname" column="jobname" />
         
 		<set name="employee" table="Job_Er" 
-        	inverse="false" lazy="false" fetch="select" cascade="all" >
+        	inverse="false" lazy="false" fetch="select" cascade="save-update" >
             <key>
                 <column name="jobid" not-null="true" />
             </key>

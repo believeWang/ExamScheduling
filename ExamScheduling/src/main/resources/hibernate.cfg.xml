@@ -39,7 +39,9 @@
 		<mapping resource="iii/team05/Season/model/sea.hbm.xml" />
 		<mapping resource="iii/team05/setting/model/st.hbm.xml" /> 
 		<mapping resource="iii/team05/job/model/job.hbm.xml" /> 
-		<mapping resource="iii/team05/abouteditor/ab.hbm.xml" /> 
+		<mapping resource="iii/team05/abouteditor/ab.hbm.xml" />
+		<mapping resource="iii/team05/slide/model/banner.hbm.xml" /> 
+		<mapping resource="iii/team05/jober/model/jober.hbm.xml" /> 
 
 
 	</session-factory>

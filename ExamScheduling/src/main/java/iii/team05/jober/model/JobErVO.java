@@ -1,7 +1,6 @@
 package iii.team05.jober.model;
 
 import iii.team05.Employee.model.EmployeeVO;
-import iii.team05.exam.model.ExamDetailVO;
 /*
 drop table Job;
 
@@ -14,31 +13,32 @@ create table Job (
 import iii.team05.job.model.JobVO;
 
 public class JobErVO  implements java.io.Serializable{
-	//private Integer id;
+	private Integer joberid;
 	private Integer jobid;
 	private Integer empno;
 	
-	private JobVO job;
-	private EmployeeVO employee;
+//	private JobVO job;
+//	private EmployeeVO employee;
+//	
+//	public JobVO getJob() {
+//		return job;
+//	}
+//	public void setJob(JobVO job) {
+//		this.job = job;
+//	}
+//	public EmployeeVO getEmployee() {
+//		return employee;
+//	}
+//	public void setEmployee(EmployeeVO employee) {
+//		this.employee = employee;
+//	}
 	
-	public JobVO getJob() {
-		return job;
+	public Integer getJoberid() {
+		return joberid;
 	}
-	public void setJob(JobVO job) {
-		this.job = job;
+	public void setJoberid(Integer joberid) {
+		this.joberid = joberid;
 	}
-	public EmployeeVO getEmployee() {
-		return employee;
-	}
-	public void setEmployee(EmployeeVO employee) {
-		this.employee = employee;
-	}
-//	public Integer getId() {
-//		return id;
-//	}
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
 	public Integer getJobid() {
 		return jobid;
 	}
