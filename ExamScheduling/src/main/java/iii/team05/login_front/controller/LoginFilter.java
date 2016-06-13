@@ -32,7 +32,7 @@ public class LoginFilter implements Filter {
 		if (session.getAttribute("ecno") == null) {
 			//來源存入
 			session.setAttribute("dest", request.getRequestURI());
-			//System.out.println(request.getRequestURI());
+			System.out.println(request.getRequestURI());
 			
 			request.getRequestDispatcher("/login").forward(request, response);
 		}else{
