@@ -30,9 +30,9 @@ public class LoginServlet extends HttpServlet {
 			 HttpSession session=request.getSession();
 		     session.setAttribute("ecno",ecno);
 		     //判斷是否有來源
-		     String dest=(String) session.getAttribute("dest");
+		     String dest=(String) session.getAttribute("dest_front");
 		     if(dest!=null&&dest.length()!=0){
-		    	 session.removeAttribute("dest");
+		    	 session.removeAttribute("dest_front");
 		    	response.sendRedirect(dest);
 		     }else{
 		    	 //沒有就回到選擇頁面

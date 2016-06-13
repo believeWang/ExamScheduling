@@ -31,7 +31,7 @@ public class LoginFilter implements Filter {
 		//如果沒有登入
 		if (session.getAttribute("ecno") == null) {
 			//來源存入
-			session.setAttribute("dest", request.getRequestURI());
+			session.setAttribute("dest_front", request.getRequestURI());
 			System.out.println(request.getRequestURI());
 			
 			request.getRequestDispatcher("/login").forward(request, response);

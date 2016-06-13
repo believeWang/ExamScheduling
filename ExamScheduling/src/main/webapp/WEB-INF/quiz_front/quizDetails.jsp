@@ -361,7 +361,7 @@ h1.main,p.demos {
         <script src="exam_resourse/js/prefixfree.min.js"></script>
 </head>
 <body>
-<%@ include file="../header/header.jsp" %>
+<%-- <%@ include file="../header/header.jsp" %> --%>
 
 <div class="container">
     <div class="header">
