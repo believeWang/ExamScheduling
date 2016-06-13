@@ -23,12 +23,13 @@
 
 <!-- JQUERY表單驗證 -->
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="3 ; url=<%=request.getContextPath()%>/upload/poitest.jspx; charset=UTF-8">
 
 <title>上傳成功</title>
 </head>
 <body>
 <h3>上傳成功</h3>
-<h4><a href="<%=request.getContextPath()%>/upload/poitest.jspx">回到上頁 班級列表</a></h3>
+<h4>過3秒後自動跳轉回班級列表</h4>
+<p><a href="<%=request.getContextPath()%>/upload/poitest.jspx">或 直接點擊回到班級列表</a></p>
 </body>
 </html>
