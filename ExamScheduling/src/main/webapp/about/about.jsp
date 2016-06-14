@@ -30,11 +30,9 @@
 <!-- JQUERY表單驗證 -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
-<style>
-@import url('<%=request.getContextPath()%>/about/css/about.css');
-</style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" name="viewport"
+	content="width=device-width , charset=UTF-8">
+
 <title>公司簡介</title>
 </head>
 
@@ -116,7 +114,27 @@
 			//responsive code end
 		});
 	</script>
+<script>
+		function initMap() {
+			var myLatLng = {
+				lat : 25.045991,
+				lng : 121.533139
+			};
 
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom : 14,
+				center : myLatLng
+			});
+
+			var marker = new google.maps.Marker({
+				position : myLatLng,
+				map : map,
+				title : 'Hello World!'
+			});
+		}
+	</script>
+	    <script async defer
+	        src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 	<style>
 
 /* jssor slider bullet navigator skin 01 css */
@@ -208,7 +226,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 600px;
+	width: 800px;
 	height: 45px;
 }
 
@@ -225,11 +243,17 @@
 	font-size: 20px;
 	padding-left: 10px;
 }
+
+#map {
+	height: 300px;
+	width:80%;
+	margin: 0px auto;
+}
 </style>
 
 
 	<div id="jssor_1"
-		style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden; visibility: hidden;">
+		style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 300px; overflow: hidden; visibility: hidden;">
 		<!-- Loading Screen -->
 		<div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
 			<div
@@ -238,22 +262,32 @@
 				style="position: absolute; display: block; background: url('/about/img/loading.gif') no-repeat center center; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
 		</div>
 		<div data-u="slides"
-			style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
+			style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 300px; overflow: hidden;">
 			<div data-p="112.50" style="display: none;">
-				<img data-u="image" src="http://www.101media.com.tw/img/file/1411133876e7g86.jpg" />
-				<div data-u="thumb">福利與升遷制度完善</div>
-			</div>
-			<div data-p="112.50" style="display: none;">
-				<img data-u="image" src="http://www.gvm.com.tw/images/blog/336801.jpg" />
-				<div data-u="thumb">和諧職場合作關係</div>
-			</div>
-			<div data-p="112.50" style="display: none;">
-				<img data-u="image" src="http://www.olily.com/cblog/wp-content/uploads/2006/11/SP_A0990.jpg" />
-				<div data-u="thumb">提供員工放鬆的桌球</div>
-			</div>
-			<div data-p="112.50" style="display: none;">
-				<img data-u="image" src="http://static4.ithome.com.tw/sites/default/files/styles/picture_size_large/public/field/image/nyc_tech_talent_pipeline_0.jpg?itok=iED_-Li0" />
-				<div data-u="thumb">專業能力進修補助</div>
+
+
+<%-- 				<c:forEach var="allBanner" items="${allBanner}"> --%>
+<%-- 					<img data-u="image" src="${allBanner}" /> --%>
+<!-- 				</c:forEach> -->
+
+
+								<img data-u="image"
+									src="http://www.101media.com.tw/img/file/1411133876e7g86.jpg" />
+								<div data-u="thumb">福利與升遷制度完善</div>
+							</div>
+							<div data-p="112.50" style="display: none;">
+								<img data-u="image"
+									src="http://www.gvm.com.tw/images/blog/336801.jpg" />
+								<div data-u="thumb">和諧職場合作關係</div>
+							</div>
+							<div data-p="112.50" style="display: none;">
+								<img data-u="image"
+									src="http://www.olily.com/cblog/wp-content/uploads/2006/11/SP_A0990.jpg" />
+								<div data-u="thumb">提供員工放鬆的桌球</div>
+							</div>
+							<div data-p="112.50" style="display: none;">
+								<img data-u="image" src="http://static4.ithome.com.tw/sites/default/files/styles/picture_size_large/public/field/image/nyc_tech_talent_pipeline_0.jpg?itok=iED_-Li0" />
+								<div data-u="thumb">專業能力進修補助</div>
 			</div>
 			<a data-u="ad" href="http://www.jssor.com" style="display: none">Bootstrap
 				Slider</a>
@@ -261,7 +295,7 @@
 		</div>
 		<!-- Thumbnail Navigator -->
 		<div data-u="thumbnavigator" class="jssort09-600-45"
-			style="position: absolute; bottom: 0px; left: 0px; width: 600px; height: 45px;">
+			style="position: absolute; bottom: 0px; left: 0px; width: 800px; height: 45px;">
 			<div
 				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; filter: alpha(opacity = 40.0); opacity: 0.4;"></div>
 			<!-- Thumbnail Item Skin Begin -->
@@ -288,5 +322,8 @@
 
 	<!-- #endregion Jssor Slider End -->
 	<div>${aboutcontent}</div>
+	<h3>公司位置</h3>
+	<div id="map"></div>
+	
 </body>
 </html>
