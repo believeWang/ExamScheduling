@@ -9,43 +9,63 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<script src="https://code.jquery.com/jquery.min.js"></script>
-<link
-	href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
-	rel="stylesheet" type="text/css" />
-<script
-	src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
+
 <title>班級表單上傳與下載</title>
-<style type="text/css">
-html {
-	padding-left: 10%;
-	padding-right: 10%;
-}
+<style>
+@import url('<%=request.getContextPath()%>/upload/upload.css');
 </style>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+<!--materialize ICON-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--sweatAlert-->
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/sweetalert2/3.2.3/sweetalert2.min.css" />
+<!--JQUERY-->
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--materialize-->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+<!--sweetalert js  -->
+<script
+	src="https://cdn.jsdelivr.net/sweetalert2/3.2.3/sweetalert2.min.js"></script>
+
+<!-- JQUERY表單驗證 -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+
 <script type="text/javascript">
 	var method = "none";
 	var iiiClass = "EEIT85";
-	var dl;
+	var dl;	
+	var detail; 
+
+	$(document).ready(function() {
+		dl = $('#download');
+		dl.hide();
+		dl.click(function() {
+
+			dl.attr('href', 'poitest.jspx?_m=poi_down&iiiClass=' + iiiClass);
+		});
+	});
 	
 	$(document).ready(function(){
-		dl= $('#download');
-		dl.hide();
-		dl.click(function(){
-			
-			dl.attr(
-					'href',
-					'poitest.jspx?_m=poi_down&iiiClass='
-							+ iiiClass);
-		});
-		});
+		detail = $('#classdetail');
+		detail.hide();
+	});
+	
 	function classlist(btn) {
 		var myTbody = $("#classTbody");
 		iiiClass = $(btn).prop('id');
 		//console.log(iiiClass);
 		dl.show();
+		detail.show();
+
 		$.ajax({
 			url : 'poitest.jspx',
 			data : {
@@ -76,104 +96,103 @@ html {
 							}
 							cntEcno++;
 							return;
-						}				
-						
+						}
+
 						else {
 							var myTd;
-							 if (key == 'ecpsd') {
-								
+							if (key == 'ecpsd') {
+
 								return;
-							}else if (key=='ecstatus'){
+							} else if (key == 'ecstatus') {
 								if (objectvalue == 'true') {
 									myTd = $("<td>是</td>");
 								} else
 									myTd = $("<td>否</td>");
-							}else{
-								 myTd = "<td>" + objectvalue + "</td>";
+							} else {
+								myTd = "<td>" + objectvalue + "</td>";
 							}
-						
+
 							myTr.append(myTd);
-						
+
 						}
-						
-					
-						
-						
-// 						if (key == 'essex') {
-// 							if (objectvalue == 'true') {
-// 								myTr = $("<tr>男</tr>");
-// 							} else
-// 								myTr = $("<tr>女</tr>");
-// 						}
-					
-						
+
+						// 						if (key == 'essex') {
+						// 							if (objectvalue == 'true') {
+						// 								myTr = $("<tr>男</tr>");
+						// 							} else
+						// 								myTr = $("<tr>女</tr>");
+						// 						}
+
 					});
 					if (i % 3 == 2)
 						myTbody.append(myTr);
-					
+
 				});
-				
 
 			}
 		});
 	};
-	
-	
 </script>
 </head>
 <body>
-	<h2>班級表單上傳與下載</h2>
+	<h3>班級表單上傳與下載</h3>
 	<hr>
-	<div class="row">
-		<div class="col-md-2">
+	<div class="container">
+		<div class="divider"></div>
+		<div class="section">
 			<div>
-				<h3>班級列表</h3>
-				<table>
-					<c:forEach var="showclasslist" items="${allClass}"
-						varStatus="loopCounter">
+				<h4>班級列表</h4>
+				<p>點選班級以顯示詳細名單資訊</p>
+				<div>
+					<table class="classlist centered">
 						<tr>
-
-							<td><a onclick="classlist(this)" id="${showclasslist}">${showclasslist}</a></td>
-
+							<c:forEach var="showclasslist" items="${allClass}">
+								<td class=classlisttd><a onclick="classlist(this)" id="${showclasslist}">${showclasslist}</a></td>
+							</c:forEach>
 						</tr>
-					</c:forEach>
-				</table>
-			</div>
-			<div>
-				<h4>上傳新班級名單</h4>
-				<form action="poitest.jspx?_m=poi_upload" method="post"
-					enctype="multipart/form-data">
-					<input type="file" name="file"> <input type="submit"
-						value="上傳" class="btn btn-info">
-				</form>
-				<hr>
+					</table>
+				</div>
+				
+				<div>
+					<h4>上傳新班級名單</h4>
+					<form action="poitest.jspx?_m=poi_upload" method="post"
+						enctype="multipart/form-data">
+						<input type="file" name="file"> <input type="submit"
+							value="上傳" class="btn btn-info">
+					</form>
+					<hr>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-10">
-			<div>
-				<h3 align="center">班級詳細資料</h3>
+		<div class="divider"></div>
+		<div class="section">
+			<div id="classdetail">
+				<h4>班級詳細資料</h4>
+				<div class=downloadexcel>
+				<a id="download" href="poitest.jspx?_m=poi_down">下载目前班級為Excel檔</a>
+				</div>
 				<div>
-					<table>
+					<table class="responsive-table hovereffect">
 						<thead>
 							<tr>
-								<td>NO</td>
-								<td>姓名</td>
-								<td>E-mail</td>
-								<td>是否預約考試</td>
-								<td>備註</td>
-								<td>資策會班級</td>
-								<td>組別</td>
-								<td>年次</td>
-								<td>畢業學校</td>
-								<td>性別</td>
-								<td>最快可以上班日期</td>
-								<td>期望新資</td>
-								<td>Final Ranking</td>
-								<td>備註</td>
-								<td>上機測驗分數</td>
-								<td>Interview 分數</td>
-								<td>上機測驗時間</td>
-								<td>線上測驗分數</td>
+								<th>NO</th>
+								<th>姓名</th>
+								<th>E-mail</th>
+								<th>是否預約考試</th>
+								<th>備註</th>
+								<th>資策會班級</th>
+								<th>組別</th>
+								<th>年次</th>
+								<th>畢業學校</th>
+								<th>性別</th>
+								<th>最快可以上班日期</th>
+								<th>期望新資</th>
+								<th>Final Ranking</th>
+								<th>備註</th>
+								<th>上機測驗分數</th>
+								<th>Interview 分數</th>
+								<th>上機測驗時間</th>
+								<th>線上測驗分數</th>
 
 
 							</tr>
@@ -184,11 +203,11 @@ html {
 						</tbody>
 					</table>
 				</div>
-				<a id="download"  href="poitest.jspx?_m=poi_down">下载目前班級為Excel檔</a>
+
 			</div>
 		</div>
-	</div>
 
+	</div>
 </body>
 
 </html>

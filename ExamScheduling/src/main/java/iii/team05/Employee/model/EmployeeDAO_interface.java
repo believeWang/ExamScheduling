@@ -12,6 +12,7 @@ public interface EmployeeDAO_interface {
           public List<EmployeeVO> getExam();
           public List<EmployeeVO> getEmp();
 		
+
          
 		
 }

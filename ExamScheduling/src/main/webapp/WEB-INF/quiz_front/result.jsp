@@ -9,6 +9,8 @@
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<%@ include file="/WEB-INF/cdn.file"%>
+ <%@ include file="../header/header_resourse.file" %>
     <style type="text/css">
 body {
 	background: url("exam_resourse/images/background.jpg");
@@ -108,9 +110,10 @@ table.responsive-table{
 }
 
 </style>
-<title>Result</title>
+<title>考試結果</title>
 </head>
 <body>
+<%@ include file="../header/header.jsp" %>
 <%-- <c:if test="${requestScope.result >= 5}"> --%>
 <!--    <h3 align="center">Passed</h3> -->
 <%-- </c:if> --%>
@@ -157,8 +160,8 @@ table.responsive-table{
 
     </tbody>
 </table>
-<h3 align="center"><a href='${pageContext.request.contextPath}/ExamReview'>Review Answers</a></h3><br>
-<h3 align="center"><a href='${pageContext.request.contextPath}'>Home</a></h3><br>
+<h3 align="center"><a target="_blank"  href='${pageContext.request.contextPath}/ExamReview'>檢視</a></h3><br>
+
 </div>
 
 

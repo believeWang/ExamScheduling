@@ -10,6 +10,8 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
+
+<%@ include file="/WEB-INF/header/header_resourse.file" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <!-- <script src='../js/jquery.min.js'></script> -->

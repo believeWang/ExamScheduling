@@ -6,7 +6,8 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
- 
+
+ <%@ include file="../header/header_resourse.file" %>
     <style type="text/css">
     
 body {
@@ -50,7 +51,8 @@ body {
 	box-shadow: 0px 3px 0px 0px #239a55;
 }
 table{
-	margin: 0 auto;
+	margin: 5% auto;
+	width:80%;
 }
 </style>
   

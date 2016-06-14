@@ -25,7 +25,8 @@ $(function(){
   </div>
   <div class="section white" style="margin:0 600px" >
     <div class="row container" >
-      <h5 class="header" style="font-family: monospace;">--歡迎使用後台考試預約系統--驗證成功後將登入</h5>
+
+      <h5 class="header" style="font-family: monospace;">--歡迎使用後台考試預約系統--驗證成功後將登入</h5>${googleLoginErrors.loginNg}
      <p class="grey-text text-darken-3 lighten-3">
 <!--      CAPTCAH 主體 -->
  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/captcha" method="post" onsubmit="return check();">

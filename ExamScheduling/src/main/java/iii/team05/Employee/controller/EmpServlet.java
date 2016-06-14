@@ -246,6 +246,7 @@ if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 		/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 		req.setAttribute("employeeVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
 		String url = "/employee/empform.jsp";
+
 		RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
 		successView.forward(req, res);
 

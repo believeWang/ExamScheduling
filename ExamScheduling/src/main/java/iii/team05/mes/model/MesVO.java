@@ -1,16 +1,15 @@
 package iii.team05.mes.model;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 
 public class MesVO implements java.io.Serializable{
+	private static final long serialVersionUID = 1L;
 	private Integer messageid;
 	private String msgname;
 	private String msgmail;
-	private Timestamp msgtime;
+	private String msgtime;
 	private String msgcontent;
 	private String rpname;
-	private Timestamp rptime;
+	private String rptime;
 	private String rpcontent;
 	public Integer getMessageid() {
 		return messageid;
@@ -30,10 +29,10 @@ public class MesVO implements java.io.Serializable{
 	public void setMsgmail(String msgmail) {
 		this.msgmail = msgmail;
 	}
-	public Timestamp getMsgtime() {
+	public String getMsgtime() {
 		return msgtime;
 	}
-	public void setMsgtime(Timestamp msgtime) {
+	public void setMsgtime(String msgtime) {
 		this.msgtime = msgtime;
 	}
 	public String getMsgcontent() {
@@ -48,10 +47,10 @@ public class MesVO implements java.io.Serializable{
 	public void setRpname(String rpname) {
 		this.rpname = rpname;
 	}
-	public Timestamp getRptime() {
+	public String getRptime() {
 		return rptime;
 	}
-	public void setRptime(Timestamp rptime) {
+	public void setRptime(String rptime) {
 		this.rptime = rptime;
 	}
 	public String getRpcontent() {

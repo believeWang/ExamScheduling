@@ -1,82 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<style type="text/css">
-#mwt_mwt_slider_scroll {
-	top: 0;
-	right: -200px;
-	width: 200px;
-	position: fixed;
-	z-index: 9999;
-}
 
-#mwt_slider_content {
-/* 	background: #3c5a98; */
-	background-image: url(/ExamScheduling/header/images/ba01.png);
-	text-align: center;
-	padding-top: 20px;
-	
-}
 
-#mwt_fb_tab {
-	position: absolute;
-	top: 20px;
-	left: -24px;
-	width: 24px;
-/* 	background: #3c5a98; */
-	background-image: url(/ExamScheduling/header/images/ba01.png);
-	color: black;
-	font-family: Arial, Helvetica, sans-serif;
-	text-align: center;
-	padding: 9px 0;
-	-moz-border-radius-topleft: 10px;
-	-moz-border-radius-bottomleft: 10px;
-	-webkit-border-top-left-radius: 10px;
-	-webkit-border-bottom-left-radius: 10px;
-}
-
-#mwt_fb_tab span {
-	display: block;
-	height: 12px;
-	padding: 1px 0;
-	line-height: 12px;
-	text-transform: uppercase;
-	font-size: 12px;
-}
-
-body {
-	background: url("/ExamScheduling/exam_resourse/images/background.jpg");
-}
-</style>
-<%-- <%@ include file="/WEB-INF/cdn.file"%> --%>
-<link rel="stylesheet" type="text/css"
-	href="/ExamScheduling/header/css/component1.css" />
-<script src="/ExamScheduling/header/js/modernizr-2.6.2.min.js"></script>
-<script type='text/javascript'>
-	$(function() {
-		var w = $("#mwt_slider_content").width();
-		$('#mwt_slider_content').css('height',
-				($(window).height() - 700) + 'px');
-
-		$("#mwt_fb_tab").mouseover(function() { //滑鼠滑入時
-			if ($("#mwt_mwt_slider_scroll").css('right') == '-' + w + 'px') {
-				$("#mwt_mwt_slider_scroll").animate({
-					right : '0px'
-				}, 600, 'swing');
-			}
-		});
-
-		$("#mwt_slider_content").mouseleave(function() {//滑鼠離開後
-			$("#mwt_mwt_slider_scroll").animate({
-				right : '-' + w + 'px'
-			}, 600, 'swing');
-		});
-	});
-	$(document).ready(function() {
-		// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-		$('.modal-trigger').leanModal();
-	});
-</script>
 	<div class="component">
 		<!-- Start Nav Structure -->
 		<button class="cn-button" id="cn-button">+</button>

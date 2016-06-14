@@ -50,6 +50,7 @@ public class EmployeeJSONServlet extends HttpServlet {
 			jary.put(obj);							//強化行迴圈結束
 		}
 		out.print(jary);							//增加json的括號"]"結束
+
 		//System.out.println(jary);					//測試"{}"裡的json
 
 	}

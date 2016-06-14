@@ -67,6 +67,7 @@ public class EmployeeService {
 	}
 	public List<EmployeeVO> getEmp() {
 		return dao.getEmp();
+
 	}
 
 	public List<EmployeeVO> check(String ecemail) {
