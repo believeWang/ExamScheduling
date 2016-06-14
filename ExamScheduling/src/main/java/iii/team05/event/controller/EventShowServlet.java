@@ -2,12 +2,20 @@ package iii.team05.event.controller;
 
 import iii.team05.event.model.EventDAO;
 import iii.team05.event.model.EventVO;
-
+import iii.team05.examinee.ecmodel.ESHibernateDAO;
+import iii.team05.examinee.ecmodel.ESVO;
 import iii.team05.job.model.Job111DAO;
 import iii.team05.job.model.JobVO;
+import iii.team05.jober.model.JobEr1DAO;
+import iii.team05.jober.model.JobErDAO;
+import iii.team05.jober.model.JobErVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+//import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class EventShowServlet
@@ -37,21 +46,38 @@ public class EventShowServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String jobid = request.getParameter("jobid");
-		//String ecemail = request.getParameter("ecemail");  //考生Email
+		String jobid_str = request.getParameter("jobid"); //當前職缺
 		
-		//撈主考官id
-		//int jobid = Integer.parseInt(jobid);
-		//Job_ErDAO jober = new Job_ErDAO();
-		//JobVO jerVo = jober.findByPrimaryKey(jobid);//要寫一個用jobid撈這個id全部的主考官id
+		//當前登入考生 撈session
+		HttpSession session = request.getSession();
+		Object ecno_o = session.getAttribute("ecno");
 		
+		//旁邊的job導覽列
 		Job111DAO jbDAO = new Job111DAO();
 		List<JobVO> jdlists = jbDAO.getAll();
 		
+		//主考官
+		int jobid = Integer.valueOf(jobid_str); //轉型
+		JobEr1DAO JobEr1DAO = new JobEr1DAO();
+		JobErVO jobErVO = JobEr1DAO.findByPrimaryKey(jobid); //只能抓一筆  之後再寫SQL抓多筆
+		Integer empno = jobErVO.getEmpno(); //這個職缺當前負責的主考官
+		
+		//撈考生eshiredate 用這個算考生可以預約的14天時間
+		String ecno = String.valueOf(ecno_o);
+		ESHibernateDAO esDAO = new ESHibernateDAO();
+		ESVO esVO = esDAO.findByPrimaryKey(ecno);
+		Date eshiredate = esVO.getEshiredate();
+		//date to string
+		DateFormat df = new SimpleDateFormat("yyy-MM-dd");
+		String text = df.format(eshiredate);
+		
+		String[] datearray = text.split("-");//切割字串
+		
 		request.setAttribute("jdlists", jdlists);
 		request.setAttribute("jobid", jobid);
-		//request.setAttribute("ecemail", ecemail);  //考生
-		//request.setAttribute("empno", empno);  //架設這是主考官id
+		request.setAttribute("ecno", ecno);
+		request.setAttribute("empno", empno);
+		request.setAttribute("datearray", datearray);
 		
 		RequestDispatcher failureView = request.getRequestDispatcher("/fullcalendar/index.jsp");
 		failureView.forward(request, response);
@@ -63,6 +89,7 @@ public class EventShowServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

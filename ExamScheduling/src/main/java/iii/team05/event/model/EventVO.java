@@ -26,7 +26,14 @@ public class EventVO  implements java.io.Serializable{
 	private String title;
 	private String ecno;
 	private String eventremark;
+	private String rendering;
 	
+	public String getRendering() {
+		return rendering;
+	}
+	public void setRendering(String rendering) {
+		this.rendering = rendering;
+	}
 	public Integer getEventid() {
 		return eventid;
 	}

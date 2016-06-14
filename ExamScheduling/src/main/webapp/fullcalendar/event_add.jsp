@@ -15,17 +15,16 @@
         <input type="hidden" name="action" value="add">
         <input type="hidden" name="date" value="${date}">
         <input type="hidden" name="jobid" value="${jobid}">
-        <input type="hidden" name="ecemail" value=""> <!-- 考生email -->
-        <input type="hidden" name="empno" value=""> <!-- 主考官id -->
+        <input type="hidden" name="empno" value="${empno}"> <!-- 主考官id -->
         <label for="title">內容主旨：</label><input type="text" name="title" value="" placeholder="輸入預約標題" id="title" class="form-control"></p>
         <label for="">選擇時段：</label>
         <c:forEach var="section" items="${seclists}">
-        	<p><input type="radio" name="section" value="${section.sectiontime}"  style="width: 20px; height: 20px">${section.sectiontime}</p>
+        	<p>&nbsp&nbsp<input type="radio" name="section" value="${section.sectiontime}"  style="width: 20px; height: 20px">${section.sectiontime}</p>
         </c:forEach>
         <label for="remark">備註：</label><textarea name="remark" rows="4" cols="50" id="remark" class="form-control"></textarea>
         <div class="sub_btn">
         	<span class="del"><input type="button" class="btn btn_del" id="del_event" value="删除"></span> 
-        	<input type="submit" class="btn btn-primary" value="确定"> <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()">
+        	<input type="submit" class="btn btn-primary" value="确定" > <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()">
        	</div> 
     </form> 
 </div> 

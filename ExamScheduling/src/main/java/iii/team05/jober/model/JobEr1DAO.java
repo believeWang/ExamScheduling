@@ -23,7 +23,7 @@ public class JobEr1DAO implements JobErDAO_interface {
 
 	private static final String INSERT_STMT = "INSERT INTO Job_Er (jobid, empno) VALUES (?,?)";
 	private static final String GET_ALL_STMT = "SELECT jobid, empno FROM Job_Er";
-	private static final String GET_ONE_STMT = "SELECT jobid, empno FROM Job_Er where joberid = ?";
+	private static final String GET_ONE_STMT = "SELECT jobid, empno FROM Job_Er where jobid = ?";
 	private static final String DELETE_STMT = "DELETE FROM Job_Er where joberid = ?";
 	private static final String UPDATE_STMT = "UPDATE Job_Er set jobid=?, empno=? where joberid = ?";
 

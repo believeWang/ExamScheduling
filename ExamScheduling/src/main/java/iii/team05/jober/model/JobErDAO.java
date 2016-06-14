@@ -54,12 +54,12 @@ public class JobErDAO implements JobErDAO_interface{
 	}
 
 	@Override
-	public JobErVO findByPrimaryKey(Integer id) {
+	public JobErVO findByPrimaryKey(Integer jobid) {
 		JobErVO jobErVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			jobErVO = (JobErVO) session.get(JobErVO.class, id);
+			jobErVO = (JobErVO) session.get(JobErVO.class, jobid);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();

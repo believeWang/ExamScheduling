@@ -9,33 +9,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <%@ include file="/WEB-INF/cdn.file"%>
 
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-<!-- <script src='../js/jquery.min.js'></script> -->
+<script src='../js/jquery.min.js'></script>
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <script src='../js/moment.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
-<!--燈箱樣式效果-->
-<link rel="stylesheet" type="text/css" href="../css/jquery.fancybox.css">
-<script src='../js/jquery.fancybox.js'></script>
 <!--jquery.ui 裡日期插件-->
 <script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
-
 <!-- Bootstrap -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
 <script src="../js/bootstrap.min.js"></script>
-
+<!--燈箱樣式效果-->
+<link rel="stylesheet" type="text/css" href="../css/jquery.fancybox.css">
+<script src='../js/jquery.fancybox.js'></script>
 
 
 <style type="text/css">
 	#calendar{width:960px; margin:20px auto 10px auto}
 	.fancy{width:450px; height:auto}
 	.fancy h4{line-height:30px; border-bottom:1px solid #d3d3d3;}
-/* 	.fancy h3{height:30px; line-height:30px; border-bottom:1px solid #d3d3d3; font-size:14px} */
+* 	.fancy h3{height:30px; line-height:30px; border-bottom:1px solid #d3d3d3; font-size:14px} */
 	.fancy form{padding:10px}
 /* 	.fancy p{height:28px; line-height:28px; padding:4px; color:#999} */
 /* 	.input{height:20px; line-height:20px; padding:2px; border:1px solid #d3d3d3; width:100px} */
@@ -49,7 +48,16 @@
 <script>
 	
 	$(document).ready(function() { 
+		var esYear = ${datearray[0]};
+		var esMonth = ${datearray[1]};
+		var esDay = ${datearray[2]};
+		var res0 = esYear+"-"+esMonth+"-"+esDay;
+		var res = esYear+","+esMonth+","+esDay;
+		var date_em = new Date(res);  //考生的eshiredate date格式
+		var empno = ${empno};
+		var ecno = "${ecno}";
 		
+		//console.log(ecno);
 	    $('#calendar').fullCalendar({ 
 	        header:{
 	        	left: 'title today',
@@ -57,21 +65,27 @@
 	        	right: 'prevYear prev next nextYear'
 	        },
 	        editable: true,
-	        events: 'EventJSONServlet',
+	        events: 'EventJSONServlet?empno='+empno+'&ecno='+ecno ,
 	        dayClick: function(date, allDay, jsEvent, view) { 
 	            //var selDate = $.fullCalendar.formatDate(date,'yyyy-MM-dd');//格式化日期 
 	            var selDate = moment(date).format('YYYY-MM-DD');
 	            var jobid = ${jobid};
-	            //alert(selDate);
-	            $.fancybox({//调用fancybox弹出层 
-	                'type':'ajax', 
-	                'href':'EventServlet?action=add&date='+selDate+'&jobid='+jobid
-	            }); 
+	            var dt2 = date; //點擊日期
+	            var aa = (dt2 - date_em) / (1000 * 60 * 60 * 24);
+	            
+	            if(aa >= 14 || aa < 0){
+	            	alert("超過報名時間已過，請選擇"+res0+" 14天內，謝謝。");
+	            }else{
+	            	$.fancybox({//调用fancybox弹出层 
+		                'type':'ajax', 
+		                'href':'EventServlet?action=add&date='+selDate+'&jobid='+jobid+'&empno='+empno
+		            }); 	
+	            }
 	        },
 	        eventClick: function(calEvent, jsEvent, view) { 
 	            $.fancybox({ 
 	                'type':'ajax', 
-	                'href':'EventServlet?action=edit&id='+calEvent.id
+	                'href':'EventServlet?action=edit&id='+calEvent.id+'&empno='+empno
 	            }); 
 	        } 
 
@@ -102,7 +116,7 @@
 </style>
 </head>
 <body>
-  <%@ include file="../WEB-INF/header/header.jsp" %>
+    <%@ include file="../WEB-INF/header/header.jsp" %> 
 	<div class="container-fluid">
 <!-- 		<div class="row"> -->
 <!-- 			<div class="col-md-12"> -->

@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		    	response.sendRedirect(dest);
 		     }else{
 		    	 //沒有就回到選擇頁面
-		    	 response.sendRedirect("choose");
+		    	 response.sendRedirect("/ExamScheduling/AboutServlet");
 			    
 		     }
 		    
