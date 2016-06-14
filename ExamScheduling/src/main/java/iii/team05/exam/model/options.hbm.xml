@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="iii.team05.exam.model.OptionsVO" table="Options">
+
+		<composite-id>
+			<key-property name="optionsno" column="optionsno" />
+
+			
+			<key-many-to-one name="examDetail" class="iii.team05.exam.model.ExamDetailVO" >
+     				<column name="detailno" />
+     					<column name="examno" />
+  			</key-many-to-one>
+
+		</composite-id>
+
+		<property name="optionsName" column="optionsName" />
+		<property name="isAnswer" column="isAnswer" />
+
+	
+
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="iii.team05.exam.model.ExamVO" table="Exam">
+
+		<id name="examno" column="examno">
+		</id>
+
+		<property name="examTitle" column="examTitle" />
+		<property name="quantities" column="quantities" />
+		<property name="duration" column="duration" />
+		 <property name="examImg" type="binary">
+            <column name="examimg"  />
+        </property>
+
+		<set name="examDetils" table="ExamDetail" lazy="false" cascade="all"
+			inverse="true">
+			<key>
+				<column name="examno" />
+			</key>
+			<one-to-many class="iii.team05.exam.model.ExamDetailVO" />
+		</set>
+	</class>
+</hibernate-mapping>

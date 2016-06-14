@@ -1,0 +1,61 @@
+
+
+#allpage {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+
+
+fieldset {
+	width: 500px;
+	border: 1px solid #acd6ff;
+	margin: 10px auto 0;
+	border-radius: 15px;
+}
+
+.HeaderStyle {
+/* 	position: relative; */
+/* 	height: 29px; */
+/* 	width: 300px; */
+	padding: 15px 100px;
+	margin: 0px auto;
+	overflow: hidden;
+
+}
+
+.HeaderStyle li {
+	float: left;
+	list-style: none;
+}
+
+.HeaderStyle li.back {
+	border-bottom: 5px solid silver;
+	width: 9px;
+	height: 30px;
+	z-index: 8;
+	position: absolute;
+}
+a:link,a:visited{color:#ffffff} 
+.HeaderStyle li a {
+	font: bold 20px arial;
+	text-decoration: none;
+	color: #ffffff;
+	outline: none;
+	text-align: center;
+	top: 7px;
+	text-transform: uppercase;
+	letter-spacing: 0;
+	z-index: 10;
+	display: block;
+	float: left;
+	height: 30px;
+	position: relative;
+	overflow: hidden;
+	margin: auto 10px;
+}
+
+.HeaderStyle li a:hover, .HeaderStyle li a:active,
+	.HeaderStyle li a:visited {
+	border: none;
+}

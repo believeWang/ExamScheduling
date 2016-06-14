@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="iii.team05.jober.model.JobErVO" table="Job_Er">
+<!-- 		<id name="joberid" column="joberid"> -->
+<!--             <generator class="identity"/> -->
+<!--         </id> -->
+        
+<!--         <property name="jobid" column="jobid" /> -->
+<!--         <property name="empno" column="empno" /> -->
+		<composite-id>
+			<key-many-to-one name="jobid"
+				class="iii.team05.job.model.JobVO" column="jobid" lazy="false"/>
+			<key-many-to-one name="empno"
+			class="iii.team05.Employee.model.EmployeeVO" column="empno" lazy="false"/>
+		</composite-id>
+
+
+	</class>
+</hibernate-mapping>
