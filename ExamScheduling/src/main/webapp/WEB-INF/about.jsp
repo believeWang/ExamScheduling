@@ -13,7 +13,10 @@
 </style>
 
 <style>
-
+html { 
+	padding-left: 15%;
+	padding-right: 15%;
+}
 
 /* jssor slider bullet navigator skin 01 css */
 /*
