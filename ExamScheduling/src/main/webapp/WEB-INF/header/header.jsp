@@ -9,14 +9,14 @@
 			<ul>
 				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="預約考試"><a
 					href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet?jobid=1"><i
-						class="material-icons Medium">present_to_all</i></a></li>
+						class="material-icons ">present_to_all</i></a></li>
 				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="前往考試"><a
 					href="${pageContext.request.contextPath}/choose"><i
 						class="material-icons">mode_edit</i></a></li>
 				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="首頁"><a
 					href="<%=request.getContextPath()%>/index.jsp"><span
 						class="icon-home"></span></a></li>
-				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="關於緯康"><a href="#"><i class="material-icons">library_books</i></a></li>
+				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="關於緯康"><a href="/ExamScheduling/AboutServlet"><i class="material-icons">library_books</i></a></li>
 				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="聯絡我們 "><a
 					href="<%=request.getContextPath()%>/MesTurn?turn=LM"><i
 						class="material-icons">perm_phone_msg</i></a></li>

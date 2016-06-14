@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//清空session
 		request.getSession().invalidate();
-		response.sendRedirect("fullcalendar/EventShowServlet?jobid=1");
+		response.sendRedirect("/ExamScheduling/AboutServlet");
 		
 	}
 }
