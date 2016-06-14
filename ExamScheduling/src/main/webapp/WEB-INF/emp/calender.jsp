@@ -7,20 +7,19 @@
 <%@ page import="java.util.*"%>
 <%@ page import="iii.team05.examinee.ecmodel.*"%>
 <%
+
 	ECHibernateDAO empSvc = new ECHibernateDAO();
-List<ECVO> list = empSvc.getAll();
-pageContext.setAttribute("list", list);
+	List<ECVO> list = empSvc.getAll();
+	pageContext.setAttribute("list", list);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-<%@ include file="../cdn_bootstrap.file" %>
-<%@ include file="../cdn.file" %>
-
-
+<%@ include file="/WEB-INF/cdn.file"%>
+<%@ include file="/WEB-INF/header/slide_mqtt.file" %>
+<%@ include file="/WEB-INF/calendar.file"%>
+<title></title>
 
 <style type="text/css">
 #calendar {
@@ -51,7 +50,6 @@ pageContext.setAttribute("list", list);
 											}
 										})
 					});
-	
 </script>
 
 <style>
@@ -74,15 +72,15 @@ body {
 </style>
 </head>
 <body>
-	<%@ include file="../../WEB-INF/header/header.jsp"%>
-	<div class="container-fluid">
+<%@ include file="/WEB-INF/header/slidenav.jsp" %>
+	
+
+			<div class="container-fluid">
 		<div class="row">
 
 			<div class="col-md-2">
 				<ul class="list-group">
-					<c:forEach var="ECVO" items="${list}">
-						<div>${ECVO.ecno}</div>
-					</c:forEach>
+					
 				</ul>
 			</div>
 			<div class="col-md-10">
@@ -96,6 +94,8 @@ body {
 			</div>
 		</div>
 	</div>
+		
+
 
 </body>
 </html>

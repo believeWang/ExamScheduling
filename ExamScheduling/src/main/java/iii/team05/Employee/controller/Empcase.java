@@ -32,23 +32,13 @@ public class Empcase extends HttpServlet {
 		String empturn=request.getParameter("empturn");
 		switch (empturn) {
 		case "CAL":
+			request.getRequestDispatcher("/WEB-INF/emp/calender.jsp").forward(request, response);	
+			break;
+//			以下為系統管理者新刪修
+		case "EMPF":
 			request.getRequestDispatcher("/WEB-INF/employee/empform.jsp").forward(request, response);	
 			break;
-		case "LAM":
-			request.getRequestDispatcher("/WEB-INF/mes/ListAllMessage.jsp").forward(request, response);	
-			break;
-		case "LNRM":
-			request.getRequestDispatcher("/WEB-INF/mes/ListNotReplyMessage.jsp").forward(request, response);
-			break;
-		case "LOM":
-			request.getRequestDispatcher("/WEB-INF/mes/ListOneMessage.jsp").forward(request, response);
-			break;
-		case "RM":
-			request.getRequestDispatcher("/WEB-INF/mes/ReplyMessage.jsp").forward(request, response);
-			break;
-		case "MQTT":
-			request.getRequestDispatcher("/WEB-INF/chat/mqtt31.jsp").forward(request, response);
-			break;
+		
 		default:
 			break;
 		}

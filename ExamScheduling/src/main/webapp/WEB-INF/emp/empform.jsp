@@ -19,6 +19,11 @@ pageContext.setAttribute("list0", list0);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+
+
+
+</style>
 </head>
 <%@ include file="../../WEB-INF/cdn.file"%>
 <body>
@@ -42,10 +47,10 @@ pageContext.setAttribute("list0", list0);
 							<td>${EmpVO0.empname}</td>
 							<td>${EmpVO0.empemail}</td>
 
-							<td>
+							<td >
 								<FORM METHOD="post"
 									ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1">
-									<div class="input-field col s12">
+									<div class="input-field col s12 " style="float:left">
 										<select name="position">
 											<option value="" disabled selected>選擇權限</option>
 											<option value="2">系統管理員</option>
@@ -53,8 +58,8 @@ pageContext.setAttribute("list0", list0);
 											<option value="0">一般員工</option>
 										</select>
 									</div >
-									
-									<div>
+								
+									<div style="float:left">
 									<input type="hidden" name="empno" value="${EmpVO0.empno}">
 									<input type="hidden" name="action" value="update"> 
 									<input type="submit" value="確定" class="waves-effect waves-light btn">
@@ -63,12 +68,15 @@ pageContext.setAttribute("list0", list0);
 							</td>
 
 							<td>
+							<div>
 								<FORM METHOD="post"
 									ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1">
 									<input type="hidden" name="empno" value="${EmpVO0.empno}">
 									<input type="hidden" name="action" value="delete"> <input
 										type="submit" value="刪除" class="waves-effect waves-light btn">
+										
 								</FORM>
+								</div>
 							</td>
 						</tr>
 					</c:forEach>
@@ -94,7 +102,7 @@ pageContext.setAttribute("list0", list0);
 							<td>${EmpVO1.empemail}</td>
 							<td>
 								<FORM METHOD="post"	ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1">
-									<div class="input-field col s12">
+									<div class="input-field col s12" style="float:left">
 										<select name="position">
 											<option value="" disabled selected>選擇權限</option>
 											<option value="2">系統管理員</option>
@@ -102,7 +110,7 @@ pageContext.setAttribute("list0", list0);
 											<option value="0">一般員工</option>
 										</select>
 									</div>
-									<div>
+									<div style="float:left">
 									<input type="hidden" name="empno" value="${EmpVO1.empno}">
 									<input type="hidden" name="action" value="update">
 									<input type="submit" value="確定" class="waves-effect waves-light btn">
@@ -142,7 +150,7 @@ pageContext.setAttribute("list0", list0);
 							<td>${EmpVO2.empemail}</td>
 							<td>
 								<FORM METHOD="post"	ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1">
-									<div class="input-field col s12">
+									<div class="input-field col s12" style="float:left">
 										<select name="position">
 											<option value="" disabled selected>選擇權限</option>
 											<option value="2">系統管理員</option>
@@ -150,7 +158,7 @@ pageContext.setAttribute("list0", list0);
 											<option value="0">一般員工</option>
 										</select>
 									</div>
-									<div>
+									<div style="float:left">
 									<input type="hidden" name="empno" value="${EmpVO2.empno}">
 									<input type="hidden" name="action" value="update">
 									<input type="submit" value="確定" class="waves-effect waves-light btn">

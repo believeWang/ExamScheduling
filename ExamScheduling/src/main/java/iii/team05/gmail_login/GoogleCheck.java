@@ -148,7 +148,7 @@ public class GoogleCheck extends HttpServlet {
 					if(empToken==null){
 					emSvc.insertToken(email, token);				
 					}
-					response.sendRedirect(response.encodeRedirectURL("Examiner.jsp"));				
+					response.sendRedirect(response.encodeRedirectURL("EmpCaes?empturn=CAL"));				
 					}else{
 						response.sendRedirect(response.encodeRedirectURL(from));
 						
