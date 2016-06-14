@@ -1,0 +1,79 @@
+/* 標題 */
+h3 {
+	color:#446778;
+}
+
+h4 , p {
+	color:#58A4B0;
+}
+
+/* 班級列表 */
+.classlisttd {
+	width:100px;
+	font-size: 1.4em;
+	background-color: #DCE3F0;
+	margin:0.8em;		
+}
+
+.classlist a:hover {
+	background-color: #D8DBE2;
+	color: #446778;
+}
+
+.downloadexcel a:hover {
+	background-color: #D8DBE2;
+	color: #446778;
+}
+.downloadexcel {
+	font-weight: bold;
+	font-size: 1.5em;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.downloadexcel a:hover {
+	background-color: #D8DBE2;
+	color: #446778;
+}
+
+/* Table Style */
+/* Border styles */
+.downloadexcel thead, tr {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #A9BCD0;
+}
+
+.downloadexcel table div {
+	/* 防止撐開 fot IE */
+	table-layout: fixed;
+	/* 防止撐開 fot FF */
+	overflow: auto;
+}
+
+.downloadexcel table {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #A9BCD0;
+}
+
+/* Padding and font style */
+td, th {
+	padding: 5px 10px;
+	font-size: 13px;
+	font-family: Verdana;
+	color: #58A4B0;
+}
+
+/*background colors */
+tr:nth-child(even) {
+	background: #DCE3F0;
+}
+
+tr:nth-child(odd) {
+	background: #FFF
+}
+
+.hovereffect tr:hover {
+	background-color: #D8DBE2;
+}
