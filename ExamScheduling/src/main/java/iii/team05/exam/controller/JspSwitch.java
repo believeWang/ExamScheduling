@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ChooseExam
  */
-@WebServlet(urlPatterns = { "/login", "/choose",  "/logout" ,"/JspSwitch"})
+@WebServlet(urlPatterns = { "/login", "/choose",  "/logout" ,"/JspSwitch","/regi"})
 public class JspSwitch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        //轉接到web-inf中的jsp
@@ -32,6 +32,14 @@ public class JspSwitch extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("/WEB-INF/login_front/login.jsp");
+			dispatcher.forward(request, response);
+			
+		//註冊
+		} else if (request.getRequestURI().equals(
+				applicationContextPath + "/regi")) {
+			
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("/WEB-INF/login_front/regi.jsp");
 			dispatcher.forward(request, response);
 			
 		

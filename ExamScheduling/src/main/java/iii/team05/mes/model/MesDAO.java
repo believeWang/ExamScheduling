@@ -48,18 +48,20 @@ public class MesDAO implements MesDAO_interface {
 		}
 	}
 
-	public MesVO findByPrimaryKey(Integer messageid) {
-		MesVO mesVO = null;
+	public List<MesVO> findByPrimaryKey(String msgmail) {
+		List<MesVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			mesVO = (MesVO) session.get(MesVO.class, messageid);
+			Query query = session.createQuery("from MesVO where msgmail=:msgmail");
+			query.setParameter("msgmail",msgmail);
+			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return mesVO;
+		return list;
 	}
 
 	public List<MesVO> getAll() {
@@ -69,7 +71,6 @@ public class MesDAO implements MesDAO_interface {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_MES);
 			list = query.list();
-			System.out.println(list.size());
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();

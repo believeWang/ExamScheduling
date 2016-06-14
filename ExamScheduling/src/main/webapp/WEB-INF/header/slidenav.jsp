@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <header>
 
-	<nav class="top-nav">
+	<nav class="top-nav  blue-grey lighten-3">
 		<div class="container" style="height: 5%">
 			<div class="nav-wrapper">
 				<a class="page-title"></a>
@@ -16,8 +16,8 @@
 	</div>
 	<ul id="nav-mobile" class="side-nav fixed">
 
-		<li class="user-details cyan darken-2">
-			<div class="row">
+		<li class="user-details blue-grey lighten-3">
+			<div class="row cyan darken-1">
 
 				<div class="col col s12">
 					<ul id="profile-dropdown" class="dropdown-content">

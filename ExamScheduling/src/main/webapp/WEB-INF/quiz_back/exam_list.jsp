@@ -10,7 +10,9 @@
 <!-- 自訂 -->
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/examstyle.min.css" />
 <%@ include file="../cdn.file" %>
+
 <%@ include file="../header/slide_mqtt.file" %>
+
 </head>
 <body>
 <%@ include file="../header/slidenav.jsp" %>
@@ -96,9 +98,9 @@
           </div>
           
           <!-- Floating Action Button -->
-            <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
-                <a href="ExamEdit" class="btn-floating btn-large">
-                  <i class="small material-icons">add</i>
+            <div class="fixed-action-btn " style="bottom: 50px; right: 19px;">
+                <a href="ExamEdit" class="btn-floating btn-large ">
+                  <i class="small material-icons  blue-grey lighten-4">add</i>
                 </a>
               
             </div>

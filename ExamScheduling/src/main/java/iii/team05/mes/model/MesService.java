@@ -1,6 +1,6 @@
 package iii.team05.mes.model;
 
-import java.sql.Timestamp;
+
 import java.util.List;
 
 import iii.team05.mes.model.MesVO;
@@ -52,15 +52,18 @@ public class MesService {
 	 dao.delete(mesno);
 	 }
 	
-	public MesVO getOneMes(Integer messageid) {
-		return dao.findByPrimaryKey(messageid);
-	}
-
 	public List<MesVO> getAll() {
 		return dao.getAll();
 	}
-
+	public List<MesVO> findByPrimaryKey(String msgmail) {
+		return dao.findByPrimaryKey(msgmail);
+	}
 	public List<MesVO> getNotReply() {
 		return dao.getNotReply();
+	}
+
+	public MesVO getOneMes(Integer messageid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
