@@ -1,6 +1,7 @@
 package iii.team05.login_front.controller;
 
 import iii.team05.examinee.ecmodel.ECService;
+import iii.team05.examinee.ecmodel.ECVO;
 
 import java.io.IOException;
 
@@ -27,8 +28,13 @@ public class LoginServlet extends HttpServlet {
 		byte[] bytepsd=p5.encryption(psd);
 		boolean hasAccount=ecService.hasAccount(ecno, bytepsd);
 		if(hasAccount){
-			 HttpSession session=request.getSession();
+			ECVO user =ecService.findByPrimaryKey(ecno);
+			String examEmail= user.getEcemail();
+			String examName= user.getEcname();
+			HttpSession session=request.getSession();
 		     session.setAttribute("ecno",ecno);
+		     session.setAttribute("ExamEmail", examEmail);
+		     session.setAttribute("ExamName", examName);
 		     //判斷是否有來源
 		     String dest=(String) session.getAttribute("dest");
 		     if(dest!=null&&dest.length()!=0){

@@ -35,7 +35,7 @@ public class GoogleLoginFilter implements Filter {
 			chain.doFilter(request, response);
 		}else{
 			String url =request.getRequestURI();
-			session.setAttribute("dest", url);
+			session.setAttribute("dests", url);
 			response.sendRedirect("/ExamScheduling/recaptcha.jsp");
 		}
 	}

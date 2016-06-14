@@ -10,6 +10,7 @@
     /* 展開footer寬度 */
     width: 450;
     text-align: center;
+    z-index:2;
     }
  span.emotion {
 	width: 42px;

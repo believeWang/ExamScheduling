@@ -17,11 +17,11 @@
 <table border="0" class="table">
 	<tr>
 		<td>姓名:</td>
-		<td><input type="TEXT" name="msgname" size="40"  value=""/></td>
+		<td><input type="TEXT" name="msgname" size="40"  value="${sessionScope.ExamName}" readonly="readonly"/></td>
 	</tr>
 	<tr>
 		<td>e-mail:</td>
-		<td><input type="TEXT" name="msgmail" size="40" /></td>
+		<td><input type="TEXT" name="msgmail" size="40" value="${sessionScope.ExamEmail}" readonly="readonly"/></td>
 	</tr>
 	<tr>
 		<td>留言:</td>
