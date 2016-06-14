@@ -35,30 +35,21 @@ public class EventServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//System.out.println("doGetEvent");
 		request.setCharacterEncoding("UTF-8");
-		
 		String action = request.getParameter("action");
 		
 		if ("add".equals(action)) {
-			//System.out.println("this is add");
 			String jobid = request.getParameter("jobid");
 			String date = request.getParameter("date");
-			//System.out.println("action="+action+"jobid="+jobid+"date="+date);
+			String empno = request.getParameter("empno");
 			
 			SectionDAO secDAO = new SectionDAO();
-
 			List<SectionVO> seclists = secDAO.getAll();		
 
-			
-			//檢查用
-//			for(SectionVO selist : seclists){
-//				System.out.println(selist.getSectiontime());
-//			}
-			
 			request.setAttribute("jobid", jobid);
 			request.setAttribute("seclists", seclists);
 			request.setAttribute("date", date);
+			request.setAttribute("empno", empno);
 			
 	        RequestDispatcher rd = request.getRequestDispatcher("/fullcalendar/event_add.jsp");
 			rd.forward(request, response);
@@ -66,7 +57,8 @@ public class EventServlet extends HttpServlet {
 		}
 		
 		if ("edit".equals(action)) {
-			//System.out.println("this is edit");
+			
+			String empno = request.getParameter("empno");
 			String id = request.getParameter("id");
 			int id1 = Integer.valueOf(id);
 			
@@ -88,6 +80,7 @@ public class EventServlet extends HttpServlet {
 			request.setAttribute("section_time", section_time);
 			request.setAttribute("section_date", section_date);
 			request.setAttribute("seclists", seclists);
+			request.setAttribute("empno", empno);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/fullcalendar/event_update.jsp");
 			rd.forward(request, response);

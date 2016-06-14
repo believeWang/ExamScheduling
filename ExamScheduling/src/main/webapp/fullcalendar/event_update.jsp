@@ -13,6 +13,7 @@
     <h4 class="text-center"><b>預約時段</b></h4> 
     <form id="add_form" action="EventSaveServlet" method="post"> 
         <input type="hidden" name="action" value="edit">
+        <input type="hidden" name="empno" value="${empno}">
         <input type="hidden" name="id" value="${id}" id="eventid">
         <input type="hidden" name="date" value="${section_date}">
         

@@ -2,9 +2,13 @@ package iii.team05.event.controller;
 
 import iii.team05.event.model.EventDAO;
 import iii.team05.event.model.EventVO;
+import iii.team05.examinee.ecmodel.ESHibernateDAO;
+import iii.team05.examinee.ecmodel.ESVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -36,10 +40,39 @@ public class EventJSONServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
-
 		
+		request.setCharacterEncoding("UTF-8");
+		String empno_str = request.getParameter("empno");
+		int empno = Integer.valueOf(empno_str);
+		
+		//14天內有效期
+		String ecno = request.getParameter("ecno");
+		ESHibernateDAO esDAO = new ESHibernateDAO();
+		ESVO esVO = esDAO.findByPrimaryKey(ecno);
+		Date eshiredate = esVO.getEshiredate();
+		
+		//起頭天
+		Timestamp startDate = new Timestamp(eshiredate.getTime());
+		System.out.println(startDate+"start");
+		
+		//結尾天
+		long long1 = eshiredate.getTime() + 13*24*60*60*1000L;
+		Timestamp endDate = new Timestamp(long1);
+		System.out.println(endDate+"end");
+		
+		//創立事件物件
+		EventVO eventVO = new EventVO();
+		eventVO.setStarttime(startDate);
+		eventVO.setEndtime(endDate);
+		eventVO.setRendering("background");
+		eventVO.setBgcolor("#ff9f89");
+		
+		//撈所有事件物件
 		EventDAO edao = new EventDAO();
-		List<EventVO> elists = edao.getAll();
+		List<EventVO> elists = edao.getEmpEvent(empno);
+		
+		//塞事件進去撈出來的事件物件
+		elists.add(eventVO);
 		
 		out.print("[");
 			for(EventVO evo: elists){
@@ -53,7 +86,6 @@ public class EventJSONServlet extends HttpServlet {
 			    out.print("\"");
 			    out.print(evo.getTitle());
 			    out.print("\",");
-
 			    out.print("\"start\":");
 			    out.print("\"");
 			    out.print(evo.getStarttime());
@@ -61,6 +93,10 @@ public class EventJSONServlet extends HttpServlet {
 			    out.print("\"end\":");
 			    out.print("\"");
 			    out.print(evo.getEndtime());
+			    out.print("\",");
+			    out.print("\"rendering\":");
+			    out.print("\"");
+			    out.print(evo.getRendering());
 			    out.print("\",");
 			    out.print("\"color\":");
 			    out.print("\"");
