@@ -1,11 +1,15 @@
 package iii.team05.slide.controller;
 
 import iii.team05.exam.model.ExamVO;
+import iii.team05.examinee.ecmodel.ECVO;
+import iii.team05.setting.model.STVO;
 import iii.team05.slide.model.BannerService;
 import iii.team05.slide.model.BannerVO;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -49,19 +53,27 @@ public class bannerservlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BannerService baSvc = new BannerService();
 		BannerVO bannerVO = new BannerVO();
-		Part filePart = request.getPart("image");
+		String action = request.getParameter("action");
 		
+		//新增圖片insert
+		if ("Banner_Imag_Insert".equals(action)){
+		Part filePart = request.getPart("image");
 		if(filePart!=null&&filePart.getSize()!=0)		
 			bannerVO.setSlidephoto(IOUtils.toByteArray(filePart.getInputStream()));
-		else{
-			//待製作錯誤訊息
-//			System.out.println(bannerVO.getSlideid());
-//			ExamVO oldVO=service.getExam(bannerVO.getSlideid());
-//			if(oldVO!=null&&oldVO.getExamImg()!=null)
-//				bannerVO.setSlidephoto(oldVO.getExamImg());
-		}
-		
-		baSvc.insertBanner(bannerVO);
-	}
 
-}
+		baSvc.insertBanner(bannerVO);
+		request.getRequestDispatcher("/banner.jsp").forward(request, response);
+
+	}
+		
+		//刪除Imag的需求
+		if ("Banner_Imag_Delete".equals(action)){     
+			Integer deImag = Integer.valueOf(request.getParameter("deImag"));
+			  System.out.println(deImag);            //測試banner.jsp有傳Delete資料進來
+			  baSvc.delete(deImag);
+			  request.getRequestDispatcher("/banner.jsp").forward(request, response);
+      }
+
+		
+	}
+	}
