@@ -38,7 +38,7 @@ public class AboutServlet extends HttpServlet {
 
 		request.setAttribute("aboutcontent", aboutcontent);     // 將第一項資訊放入request物件內
         RequestDispatcher rd =                     // 準備將移轉程式的執行順序
-               request.getRequestDispatcher("/about.jsp");
+               request.getRequestDispatcher("/about/about.jsp");
         rd.forward(request,response);             // 移轉程式的執行順序
 	  
 	}
