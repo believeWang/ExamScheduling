@@ -1,0 +1,15 @@
+/* 標題 */
+h3 {
+	color:#446778;
+	text-align: center;
+}
+
+h4 , p  {
+	color:#58A4B0;
+	text-align: center;
+}
+
+a:hover {
+	background-color: #D8DBE2;
+	color: #446778;
+}

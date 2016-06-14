@@ -5,6 +5,7 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
+<%@ include file="/WEB-INF/header/header_resourse.file" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Reception</title>
 </head>
@@ -16,11 +17,11 @@
 <table border="0" class="table">
 	<tr>
 		<td>姓名:</td>
-		<td><input type="TEXT" name="msgname" size="40"  value=""/></td>
+		<td><input type="TEXT" name="msgname" size="40"  value="${sessionScope.ExamName}" readonly="readonly"/></td>
 	</tr>
 	<tr>
 		<td>e-mail:</td>
-		<td><input type="TEXT" name="msgmail" size="40" /></td>
+		<td><input type="TEXT" name="msgmail" size="40" value="${sessionScope.ExamEmail}" readonly="readonly"/></td>
 	</tr>
 	<tr>
 		<td>留言:</td>

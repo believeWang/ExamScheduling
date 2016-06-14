@@ -314,4 +314,10 @@ public class Job111DAO implements JobDAO_interface {
 		
 	}
 
+	@Override
+	public void delete_VO(JobVO jobVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -4,16 +4,23 @@
 <!DOCTYPE>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery.min.js"></script>
-  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
-  <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript"
-	src="//cdn.ckeditor.com/4.5.9/full/ckeditor.js"></script>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<style>
-    	 @import url('<%=request.getContextPath()%>/mes/css/main.css');  
-	</style>
+<script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+<!--materialize ICON-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--sweatAlert-->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/sweetalert2/3.2.3/sweetalert2.min.css" />
+<!--JQUERY-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--materialize-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+<!--sweetalert js  -->
+<script src="https://cdn.jsdelivr.net/sweetalert2/3.2.3/sweetalert2.min.js"></script>
+
+<!-- JQUERY表單驗證 -->
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
 <title>Edit頁面</title>
 </head>
 <body>

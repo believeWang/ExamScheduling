@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <%@ include file="/WEB-INF/cdn.file"%>
-<%@ include file="/WEB-INF/header/header.jsp" %>
+<%@ include file="/WEB-INF/header/header_resourse.file" %>
 <script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
 <script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -119,6 +119,7 @@ span.emotion:hover {
 </style>
 </head>
 <body onload="init();">
+<%@ include file="/WEB-INF/header/header.jsp" %>
 <%-- 	<%@ include file="/WEB-INF/header/header.jsp" %> --%>
 	<div style="margin: 100px 500px">
 		<div style="background: white">

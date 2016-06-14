@@ -39,7 +39,7 @@ public class CheckmailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -50,16 +50,16 @@ public class CheckmailServlet extends HttpServlet {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		String ecemail = request.getParameter("ecemail");
-		System.out.println(ecemail); //測試收到請求內容的資料
+		//System.out.println(ecemail); //測試收到請求內容的資料
 		Map<String, String> errors = new HashMap<String, String>();
 		request.setAttribute("errors", errors);
 //		MessageDigest mDsgest = null;
 		if(ecemail.matches("(([A-Za-z0-9]+\\.?)+([A-Za-z0-9]+_?)+)+[A-Za-z0-9]+@([a-zA-Z0-9]+\\.)+(com|edu|gov)(\\.(tw|ch|hk))?")) 
 		    {
-			System.out.println("maile格式驗證 OK");
+		//	System.out.println("maile格式驗證 OK");
 			
 			ECService ecSvc = new ECService();
-			List<ECVO> ecVO =  ecSvc.check(ecemail);
+			List<ECVO> ecVO = ecSvc.check(ecemail);
 			String username = null;
 			String ecno = null;
 			for (ECVO s : ecVO) {
@@ -69,12 +69,12 @@ public class CheckmailServlet extends HttpServlet {
 				ecno =s.getEcno();
 		 	 }
 			PrintWriter out=response.getWriter();
-			System.out.println(ecVO);
+		//	System.out.println(ecVO);
 			if(ecVO.size()==0){		
 				errors.put("ecemail", "<h5 style='color:red'>"+"非資策會學生請聯絡管理者處理"+"</h5>");
-				request.getRequestDispatcher("/validate/checkmail.jsp").forward(request, response);
+				request.getRequestDispatcher("/regi").forward(request, response);
 			}else{
-				out.println("等考生登入頁面做好跳轉至此");
+				//out.println("等考生登入頁面做好跳轉至此");
 			   String cap1 = String.valueOf((char) ((Math.random()*26) + 65));
 			   String cap2 = String.valueOf((char) ((Math.random()*26) + 65));
 			   String cap3 = String.valueOf((char) ((Math.random()*26) + 65));
@@ -87,7 +87,7 @@ public class CheckmailServlet extends HttpServlet {
 			   String low2 = String.valueOf((char) ((Math.random()*26) + 97));
 			   
 			   String ecpsd = cap1+cap2+cap3+num1+num2+num3+low1+low2;
-			   System.out.println("random隨機密碼:"+ecpsd);
+			  // System.out.println("random隨機密碼:"+ecpsd);
 				
 			   PasswordMd5 p5 =new PasswordMd5();//MD5加密
 				byte[] bytepsd=p5.encryption(ecpsd);
@@ -101,7 +101,7 @@ public class CheckmailServlet extends HttpServlet {
 				String subject= null;
 				for(STVO s:mailSubject){
 				 subject = s.getEmailsubject();
-					System.out.println(subject);			
+					//System.out.println(subject);			
 				}
 				//呼叫下方delHTMLTag方法將前端的各種符號格式去除後return至subject
 				subject=delHTMLTag(subject);
@@ -112,7 +112,7 @@ public class CheckmailServlet extends HttpServlet {
 				String content= null;
 				for(STVO s:mailArticle){
 				 content = s.getEmailcontent();
-					System.out.println(content);			
+				//	System.out.println(content);			
 				}
 				
 //				String subject = "感謝您使用偉康考試預約系統";
@@ -123,12 +123,14 @@ public class CheckmailServlet extends HttpServlet {
 				//啟動Email()方法傳mail內各值進去
 				Email ssm = new Email();
 				ssm.sendEmail(ecemail, subject, content+"</br>"+"帳號:"+ecno+"</br>"+"\t"+"密碼:"+ecpsd);
-
+				request.getSession().setAttribute("regi", "請至信箱收信");
+				response.sendRedirect("/ExamScheduling/login");
+				//request.getRequestDispatcher("/login").forward(request, response);
 			}
 		  }
 		else {
 			errors.put("ecemail", "<h5 style='color:red'>"+"E-mail格式錯誤"+"</h5>");
-			request.getRequestDispatcher("/validate/checkmail.jsp").forward(request, response);
+			request.getRequestDispatcher("/regi").forward(request, response);
 		} 
 	
 	}

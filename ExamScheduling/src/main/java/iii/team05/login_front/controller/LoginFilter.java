@@ -28,11 +28,12 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request=(HttpServletRequest)req;
 		HttpServletResponse response=(HttpServletResponse)res;
 		HttpSession session=request.getSession();
+		session.removeAttribute("regi");
 		//如果沒有登入
 		if (session.getAttribute("ecno") == null) {
 			//來源存入
-			session.setAttribute("dest", request.getRequestURI());
-			//System.out.println(request.getRequestURI());
+			session.setAttribute("dest_front", request.getRequestURI());
+			System.out.println(request.getRequestURI());
 			
 			request.getRequestDispatcher("/login").forward(request, response);
 		}else{
