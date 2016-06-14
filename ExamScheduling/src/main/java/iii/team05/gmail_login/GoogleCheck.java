@@ -159,7 +159,7 @@ public class GoogleCheck extends HttpServlet {
 				session.setAttribute("GoogleUser", name);
 				session.setAttribute("GoogleEmail", email);
 				
-				String from =  (String) session.getAttribute("dest");
+				String from =  (String) session.getAttribute("dests");
 
 				  if(from==null){
 							if(empToken==null){

@@ -1,6 +1,7 @@
 package iii.team05.login_front.controller;
 
 import iii.team05.examinee.ecmodel.ECService;
+import iii.team05.examinee.ecmodel.ECVO;
 
 import java.io.IOException;
 
@@ -31,8 +32,15 @@ public class LoginServlet extends HttpServlet {
 		//註冊後會有該屬性
 		session.removeAttribute("regi");
 		if(hasAccount){
-			 
+
+			ECVO user =ecService.findByPrimaryKey(ecno);
+			String examEmail= user.getEcemail();
+			String examName= user.getEcname();
+			
+
 		     session.setAttribute("ecno",ecno);
+		     session.setAttribute("ExamEmail", examEmail);
+		     session.setAttribute("ExamName", examName);
 		     //判斷是否有來源
 		     String dest=(String) session.getAttribute("dest_front");
 		     if(dest!=null&&dest.length()!=0){

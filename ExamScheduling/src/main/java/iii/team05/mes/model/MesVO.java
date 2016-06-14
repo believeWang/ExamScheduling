@@ -1,9 +1,7 @@
 package iii.team05.mes.model;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 public class MesVO implements java.io.Serializable{
+	private static final long serialVersionUID = 1L;
 	private Integer messageid;
 	private String msgname;
 	private String msgmail;

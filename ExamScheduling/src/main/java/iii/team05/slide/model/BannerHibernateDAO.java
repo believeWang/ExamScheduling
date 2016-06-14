@@ -38,7 +38,7 @@ public class BannerHibernateDAO implements BannerDao_interface{
 	}
 
 	@Override
-	public void delete(String slideid) {
+	public void delete(Integer slideid) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
