@@ -16,23 +16,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ include file="/WEB-INF/cdn.file"%>
+<%@ include file="../WEB-INF/header/slide_mqtt.file" %>
+<%@ include file="/WEB-INF/calendar.file"%>
 <title></title>
-<link href='../css/fullcalendar.css' rel='stylesheet' />
-<script src='../js/moment.min.js'></script>
-<script src='../js/jquery.min.js'></script>
-<script src='../js/fullcalendar.min.js'></script>
+
+
 <!--燈箱樣式效果 -->
-<link rel="stylesheet" type="text/css" href="../css/jquery.fancybox.css">
-<script src='../js/jquery.fancybox.js'></script>
-<!--jquery.ui 裡日期插件 -->
-<script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
-
-<!-- Bootstrap -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
-<script src="../js/bootstrap.min.js"></script>
 
 
+
+<!-- <link rel="stylesheet" type="text/css" href="../css/jquery.fancybox.css"> -->
+<!-- <script src='../js/jquery.fancybox.js'></script> -->
+
+<!--燈箱樣式效果 -->
 
 <style type="text/css">
 #calendar {
@@ -85,19 +82,17 @@ body {
 </style>
 </head>
 <body>
-	<%@ include file="../WEB-INF/header/header.jsp"%>
-<!-- 	<div class="container-fluid"> -->
-<!-- 		<div class="row"> -->
+<%@ include file="../WEB-INF/header/slidenav.jsp" %>
+	
 
-<!-- 			<div class="col-md-2"> -->
-<!-- 				<ul class="list-group"> -->
-<%-- 					<c:forEach var="ECVO" items="${list}"> --%>
-<%-- 						<div>${ECVO.ecno}</div> --%>
-<%-- 						<div>${ECVO.ecname}</div> --%>
-<!-- 						 <input type="submit" value=${ECVO.ecname}> -->
-<%-- 					</c:forEach> --%>
-<!-- 				</ul> -->
-<!-- 			</div> -->
+			<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-md-2">
+				<ul class="list-group">
+					
+				</ul>
+			</div>
 			<div class="col-md-10">
 				<table class="table table-bordered">
 					<tr>
@@ -109,6 +104,7 @@ body {
 			</div>
 		</div>
 	</div>
+		
 
 </body>
 </html>
