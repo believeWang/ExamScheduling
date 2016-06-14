@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/WEB-INF/cdn.file"%>
+
 <title>ExamInfo</title>
     
    
@@ -24,9 +25,7 @@ body {
 	background: #310404 url(http://web-sonick.zz.mu/images/sl/red_texture.jpg) repeat top left;
 	font-family: 'Electrolize';
 }
-#cssmenu{
-z-index:2;
-}
+
 
 .container{
 	width: 100%;
@@ -51,7 +50,7 @@ h1.main,p.demos {
 	width: 100%;
 	height: 100%;
 	
-	z-index: -1;
+	z-index: 9998;
 	background: -webkit-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
 	background: -moz-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
 	background: -ms-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
@@ -63,7 +62,7 @@ h1.main,p.demos {
 	height: 100%;
 	left: 0px;
 	top: 0px;
-	z-index: 0;
+	z-index: 9999;
 }
 .sp-container h2 {
 	position: absolute;
@@ -155,8 +154,35 @@ h1.main,p.demos {
 	transform: scale(5);
 }
 .sp-circle-link {
+
 	position: absolute;
-	left: 50%;
+	left: 60%;
+	bottom: 100px;
+	margin-left: -50px;
+	text-align: center;
+	line-height: 100px;
+	width: 100px;
+	height: 100px;
+	background: #fff;
+	color: #3f1616;
+	font-size: 25px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-animation: fadeInRotate 1s linear 1s backwards;
+	-moz-animation: fadeInRotate 1s linear 1s backwards;
+	-ms-animation: fadeInRotate 1s linear 1s backwards;
+	animation: fadeInRotate 1s linear 1s backwards;
+	-webkit-transform: scale(1) rotate(0deg);
+	-moz-transform: scale(1) rotate(0deg);
+	-o-transform: scale(1) rotate(0deg);
+	-ms-transform: scale(1) rotate(0deg);
+	transform: scale(1) rotate(0deg);
+}
+.sp-circle-link2 {
+
+	position: absolute;
+	left: 40%;
 	bottom: 100px;
 	margin-left: -50px;
 	text-align: center;
@@ -180,6 +206,10 @@ h1.main,p.demos {
 	transform: scale(1) rotate(0deg);
 }
 .sp-circle-link:hover {
+	background: #85373b;
+	color: #fff;
+}
+.sp-circle-link2:hover {
 	background: #85373b;
 	color: #fff;
 }
@@ -361,7 +391,7 @@ h1.main,p.demos {
         <script src="exam_resourse/js/prefixfree.min.js"></script>
 </head>
 <body>
-<%-- <%@ include file="../header/header.jsp" %> --%>
+
 
 <div class="container">
     <div class="header">
@@ -380,7 +410,8 @@ h1.main,p.demos {
 
             	<h2 class="frame-5"><span>${sessionScope.examtitle}</span> <span>${sessionScope.quizDuration}分鐘</span> <span>${sessionScope.totalNumberOfQuizQuestions}題</span></h2>
 	<a class="sp-circle-link" href="${pageContext.request.contextPath}/Examing">考試!</a>
-
+	<a class="sp-circle-link2" href="choose">回上一頁</a>
+	
         </div>
     </div>
 </div>

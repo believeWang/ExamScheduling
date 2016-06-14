@@ -22,12 +22,16 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ecno=request.getParameter("username");
 		String psd=request.getParameter("password");	
+		
 		ECService ecService =new ECService();
 		PasswordMd5 p5 =new PasswordMd5();
 		byte[] bytepsd=p5.encryption(psd);
 		boolean hasAccount=ecService.hasAccount(ecno, bytepsd);
+		HttpSession session=request.getSession();
+		//註冊後會有該屬性
+		session.removeAttribute("regi");
 		if(hasAccount){
-			 HttpSession session=request.getSession();
+			 
 		     session.setAttribute("ecno",ecno);
 		     //判斷是否有來源
 		     String dest=(String) session.getAttribute("dest_front");
@@ -36,14 +40,14 @@ public class LoginServlet extends HttpServlet {
 		    	response.sendRedirect(dest);
 		     }else{
 		    	 //沒有就回到選擇頁面
-			     RequestDispatcher dispatcher = request
-							.getRequestDispatcher("/WEB-INF/quiz_front/choose.jsp");
-					dispatcher.forward(request, response);
+		    	 response.sendRedirect("choose");
+			    
 		     }
 		    
 			
 		}else{
-			System.out.println("查無此人");
+			request.getSession().setAttribute("regi", "帳號密碼錯誤");
+			 response.sendRedirect("login");
 		}
 		
 	}

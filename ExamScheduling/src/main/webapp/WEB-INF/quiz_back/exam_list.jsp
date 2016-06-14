@@ -98,9 +98,9 @@
           </div>
           
           <!-- Floating Action Button -->
-            <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
-                <a href="ExamEdit" class="btn-floating btn-large">
-                  <i class="small material-icons">add</i>
+            <div class="fixed-action-btn " style="bottom: 50px; right: 19px;">
+                <a href="ExamEdit" class="btn-floating btn-large ">
+                  <i class="small material-icons  blue-grey lighten-4">add</i>
                 </a>
               
             </div>

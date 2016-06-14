@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/component.css" />
 
+
 <style type="text/css">
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
@@ -140,12 +141,13 @@ section.related {
 
 }
 </style>
-<title>Review Exam</title>
+<title>考題回顧</title>
 </head>
 
 <body>
+
 <div class="container">
-<header><h1 >Quiz Review</h1></header>
+<header><h1 >考題回顧</h1></header>
 	
 	
 <div  id="content">
@@ -222,9 +224,7 @@ section.related {
 
 </div>
 
-	<div id="home">
-		<a href="${pageContext.request.contextPath}">home</a>
-	</div>
+	
 	</div>
 </body>
 <script src='js/jquery.min.js'></script>
