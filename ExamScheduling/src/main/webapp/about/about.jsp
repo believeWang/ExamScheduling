@@ -304,6 +304,6 @@
 	<div>${aboutcontent}</div>
 	<h3>公司位置</h3>
 	<div id="map"></div>
-	
+	<A HREF="google_map.jsp" TARGET="_blank"><h3>路線圖</h3></A>
 </body>
 </html>
