@@ -23,14 +23,14 @@ public class EventDAO implements EventDAO_interface {
 		}
 	}
 
-	private static final String INSERT_STMT = "INSERT INTO Event_Exist (empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String GET_ALL_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering FROM Event_Exist";
-	private static final String GET_ONE_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering FROM Event_Exist where eventid = ?";
+	private static final String INSERT_STMT = "INSERT INTO Event_Exist (empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering, bg_startdate, bg_enddate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String GET_ALL_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering, bg_startdate, bg_enddate FROM Event_Exist";
+	private static final String GET_ONE_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering, bg_startdate, bg_enddate FROM Event_Exist where eventid = ?";
 	private static final String DELETE_STMT = "DELETE FROM Event_Exist where eventid = ?";
-	private static final String UPDATE_STMT = "UPDATE Event_Exist set empno=?, starttime=?, endtime=?, bgcolor=?, title=?, ecno=?, eventremark=?, rendering=? where eventid = ?";
+	private static final String UPDATE_STMT = "UPDATE Event_Exist set empno=?, starttime=?, endtime=?, bgcolor=?, title=?, ecno=?, eventremark=?, rendering=?, bg_startdate=?, bg_enddate=? where eventid = ?";
 
-	private static final String GET_ALL_SCORE = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering FROM Event_Exist";
-	private static final String GET_EMP_BYNO = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering FROM Event_Exist where empno=?";
+	private static final String GET_ALL_SCORE = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering, bg_startdate, bg_enddate FROM Event_Exist";
+	private static final String GET_EMP_BYNO = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering, bg_startdate, bg_enddate FROM Event_Exist where empno=?";
 
 	
 	
@@ -53,6 +53,8 @@ public class EventDAO implements EventDAO_interface {
 			pstmt.setString(6, eventVO.getEcno());
 			pstmt.setString(7, eventVO.getEventremark());
 			pstmt.setString(8, eventVO.getRendering());
+			pstmt.setDate(9, eventVO.getBg_startdate());
+			pstmt.setDate(10, eventVO.getBg_enddate());
 
 			pstmt.executeUpdate();
 
@@ -98,7 +100,9 @@ public class EventDAO implements EventDAO_interface {
 			pstmt.setString(6, eventVO.getEcno());
 			pstmt.setString(7, eventVO.getEventremark());
 			pstmt.setString(8, eventVO.getRendering());
-			pstmt.setInt(9, eventVO.getEventid());
+			pstmt.setDate(9, eventVO.getBg_startdate());
+			pstmt.setDate(10, eventVO.getBg_enddate());
+			pstmt.setInt(11, eventVO.getEventid());
 
 			pstmt.executeUpdate();
 
@@ -205,6 +209,8 @@ public class EventDAO implements EventDAO_interface {
 				eventVO.setEcno(rs.getString("ecno"));
 				eventVO.setEventremark(rs.getString("eventremark"));
 				eventVO.setRendering(rs.getString("rendering"));
+				eventVO.setBg_startdate(rs.getDate("bg_startdate"));
+				eventVO.setBg_enddate(rs.getDate("bg_enddate"));
 				
 			}
 
@@ -265,6 +271,8 @@ public class EventDAO implements EventDAO_interface {
 				eventVO.setEcno(rs.getString("ecno"));
 				eventVO.setEventremark(rs.getString("eventremark"));
 				eventVO.setRendering(rs.getString("rendering"));
+				eventVO.setBg_startdate(rs.getDate("bg_startdate"));
+				eventVO.setBg_enddate(rs.getDate("bg_enddate"));
 				list.add(eventVO); // Store the row in the list
 			}
 
@@ -323,6 +331,8 @@ public class EventDAO implements EventDAO_interface {
 				eventVO.setEcno(rs.getString("ecno"));
 				eventVO.setEventremark(rs.getString("eventremark"));
 				eventVO.setRendering(rs.getString("rendering"));
+				eventVO.setBg_startdate(rs.getDate("bg_startdate"));
+				eventVO.setBg_enddate(rs.getDate("bg_enddate"));
 				list.add(eventVO); // Store the row in the list
 			}
 
@@ -386,6 +396,8 @@ public class EventDAO implements EventDAO_interface {
 				eventVO.setEcno(rs.getString("ecno"));
 				eventVO.setEventremark(rs.getString("eventremark"));
 				eventVO.setRendering(rs.getString("rendering"));
+				eventVO.setBg_startdate(rs.getDate("bg_startdate"));
+				eventVO.setBg_enddate(rs.getDate("bg_enddate"));
 				list.add(eventVO); // Store the row in the list
 			}
 

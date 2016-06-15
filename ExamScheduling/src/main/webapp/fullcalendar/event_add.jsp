@@ -7,6 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css">
+<style>
+.section{
+	width: 20px;
+	height: 20px
+}
+</style>
 </head>
 <body>
 <div class="fancy"> 
@@ -17,10 +23,15 @@
         <input type="hidden" name="jobid" value="${jobid}">
         <input type="hidden" name="empno" value="${empno}"> <!-- 主考官id -->
         <label for="title">內容主旨：</label><input type="text" name="title" value="" placeholder="輸入預約標題" id="title" class="form-control"></p>
+        
+        
         <label for="">選擇時段：</label>
         <c:forEach var="section" items="${seclists}">
-        	<p>&nbsp&nbsp<input type="radio" name="section" value="${section.sectiontime}"  style="width: 20px; height: 20px">${section.sectiontime}</p>
+        	<p><input type="radio" name="section" value="${section.sectiontime}" class="section" id="${section.sectionid}"><label for="${section.sectionid}">${section.sectiontime}</label></p>
         </c:forEach>
+       
+       
+       
         <label for="remark">備註：</label><textarea name="remark" rows="4" cols="50" id="remark" class="form-control"></textarea>
         <div class="sub_btn">
         	<span class="del"><input type="button" class="btn btn_del" id="del_event" value="删除"></span> 
@@ -33,6 +44,9 @@
 <script type="text/javascript">
 $(function(){
     
+	Materialize.updateTextFields();
+	
+	
     //提交表单
     $('#add_form').ajaxForm({
         beforeSubmit: showRequest, //表单验证

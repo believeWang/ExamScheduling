@@ -11,6 +11,7 @@ public interface EmployeeDAO_interface {
           public List<EmployeeVO> getAll();
           public List<EmployeeVO> getExam();
           public List<EmployeeVO> getEmp();
+		public List<EmployeeVO> getAllEmp();
 		
 
          
