@@ -127,6 +127,7 @@ public class GoogleCheck extends HttpServlet {
 		 	if(ecVO.size()==0){
 				errors.put("loginNg", "您非我司員工");
 				RequestDispatcher failureView = request
+
 						.getRequestDispatcher("recaptcha.jsp");
 				failureView.forward(request, response);
 			}else if(pos==0){		
@@ -147,7 +148,7 @@ public class GoogleCheck extends HttpServlet {
 					if(empToken==null){
 					emSvc.insertToken(email, token);				
 					}
-					response.sendRedirect(response.encodeRedirectURL("Examiner.jsp"));				
+					response.sendRedirect(response.encodeRedirectURL("EmpCaes?empturn=CAL"));				
 					}else{
 						response.sendRedirect(response.encodeRedirectURL(from));
 						
@@ -159,7 +160,7 @@ public class GoogleCheck extends HttpServlet {
 				session.setAttribute("GoogleUser", name);
 				session.setAttribute("GoogleEmail", email);
 				
-				String from =  (String) session.getAttribute("dest");
+				String from =  (String) session.getAttribute("dests");
 
 				  if(from==null){
 							if(empToken==null){

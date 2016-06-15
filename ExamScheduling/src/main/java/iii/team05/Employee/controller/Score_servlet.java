@@ -101,7 +101,6 @@ public class Score_servlet extends HttpServlet {
 		
 		req.setAttribute("student_data", student_data); // 資料庫取出的empVO物件,存入req
 	System.out.println(student_data);
-//		String url = "/employee/listOneEmp.jsp"; 
 	String url = "/employee/score_listAllEmp.jsp"; 
 		RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneEmp.jsp
 		successView.forward(req, res);

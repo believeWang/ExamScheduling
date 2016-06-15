@@ -2,15 +2,16 @@ package iii.team05.Employee.model;
 
 import org.hibernate.*;
 
-
 import iii.team05.hibernate.util.*;
 
 import java.util.*;
 
 public class EmployeeDAO implements EmployeeDAO_interface {
+	private static final String GET_EMP_EMP = "from EmployeeVO where position=0 order by empno";
 	private static final String GET_ALL_EMP = "from EmployeeVO where position=1 order by empno";
-	private static final String GET_ALL_EXAM = "from EmployeeVO where position=0 order by empno";
-	private static final String CHECK_MAIL = "from EmployeeVO where empemail = :empemail";							
+	private static final String GET_ALL_EXAM = "from EmployeeVO where position=2 order by empno";
+	private static final String CHECK_MAIL = "from EmployeeVO where empemail = :empemail";
+								
 	@Override
 	public void insert(EmployeeVO employeeVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -25,19 +26,7 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 
 	}
 
-	@Override
-//	public void update(EmployeeVO employeeVO) {
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//		try {
-//			session.beginTransaction();
-//			session.saveOrUpdate(employeeVO);
-//			session.getTransaction().commit();
-//		} catch (RuntimeException ex) {
-//			session.getTransaction().rollback();
-//			throw ex;
-//		}
-//
-//	}
+
 	public void update(EmployeeVO employeeVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
@@ -98,7 +87,8 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 			throw ex;
 		}
 		return list;
-	}	
+	}
+	
 	
 	@Override
 	public List<EmployeeVO> getExam() {
@@ -115,6 +105,26 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 		}
 		return list;
 	}	
+	
+	
+	@Override
+	public List<EmployeeVO> getEmp() {
+		List<EmployeeVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_EMP_EMP);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	
+	
+	
 	
 	public List<EmployeeVO> google(String empemail) {
 		List<EmployeeVO> list = null;
@@ -151,29 +161,7 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 			throw ex;
 		}
 	}
-//	public static void main(String[] args) {
-//		EmployeeDAO dao = new EmployeeDAO();
-//		
-//		iii.team05.Employee.model.EmployeeVO deptVO = new iii.team05.Employee.model.EmployeeVO(); // 部門POJO
-//	
-//		
-//		
-//		List<EmployeeVO> list = dao.getAll();//查詢測試
-//		for (EmployeeVO aEmp : list) {
-//			System.out.print(aEmp.getEmpno() + ",");
-//			System.out.print(aEmp.getEmpname() + ",");
-//			System.out.print(aEmp.getEmpemail() + ",");
-//			System.out.print(aEmp.getPosition() + ",");
-//			
-//			System.out.println();
-//		}
-//		//dao.delete(6);//刪除測試
-//				
-//	}
 
-	
-	
-	
 
 		
 }

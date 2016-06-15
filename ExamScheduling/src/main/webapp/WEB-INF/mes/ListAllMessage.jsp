@@ -4,14 +4,20 @@
 <%@ page import="java.util.*"%>
 <%@ page import="iii.team05.mes.model.*"%>
 <%
+
+	String msgemail=String.valueOf(session.getAttribute("ExamEmail"));
+	
 	MesService mesSvc = new MesService();
-    List<MesVO> list = mesSvc.getAll();
+//     List<MesVO> list = mesSvc.getAll();
+    List<MesVO> list = mesSvc.findByPrimaryKey(msgemail);
+//     System.out.println("list:"+list.size());
     pageContext.setAttribute("list",list);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
+<%@ include file="/WEB-INF/header/header_resourse.file" %>
 <style type="text/css">
 .line-separator{
 height:1px;
@@ -34,8 +40,8 @@ border-bottom:1px solid #313030;
 		<table class="table">
 			<tr>
 				<th>刪除</th>
-				<th>留言者姓名</th>
-				<th>留言者e-mail</th>
+<!-- 				<th>留言者姓名</th> -->
+<!-- 				<th>留言者e-mail</th> -->
 				<th>留言時間</th>
 				<th>回覆狀態</th>
 			</tr>
@@ -53,9 +59,9 @@ border-bottom:1px solid #313030;
 							<input type="hidden" name="action" value="delete">
 						</FORM>
 					</td>
-					<td>${mesVO.msgname}</td>
-					<td>${mesVO.msgmail}</td>
-					<td id="timeid">
+<%-- 					<td>${mesVO.msgname}</td> --%>
+<%-- 					<td>${mesVO.msgmail}</td> --%>
+					<td>
 					${mesVO.msgtime}
 					</td>
 					<c:choose>
@@ -72,13 +78,14 @@ border-bottom:1px solid #313030;
 								</button>
 								</td>
 								<tr>
-									<td colspan="5" id="content${counter.index}">
+									<td colspan="3" id="content${counter.index}">
 
-										留言時間:${mesVO.msgtime}&nbsp;<br> 考生 ${mesVO.msgname}:<br>
+<%-- 										留言時間:${mesVO.msgtime}&nbsp;<br> 考生 ${mesVO.msgname}:<br> --%>
+										內容:<br>
 										${mesVO.msgcontent}<br>
 										<div class="line-separator"></div> 
 										<br>
-										回覆時間:${mesVO.rptime}<br> 考生 ${mesVO.rpname}:<br>
+										回覆時間:${mesVO.rptime}<br>主考官 ${mesVO.rpname}:<br>
 										${mesVO.rpcontent}<br>
 
 

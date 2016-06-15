@@ -94,7 +94,8 @@
       }
     </style>
     <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcxcHllcnjvqlP8OnUGKxTPIYkKdWAIec">
+
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcxcHllcnjvqlP8OnUGKxTPIYkKdWAIec">  															
     </script>
     <script type="text/javascript">
 	  var directionsDisplay = new google.maps.DirectionsRenderer;

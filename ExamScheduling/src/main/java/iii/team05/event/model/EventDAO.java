@@ -23,14 +23,14 @@ public class EventDAO implements EventDAO_interface {
 		}
 	}
 
-	private static final String INSERT_STMT = "INSERT INTO Event_Exist (empno, starttime, endtime, bgcolor, title, ecno, eventremark) VALUES (?, ?, ?, ?, ?, ?, ?)";
-	private static final String GET_ALL_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist";
-	private static final String GET_ONE_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist where eventid = ?";
+	private static final String INSERT_STMT = "INSERT INTO Event_Exist (empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String GET_ALL_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering FROM Event_Exist";
+	private static final String GET_ONE_STMT = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering FROM Event_Exist where eventid = ?";
 	private static final String DELETE_STMT = "DELETE FROM Event_Exist where eventid = ?";
-	private static final String UPDATE_STMT = "UPDATE Event_Exist set empno=?, starttime=?, endtime=?, bgcolor=?, title=?, ecno=?, eventremark=?  where eventid = ?";
+	private static final String UPDATE_STMT = "UPDATE Event_Exist set empno=?, starttime=?, endtime=?, bgcolor=?, title=?, ecno=?, eventremark=?, rendering=? where eventid = ?";
 
-	private static final String GET_ALL_SCORE = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist";
-	private static final String GET_EMP_BYNO = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark FROM Event_Exist where empno=?";
+	private static final String GET_ALL_SCORE = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering FROM Event_Exist";
+	private static final String GET_EMP_BYNO = "SELECT eventid, empno, starttime, endtime, bgcolor, title, ecno, eventremark, rendering FROM Event_Exist where empno=?";
 
 	
 	
@@ -52,6 +52,7 @@ public class EventDAO implements EventDAO_interface {
 			pstmt.setString(5, eventVO.getTitle());
 			pstmt.setString(6, eventVO.getEcno());
 			pstmt.setString(7, eventVO.getEventremark());
+			pstmt.setString(8, eventVO.getRendering());
 
 			pstmt.executeUpdate();
 
@@ -96,7 +97,8 @@ public class EventDAO implements EventDAO_interface {
 			pstmt.setString(5, eventVO.getTitle());
 			pstmt.setString(6, eventVO.getEcno());
 			pstmt.setString(7, eventVO.getEventremark());
-			pstmt.setInt(8, eventVO.getEventid());
+			pstmt.setString(8, eventVO.getRendering());
+			pstmt.setInt(9, eventVO.getEventid());
 
 			pstmt.executeUpdate();
 
@@ -202,6 +204,7 @@ public class EventDAO implements EventDAO_interface {
 				eventVO.setTitle(rs.getString("title"));
 				eventVO.setEcno(rs.getString("ecno"));
 				eventVO.setEventremark(rs.getString("eventremark"));
+				eventVO.setRendering(rs.getString("rendering"));
 				
 			}
 
@@ -261,6 +264,7 @@ public class EventDAO implements EventDAO_interface {
 				eventVO.setTitle(rs.getString("title"));
 				eventVO.setEcno(rs.getString("ecno"));
 				eventVO.setEventremark(rs.getString("eventremark"));
+				eventVO.setRendering(rs.getString("rendering"));
 				list.add(eventVO); // Store the row in the list
 			}
 
@@ -318,6 +322,7 @@ public class EventDAO implements EventDAO_interface {
 				eventVO.setTitle(rs.getString("title"));
 				eventVO.setEcno(rs.getString("ecno"));
 				eventVO.setEventremark(rs.getString("eventremark"));
+				eventVO.setRendering(rs.getString("rendering"));
 				list.add(eventVO); // Store the row in the list
 			}
 
@@ -380,6 +385,7 @@ public class EventDAO implements EventDAO_interface {
 				eventVO.setTitle(rs.getString("title"));
 				eventVO.setEcno(rs.getString("ecno"));
 				eventVO.setEventremark(rs.getString("eventremark"));
+				eventVO.setRendering(rs.getString("rendering"));
 				list.add(eventVO); // Store the row in the list
 			}
 

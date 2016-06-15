@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class EventSaveServlet
@@ -46,15 +47,20 @@ public class EventSaveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		
+		HttpSession session = request.getSession();
+		Object ecno_o = session.getAttribute("ecno");
+		
 		if("add".equals(action)){
 			String date = request.getParameter("date");
 			String jobid = request.getParameter("jobid");
 			String ecemail = request.getParameter("ecemail");
-			String empno = request.getParameter("empno");
+			String empno_str = request.getParameter("empno");
 			String section = request.getParameter("section");  //time
 			String title = request.getParameter("title");
 			String remark = request.getParameter("remark");
-			//System.out.println(date+" "+section);
+			String ecno = String.valueOf(ecno_o);
+			
+			Integer empno = Integer.valueOf(empno_str);
 			
 			Timestamp ts = new Timestamp(System.currentTimeMillis());  
 			String datetime = date+" "+section;
@@ -66,12 +72,12 @@ public class EventSaveServlet extends HttpServlet {
 	        }  
 			
 			EventVO evo = new EventVO();
-			evo.setEmpno(1);
+			evo.setEmpno(empno);
 			evo.setStarttime(ts);
 			evo.setEndtime(ts);
 			evo.setBgcolor("#337AB7");
 			evo.setTitle(title);
-			evo.setEcno("EEIT8501");
+			evo.setEcno(ecno);
 			evo.setEventremark(remark);
 			
 			try{
@@ -85,12 +91,16 @@ public class EventSaveServlet extends HttpServlet {
 			}
 		}
 		if("edit".equals(action)){
+			
 			String id = request.getParameter("id");
 			String date = request.getParameter("date");
 			String section = request.getParameter("section");  //time
 			String title = request.getParameter("title");
 			String remark = request.getParameter("remark");
+			String empno_str = request.getParameter("empno");
+			String ecno = String.valueOf(ecno_o);
 			
+			Integer empno = Integer.valueOf(empno_str);
 			int id_int = Integer.valueOf(id);
 			
 			Timestamp ts = new Timestamp(System.currentTimeMillis());  
@@ -103,12 +113,12 @@ public class EventSaveServlet extends HttpServlet {
 	        }  
 	        
 	        EventVO evo = new EventVO();
-			evo.setEmpno(1);
+			evo.setEmpno(empno);
 			evo.setStarttime(ts);
 			evo.setEndtime(ts);
 			evo.setBgcolor("#337AB7");
 			evo.setTitle(title);
-			evo.setEcno("EEIT8501");
+			evo.setEcno(ecno);
 			evo.setEventremark(remark);
 			evo.setEventid(id_int);
 			
