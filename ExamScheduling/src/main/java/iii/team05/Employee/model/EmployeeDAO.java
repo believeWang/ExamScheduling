@@ -10,8 +10,10 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 	private static final String GET_EMP_EMP = "from EmployeeVO where position=0 order by empno";
 	private static final String GET_ALL_EMP = "from EmployeeVO where position=1 order by empno";
 	private static final String GET_ALL_EXAM = "from EmployeeVO where position=2 order by empno";
+	private static final String GET_ALL = "from EmployeeVO  order by empno";
 	private static final String CHECK_MAIL = "from EmployeeVO where empemail = :empemail";
 								
+	
 	@Override
 	public void insert(EmployeeVO employeeVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -80,6 +82,21 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_EMP);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+	}
+	@Override
+	public List<EmployeeVO> getAllEmp() {
+		List<EmployeeVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL);
 			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
