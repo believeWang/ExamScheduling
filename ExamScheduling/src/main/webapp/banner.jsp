@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.util.*"%>
 <%@ page import="iii.team05.slide.model.*"%>
+<%--頁面載入自動baSvc.queryImag()叫出所有圖片 --%>
 <%
     BannerService baSvc = new BannerService();
 	Map map =baSvc.queryImag();
@@ -19,8 +20,7 @@
 <center>
     <h1>Banner編輯</h1>
     <table width="680" BORDER='0' style="background:#ACD6FF">
-      <form method="post" action="bannerservlet" enctype="multipart/form-data">   
-       	   
+      <form method="post" action="bannerservlet" enctype="multipart/form-data">    
 		    <tr height="36" >
 		      <td height="61" colspan="6" align="center">
 		         <input type="file" name="image" size="60" accept=".jpg,.png"/>
@@ -31,15 +31,14 @@
 		    </form>
 	    <c:forEach var="BannerVO" items="${map}">
 			<tr>
-			
-				<td><img alt="" src="${BannerVO.value}" width="200px" height="200px"></td>
-				<td>
+			  <td><img alt="" src="${BannerVO.value}" width="200px" height="200px"></td>
+			  <td>
 				<form  METHOD="post" action="bannerservlet">
 				<input type="submit" value="刪除" name="delete">
 				<input type="hidden" name="deImag" value="${BannerVO.key}">
 				<input type="hidden" name="action" value="Banner_Imag_Delete">
 				</form>
-				<td/>
+			  <td/>
 			</tr>
         </c:forEach>
 	  
