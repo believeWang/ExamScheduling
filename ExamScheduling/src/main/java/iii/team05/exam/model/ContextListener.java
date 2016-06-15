@@ -19,9 +19,14 @@ public class ContextListener implements ServletContextListener {
 		//把每一個考試都放到Context的屬性中
 		
 		new ExamService().putAllExamToContex(event.getServletContext());
-		 
+		new ExamService().putAllBannerImag(event.getServletContext());
+		  
 		
 	}
+	
+		 
+		
+	
 	
 
 
