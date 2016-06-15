@@ -309,10 +309,6 @@ public class Job111DAO implements JobDAO_interface {
 		}
 
 	}
-	
-	public void delete_VO(JobVO jobVO){
-		
-	}
 
 	@Override
 	public void delete_VO(JobVO jobVO) {
