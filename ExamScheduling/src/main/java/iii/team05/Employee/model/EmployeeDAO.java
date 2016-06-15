@@ -130,7 +130,6 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 		List<EmployeeVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
-			System.out.println(empemail);
 			session.beginTransaction();
 			Query query = session.createQuery(CHECK_MAIL);
 			query.setParameter("empemail", empemail);			

@@ -5,7 +5,6 @@ import iii.team05.Employee.model.EmployeeService;
 import iii.team05.Employee.model.EmployeeVO;
 import iii.team05.examinee.ecmodel.ECService;
 import iii.team05.examinee.ecmodel.ECVO;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -124,7 +123,8 @@ public class GoogleCheck extends HttpServlet {
 		 		name=s.getEmpname();
 		 		empno=s.getEmpno();
 		 	 }
-		 	if(ecVO.size()==0){
+		 	
+		 	 if(ecVO.size()==0){
 				errors.put("loginNg", "您非我司員工");
 				RequestDispatcher failureView = request
 
@@ -149,11 +149,11 @@ public class GoogleCheck extends HttpServlet {
 					emSvc.insertToken(email, token);				
 					}
 					response.sendRedirect(response.encodeRedirectURL("EmpCaes?empturn=CAL"));				
-					}else{
-						response.sendRedirect(response.encodeRedirectURL(from));
-						
-					}
 				
+				}else{
+						response.sendRedirect(response.encodeRedirectURL(from));
+					}
+			
 
 			}else{
 				HttpSession session = request.getSession();
@@ -166,7 +166,8 @@ public class GoogleCheck extends HttpServlet {
 							if(empToken==null){
 							emSvc.insertToken(email, token);				
 							}
-							response.sendRedirect(response.encodeRedirectURL("sa.jsp"));				
+							response.sendRedirect(response.encodeRedirectURL("sa.jsp"));	
+
 							}else{
 								response.sendRedirect(response.encodeRedirectURL(from));
 								
