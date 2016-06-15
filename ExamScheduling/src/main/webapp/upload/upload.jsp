@@ -9,35 +9,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<%@ include file="../WEB-INF/cdn.file"%>
+
 
 <title>班級表單上傳與下載</title>
 <style>
 @import url('<%=request.getContextPath()%>/upload/upload.css');
 </style>
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
-<!--materialize ICON-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!--sweatAlert-->
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.jsdelivr.net/sweetalert2/3.2.3/sweetalert2.min.css" />
-<!--JQUERY-->
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!--materialize-->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-
-<!--sweetalert js  -->
-<script
-	src="https://cdn.jsdelivr.net/sweetalert2/3.2.3/sweetalert2.min.js"></script>
-
-<!-- JQUERY表單驗證 -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
 	var method = "none";
@@ -135,6 +114,7 @@
 </script>
 </head>
 <body>
+<%@ include file="../WEB-INF/header/sa_slidenav.jsp"%>
 	<h3>班級表單上傳與下載</h3>
 	<hr>
 	<div class="container">
@@ -142,12 +122,12 @@
 		<div class="section">
 			<div>
 				<h4>班級列表</h4>
-				<p>點選班級以顯示詳細名單資訊</p>
+				<p class="description">點選班級以顯示詳細名單資訊</p>
 				<div>
 					<table class="classlist centered">
 						<tr>
 							<c:forEach var="showclasslist" items="${allClass}">
-								<td class=classlisttd><a onclick="classlist(this)" id="${showclasslist}">${showclasslist}</a></td>
+								<td class=classlisttd><a style="cursor:pointer" onclick="classlist(this)" id="${showclasslist}">${showclasslist}</a></td>
 							</c:forEach>
 						</tr>
 					</table>

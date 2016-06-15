@@ -14,13 +14,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
 <title>Banner編輯頁面</title>
+<%@ include file="../WEB-INF/cdn.file" %>
+</head>
+
 <body>
-<center>
+<%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
+ <div class="row">
+<div class="col s10 offset-s2">
     <h1>Banner編輯</h1>
-    <table width="680" BORDER='0' style="background:#ACD6FF">
+    <table class="responsive-table" width="680" BORDER='0' style="background:#ACD6FF">
       <form method="post" action="bannerservlet" enctype="multipart/form-data">    
 		    <tr height="36" >
 		      <td height="61" colspan="6" align="center">
@@ -32,7 +35,7 @@
 		    </form>
 	    <c:forEach var="BannerVO" items="${map}">
 			<tr>
-			  <td><img alt="" src="${BannerVO.value}" width="200px" height="200px"></td>
+			  <td><img class="materialboxed" alt="" src="${BannerVO.value}" width="200px" height="200px"></td>
 			  <td>
 				<form  METHOD="post" action="bannerservlet">
 				<input type="submit" value="刪除" name="delete">
@@ -44,7 +47,15 @@
         </c:forEach>
 	  
     </table>
-    
-</center>
+    </div>
+    </div>
+
 </body>
+
+<!-- 使用materializecss做出圖片放大效果 -->
+<!-- body內需改 img class="materialboxed" -->
+<script type="text/javascript">$(document).ready(function(){
+    $('.materialboxed').materialbox();
+});</script>
+
 </html>

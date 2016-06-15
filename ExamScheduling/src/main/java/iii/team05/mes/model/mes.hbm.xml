@@ -7,6 +7,9 @@
         
         <id name="messageid" column="messageid">
             <generator class="identity"/>
+<!--               <generator class="sequence"> -->
+<!-- 				<param name="sequence">msg_SEQ</param> -->
+<!-- 			</generator> -->
         </id>
         
         <property name="msgname" column="msgname" />

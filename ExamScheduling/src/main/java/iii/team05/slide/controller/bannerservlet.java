@@ -69,8 +69,8 @@ public class bannerservlet extends HttpServlet {
 						.getInputStream()));
 
 			baSvc.insertBanner(bannerVO);
-			request.getRequestDispatcher("/bannerset.jsp").forward(request,
-					response);
+//			request.getRequestDispatcher("/bannerset.jsp").forward(request,
+//					response);
 
 		}
 
@@ -79,10 +79,11 @@ public class bannerservlet extends HttpServlet {
 			Integer deImag = Integer.valueOf(request.getParameter("deImag"));
 			System.out.println(deImag); // 測試banner.jsp有傳Delete資料進來
 			baSvc.delete(deImag);
-			request.getRequestDispatcher("/bannerset.jsp").forward(request,
-					response);
+//			request.getRequestDispatcher("/bannerset.jsp").forward(request,
+//					response);
 		}
 		new ExamService().putAllBannerImag(getServletContext());
+		response.sendRedirect("/ExamScheduling/bannerset.jsp");
 
 	}
 }

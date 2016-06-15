@@ -52,6 +52,10 @@ public class EventShowServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Object ecno_o = session.getAttribute("ecno");
 		
+		if(ecno_o =="" || ecno_o ==null){
+			ecno_o = "EEIT8501";
+		}
+		
 		//旁邊的job導覽列
 		Job111DAO jbDAO = new Job111DAO();
 		List<JobVO> jdlists = jbDAO.getAll();

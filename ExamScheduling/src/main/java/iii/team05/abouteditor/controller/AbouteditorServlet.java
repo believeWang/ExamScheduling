@@ -2,12 +2,8 @@ package iii.team05.abouteditor.controller;
 
 import iii.team05.abouteditor.AboutService;
 import iii.team05.abouteditor.AbouteditorVO;
-import iii.team05.setting.model.STService;
-import iii.team05.setting.model.STVO;
-
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,13 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 public class AbouteditorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public AbouteditorServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -45,13 +40,12 @@ public class AbouteditorServlet extends HttpServlet {
 		String aboutcontent = null;
 		for (AbouteditorVO s : AboutArticle) {
 			aboutcontent = s.getAboutcontent();
-//			System.out.println(aboutcontent);
+			// System.out.println(aboutcontent);
 		}
-			request.setAttribute("about", aboutcontent); // 將第一項資訊放入request物件內
-			RequestDispatcher rd = // 準備將移轉程式的執行順序
-			request.getRequestDispatcher("/aboutedit.jsp");
-			rd.forward(request, response); // 移轉程式的執行順序
-		
+		request.setAttribute("about", aboutcontent); // 將第一項資訊放入request物件內
+		RequestDispatcher rd = // 準備將移轉程式的執行順序
+		request.getRequestDispatcher("/WEB-INF/aboutedit.jsp");
+		rd.forward(request, response); // 移轉程式的執行順序
 
 	}
 
@@ -69,14 +63,10 @@ public class AbouteditorServlet extends HttpServlet {
 		System.out.println(aboutcontent);
 		if ("Editor_Update".equals(action)) {
 			abSvc.updateAbout(aboutcontent);// 呼叫Service
-//			request.getRequestDispatcher("/about.jsp");
-			response.sendRedirect("/ExamScheduling/AboutServlet"); 
-
+			// request.getRequestDispatcher("/about.jsp");
+			response.sendRedirect("/ExamScheduling/AboutServlet");
 
 		}
-			 
-		
-
 
 	}
 
