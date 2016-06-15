@@ -24,7 +24,7 @@ public class EmpServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 
-		System.out.print("action:"+action);
+	
 		if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp的請求
 			
 			List<String> errorMsgs = new LinkedList<String>();
@@ -43,7 +43,7 @@ public class EmpServlet extends HttpServlet {
 				/*************************** 3.查詢完成,準備轉交(Send the Success view) ************/
 				req.setAttribute("employeeVO", empVO); // 資料庫取出的empVO物件,存入req
 				
-				String url = "/employee/update_emp_input.jsp";
+				String url = "/employee/Examiner2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
 			
 				successView.forward(req, res);
@@ -60,7 +60,7 @@ public class EmpServlet extends HttpServlet {
 		
 		
 		if ("insert".equals(action)) { // 來自addEmp.jsp的請求
-
+			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -68,23 +68,17 @@ public class EmpServlet extends HttpServlet {
 
 			try {
 				/*********************** 1.接收請求參數 - 輸入格式的錯誤處理 *************************/
-				Integer empno = new Integer(req.getParameter("empno").trim());
-
+			
 				String empname = req.getParameter("empname").trim();
 				String empemail = req.getParameter("empemail").trim();
-
-				Integer position = null;
-				try {
-					position = new Integer(req.getParameter("position").trim());
-				} catch (NumberFormatException e) {
-					position = 0;
-					errorMsgs.add("請填數字.");
-				}
+				Integer position = new Integer(req.getParameter("position").trim());
+				String token = null;
 				EmployeeVO empVO = new EmployeeVO();
-				empVO.setEmpno(empno);
 				empVO.setEmpname(empname);
 				empVO.setEmpemail(empemail);
 				empVO.setPosition(position);
+				empVO.setToken(token);
+
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
@@ -97,15 +91,16 @@ public class EmpServlet extends HttpServlet {
 
 				/*************************** 2.開始新增資料 ***************************************/
 				EmployeeService empSvc = new EmployeeService();
-				empVO = empSvc.addEmp(empno, empname, empemail, position);
+				empVO = empSvc.addEmp( empname, empemail, position,token);
 
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				String url = "/employee/ExaminerTable.jsp";
+				String url = "/employee/test.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp
 				successView.forward(req, res);
 
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
+				e.printStackTrace();
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/emp/addEmp.jsp");
@@ -113,35 +108,30 @@ public class EmpServlet extends HttpServlet {
 			}
 		}
 		if ("delete".equals(action)) { // 來自listAllEmp.jsp
-
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
-			req.setAttribute("errorMsgs", errorMsgs);
-
+						req.setAttribute("errorMsgs", errorMsgs);
 			try {
-				/*************************** 1.接收請求參數 ***************************************/
+				
 				Integer empno = new Integer(req.getParameter("empno"));
-
-				/*************************** 2.開始刪除資料 ***************************************/
 				EmployeeService empSvc = new EmployeeService();
 				empSvc.deleteEmp(empno);
-
 				/*************************** 3.刪除完成,準備轉交(Send the Success view) ***********/
-				String url = "/employee/Emptable.jsp";
+				
+				
+				String url = "/employee/test.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
 				successView.forward(req, res);
 				//res.sendRedirect(res.encodeRedirectURL("url"));
 
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
+				e.printStackTrace();
 				errorMsgs.add("刪除資料失敗:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/employee/Emptable.jsp");
+						.getRequestDispatcher("/employee/test.jsp");
 				failureView.forward(req, res);
 				
 				
-				//res.sendRedirect(res.encodeRedirectURL("/employee/Emptable.jsp"));
 			}
 		}
 		if ("delete1".equals(action)) { // 來自listAllEmp.jsp
@@ -160,7 +150,7 @@ public class EmpServlet extends HttpServlet {
 				empSvc.deleteEmp(empno);
 
 				/*************************** 3.刪除完成,準備轉交(Send the Success view) ***********/
-				String url = "/employee/Examiner.jsp";
+				String url = "/employee/Emptable2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
 				successView.forward(req, res);
 				
@@ -193,7 +183,7 @@ if ("update1".equals(action)) { // 來自update_emp_input.jsp的請求
 			//	Integer position = new Integer(req.getParameter("position").trim());				
 				EmployeeVO empVO = new EmployeeVO();
 				empVO.setEmpno(empno);
-				int position = 0;
+				int position = 2;
 				empVO.setPosition(position);				
 				
 				// Send the use back to the form, if there were errors
@@ -224,6 +214,7 @@ if ("update1".equals(action)) { // 來自update_emp_input.jsp的請求
 			}
 		}
 if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
+
 	
 	List<String> errorMsgs = new LinkedList<String>();
 	// Store this set in the request scope, in case we need to
@@ -233,10 +224,10 @@ if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 	try {
 		/*************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 		Integer empno = new Integer(req.getParameter("empno").trim());
-	//	Integer position = new Integer(req.getParameter("position").trim());				
+		Integer position = new Integer(req.getParameter("position").trim());
 		EmployeeVO empVO = new EmployeeVO();
 		empVO.setEmpno(empno);
-		int position = 1;
+		//int position = 1;
 		empVO.setPosition(position);				
 		
 		// Send the use back to the form, if there were errors
@@ -254,7 +245,8 @@ if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 		empVO = empSvc.updateEmp2(empno,position);
 		/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 		req.setAttribute("employeeVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
-		String url = "/employee/Emptable2.jsp";
+		String url = "/employee/empform.jsp";
+
 		RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
 		successView.forward(req, res);
 

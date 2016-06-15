@@ -53,7 +53,7 @@
 		
 		</fieldset></div>
 		<a href='<%=request.getContextPath()%>/employee/Emptable2.jsp'>返回員工清單</a>
-	
-=======
+	<a href="<%=request.getContextPath()%>/employee/calender.jsp">查詢考生排程</a>
+
 </body>
 </html>

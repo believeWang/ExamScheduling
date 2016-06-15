@@ -11,10 +11,11 @@
 <head>
 
 <%@ include file="/WEB-INF/cdn.file"%>
+
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-<script src='../js/jquery.min.js'></script>
+<!-- <script src='../js/jquery.min.js'></script> -->
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <script src='../js/moment.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
@@ -117,28 +118,6 @@
 <body>
     <%@ include file="../WEB-INF/header/header.jsp" %> 
 	<div class="container-fluid">
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col-md-12"> -->
-<!-- 				<nav class="navbar navbar-default"> -->
-<!-- 				<div class="container-fluid"> -->
-<!-- 					<div class="navbar-header"> -->
-<!-- 						<a class="navbar-brand" href="#"> <img alt="Brand" -->
-<!-- 							src="../images/calendar_icon.jpg" width="30px"> -->
-<!-- 						</a> -->
-<!-- 						<p class="navbar-text">FullCalendar</p> -->
-<!-- 						<div class="container"> -->
-<!-- 							<ul class="nav navbar-nav"> -->
-<!-- 									<li><a href="#">link1</a></li> -->
-<!-- 							</ul> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				</nav> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-
-      
-        
 		<div class="row">
 			<div class="col-md-2">
 				<ul class="list-group">

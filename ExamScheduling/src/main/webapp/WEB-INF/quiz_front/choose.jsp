@@ -6,6 +6,7 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
+
  <%@ include file="../header/header_resourse.file" %>
     <style type="text/css">
     

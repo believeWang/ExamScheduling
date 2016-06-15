@@ -54,6 +54,7 @@ public class ECService {
 		return ecDAO.getEEIT(eeitName);
 		
 	}
+
 	public ECVO findByPrimaryKey(String ecno) {
 		return ecDAO.findByPrimaryKey(ecno);
 		

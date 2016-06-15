@@ -46,48 +46,30 @@
 	  	
 	  	<div class="col-md-6">
 	  		<h3 class="text-center">職位</h3>
-	  		<c:if test="${action  == 'add'}">
-		  		<table class="table  table-bordered">
-		  		<form action="JobSaveServlet" name="form1" method="post">
-		  			<tr>
-		  				<td>職位名稱：</td><td><input type="text" name="jobname" value=""  class="form-control"></td>
-		  			</tr>
-		  			<tr>
-		  				<td>負責主考官：</td>
-		  				<td>
-		  					<select name="empno" class="form-control">
-		  						<c:forEach var="emp" items="${emplists}" >
-		  							<option value="${emp.empno}">${emp.empname}</option>
-		  						</c:forEach>
-		  					</select>
-	  					</td>
-		  			</tr>
-		  			<tr>
-		  				<td>啟用：</td><td><input type="checkbox" name="" value=""  class=""></td>
-		  			</tr>
-		  			<tr>
-		  				<td><input type="submit" value="Submit"  class="btn btn-primary"></td><td></td>
-		  			</tr>
-	  			</form>
-		  		</table>
-	  		</c:if>
-	  		
-	  		<c:if test="${action =='update'}">
-		  		<table class="table  table-bordered">
-		  		<form action="JobSaveServlet" name="form2" method="post">
-		  			<tr>
-		  				<td>職位名稱：</td><td><input type="text" name="jobname" value=""  class="form-control"></td>
-		  			</tr>
-		  			<tr>
-		  				<td>啟用：</td><td><input type="checkbox" name="" value=""  class=""></td>
-		  			</tr>
-		  			<tr>
-		  				<td><input type="submit" value="Submit"  class="btn btn-primary"></td><td></td>
-		  			</tr>
-	  			</form>
-		  		</table>
-	  		</c:if>
-	  		
+	  		<table class="table  table-bordered">
+	  		<form action="JobSaveServlet" name="form1" method="post">
+	  		<input type="hidden" name="action" value="edit">
+	  		<input type="hidden" name="jobid" value="${jobid}">
+	  			<tr>
+	  				<td>職位名稱：</td><td><input type="text" name="jobname" value="${jobname}"  class="form-control"></td>
+	  			</tr>
+	  			<tr>
+	  				<td>負責主考官：</td>
+	  				<td>
+	  					<select name="empno" class="form-control">
+	  						<c:forEach var="emp" items="${emplists}" >
+	  							<c:forEach var="empno" items="${empno}" >
+	  							<option value="${emp.empno}" <c:if test="${emp.empno == empno.empno}">selected</c:if>>${emp.empname}</option>
+	  							</c:forEach>
+	  						</c:forEach>
+	  					</select>
+  					</td>
+	  			</tr>
+	  			<tr>
+	  				<td><input type="submit" value="Submit"  class="btn btn-primary"></td><td></td>
+	  			</tr>
+  			</form>
+	  		</table>
 	  	</div>
 	  	
 	  	<div class="col-md-3"></div>
