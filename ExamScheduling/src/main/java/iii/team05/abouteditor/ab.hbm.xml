@@ -7,6 +7,9 @@
 
 		<id name="aboutid" column="aboutid">
 		<generator class="identity"/>
+<!-- 		 <generator class="sequence"> --> 
+<!-- 				<param name="sequence">abt_SEQ</param> -->
+<!-- 			</generator> -->
 		</id>
 
 		

@@ -1,7 +1,11 @@
 package iii.team05.exam.model;
 
-import java.io.IOException;
 
+
+import iii.team05.slide.model.BannerHibernateDAO;
+import iii.team05.slide.model.BannerVO;
+
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -22,9 +26,12 @@ import org.json.JSONObject;
 
 public class ExamService {
 	ExamDAO examDAO;
+	BannerHibernateDAO bannerDAO;
+	
 
 	public ExamService() {
 		examDAO = new ExamDAO();
+		bannerDAO = new BannerHibernateDAO();
 	}
 
 	public ExamVO getExam(String examno) {
@@ -288,6 +295,21 @@ public class ExamService {
 		 context.removeAttribute("allExams");
 		 context.setAttribute("examsMap", examsMap);
 		 context.setAttribute("allExams", allExams);
+	}
+
+
+	public void putAllBannerImag(ServletContext servletContext) {
+		List<BannerVO>Imag=bannerDAO.getAll();
+		List<String>BannerImag=new ArrayList<String>();
+		
+		for(BannerVO sp:Imag){
+			BannerImag.add(byteTobase64(sp.getSlidephoto()));
+//			 servletContext.removeAttribute(sp.getSlidephoto());
+//			 servletContext.setAttribute(sp.getSlidephoto());
+		 }
+		servletContext.removeAttribute("allBanner");	
+		servletContext.setAttribute("allBanner", BannerImag);
+	
 	}
 
 

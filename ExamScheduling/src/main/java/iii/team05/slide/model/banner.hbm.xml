@@ -7,6 +7,9 @@
 
 		<id name="slideid" column="slideid">
 		<generator class="identity"/>
+	<!-- <generator class="sequence"> -->
+	<!-- <param name="sequence">sli_SEQ</param> -->
+	<!-- </generator> -->
 		</id>
 
 		<property name="slidephoto" column="slidephoto" />
