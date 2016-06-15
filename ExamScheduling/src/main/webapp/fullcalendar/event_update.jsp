@@ -18,10 +18,14 @@
         <input type="hidden" name="date" value="${section_date}">
         
         <label for="title">內容主旨：</label><input type="text" name="title" value="${eventVO.title}" placeholder="輸入預約標題" id="title" class="form-control"></p>
+        
+        
         <label for="">選擇時段：</label>
         <c:forEach var="section" items="${seclists}">
-        	<p><input type="radio" name="section" value="${section.sectiontime}"  style="width: 20px; height: 20px" <c:if test="${section.sectiontime == section_time}">checked</c:if> >${section.sectiontime}</p>
+        	<p><input type="radio" name="section" value="${section.sectiontime}" id="${section.sectionid}" <c:if test="${section.sectiontime == section_time}">checked</c:if> ><label for="${section.sectionid}">${section.sectiontime}</label></p>
         </c:forEach>
+        
+        
         <label for="remark">備註：</label><textarea name="remark" rows="4" cols="50" id="remark" class="form-control">${eventVO.eventremark}</textarea>
         <div class="sub_btn">
         	<span class="del"><input type="button" class="btn btn_del" id="del_event" value="删除"></span> 
