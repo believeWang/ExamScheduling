@@ -70,7 +70,7 @@ public class bannerservlet extends HttpServlet {
 
 			baSvc.insertBanner(bannerVO);
 //			request.getRequestDispatcher("/bannerset.jsp").forward(request,
-//					response);
+//					response); //新增和刪除的跳轉都直接寫在外部用Redirect
 
 		}
 
@@ -80,7 +80,7 @@ public class bannerservlet extends HttpServlet {
 			System.out.println(deImag); // 測試banner.jsp有傳Delete資料進來
 			baSvc.delete(deImag);
 //			request.getRequestDispatcher("/bannerset.jsp").forward(request,
-//					response);
+//					response); //新增和刪除的跳轉都直接寫在外部用Redirect
 		}
 		new ExamService().putAllBannerImag(getServletContext());
 		response.sendRedirect("/ExamScheduling/bannerset.jsp");
