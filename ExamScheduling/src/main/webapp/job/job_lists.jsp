@@ -79,16 +79,7 @@ $(function() {
       dialog.dialog( "open" );
     });
     
-    $( ".edit-job" ).button().on( "click", function() {
-    	
-    	$("#jobname").attr("");
-      dialog.dialog( "open" );
-    });
-    
-//     $( ".delete-job" ).button().on( "click", function() {
-//       dialog.dialog( "open" );
-//     });
-	
+   
 });
 </script>
   
@@ -122,7 +113,7 @@ $(function() {
 	  	
 	  	<div class="col-md-6">
 	  		<h3 class="text-center">職位</h3>
-	  		<a href="#" id="create-job"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
+	  		<a href="JobDoServlet?action=add&id=${job.jobid}" id="create-job000"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
 	  		
 	  		<div id="users-contain" class="ui-widget"><!-- start -->
 	  		<table id="users" class="table  table-bordered">
@@ -143,7 +134,7 @@ $(function() {
 	  				</c:forEach>
 	  				</td>
 	  				<td>
-						<a href="#" class="edit-job"><span class="glyphicon glyphicon-pencil" aria-hidden="true">修改</span></a>
+						<a href="JobDoServlet?action=edit&id=${job.jobid}" class="edit-job"><span class="glyphicon glyphicon-pencil" aria-hidden="true">修改</span></a>
 						 / 
 						<a href="JobDoServlet?action=delete&id=${job.jobid}" class="delete-job"><span class="glyphicon glyphicon-trash" aria-hidden="true">刪除</span></a>
 					</td>

@@ -7,6 +7,9 @@
 
 		<id name="jobid" column="jobid">
             <generator class="identity"/>
+<!--             <generator class="sequence"> -->
+<!-- 				<param name="sequence">job_SEQ</param> -->
+<!-- 			</generator> -->
         </id>
         
         <property name="jobname" column="jobname" />

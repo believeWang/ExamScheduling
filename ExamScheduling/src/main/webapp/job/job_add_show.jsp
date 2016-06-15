@@ -48,19 +48,16 @@
 	  		<h3 class="text-center">職位</h3>
 	  		<table class="table  table-bordered">
 	  		<form action="JobSaveServlet" name="form1" method="post">
-	  		<input type="hidden" name="action" value="edit">
-	  		<input type="hidden" name="jobid" value="${jobid}">
+	  		<input type="hidden" name="action" value="add">
 	  			<tr>
-	  				<td>職位名稱：</td><td><input type="text" name="jobname" value="${jobname}"  class="form-control"></td>
+	  				<td>職位名稱：</td><td><input type="text" name="jobname" value=""  class="form-control"></td>
 	  			</tr>
 	  			<tr>
 	  				<td>負責主考官：</td>
 	  				<td>
 	  					<select name="empno" class="form-control">
 	  						<c:forEach var="emp" items="${emplists}" >
-	  							<c:forEach var="empno" items="${empno}" >
-	  							<option value="${emp.empno}" <c:if test="${emp.empno == empno.empno}">selected</c:if>>${emp.empname}</option>
-	  							</c:forEach>
+	  							<option value="${emp.empno}" >${emp.empname}</option>
 	  						</c:forEach>
 	  					</select>
   					</td>
