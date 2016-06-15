@@ -1,6 +1,7 @@
 package iii.team05.login_front.controller;
 
 import iii.team05.examinee.ecmodel.ECService;
+
 import iii.team05.examinee.ecmodel.ECVO;
 
 import java.io.IOException;
@@ -48,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		    	response.sendRedirect(dest);
 		     }else{
 		    	 //沒有就回到選擇頁面
-		    	 response.sendRedirect("choose");
+		    	 response.sendRedirect("/ExamScheduling/AboutServlet");
 			    
 		     }
 		    

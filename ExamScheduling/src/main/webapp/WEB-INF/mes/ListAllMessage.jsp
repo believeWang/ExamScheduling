@@ -4,6 +4,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="iii.team05.mes.model.*"%>
 <%
+
 	String msgemail=String.valueOf(session.getAttribute("ExamEmail"));
 	
 	MesService mesSvc = new MesService();

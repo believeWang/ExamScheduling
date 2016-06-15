@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +62,7 @@ body {
       <form class="login-form" action="LoginServlet" method="post">
         <div class="row">
           <div class="input-field col s12 center">
-           <a href="choose">
+           <a href="/ExamScheduling/AboutServlet">
             <img src="/ExamScheduling/images/iiI.png" alt="" class="responsive-img valign profile-image-login"></a>
              <p class="center login-form-text  red-text text-darken-2">${regi}</p>
           </div>

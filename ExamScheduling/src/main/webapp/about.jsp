@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
 
 <!DOCTYPE>
 <html>
 <head>
 
-<style>
-@import url('<%=request.getContextPath()%>/about/aboutedit.css');
-</style>
-<script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
 <!--materialize ICON-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,19 +22,15 @@
 
 <!-- JQUERY表單驗證 -->
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
-<title>公司簡介 - 編輯頁面</title>
+  <style>
+    	 @import url('<%=request.getContextPath()%>/about/css/about.css');  
+	</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-
-
-<h3>公司簡介 - 編輯頁面</h3>
-<hr>
-<br>
-<form METHOD="post" ACTION="/ExamScheduling/aboutedit">
-<textarea class="ckeditor" cols="80" id="content" name=content rows="60">${about}</textarea>
-<input type=submit value="Submit" >
-<input type="hidden" name="action" value="Editor_Update"> 
-<input type=button value="Cancel">
-
-</from>
+<div>
+${aboutcontent}
+</div>
+</body>
 </html>

@@ -1,8 +1,8 @@
-package iii.team05.mes.controller;
+package iii.team05.Employee.controller;
 
 import java.io.IOException;
 
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MesTurn
  */
-@WebServlet("/MesTurn")
-public class MesTurn extends HttpServlet {
+@WebServlet("/EmpCaes")
+public class Empcase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MesTurn() {
+    public Empcase() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,26 +29,16 @@ public class MesTurn extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String turn=request.getParameter("turn");
-		switch (turn) {
-		case "LM":
-			request.getRequestDispatcher("/WEB-INF/mes/LeaveMessage.jsp").forward(request, response);	
+		String empturn=request.getParameter("empturn");
+		switch (empturn) {
+		case "CAL":
+			request.getRequestDispatcher("/WEB-INF/emp/calender.jsp").forward(request, response);	
 			break;
-		case "LAM":
-			request.getRequestDispatcher("/WEB-INF/mes/ListAllMessage.jsp").forward(request, response);	
+//			以下為系統管理者新刪修
+		case "EMPF":
+			request.getRequestDispatcher("/WEB-INF/employee/empform.jsp").forward(request, response);	
 			break;
-		case "LNRM":
-			request.getRequestDispatcher("/WEB-INF/mes/ListNotReplyMessage.jsp").forward(request, response);
-			break;
-		case "LOM":
-			request.getRequestDispatcher("/WEB-INF/mes/ListOneMessage.jsp").forward(request, response);
-			break;
-		case "RM":
-			request.getRequestDispatcher("/WEB-INF/mes/ReplyMessage.jsp").forward(request, response);
-			break;
-		case "MQTT":
-			request.getRequestDispatcher("/WEB-INF/chat/mqtt31.jsp").forward(request, response);
-			break;
+		
 		default:
 			break;
 		}

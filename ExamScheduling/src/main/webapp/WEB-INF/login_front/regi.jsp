@@ -35,7 +35,7 @@ body {
       <form class="login-form">
         <div class="row">
           <div class="input-field col s12 center">
-          <a href="choose">
+          <a href="/ExamScheduling/AboutServlet">
             <img src="/ExamScheduling/images/iiI.png" alt="" class="responsive-img valign profile-image-login"></a>
             <p class="center login-form-text">iiInterviewer</p>
           </div>

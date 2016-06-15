@@ -33,7 +33,7 @@ public class AboutServlet extends HttpServlet {
 		String aboutcontent= null;
 		for(AbouteditorVO s:AboutArticle){
 			aboutcontent = s.getAboutcontent();
-			System.out.println(aboutcontent+"333");
+			//System.out.println(aboutcontent+"333");
 		}
 
 		request.setAttribute("aboutcontent", aboutcontent);     // 將第一項資訊放入request物件內

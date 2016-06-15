@@ -28,6 +28,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request=(HttpServletRequest)req;
 		HttpServletResponse response=(HttpServletResponse)res;
 		HttpSession session=request.getSession();
+
 		session.removeAttribute("regi");
 		//如果沒有登入
 		if (session.getAttribute("ecno") == null) {
