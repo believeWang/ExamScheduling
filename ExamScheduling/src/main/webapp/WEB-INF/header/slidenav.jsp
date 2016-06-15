@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <header>
 
+
 	<nav class="top-nav  blue-grey lighten-3">
 		<div class="container" style="height: 5%">
 			<div class="nav-wrapper">
@@ -33,7 +34,7 @@
 				</div>
 			</div>
 		</li>
-		<li class="bold"><a href="employee/calender.jsp"
+		<li class="bold"><a href="EmpCaes?empturn=CAL"
 			class="waves-effect waves-teal">行事曆</a></li>
 		<li class="bold"><a href="ExamList"
 			class="waves-effect waves-teal">編輯考題</a></li>

@@ -48,6 +48,7 @@ public class MesDAO implements MesDAO_interface {
 		}
 	}
 
+
 	public List<MesVO> findByPrimaryKey(String msgmail) {
 		List<MesVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();

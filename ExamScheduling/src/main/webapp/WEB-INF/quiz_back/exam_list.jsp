@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/examstyle.min.css" />
 <%@ include file="../cdn.file" %>
 
+
 <%@ include file="../header/slide_mqtt.file" %>
 
 </head>

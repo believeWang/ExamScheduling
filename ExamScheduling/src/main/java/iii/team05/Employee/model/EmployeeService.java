@@ -12,14 +12,15 @@ public class EmployeeService {
 		dao = new EmployeeDAO();
 	}
 
-	public EmployeeVO addEmp(Integer empno, String empname, String empemail,
-			Integer position) {
+	public EmployeeVO addEmp(String empname, String empemail,
+			Integer position,String token) {
 		EmployeeVO empVO = new EmployeeVO();
 
-		empVO.setEmpno(empno);
+	
 		empVO.setEmpname(empname);
 		empVO.setEmpemail(empemail);
 		empVO.setPosition(position);
+		empVO.setToken(token);
 		dao.insert(empVO);
 		return empVO;
 	}
@@ -63,6 +64,10 @@ public class EmployeeService {
 
 	public List<EmployeeVO> getExam() {
 		return dao.getExam();
+	}
+	public List<EmployeeVO> getEmp() {
+		return dao.getEmp();
+
 	}
 
 	public List<EmployeeVO> check(String ecemail) {

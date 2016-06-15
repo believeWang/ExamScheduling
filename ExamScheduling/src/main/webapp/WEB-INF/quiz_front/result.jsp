@@ -8,6 +8,7 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <%@ include file="/WEB-INF/cdn.file"%>
  <%@ include file="../header/header_resourse.file" %>
     <style type="text/css">

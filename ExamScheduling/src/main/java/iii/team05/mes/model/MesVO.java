@@ -1,5 +1,6 @@
 package iii.team05.mes.model;
 
+
 public class MesVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer messageid;

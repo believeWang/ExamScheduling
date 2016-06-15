@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+
+<!DOCTYPE>
 <html>
 <head>
-
-<style>
-@import url('<%=request.getContextPath()%>/upload/uploadSuccess.css');
-</style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
@@ -24,13 +22,15 @@
 
 <!-- JQUERY表單驗證 -->
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
-<meta http-equiv="refresh" content="3 ; url=<%=request.getContextPath()%>/upload/poitest.jspx; charset=UTF-8">
-
-<title>上傳成功</title>
+  <style>
+    	 @import url('<%=request.getContextPath()%>/about/css/about.css');  
+	</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-<h3>上傳成功</h3>
-<h4>過3秒後自動跳轉回班級列表</h4>
-<p><a href="<%=request.getContextPath()%>/upload/poitest.jspx">或 直接點擊回到班級列表</a></p>
+<div>
+${aboutcontent}
+</div>
 </body>
 </html>
