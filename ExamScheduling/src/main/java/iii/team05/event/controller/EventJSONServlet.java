@@ -52,19 +52,19 @@ public class EventJSONServlet extends HttpServlet {
 		Date eshiredate = esVO.getEshiredate();
 		
 		//起頭天
-		Timestamp startDate = new Timestamp(eshiredate.getTime());
-		System.out.println(startDate+"start");
+		//Timestamp startDate = new Timestamp(eshiredate.getTime());
 		
 		//結尾天
-		long long1 = eshiredate.getTime() + 13*24*60*60*1000L;
-		Timestamp endDate = new Timestamp(long1);
-		System.out.println(endDate+"end");
+		long long1 = eshiredate.getTime() + 14*24*60*60*1000L;
+		//Timestamp endDate = new Timestamp(long1);
+		java.sql.Date bgenddate = new java.sql.Date(long1);
 		
 		//創立事件物件
 		EventVO eventVO = new EventVO();
-		eventVO.setStarttime(startDate);
-		eventVO.setEndtime(endDate);
-		eventVO.setRendering("background");
+		eventVO.setEventid(00);
+		eventVO.setBg_startdate(eshiredate);
+		eventVO.setBg_enddate(bgenddate);
+		eventVO.setRendering("background");//background
 		eventVO.setBgcolor("#ff9f89");
 		
 		//撈所有事件物件
@@ -76,36 +76,68 @@ public class EventJSONServlet extends HttpServlet {
 		
 		out.print("[");
 			for(EventVO evo: elists){
-				out.print("{");
-				
-				out.print("\"id\":");
-			    out.print("\"");
-			    out.print(evo.getEventid());
-			    out.print("\",");
-			    out.print("\"title\":");
-			    out.print("\"");
-			    out.print(evo.getTitle());
-			    out.print("\",");
-			    out.print("\"start\":");
-			    out.print("\"");
-			    out.print(evo.getStarttime());
-			    out.print("\",");
-			    out.print("\"end\":");
-			    out.print("\"");
-			    out.print(evo.getEndtime());
-			    out.print("\",");
-			    out.print("\"rendering\":");
-			    out.print("\"");
-			    out.print(evo.getRendering());
-			    out.print("\",");
-			    out.print("\"color\":");
-			    out.print("\"");
-				out.print(evo.getBgcolor());
-				out.print("\"");
-				if(elists.size()-1 == elists.indexOf(evo)){
-					out.print("}");
+				if(evo.getEventid() == 0){
+					out.print("{");
+					out.print("\"id\":");
+				    out.print("\"");
+				    out.print(evo.getEventid());
+				    out.print("\",");
+				    out.print("\"title\":");
+				    out.print("\"");
+				    out.print(evo.getTitle());
+				    out.print("\",");
+				    out.print("\"start\":");
+				    out.print("\"");
+				    out.print(evo.getBg_startdate());
+				    out.print("\",");
+				    out.print("\"end\":");
+				    out.print("\"");
+				    out.print(evo.getBg_enddate());
+				    out.print("\",");
+				    out.print("\"rendering\":");
+				    out.print("\"");
+				    out.print(evo.getRendering());
+				    out.print("\",");
+				    out.print("\"color\":");
+				    out.print("\"");
+					out.print(evo.getBgcolor());
+					out.print("\"");
+					if(elists.size()-1 == elists.indexOf(evo)){
+						out.print("}");
+					}else{
+						out.print("},");	
+					}
 				}else{
-					out.print("},");	
+					out.print("{");
+					out.print("\"id\":");
+				    out.print("\"");
+				    out.print(evo.getEventid());
+				    out.print("\",");
+				    out.print("\"title\":");
+				    out.print("\"");
+				    out.print(evo.getTitle());
+				    out.print("\",");
+				    out.print("\"start\":");
+				    out.print("\"");
+				    out.print(evo.getStarttime());
+				    out.print("\",");
+				    out.print("\"end\":");
+				    out.print("\"");
+				    out.print(evo.getEndtime());
+				    out.print("\",");
+				    out.print("\"rendering\":");
+				    out.print("\"");
+				    out.print(evo.getRendering());
+				    out.print("\",");
+				    out.print("\"color\":");
+				    out.print("\"");
+					out.print(evo.getBgcolor());
+					out.print("\"");
+					if(elists.size()-1 == elists.indexOf(evo)){
+						out.print("}");
+					}else{
+						out.print("},");	
+					}
 				}
 			}
 		out.print("]");

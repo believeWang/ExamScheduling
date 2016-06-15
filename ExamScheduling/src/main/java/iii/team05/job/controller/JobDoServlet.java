@@ -7,9 +7,11 @@ import iii.team05.job.model.Job111DAO;
 import iii.team05.job.model.JobDAO;
 import iii.team05.job.model.JobVO;
 import iii.team05.jober.model.JobErDAO;
+import iii.team05.jober.model.JobErVO;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -67,6 +69,39 @@ public class JobDoServlet extends HttpServlet {
 			request.setAttribute("joblists", joblists);
 			
 			RequestDispatcher jb = request.getRequestDispatcher("/job/job_lists.jsp");
+			jb.forward(request, response);
+		}
+		
+		if ("edit".equals(action)) {
+			//System.out.println("123456");
+			String id = request.getParameter("id");
+			int jobid = Integer.valueOf(id);
+			
+			JobDAO jobDAO = new JobDAO();
+			JobVO jobVO = jobDAO.findByPrimaryKey(jobid);
+			String jobname = jobVO.getJobname();
+			Set<EmployeeVO> empno = jobVO.getEmployee();
+			
+			EmployeeDAO empDAO = new EmployeeDAO();
+			List<EmployeeVO> emplists = empDAO.getAll();
+			
+			request.setAttribute("emplists", emplists); 
+			request.setAttribute("jobname", jobname); 
+			request.setAttribute("empno", empno);
+			request.setAttribute("jobid", jobid);
+			
+			RequestDispatcher jb = request.getRequestDispatcher("/job/job_show.jsp");
+			jb.forward(request, response);
+		}
+		
+		if ("add".equals(action)) {
+			
+			EmployeeDAO empDAO = new EmployeeDAO();
+			List<EmployeeVO> emplists = empDAO.getAll();
+			
+			request.setAttribute("emplists", emplists);
+			
+			RequestDispatcher jb = request.getRequestDispatcher("/job/job_add_show.jsp");
 			jb.forward(request, response);
 		}
 		

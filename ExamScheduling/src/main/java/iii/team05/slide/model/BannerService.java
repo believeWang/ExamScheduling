@@ -1,16 +1,12 @@
 package iii.team05.slide.model;
 
 
-import iii.team05.Employee.model.EmployeeVO;
-import iii.team05.setting.model.STVO;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
 
 
 public class BannerService {
