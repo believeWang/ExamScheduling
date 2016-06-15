@@ -78,7 +78,7 @@ public class EditmailServlet extends HttpServlet {
 			  System.out.println(emailcontent);            //測試editmail.jsp有傳更新資料進來
 			  stSvc.updateMailcontent(emailcontent);       //呼叫STService的updatemail()方法工作
 		  }
-
+response.sendRedirect("/ExamScheduling/index.jsp");
 }
 	
 
