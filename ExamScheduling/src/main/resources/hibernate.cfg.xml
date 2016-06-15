@@ -13,6 +13,7 @@
         
 		<!--SQL方言,以下使用SQLServer -->
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+<!-- 		<property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property> -->
 
 		<!--是否要顯示實際操作資料庫時的SQL -->
 		<property name="hibernate.show_sql">true</property>
