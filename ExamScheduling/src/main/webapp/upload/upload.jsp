@@ -115,6 +115,8 @@
 </head>
 <body>
 <%@ include file="../WEB-INF/header/sa_slidenav.jsp"%>
+<div class="row">
+  <div class="col s11 offset-s2">
 	<h3>班級表單上傳與下載</h3>
 	<hr>
 	<div class="container">
@@ -187,6 +189,8 @@
 			</div>
 		</div>
 
+	</div>
+	</div>
 	</div>
 </body>
 

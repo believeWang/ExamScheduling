@@ -27,6 +27,21 @@ public class EventVO  implements java.io.Serializable{
 	private String ecno;
 	private String eventremark;
 	private String rendering;
+	private java.sql.Date bg_startdate;
+	private java.sql.Date bg_enddate;
+	
+	public java.sql.Date getBg_startdate() {
+		return bg_startdate;
+	}
+	public void setBg_startdate(java.sql.Date bg_startdate) {
+		this.bg_startdate = bg_startdate;
+	}
+	public java.sql.Date getBg_enddate() {
+		return bg_enddate;
+	}
+	public void setBg_enddate(java.sql.Date bg_enddate) {
+		this.bg_enddate = bg_enddate;
+	}
 	
 	public String getRendering() {
 		return rendering;

@@ -7,11 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- jQuery -->
-<script src='../js/jquery.min.js'></script>
-
+<!-- <script src='../js/jquery.min.js'></script> -->
+<%@ include file="../WEB-INF/cdn.file" %>
 <!-- jQuery UI -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <!-- Bootstrap -->
@@ -85,6 +85,7 @@ $(function() {
   
 </head>
 <body>
+<%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
 <div class="container-fluid">
 	
 	<div class="row">

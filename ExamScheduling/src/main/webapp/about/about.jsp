@@ -6,6 +6,7 @@
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
  <%@ include file="../WEB-INF/header/header_resourse.file" %>
+
 <style>
 @import url('<%=request.getContextPath()%>/about/aboutedit.css');
 </style>
@@ -26,7 +27,7 @@
 
 <!-- 	<script type="text/javascript" -->
 <!-- 		src="https://code.jquery.com/jquery-1.11.3.js"></script> -->
-	<script type="text/javascript" src="about/js/jssor.slider.mini.js"></script>
+	<script type="text/javascript" src="/ExamScheduling/about/js/jssor.slider.mini.js"></script>
 	<!-- use jssor.slider.debug.js instead for debug -->
 	<script>
 		jQuery(document).ready(function($) {
@@ -173,7 +174,7 @@
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
-	background: url('/about/img/a17.png') no-repeat;
+/* 	background: url('/about/img/a17.png') no-repeat; */
 	overflow: hidden;
 }
 
@@ -238,37 +239,40 @@
 		<div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
 			<div
 				style="filter: alpha(opacity = 70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-			<div
-				style="position: absolute; display: block; background: url('/about/img/loading.gif') no-repeat center center; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+<!-- 			<div -->
+<!-- 				style="position: absolute; display: block; background: url('/about/img/loading.gif') no-repeat center center; top: 0px; left: 0px; width: 100%; height: 100%;"></div> -->
 		</div>
 		<div data-u="slides"
 			style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 300px; overflow: hidden;">
-			<div data-p="112.50" style="display: none;">
+		
 
+				<!--抓出資料庫圖檔輪播 -->
+				<c:forEach var="myImg" items="${allBanner}">
+				<div data-p="112.50" style="display: none;">
+					<img data-u="image" src="${myImg}" />
+					<div data-u="thumb"></div>
+					</div>
+				</c:forEach>
 
-<%-- 				<c:forEach var="allBanner" items="${allBanner}"> --%>
-<%-- 					<img data-u="image" src="${allBanner}" /> --%>
-<%-- 				</c:forEach> --%>
-
-
-								<img data-u="image"
-									src="http://www.101media.com.tw/img/file/1411133876e7g86.jpg" />
-								<div data-u="thumb">福利與升遷制度完善</div>
-							</div>
-							<div data-p="112.50" style="display: none;">
-								<img data-u="image"
-									src="http://www.gvm.com.tw/images/blog/336801.jpg" />
-								<div data-u="thumb">和諧職場合作關係</div>
-							</div>
-							<div data-p="112.50" style="display: none;">
-								<img data-u="image"
-									src="http://www.olily.com/cblog/wp-content/uploads/2006/11/SP_A0990.jpg" />
-								<div data-u="thumb">提供員工放鬆的桌球</div>
-							</div>
-							<div data-p="112.50" style="display: none;">
-								<img data-u="image" src="http://static4.ithome.com.tw/sites/default/files/styles/picture_size_large/public/field/image/nyc_tech_talent_pipeline_0.jpg?itok=iED_-Li0" />
-								<div data-u="thumb">專業能力進修補助</div>
-			</div>
+<!-- 	<div data-p="112.50" style="display: none;"> -->
+<!-- 								<img data-u="image" -->
+<!-- 									src="http://www.101media.com.tw/img/file/1411133876e7g86.jpg" /> -->
+<!-- 								<div data-u="thumb">福利與升遷制度完善</div> -->
+<!-- 							</div> -->
+<!-- 							<div data-p="112.50" style="display: none;"> -->
+<!-- 								<img data-u="image" -->
+<!-- 									src="http://www.gvm.com.tw/images/blog/336801.jpg" /> -->
+<!-- 								<div data-u="thumb">和諧職場合作關係</div> -->
+<!-- 							</div> -->
+<!-- 							<div data-p="112.50" style="display: none;"> -->
+<!-- 								<img data-u="image" -->
+<!-- 									src="http://www.olily.com/cblog/wp-content/uploads/2006/11/SP_A0990.jpg" /> -->
+<!-- 								<div data-u="thumb">提供員工放鬆的桌球</div> -->
+<!-- 							</div> -->
+<!-- 							<div data-p="112.50" style="display: none;"> -->
+<!-- 								<img data-u="image" src="http://static4.ithome.com.tw/sites/default/files/styles/picture_size_large/public/field/image/nyc_tech_talent_pipeline_0.jpg?itok=iED_-Li0" /> -->
+<!-- 								<div data-u="thumb">專業能力進修補助</div> -->
+<!-- 			</div> -->
 			<a data-u="ad" href="http://www.jssor.com" style="display: none">Bootstrap
 				Slider</a>
 
@@ -304,6 +308,7 @@
 	<div>${aboutcontent}</div>
 	<h3>公司位置</h3>
 	<div id="map"></div>
-	<A HREF="google_map.jsp" TARGET="_blank"><h3>路線圖</h3></A>
+	
+
 </body>
 </html>

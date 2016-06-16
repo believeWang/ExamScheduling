@@ -133,7 +133,7 @@ public class GoogleCheck extends HttpServlet {
 			}else if(pos==0){		
 				errors.put("loginNg", "您沒有使用本系統的權限，請洽系統管理員");
 				RequestDispatcher failureView = request
-						.getRequestDispatcher("index.jsp");
+						.getRequestDispatcher("recaptcha.jsp");
 				failureView.forward(request, response);
 			}else if(pos==1){
 				HttpSession session = request.getSession();
