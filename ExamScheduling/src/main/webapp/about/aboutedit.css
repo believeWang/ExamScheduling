@@ -5,11 +5,8 @@ body {
 
 h3 {
 	color: #446778;
-	padding-left:300px;
 }
 
-#editarea {
-	margin:0px auto;
-	padding-left:400px;
-	padding-right:100px;
+.editarea {
+	padding-right:200px;
 }

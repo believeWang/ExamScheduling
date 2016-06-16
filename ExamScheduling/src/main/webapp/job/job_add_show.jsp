@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- jQuery -->
-<script src='../js/jquery.min.js'></script>
-
+<!-- <script src='../js/jquery.min.js'></script> -->
+<%@ include file="../WEB-INF/cdn.file" %>
 <!-- Bootstrap -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
@@ -18,6 +18,7 @@
 
 </head>
 <body>
+<%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
 <div class="container-fluid">
 	
 	<div class="row">

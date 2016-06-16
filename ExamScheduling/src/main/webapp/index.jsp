@@ -8,10 +8,11 @@
 </head>
 <body>
 
-<h1><a href="<%=request.getContextPath()%>/test/jsp/empTable.jsp">主考官</a></h1>
-<h1><a href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet?jobid=72">前台</a></h1>
-<h1><a href="<%=request.getContextPath()%>/Examiner.jsp">後台登入</a></h1>
 
+<h1><a href="<%=request.getContextPath()%>/test/jsp/empTable.jsp">員工管理</a></h1>
+<h1><a href="<%=request.getContextPath()%>/AboutServlet">前台</a></h1>
+<h1><a href="<%=request.getContextPath()%>/recaptcha.jsp">後台登入</a></h1>
 <h1><a href="<%=request.getContextPath()%>/google_map.jsp">GoogleMap</a></h1>
+<h1><a href="<%=request.getContextPath()%>/setting/loadmail.jsp">修改內文</a></h1>
 </body>
 </html> 

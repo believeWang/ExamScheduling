@@ -20,17 +20,20 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/header/sa_slidenav.jsp"%>
-
-	<h3>公司簡介 - 編輯頁面</h3>
-	<hr>
-	<br>
-	<div id="editarea">
-		<form METHOD="post" ACTION="/ExamScheduling/aboutedit">
-			<textarea class="ckeditor" cols="20" id="content" name=content
-				rows="60">${about}</textarea>
-			<input type=submit value="Submit"> <input type="hidden"
-				name="action" value="Editor_Update"> <input type=button
-				value="Cancel">
-		</form>
+	<div class="row editarea">
+		<div class="col s11 offset-s2">
+			<h3>公司簡介 - 編輯頁面</h3>
+			<hr>
+			<br>
+			<div>
+				<form METHOD="post" ACTION="/ExamScheduling/aboutedit">
+					<textarea class="ckeditor" cols="20" id="content" name=content
+						rows="60">${about}</textarea>
+					<input type=submit value="Submit"> <input type="hidden"
+						name="action" value="Editor_Update"> <input type=button
+						value="Cancel">
+				</form>
+			</div>
+		</div>
 	</div>
 </html>

@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<script>
+$(function() {
+	   $('.collapsible').collapsible({
+		      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+		    });
+		    $(".button-collapse").sideNav();
+		});
+</script>
   <header>
 
 
@@ -26,17 +33,19 @@
                 </div>
             </div>
             </li>           
-           <li class="bold"><a href="/ExamScheduling/aboutedit" class="collapsible-header active waves-effect waves-teal">編輯前台</a>
+           <ul class="collapsible" data-collapsible="accordion">
+           <li class="bold"><a class="collapsible-header active waves-effect waves-teal">編輯前台</a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="/ExamScheduling/aboutedit">關於緯康</a></li>
-                  <li><a href="/ExamScheduling/bannerset">輪播圖</a></li>
-                 
+                  <li><a href="/ExamScheduling/bannerset.jsp">輪播圖</a></li>    
                 </ul>
               </div>
             </li>
+            </ul>
         <li class="bold"><a href="#" class="waves-effect waves-teal">主考官管理</a></li>
         <li class="bold"><a href="/ExamScheduling/upload/poitest.jspx" class="waves-effect waves-teal">考生管理</a></li>
+      <ul class="collapsible" data-collapsible="accordion">
         <li class="bold"><a class="collapsible-header active waves-effect waves-teal">設定</a>
               <div class="collapsible-body">
                 <ul>
@@ -46,7 +55,7 @@
                 </ul>
               </div>
             </li>
-        
+        </ul>
         
       </ul>
     </header>
