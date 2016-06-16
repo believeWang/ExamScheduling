@@ -38,7 +38,7 @@ public class AboutServlet extends HttpServlet {
 		RequestDispatcher rd = // 準備將移轉程式的執行順序
 		request.getRequestDispatcher("/WEB-INF/about.jsp");
 		rd.forward(request, response); // 移轉程式的執行順序
-
+		
 	}
 
 	protected void doPost(HttpServletRequest request,

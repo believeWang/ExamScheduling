@@ -12,7 +12,6 @@
 	src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
 <style>
 @import url('<%=request.getContextPath()%>/about/aboutedit.css');
 </style>
@@ -29,9 +28,9 @@
 				<form METHOD="post" ACTION="/ExamScheduling/aboutedit">
 					<textarea class="ckeditor" cols="20" id="content" name=content
 						rows="60">${about}</textarea>
-					<input type=submit value="Submit"> <input type="hidden"
+					<input type=submit value="儲存送出"> <input type="hidden"
 						name="action" value="Editor_Update"> <input type=button
-						value="Cancel">
+						value="取消">
 				</form>
 			</div>
 		</div>
