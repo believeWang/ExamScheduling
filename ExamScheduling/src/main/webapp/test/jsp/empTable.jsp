@@ -105,7 +105,9 @@ function myGrid(response){
 	 	            		url : '/ExamScheduling/emp/emptable.do',
 	 	             		data : {
 	 	             			'button' : 'Update',
+	 	             			'Name' : updatingClient.Name,
 	 	             			'Number' : updatingClient.Number,
+	 	             			'Email' : updatingClient.Email,
 	 	             			'Position' : updatingClient.Position,
 	 	             		},
 	 	            		type : 'post',
