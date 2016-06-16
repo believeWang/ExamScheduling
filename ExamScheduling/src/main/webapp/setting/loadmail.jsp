@@ -5,9 +5,28 @@
 <head>
 <script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
+	<script type="text/javascript">
+	$(document).ready(function(){
+        $('body').addClass('loaded');
+	});
+	$('form').submit(function() {	
+    	$('body').removeClass('loaded');
+    	return true; // return false to cancel form action
+    });
+	</script>
 <title>Edit mail</title>
 </head>
 <body>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
+
 <h2>E-mail-編輯頁面</h2>
 <FORM METHOD="get" ACTION="/ExamScheduling/setting/editmail"  >
 

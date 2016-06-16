@@ -18,7 +18,8 @@ response.setHeader("Expires", "0");
 <%@ include file="../cdn_bootstrap.file" %>
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/demo.css" />
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/component.css" />
-
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 
 <style type="text/css">
 #content {
@@ -305,12 +306,27 @@ response.setHeader("Expires", "0");
 
 		}
 	}
+
+	$(document).ready(function(){
+
+        $('body').addClass('loaded');
+	});
+	$('form').submit(function() {	
+    	$('body').removeClass('loaded');
+    	return true; // return false to cancel form action
+    });
 </script>
 
 </head>
 <br />
 
 <body onload="examTimer()">
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 
 	<div class="codrops-top clearfix">
 		<span  id="no"></span>

@@ -12,7 +12,8 @@
 	href="exam_resourse/css/custom_form.css" />
 <link rel="stylesheet" type="text/css"
 	href="css/preload.css" />
-
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 
 
 <style>
@@ -34,17 +35,14 @@ a[href|='#q'] {color =red;width =35px;
 }
 </style>
 
-
 </head>
 <body class="loaded">
+<!-- loading圖 -->
 	<div id="loader-wrapper">
 		<div id="loader"></div>
-
 		<div class="loader-section section-left"></div>
-		<div class="loader-section section-right"></div>
-
+        <div class="loader-section section-right"></div>
 	</div>
-
 	<div class="content">
 		<div class="row">
 			<div class="col s12 m9 l10">
@@ -433,7 +431,12 @@ a[href|='#q'] {color =red;width =35px;
 	    		
 // 	    		}, 1000);
 	    		
+		 $('body').addClass('loaded');
 	});
+$('form').submit(function() {	
+    	$('body').removeClass('loaded');
+    	return true; // return false to cancel form action
+    });
 </script>
 <script src="exam_resourse/js/exameditjs.js"></script>
 
