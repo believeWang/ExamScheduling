@@ -308,6 +308,6 @@
 	<div>${aboutcontent}</div>
 	<h3>公司位置</h3>
 	<div id="map"></div>
-	
+	<h3><a href="/ExamScheduling/google_map.jsp" target="_blank">路線圖</a></h3>
 </body>
 </html>
