@@ -64,7 +64,7 @@ public class EventJSONServlet extends HttpServlet {
 		EventVO eventVO = new EventVO();
 		eventVO.setStarttime(startDate);
 		eventVO.setEndtime(endDate);
-		eventVO.setRendering("background");
+		eventVO.setRendering("null");//background
 		eventVO.setBgcolor("#ff9f89");
 		
 		//撈所有事件物件

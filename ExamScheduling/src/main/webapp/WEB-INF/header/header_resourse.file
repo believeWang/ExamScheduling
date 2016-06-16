@@ -42,7 +42,7 @@
 }
 
 body {
-	background: url("/ExamScheduling/exam_resourse/images/background.jpg");
+	background-color:blue-grey lighten-4;
 }
 </style>
 <link rel="stylesheet" type="text/css"

@@ -56,14 +56,69 @@ public class JobSaveServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String jobname = request.getParameter("jobname");
-		String employee = request.getParameter("employee");
+		//String id = request.getParameter("id");
+//		String jobid_str = request.getParameter("jobid");
+//		String jobname = request.getParameter("jobname");
+		//String employee = request.getParameter("employee");
+//		String employee = request.getParameter("empno");
+		String action = request.getParameter("action");
+//		int empno = Integer.valueOf(employee);
+//		int jobid = Integer.valueOf(jobid_str);
 		
-		int empno = Integer.valueOf(employee);
-		
-		if(id == null){
-			//jobVO
+//		if(id == null){
+//			//jobVO
+//			JobVO jobVO = new JobVO();
+//			jobVO.setJobname(jobname);
+//			
+//			Set<EmployeeVO> employee_set = new HashSet<EmployeeVO>();
+//			EmployeeDAO empDAO = new EmployeeDAO();
+//			//EmployeeVO empVO = empDAO.findByPrimaryKey(empno);
+//			//employee_set.add(empVO);
+//			
+//			jobVO.setEmployee(employee_set);
+//			
+//			//新增job並返回當前ID
+//			JobDAO jobDAO = new JobDAO();
+//			int jobid = jobDAO.insert_return_id(jobVO);
+//			
+//			//塞資料進job_ErVO
+////			JobErVO jobErVO = new JobErVO();
+////			jobErVO.setJobid(jobid);  //等job inser into 取 pk鍵
+////			jobErVO.setEmpno(empno);
+//			
+////			JobErDAO jobErDAO = new JobErDAO();
+////			jobErDAO.insert(jobErVO);
+//			
+//			//撈資料數目
+//			List<JobVO> count = jobDAO.getAll();
+//			int size = count.size();
+//			String size_str = String.valueOf(size);
+//			
+//			//撈指定的單筆job
+//			JobVO jobData = jobDAO.findByPrimaryKey(jobid);
+//			String Jobid = jobData.getJobid().toString();
+//			
+//			//字串轉JSON
+//			List<String> target = new ArrayList();
+//			target.add(Jobid);
+//			target.add(jobData.getJobname());
+//			for(EmployeeVO emp : jobData.getEmployee()){
+//				target.add(emp.getEmpname());
+//			}
+//			target.add(size_str);
+//			
+//			Gson gson = new Gson();
+//			String jobJSON2 = gson.toJson(target);
+//			out.print(jobJSON2);
+//			
+//		}
+		if ("add".equals(action)) {
+			
+			String jobname = request.getParameter("jobname");
+			String employee = request.getParameter("empno");
+			
+			int empno = Integer.valueOf(employee);
+			
 			JobVO jobVO = new JobVO();
 			jobVO.setJobname(jobname);
 			
@@ -74,54 +129,61 @@ public class JobSaveServlet extends HttpServlet {
 			
 			jobVO.setEmployee(employee_set);
 			
-			//新增job並返回當前ID
 			JobDAO jobDAO = new JobDAO();
-			int jobid = jobDAO.insert_return_id(jobVO);
+			jobDAO.insert(jobVO);
 			
-			//塞資料進job_ErVO
-//			JobErVO jobErVO = new JobErVO();
-//			jobErVO.setJobid(jobid);  //等job inser into 取 pk鍵
-//			jobErVO.setEmpno(empno);
+			//撈全部 job
+			List<JobVO> joblists = jobDAO.getAll();
 			
-//			JobErDAO jobErDAO = new JobErDAO();
-//			jobErDAO.insert(jobErVO);
+			//撈所有主考官
+			List<EmployeeVO> emplists = empDAO.getExam();
 			
-			//撈資料數目
-			List<JobVO> count = jobDAO.getAll();
-			int size = count.size();
-			String size_str = String.valueOf(size);
+			request.setAttribute("joblists", joblists);
+			request.setAttribute("emplists", emplists); 
 			
-			//撈指定的單筆job
-			JobVO jobData = jobDAO.findByPrimaryKey(jobid);
-			String Jobid = jobData.getJobid().toString();
-			
-			//字串轉JSON
-			List<String> target = new ArrayList();
-			target.add(Jobid);
-			target.add(jobData.getJobname());
-			for(EmployeeVO emp : jobData.getEmployee()){
-				target.add(emp.getEmpname());
-			}
-			target.add(size_str);
-			
-			Gson gson = new Gson();
-			String jobJSON2 = gson.toJson(target);
-			out.print(jobJSON2);
-			
-		}else{
-			//update
-			System.out.println("沒有");
+			RequestDispatcher jb = request.getRequestDispatcher("/job/job_lists.jsp");
+			jb.forward(request, response);
 		}
 		
-		
-//		if ("update".equals(action)) {
-//			
-//		}
-//		
-//		if ("delete".equals(action)) {
-//			System.out.println("delete");
-//		}
-//		
+		if ("edit".equals(action)) {
+			System.out.println("edit");
+			
+			String jobid_str = request.getParameter("jobid");
+			String jobname = request.getParameter("jobname");
+			String employee = request.getParameter("empno");
+			
+			int empno = Integer.valueOf(employee);
+			int jobid = Integer.valueOf(jobid_str);
+			
+			//jobVO
+			JobVO jobVO = new JobVO();
+			jobVO.setJobname(jobname);
+			jobVO.setJobid(jobid);
+			
+			Set<EmployeeVO> employee_set = new HashSet<EmployeeVO>();
+			EmployeeDAO empDAO = new EmployeeDAO();
+			EmployeeVO empVO = empDAO.findByPrimaryKey(empno);
+			employee_set.add(empVO);
+			
+			jobVO.setEmployee(employee_set);
+			
+			//修改job並返回當前ID
+			JobDAO jobDAO = new JobDAO();
+			jobDAO.update(jobVO);
+			
+			//撈全部 job
+			List<JobVO> joblists = jobDAO.getAll();
+			
+			//撈所有主考官
+			List<EmployeeVO> emplists = empDAO.getExam();
+			
+			request.setAttribute("joblists", joblists);
+			request.setAttribute("emplists", emplists); 
+			
+			RequestDispatcher jb = request.getRequestDispatcher("/job/job_lists.jsp");
+			jb.forward(request, response);
+		}
+
 	}
 
 }

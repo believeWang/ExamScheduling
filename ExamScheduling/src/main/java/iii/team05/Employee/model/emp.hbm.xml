@@ -3,30 +3,32 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="iii.team05.Employee.model.EmployeeVO" table="Employee" >
-        
-        <id name="empno" column="empno">
-            <generator class="identity"/>
-        </id>
-        
-        <property name="empname" column="empname" />
-        <property name="empemail" column="empemail" />
-        <property name="position" column="position" />
+	<class name="iii.team05.Employee.model.EmployeeVO" table="Employee">
 
-        
-        <set name="job" table="Job_Er" 
-        	inverse="true" lazy="false" fetch="select" cascade="all" >
-            <key>
-                <column name="empno" not-null="true" />
-            </key>
-            <many-to-many entity-name="iii.team05.job.model.JobVO">
-                <column name="jobid" not-null="true" />
-            </many-to-many>
-        </set>
-        <property name="token" column="token" />
-        
-        
-        
-    </class>
+		<id name="empno" column="empno">
+			<generator class="identity" />
+<!-- 			<generator class="sequence"> -->
+<!-- 				<param name="sequence">emp_SEQ</param> -->
+<!-- 			</generator> -->
+		</id>
+
+		<property name="empname" column="empname" />
+		<property name="empemail" column="empemail" />
+		<property name="position" column="position" />
+
+		<set name="job" table="Job_Er" inverse="true" lazy="false" fetch="select"
+			cascade="all">
+			<key>
+				<column name="empno" not-null="true" />
+			</key>
+			<many-to-many entity-name="iii.team05.job.model.JobVO">
+				<column name="jobid" not-null="true" />
+			</many-to-many>
+		</set>
+		<property name="token" column="token" />
+
+
+
+	</class>
 </hibernate-mapping>
 

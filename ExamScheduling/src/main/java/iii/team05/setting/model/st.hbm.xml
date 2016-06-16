@@ -7,6 +7,9 @@
 
 		<id name="setid" column="setid">
 		<generator class="identity"/>
+<!-- 		 <generator class="sequence"> --> 
+<!-- 				<param name="sequence">set_SEQ</param> -->
+<!-- 			</generator> -->
 		</id>
 
 		<property name="period" column="period" />

@@ -1,18 +1,28 @@
 /* 標題 */
 h3 {
-	color:#446778;
+	color: #446778;
+	padding-left: 300px;
 }
 
-h4 , p {
-	color:#58A4B0;
+h4 {
+	color: #58A4B0;
+}
+
+.description {
+	color: #58A4B0;
+}
+
+.container {
+	margin: 0px auto;
+	padding-left: 100px;
 }
 
 /* 班級列表 */
 .classlisttd {
-	width:100px;
+	width: 100px;
 	font-size: 1.4em;
 	background-color: #DCE3F0;
-	margin:0.8em;		
+	margin: 0.8em;
 }
 
 .classlist a:hover {
@@ -24,6 +34,7 @@ h4 , p {
 	background-color: #D8DBE2;
 	color: #446778;
 }
+
 .downloadexcel {
 	font-weight: bold;
 	font-size: 1.5em;
