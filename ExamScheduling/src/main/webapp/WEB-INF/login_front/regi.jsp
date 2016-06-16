@@ -110,7 +110,7 @@ $('#send').click(
 		function() {
 		
 				var em=$('#email').val();
-				
+				$('body').removeClass('loaded');
 				$('#send').attr(
 						'href',
 						'/ExamScheduling/eclogin/cheakmail?ecemail='
@@ -121,9 +121,6 @@ $('#send').click(
 $(document).ready(function(){
     $('body').addClass('loaded');
 });
-$('form').submit(function() {
-	$('body').removeClass('loaded');
-	return true; // return false to cancel form action
-});
+
 </script>
 </html>
