@@ -126,7 +126,7 @@ public class Emptable extends HttpServlet {
 				
 			}
 		}
-if ("Update".equals(button)) { // 來自listAllEmp.jsp的請求
+			if ("Update".equals(button)) { // 來自listAllEmp.jsp的請求
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -143,7 +143,6 @@ if ("Update".equals(button)) { // 來自listAllEmp.jsp的請求
 				EmployeeService empSvc = new EmployeeService();
 				//EmployeeVO empVO = empSvc.updateEmp2(empno, position-1);
 				EmployeeVO empVO = empSvc.updateEmp(empno, empname, empemail, position-1);
-
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());

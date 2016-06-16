@@ -10,15 +10,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>員工管理</title>
-<%-- <%@ include file="../../WEB-INF/cdn.file" %> --%>
+<%@ include file="../../WEB-INF/emp_cdn.file" %>
     <link rel="stylesheet" type="text/css" href="demos.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" type="text/css" href="../css/jsgrid.css" />
-    <link rel="stylesheet" type="text/css" href="../css/theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.4.1/jsgrid.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.4.1/jsgrid-theme.css" />
 
-    <script src="../external/jquery/jquery-1.8.3.js"></script>
-<!--     <script src="db.js"></script> -->
+<!--     <script src="../external/jquery/jquery-1.8.3.js"></script> -->
 
     <script src="../src/jsgrid.core.js"></script>
     <script src="../src/jsgrid.load-indicator.js"></script>
@@ -28,7 +27,6 @@
     <script src="../src/fields/jsgrid.field.text.js"></script>
     <script src="../src/fields/jsgrid.field.number.js"></script>
     <script src="../src/fields/jsgrid.field.select.js"></script>
-<!--     <script src="../src/fields/jsgrid.field.checkbox.js"></script> -->
     <script src="../src/fields/jsgrid.field.control.js"></script>
     
     
@@ -45,17 +43,16 @@
 <!-- </div> -->
 
 <!--  <div id="jsGrid" class="col s10 offset-s2"></div> -->
+<a type="image" class="waves-effect waves-light btn modal-trigger" href="<%=request.getContextPath()%>/employee/Emptable2.jsp">返回</a>
 
 </body>
 <script>
 
+
 $(function() {
 	
 	myajax();
-// 	 $('.collapsible').collapsible({
-// 	      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-// 	    });
-// 	    $(".button-collapse").sideNav();
+	
 });
 
 function myajax(){
@@ -106,7 +103,7 @@ function myGrid(response){
 	 	             		data : {
 	 	             			'button' : 'Update',
 	 	             			'Name' : updatingClient.Name,
-	 	             			'Number' : updatingClient.Number,
+	 	             			'Number' :updatingClient.Number,
 	 	             			'Email' : updatingClient.Email,
 	 	             			'Position' : updatingClient.Position,
 	 	             		},
@@ -160,10 +157,11 @@ function myGrid(response){
 	                     { name: "Number", type: "number", width: 50 },
 	                     { name: "Email", type: "text", width: 200 },
 	                     { name: "Position", type: "select", items: db.countries, valueField: "Id", textField: "Name" },
-	                  
 	                     { type: "control" }
 	                 ]
 	        });
+	      
+	   	
 }
 </script>
 </html>
