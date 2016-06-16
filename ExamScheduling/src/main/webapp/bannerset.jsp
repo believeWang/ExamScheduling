@@ -20,9 +20,9 @@
 
 <body>
 <%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
- <div class="row">
-<div class="col s10 offset-s2">
-    <h1>Banner編輯</h1>
+<div class="row">
+  <div class="col s10 offset-s2">
+    <h3>Banner編輯</h3>
     <table class="responsive-table" width="680" BORDER='0' style="background:#ACD6FF">
       <form method="post" action="bannerservlet" enctype="multipart/form-data">    
 		    <tr height="36" >
@@ -45,10 +45,9 @@
 			  <td/>
 			</tr>
         </c:forEach>
-	  
     </table>
-    </div>
-    </div>
+   </div>
+ </div>
 
 </body>
 

@@ -50,15 +50,17 @@
 <div class="toggler" id="mqtt">
 	<!--   <button id="button" class="ui-state-default ui-corner-all">即時通訊 </button> -->
 	<h3 id="button" class="card-panel hoverable">
-		<i class=" large material-icons">textsms</i>
+		<!-- 		<i class=" large material-icons">textsms</i> -->
+		<img src="/ExamScheduling/images/button.jpg">
 	</h3>
-	<div class="switch">
-		<label> Off <input type="checkbox" id="checkboxid" value="0">
-			<span class="lever"></span> On
-		</label>
-	</div>
-	<span>提醒通知<span>
-			<div id="effect" class="ui-widget-content ui-corner-all">
+
+	<div id="effect" class="ui-widget-content ui-corner-all">
+		<div class="switch">
+			<label> Off <input type="checkbox" id="checkboxid" value="0">
+				<span class="lever"></span> On
+			</label>
+		</div>
+		<span>提醒通知<span>
 				<div style="background: white;">
 					<input type="hidden" id="messageName" value="主考官  ${GoogleUser}">
 					</br>
@@ -74,6 +76,6 @@
 
 					</p>
 				</div>
-			</div>
+	</div>
 </div>
 <!-- MQTT結尾 -->
