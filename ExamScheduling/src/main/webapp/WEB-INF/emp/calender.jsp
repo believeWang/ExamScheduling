@@ -19,6 +19,8 @@
 <%@ include file="/WEB-INF/cdn.file"%>
 <%@ include file="/WEB-INF/header/slide_mqtt.file" %>
 <%@ include file="/WEB-INF/calendar.file"%>
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <title></title>
 
 <style type="text/css">
@@ -31,7 +33,8 @@
 <script>
 	$(document).ready(
 			function() {
-						$('#calendar').fullCalendar({
+				$('body').addClass('loaded');
+				$('#calendar').fullCalendar({
 											header : {
 												left : 'title today',
 												center : 'month,basicWeek,basicDay,agendaWeek,agendaDay',
@@ -73,7 +76,12 @@ body {
 </head>
 <body>
 <%@ include file="/WEB-INF/header/slidenav.jsp" %>
-	
+	<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 
 			<div class="container-fluid">
 		<div class="row">

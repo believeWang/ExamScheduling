@@ -8,6 +8,10 @@
 <%@ include file="/WEB-INF/cdn.file"%>
 
  <%@ include file="../header/header_resourse.file" %>
+    
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
+    
     <style type="text/css">
     
 body {
@@ -57,12 +61,21 @@ table{
 </style>
   
    <title>TechQ Online Quiz</title>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('body').addClass('loaded');
+});
+</script>
+
 </head>
 <body>
 <%@ include file="../header/header.jsp" %>
-
-
-
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 <div class="content">
 <table cellpadding="0" cellspacing="50">
 <c:forEach var="examEntry" items="${applicationScope.examsMap}" varStatus="counter">

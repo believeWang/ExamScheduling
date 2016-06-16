@@ -18,6 +18,8 @@
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <style type="text/css">
 .line-separator{
 height:1px;
@@ -36,6 +38,12 @@ border-bottom:1px solid #313030;
 </head>
 <body>
 	<%@ include file="/WEB-INF/header/header.jsp"%>
+	<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 	<div style="margin: 100px 500px">
 		<table class="table">
 			<tr>
@@ -118,6 +126,11 @@ border-bottom:1px solid #313030;
 <script type="text/javascript">
 $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
+    $('body').addClass('loaded');
   });
+$('form').submit(function() {	
+	$('body').removeClass('loaded');
+	return true; // return false to cancel form action
+});
 </script>
 </html>

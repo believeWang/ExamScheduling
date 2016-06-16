@@ -9,7 +9,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <%@ include file="/WEB-INF/cdn.file"%>
 
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
@@ -52,6 +53,7 @@
 <script>
 	
 	$(document).ready(function() { 
+		  $('body').addClass('loaded');
 		var esYear = ${datearray[0]};
 		var esMonth = ${datearray[1]};
 		var esDay = ${datearray[2]};
@@ -123,6 +125,13 @@
 </head>
 <body>
     <%@ include file="../WEB-INF/header/header.jsp" %> 
+    <!-- loading圖 -->
+    <div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+	</div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col s2">

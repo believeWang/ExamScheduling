@@ -12,14 +12,29 @@
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/cdn.file" %>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <script type="text/javascript">
 $(function(){
     $('.parallax').parallax();
   });
-      
+$(document).ready(function(){
+    $('body').addClass('loaded');
+});
+$('form').submit(function() {	
+	$('body').removeClass('loaded');
+	return true; // return false to cancel form action
+});
 </script>
 </head>
 <body >
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
+
 <div class="parallax-container" >
     <div class="parallax"><img src="images/p1.jpg"></div>
   </div>
