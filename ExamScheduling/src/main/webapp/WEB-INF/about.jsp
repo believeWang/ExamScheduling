@@ -17,7 +17,7 @@
 <title>公司簡介</title>
 </head>
 
-<body
+<body>
 	style="padding: 0px; margin: 0px; background-color: #fff; font-family: Arial, sans-serif">
 	<%@ include file="../WEB-INF/header/header.jsp"%>
 	<!-- loading圖 -->
