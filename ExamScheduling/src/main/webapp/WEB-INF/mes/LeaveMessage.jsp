@@ -5,13 +5,20 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
-
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Reception</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/header/header.jsp" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 <div style="margin: 100px 500px">
  <FORM METHOD="post" ACTION="/ExamScheduling/mes/mes.do" name="form1" >
 <h1 class="center-align">請輸入留言</h1>
@@ -52,7 +59,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
+    $('body').addClass('loaded');
   });
+$('form').submit(function() {	
+	$('body').removeClass('loaded');
+	return true; // return false to cancel form action
+});
 </script>
 </html>
 

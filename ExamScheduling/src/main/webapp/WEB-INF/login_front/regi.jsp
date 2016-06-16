@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
     <title>
         申請
     </title>
@@ -30,6 +31,12 @@ body {
 
 </head>
 <body class=" blue-grey lighten-4">
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
  <div id="login-page" class="row">
     <div class="col s12 z-depth-6 card-panel">
       <form class="login-form">
@@ -111,6 +118,12 @@ $('#send').click(
 		
 
 		});
-
+$(document).ready(function(){
+    $('body').addClass('loaded');
+});
+$('form').submit(function() {
+	$('body').removeClass('loaded');
+	return true; // return false to cancel form action
+});
 </script>
 </html>
