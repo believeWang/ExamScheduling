@@ -9,6 +9,7 @@
 
 <!-- 自訂 -->
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/examstyle.min.css" />
+
 <%@ include file="../cdn.file" %>
 
 
@@ -17,6 +18,13 @@
 </head>
 <body>
 <%@ include file="../header/slidenav.jsp" %>
+<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
   <!-- START CONTENT -->
       <section id="content">
                
@@ -122,7 +130,14 @@
         columnWidth: ".product-sizer",
       });
    
-      
+      $(document).ready(function() {
+    		
+    		setTimeout(function(){
+    			$('body').addClass('loaded');
+    		
+    		}, 1000);
+    		
+    	});
       
      
  </script>
