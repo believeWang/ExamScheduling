@@ -23,7 +23,7 @@
 <div class="row">
   <div class="col s10 offset-s2">
     <h3>Banner編輯</h3>
-    <table class="responsive-table" width="680" BORDER='0' style="background:#ACD6FF">
+    <table class="responsive-table" width="300" BORDER='0'bgcolor="#ACD6FF" >
       <form method="post" action="bannerservlet" enctype="multipart/form-data">    
 		    <tr height="36" >
 		      <td height="61" colspan="6" align="center">
@@ -34,8 +34,10 @@
 		    </tr>
 		    </form>
 	    <c:forEach var="BannerVO" items="${map}">
-			<tr>
-			  <td><img class="materialboxed" alt="" src="${BannerVO.value}" width="200px" height="200px"></td>
+			  <tr>
+			  <td>
+			    <img class="materialboxed" alt="" src="${BannerVO.value}" width="200px" height="200px">
+			  </td>
 			  <td>
 				<form  METHOD="post" action="bannerservlet">
 				<input type="submit" value="刪除" name="delete">
@@ -43,7 +45,7 @@
 				<input type="hidden" name="action" value="Banner_Imag_Delete">
 				</form>
 			  <td/>
-			</tr>
+			  </tr>	
         </c:forEach>
     </table>
    </div>
