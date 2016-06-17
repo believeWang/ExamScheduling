@@ -5,12 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>職缺列表</title>
+
 <!-- jQuery -->
 <!-- <script src='../js/jquery.min.js'></script> -->
 <%@ include file="../WEB-INF/cdn.file" %>
 <!-- jQuery UI -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
@@ -21,6 +24,7 @@
   
 <script>
 $(function() {
+	 $('body').addClass('loaded');
 	var dialog, form,
 	
 	id = $( "#id" ),
@@ -86,6 +90,14 @@ $(function() {
 </head>
 <body>
 <%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+	</div>
 <div class="container-fluid">
 	
 	<div class="row">

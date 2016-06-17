@@ -75,7 +75,7 @@ public class EventSaveServlet extends HttpServlet {
 			evo.setEmpno(empno);
 			evo.setStarttime(ts);
 			evo.setEndtime(ts);
-			evo.setBgcolor("#337AB7");
+			evo.setBgcolor("#58A4B0");//337AB7
 			evo.setTitle(title);
 			evo.setEcno(ecno);
 			evo.setEventremark(remark);
@@ -116,7 +116,7 @@ public class EventSaveServlet extends HttpServlet {
 			evo.setEmpno(empno);
 			evo.setStarttime(ts);
 			evo.setEndtime(ts);
-			evo.setBgcolor("#337AB7");
+			evo.setBgcolor("#58A4B0");//337AB7
 			evo.setTitle(title);
 			evo.setEcno(ecno);
 			evo.setEventremark(remark);

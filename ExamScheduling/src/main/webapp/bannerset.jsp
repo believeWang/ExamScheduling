@@ -17,11 +17,11 @@
 <link rel="stylesheet" type="text/css"
 	href="css/preload.css" />
 <title>Banner編輯頁面</title>
-<%@ include file="../WEB-INF/cdn.file" %>
+<%@ include file="WEB-INF/cdn.file" %>
 </head>
 
 <body>
-<%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
+<%@ include file="WEB-INF/header/sa_slidenav.jsp" %>
 <div id="loader-wrapper">
 			<div id="loader"></div>
 

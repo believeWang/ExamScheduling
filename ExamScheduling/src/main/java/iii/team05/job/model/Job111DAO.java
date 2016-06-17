@@ -28,6 +28,7 @@ public class Job111DAO implements JobDAO_interface {
 	private static final String GET_ONE_STMT = "SELECT jobid, jobname FROM Job where jobid = ?";
 	private static final String DELETE_STMT = "DELETE FROM Job where jobid = ?";
 	private static final String UPDATE_STMT = "UPDATE Job set jobname=? where jobid = ?";
+	private static final String GET_FIRST = "SELECT FIRST(jobid) FROM Job";
 
 	@Override
 	public void insert(JobVO jobVO) {
@@ -316,5 +317,55 @@ public class Job111DAO implements JobDAO_interface {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public int get_jobfirst() {
+		
+		int jobid = 0;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_FIRST);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {			
+				rs.getInt("jobid");
+			}
+
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return jobid;
+	}
+	
 
 }

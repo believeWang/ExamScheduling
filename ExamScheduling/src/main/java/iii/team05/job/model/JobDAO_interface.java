@@ -10,4 +10,5 @@ public interface JobDAO_interface {
 	      public List<JobVO> getAll();  //查詢ALL
 	      public int insert_return_id(JobVO jobVO);  //新增
 	      public void delete_VO(JobVO jobVO);
+	      public int get_jobfirst();  //撈第一筆jobid
 }

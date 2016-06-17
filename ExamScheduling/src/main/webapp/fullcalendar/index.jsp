@@ -68,7 +68,7 @@
 	    	weekends: false,
 	        header:{
 	        	left: 'title today',
-	        	center: 'month,basicWeek,basicDay,agendaWeek,agendaDay',
+	        	center: 'month,basicWeek,basicDay',
 	        	right: 'prevYear prev next nextYear'
 	        },
 	        editable: true,
@@ -95,7 +95,18 @@
 	                'type':'ajax', 
 	                'href':'EventServlet?action=edit&id='+calEvent.id+'&empno='+empno
 	            }); 
-	        } 
+	        },
+	        buttonText: {
+        	  today: '今天',
+        	  month: '月',
+        	  week: '周',
+        	  day: '天'
+       	 	},
+			allDayText: '全天',
+			monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+			monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+			dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+			dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
 
 	    })
 	    
@@ -137,7 +148,7 @@
 			<div class="col s2">
 				<ul class="collection">
 					<c:forEach var="job" items="${jdlists}">
-						<a href="EventShowServlet?jobid=${job.jobid}"><li class="collection-item <c:if test="${job.jobid == jobid}"> blue darken-1 active</c:if>" >${job.jobname}</li></a><!-- active -->
+						<a href="EventShowServlet?jobid=${job.jobid}"><li class="collection-item <c:if test="${job.jobid == jobid}"> active</c:if>" ><h3>${job.jobname}</h3></li></a><!-- active -->
 
 					</c:forEach>
 				</ul>
@@ -150,7 +161,7 @@
 							<a class="modal-trigger waves-effect waves-light btn1" href="#modal1" id="errormsg"></a>
 								<div id="modal1" class="modal modal-fixed-footer" style="width:650px; height:200px">
 								    <div class="modal-content">
-								      <h2>錯誤訊息!!!</h2>
+								      <h2><p>錯誤訊息!!!</p></h2>
 								      <h4>超過預約的時間，請選擇可報名日期:${datearray[0]}年${datearray[1]}月${datearray[2]}日後14天內，謝謝。</h4>
 								    </div>
 								    <div class="modal-footer">
