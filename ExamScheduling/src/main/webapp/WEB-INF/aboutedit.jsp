@@ -39,9 +39,15 @@
 				<form METHOD="post" ACTION="/ExamScheduling/aboutedit">
 					<textarea class="ckeditor" cols="20" id="content" name=content
 						rows="60">${about}</textarea>
-					<input type=submit value="Submit"> <input type="hidden"
-						name="action" value="Editor_Update"> <input type=button
-						value="Cancel">
+<!-- 					<input type=submit value="送出"> -->
+					<button class="waves-light btn" type="submit" style="">
+						送出<i class="material-icons right">input</i>
+							</button> <input type="hidden"
+						name="action" value="Editor_Update"> 
+<!-- 					<input type=buttonvalue="取消"> -->
+						<button class="red lighten-2 waves-light btn" type="submit" style="">
+						取消<i class="material-icons right">delete</i>
+							</button>
 				</form>
 			</div>
 		</div>

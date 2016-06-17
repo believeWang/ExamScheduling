@@ -54,7 +54,10 @@
   </div>
 
 
-<input type=submit value="讀取" >
+<!-- <input type=submit value="讀取" > -->
+<button class="waves-light btn" type="submit" style="">
+						讀取<i class="material-icons right">input</i>
+							</button>
 
 
 

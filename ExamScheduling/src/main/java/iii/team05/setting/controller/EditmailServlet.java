@@ -47,7 +47,7 @@ public class EditmailServlet extends HttpServlet {
 	      }
 				request.setAttribute("mail", subject);     // 將第一項資訊放入request物件內
 		        RequestDispatcher rd =                     // 準備將移轉程式的執行順序
-		               request.getRequestDispatcher("/setting/editsubject.jsp");
+		               request.getRequestDispatcher("/WEB-INF/setting/editsubject.jsp");
 		        rd.forward(request, response);             // 移轉程式的執行順序
 		        return ;                                   // forward()之後會有一個return敘述	
 		  } 
@@ -61,7 +61,7 @@ public class EditmailServlet extends HttpServlet {
 			}
 			request.setAttribute("mail", content);        // 將第一項資訊放入request物件內
 	        RequestDispatcher rd =                        // 準備將移轉程式的執行順序
-	               request.getRequestDispatcher("/setting/editcontent.jsp");
+	               request.getRequestDispatcher("/WEB-INF/setting/editcontent.jsp");
 	        rd.forward(request, response);                // 移轉程式的執行順序
 	        return ;                                      // forward()之後會有一個return敘述	
 		  }
@@ -78,15 +78,18 @@ public class EditmailServlet extends HttpServlet {
 			  System.out.println(emailcontent);            //測試editmail.jsp有傳更新資料進來
 			  stSvc.updateMailcontent(emailcontent);       //呼叫STService的updatemail()方法工作
 		  }
-//response.sendRedirect("/WEB-INF/loadmail.jsp");
-request.getRequestDispatcher("/WEB-INF/setting/loadmail.jsp").forward(request, response);
+		//response.sendRedirect("/WEB-INF/loadmail.jsp");
+		request.getRequestDispatcher("/WEB-INF/setting/loadmail.jsp").forward(request, response);
+
+
 }
 	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
