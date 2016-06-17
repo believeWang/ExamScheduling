@@ -53,7 +53,7 @@ public class JobServlet extends HttpServlet {
 		List<EmployeeVO> emplists = empDAO.getExam();
 		
 		request.setAttribute("joblists", joblists);
-		request.setAttribute("emplists", emplists); 
+		request.setAttribute("emplists", emplists);
 		
 		RequestDispatcher jb = request.getRequestDispatcher("/job/job_lists.jsp");
 		jb.forward(request, response);

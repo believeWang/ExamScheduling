@@ -47,6 +47,17 @@ public class EventShowServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String jobid_str = request.getParameter("jobid"); //當前職缺
+		int jobid = 0;
+		
+		//判斷沒有id時自動撈資料庫第一筆顯示
+		if(jobid_str == null){
+			Job111DAO jbDAO = new Job111DAO();
+			List<JobVO> joblists = jbDAO.getAll();
+			JobVO jobVO = joblists.get(0);
+			jobid = jobVO.getJobid();
+		}else{
+			jobid = Integer.valueOf(jobid_str); //轉型
+		}
 		
 		//當前登入考生 撈session
 		HttpSession session = request.getSession();
@@ -61,7 +72,6 @@ public class EventShowServlet extends HttpServlet {
 		List<JobVO> jdlists = jbDAO.getAll();
 		
 		//主考官
-		int jobid = Integer.valueOf(jobid_str); //轉型
 		JobEr1DAO JobEr1DAO = new JobEr1DAO();
 		JobErVO jobErVO = JobEr1DAO.findByPrimaryKey(jobid); //只能抓一筆  之後再寫SQL抓多筆
 		Integer empno = jobErVO.getEmpno(); //這個職缺當前負責的主考官
