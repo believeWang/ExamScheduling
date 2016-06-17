@@ -44,7 +44,7 @@ $(function() {
               </div>
             </li>
             </ul>
-        <li class="bold"><a href="/ExamScheduling/employee/Emptable2.jsp" class="waves-effect waves-teal">主考官管理</a></li>
+        <li class="bold"><a href="EmpCaes?empturn=EMP" class="waves-effect waves-teal">主考官管理</a></li>
         <li class="bold"><a href="/ExamScheduling/upload/poitest.jspx" class="waves-effect waves-teal">考生管理</a></li>
       <ul class="collapsible" data-collapsible="accordion">
         <li class="bold"><a class="collapsible-header active waves-effect waves-teal">設定</a>

@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- jQuery -->
-<!-- <script src='../js/jquery.min.js'></script> -->
-<%@ include file="../WEB-INF/cdn.file" %>
+<script src='../js/jquery.min.js'></script>
+<%-- <%@ include file="../WEB-INF/cdn.file" %> --%>
 <!-- Bootstrap -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
@@ -65,6 +65,15 @@
 	  						</c:forEach>
 	  					</select>
   					</td>
+	  			</tr>
+	  			<tr>
+	  				<td>職位預約顏色：</td><td><input type="color" name="jobcolor" value="${jobVO.jobcolor}"></td>
+	  			</tr>
+	  			<tr>
+	  				
+	  				<td>啟用${jobVO.jobactive}：</td>
+	  				<td><input type="checkbox" name="jobactive" value="1" <c:if test="${jobVO.jobactive == true}">checked</c:if>></td>
+	  			
 	  			</tr>
 	  			<tr>
 	  				<td><input type="submit" value="Submit"  class="btn btn-primary"></td><td></td>

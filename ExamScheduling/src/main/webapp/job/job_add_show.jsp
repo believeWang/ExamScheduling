@@ -8,13 +8,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- jQuery -->
-<!-- <script src='../js/jquery.min.js'></script> -->
-<%@ include file="../WEB-INF/cdn.file" %>
+<script src='../js/jquery.min.js'></script>
+<%-- <%@ include file="../WEB-INF/cdn.file" %> --%>
 <!-- Bootstrap -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
 <script src="../js/bootstrap.min.js"></script>
-
+<script>
+$(function(){
+	$("#colorid").change(function(){
+		
+		var color = $(this).val();
+		
+		$(this).attr("value", color);
+		
+	});	 
+	
+});
+</script>
 
 </head>
 <body>
@@ -64,13 +75,31 @@
   					</td>
 	  			</tr>
 	  			<tr>
-	  				<td><input type="submit" value="Submit"  class="btn btn-primary"></td><td></td>
+	  				<td>職位預約顏色：</td><td><input type="color" name="jobcolor" id="colorid"></td>
+	  			</tr>
+	  			<tr>
+	  				
+	  				<td>啟用：</td>
+	  				<td><input type="checkbox" name="jobactive" value="1"></td>
+	  			
+	  			</tr>
+	  			<tr>
+	  				<td><input type="submit" value="送出"  class="btn btn-primary"></td>
 	  			</tr>
   			</form>
 	  		</table>
 	  	</div>
 	  	
-	  	<div class="col-md-3"></div>
+	  	<div class="col-md-3">
+	  		<div class="btn-group btn-group-sm colorpickerplus-dropdown" id="demo4">
+<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">...</button>
+<ul class="dropdown-menu">
+<li class="disabled"><div class="colorpickerplus-container"></div>
+</li>
+<li>...</li>
+</ul>
+</div>
+	  	</div>
 	
 	</div>
 

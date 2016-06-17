@@ -66,41 +66,8 @@ public class Score_servlet extends HttpServlet {
 		EventVO eventVO = eventDAO.findByPrimaryKey(id);//利用事件id 取得對應的table
 		ECHibernateDAO echDAO = new ECHibernateDAO();
 		List<ECVO> student_data = echDAO.SAM(eventVO.getEcno());//取得事件id裡面的ecno欄位 在利用ecno(主鍵)去呼叫學生的table
-		//for (ECVO ecvo : student_data){
-//			ecvo.getEcno();
-//			ecvo.getEcname();
-//			ecvo.getEcemail();
-//			ecvo.getEcpsd();
-//			ecvo.getEcstatus();
-//			ecvo.getEcremark1();
-//			ecvo.geteSVO();
-//			ecvo.getScoreVO();
-//			student_data.add(ecvo);
-//			System.out.println();		
-//			}
-		
-			
-//		JSONArray jary= new JSONArray();
-//		for (ECVO ecvo : student_data){
-//			JSONObject obj = new JSONObject();
-//			obj.put("ecno", ecvo.getEcno());
-//			obj.put("ecname", ecvo.getEcname());
-//			obj.put("ecemail", ecvo.getEcemail());
-//			obj.put("ecpsd", ecvo.getEcemail());
-//			obj.put("ecstatus", ecvo.getEcstatus());
-//			obj.put("ecremark1", ecvo.getEcno());
-//			obj.put("eSVO", ecvo.geteSVO());
-//			obj.put("scoreVO", ecvo.getScoreVO());
-//						
-//			jary.put(obj);
-//		}
-//		 
-//		out.print(jary);
-		
-		
 		
 		req.setAttribute("student_data", student_data); // 資料庫取出的empVO物件,存入req
-	System.out.println(student_data);
 	String url = "/employee/score_listAllEmp.jsp"; 
 		RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneEmp.jsp
 		successView.forward(req, res);
