@@ -2,6 +2,7 @@ package iii.team05.Employee.model;
 
 import iii.team05.event.model.EventDAO;
 import iii.team05.event.model.EventVO;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -32,7 +33,7 @@ public class EmployeeJSONServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-	
+	if(session.getAttribute("EmpNO")==null)return;
 		int emp = Integer.parseInt(String.valueOf(session.getAttribute("EmpNO")));//利用ession取得考官編號
 	
 		EventDAO edao = new EventDAO();
@@ -56,7 +57,13 @@ public class EmployeeJSONServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+	
+		
+		
+		
+		
 	}
 
 }
