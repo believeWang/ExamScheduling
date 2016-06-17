@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Reception</title>
-<%@ include file="../WEB-INF/cdn.file"%>
+<%@ include file="WEB-INF/cdn.file"%>
 </head>
 <body>
 	<div>

@@ -10,6 +10,8 @@
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
 <script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
 <script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <script type="text/javascript">
 	$(function() {
 		$('.emotion').qqFace({
@@ -121,6 +123,12 @@ span.emotion:hover {
 </head>
 <body onload="init();">
 <%@ include file="/WEB-INF/header/header.jsp" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 <%-- 	<%@ include file="/WEB-INF/header/header.jsp" %> --%>
 	<div style="margin: 100px 500px">
 		<div style="background: white">
@@ -149,6 +157,7 @@ span.emotion:hover {
 <script type="text/javascript">
 $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
+    $('body').addClass('loaded');
   });
 </script>
 </html>

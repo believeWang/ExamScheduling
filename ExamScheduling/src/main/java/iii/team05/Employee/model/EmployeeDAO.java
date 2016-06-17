@@ -31,12 +31,17 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 
 	public void update(EmployeeVO employeeVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("update EmployeeVO set position = :position where empno=:empno");
+			Query query = session.createQuery("update EmployeeVO set position = :position, empname = :empname, empemail = :empemail where empno=:empno");
 			Integer empno=employeeVO.getEmpno();
+			String empname=employeeVO.getEmpname();
+			String empemail=employeeVO.getEmpemail();
 			int position=employeeVO.getPosition();
 			query.setParameter("empno",empno);
+			query.setParameter("empname",empname);
+			query.setParameter("empemail",empemail);
 			query.setParameter("position",position);
 			query.executeUpdate();
 			session.getTransaction().commit();
@@ -177,6 +182,12 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 			throw ex;
 		}
 	}
+	
+	
+	
+	
+	
+	
 
 
 		

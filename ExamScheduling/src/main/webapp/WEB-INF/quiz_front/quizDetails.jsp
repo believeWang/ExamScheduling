@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/WEB-INF/cdn.file"%>
-
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 
 <title>ExamInfo</title>
     
@@ -390,9 +391,20 @@ h1.main,p.demos {
 
     
         <script src="exam_resourse/js/prefixfree.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('body').addClass('loaded');
+});
+</script>
+
 </head>
 <body>
-
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 
 <div class="container">
     <div class="header">

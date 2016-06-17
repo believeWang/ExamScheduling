@@ -28,7 +28,6 @@ public class EmployeeService {
 	public EmployeeVO updateEmp(Integer empno, String empname, String empemail,
 			Integer position) {
 		EmployeeVO empVO = new EmployeeVO();
-
 		empVO.setEmpno(empno);
 		empVO.setEmpname(empname);
 		empVO.setEmpemail(empemail);
@@ -40,12 +39,10 @@ public class EmployeeService {
 
 	public EmployeeVO updateEmp2(Integer empno,Integer position) {
 		EmployeeVO newVO = new EmployeeVO();
-//		EmployeeVO oldVO = getOneEmp(empno);
 		newVO.setEmpno(empno);
-//		newVO.setEmpname(oldVO.getEmpname());
-//		newVO.setEmpemail(oldVO.getEmpemail());	
-	//	newVO.setPosition(oldVO.getPosition());	
 		newVO.setPosition(position);
+		
+		
 		dao.update(newVO);
 		return newVO;
 	}
