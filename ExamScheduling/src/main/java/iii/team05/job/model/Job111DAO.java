@@ -23,11 +23,11 @@ public class Job111DAO implements JobDAO_interface {
 		}
 	}
 
-	private static final String INSERT_STMT = "INSERT INTO Job (jobname) VALUES (?)";
-	private static final String GET_ALL_STMT = "SELECT jobid, jobname FROM Job";
-	private static final String GET_ONE_STMT = "SELECT jobid, jobname FROM Job where jobid = ?";
+	private static final String INSERT_STMT = "INSERT INTO Job (jobname, jobcolor, jobactive) VALUES (?, ?, ?)";
+	private static final String GET_ALL_STMT = "SELECT jobid, jobname, jobcolor, jobactive FROM Job";
+	private static final String GET_ONE_STMT = "SELECT jobid, jobname, jobcolor, jobactive FROM Job where jobid = ?";
 	private static final String DELETE_STMT = "DELETE FROM Job where jobid = ?";
-	private static final String UPDATE_STMT = "UPDATE Job set jobname=? where jobid = ?";
+	private static final String UPDATE_STMT = "UPDATE Job set jobname=?, jobcolor=?, jobactive=? where jobid = ?";
 
 	@Override
 	public void insert(JobVO jobVO) {
@@ -41,6 +41,8 @@ public class Job111DAO implements JobDAO_interface {
 			pstmt = con.prepareStatement(INSERT_STMT);
 
 			pstmt.setString(1, jobVO.getJobname());
+			pstmt.setString(2, jobVO.getJobcolor());
+			pstmt.setBoolean(3, jobVO.getJobactive());
 
 			pstmt.executeUpdate();
 
@@ -79,7 +81,9 @@ public class Job111DAO implements JobDAO_interface {
 			pstmt = con.prepareStatement(UPDATE_STMT);
 
 			pstmt.setString(1, jobVO.getJobname());
-			pstmt.setInt(2, jobVO.getJobid());
+			pstmt.setString(2, jobVO.getJobcolor());
+			pstmt.setBoolean(3, jobVO.getJobactive());
+			pstmt.setInt(4, jobVO.getJobid());
 
 			pstmt.executeUpdate();
 
@@ -179,6 +183,8 @@ public class Job111DAO implements JobDAO_interface {
 				jobVO = new JobVO();
 				jobVO.setJobid(rs.getInt("jobid"));
 				jobVO.setJobname(rs.getString("jobname"));
+				jobVO.setJobcolor(rs.getString("jobcolor"));
+				jobVO.setJobactive(rs.getBoolean("jobactive"));
 				
 			}
 
@@ -232,6 +238,8 @@ public class Job111DAO implements JobDAO_interface {
 				jobVO = new JobVO();
 				jobVO.setJobid(rs.getInt("jobid"));
 				jobVO.setJobname(rs.getString("jobname"));
+				jobVO.setJobcolor(rs.getString("jobcolor"));
+				jobVO.setJobactive(rs.getBoolean("jobactive"));
 				list.add(jobVO); // Store the row in the list
 			}
 

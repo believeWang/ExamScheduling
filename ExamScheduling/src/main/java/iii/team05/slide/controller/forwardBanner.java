@@ -1,8 +1,6 @@
-package iii.team05.Employee.controller;
+package iii.team05.slide.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MesTurn
+ * Servlet implementation class forwardBanner
  */
-@WebServlet("/EmpCaes")
-public class Empcase extends HttpServlet {
+@WebServlet("/forwardBanner")
+public class forwardBanner extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Empcase() {
+    public forwardBanner() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,23 +26,7 @@ public class Empcase extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String empturn=request.getParameter("empturn");
-		switch (empturn) {
-		case "CAL":
-			request.getRequestDispatcher("/WEB-INF/emp/calender.jsp").forward(request, response);	
-			break;
-//			以下為系統管理者新刪修
-		case "EMPF":
-			request.getRequestDispatcher("/WEB-INF/emp/test/jsp/empTable.jsp").forward(request, response);	
-			break;
-		case "EMP":
-			request.getRequestDispatcher("/WEB-INF/emp/Emptable2.jsp").forward(request, response);	
-			break;
-		
-		default:
-			break;
-		}
+		request.getRequestDispatcher("/WEB-INF/bannerset.jsp").forward(request, response);
 	}
 
 	/**
@@ -52,7 +34,6 @@ public class Empcase extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/mes/ListAllMessage.jsp").forward(request, response);
 	}
 
 }

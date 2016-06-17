@@ -22,6 +22,7 @@
 	margin: 20px auto 10px auto
 }
 </style>
+
 <style>
 body {
 	/* 		margin: 40px 10px; */

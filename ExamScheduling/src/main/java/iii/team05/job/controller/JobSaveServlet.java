@@ -2,6 +2,7 @@ package iii.team05.job.controller;
 
 import iii.team05.Employee.model.EmployeeDAO;
 import iii.team05.Employee.model.EmployeeVO;
+import iii.team05.job.model.Job111DAO;
 import iii.team05.job.model.JobDAO;
 import iii.team05.job.model.JobVO;
 import iii.team05.jober.model.JobErDAO;
@@ -116,11 +117,24 @@ public class JobSaveServlet extends HttpServlet {
 			
 			String jobname = request.getParameter("jobname");
 			String employee = request.getParameter("empno");
+			String jobcolor = request.getParameter("jobcolor");
+			String jobactive = request.getParameter("jobactive");
 			
 			int empno = Integer.valueOf(employee);
-			
+			String jobactive2 =null;
+		
+			if("1".equals(jobactive)){
+				jobactive2 = "True";
+			}else{
+				jobactive2 = "False";
+			}
+		
+			Boolean active = Boolean.valueOf(jobactive2);
+		
 			JobVO jobVO = new JobVO();
 			jobVO.setJobname(jobname);
+			jobVO.setJobcolor(jobcolor);
+			jobVO.setJobactive(active);
 			
 			Set<EmployeeVO> employee_set = new HashSet<EmployeeVO>();
 			EmployeeDAO empDAO = new EmployeeDAO();
@@ -151,14 +165,27 @@ public class JobSaveServlet extends HttpServlet {
 			String jobid_str = request.getParameter("jobid");
 			String jobname = request.getParameter("jobname");
 			String employee = request.getParameter("empno");
+			String jobcolor = request.getParameter("jobcolor");
+			String jobactive = request.getParameter("jobactive");
 			
 			int empno = Integer.valueOf(employee);
 			int jobid = Integer.valueOf(jobid_str);
+			
+			String jobactive2 =null;
+			
+			if("1".equals(jobactive)){
+				jobactive2 = "True";
+			}else{
+				jobactive2 = "False";
+			}
+			Boolean active = Boolean.valueOf(jobactive2);
 			
 			//jobVO
 			JobVO jobVO = new JobVO();
 			jobVO.setJobname(jobname);
 			jobVO.setJobid(jobid);
+			jobVO.setJobcolor(jobcolor);
+			jobVO.setJobactive(active);
 			
 			Set<EmployeeVO> employee_set = new HashSet<EmployeeVO>();
 			EmployeeDAO empDAO = new EmployeeDAO();
@@ -166,11 +193,10 @@ public class JobSaveServlet extends HttpServlet {
 			employee_set.add(empVO);
 			
 			jobVO.setEmployee(employee_set);
-			
 			//修改job並返回當前ID
 			JobDAO jobDAO = new JobDAO();
-			jobDAO.update(jobVO);
-			
+			Job111DAO jobDAO111 = new Job111DAO();
+			jobDAO111.update(jobVO);
 			//撈全部 job
 			List<JobVO> joblists = jobDAO.getAll();
 			

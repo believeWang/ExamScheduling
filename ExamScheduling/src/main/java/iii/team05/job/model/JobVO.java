@@ -12,12 +12,29 @@ drop table Job;
 create table Job (
 	jobid             int IDENTITY (1,1) not null,
  	jobname            varchar(20) not null,
+ 	jobcolor           varchar(20) null,
+ 	jobactive          bit not null,
  
  	constraint Job_jobid_pk primary key (jobid));
 */
 public class JobVO  implements java.io.Serializable{
 	private Integer jobid;
 	private String jobname;
+	private String jobcolor;
+	private Boolean jobactive;
+	
+	public String getJobcolor() {
+		return jobcolor;
+	}
+	public void setJobcolor(String jobcolor) {
+		this.jobcolor = jobcolor;
+	}
+	public Boolean getJobactive() {
+		return jobactive;
+	}
+	public void setJobactive(Boolean jobactive) {
+		this.jobactive = jobactive;
+	}
 	private Set<EmployeeVO> employee = new HashSet<EmployeeVO>(0);
 	
 	public Integer getJobid() {

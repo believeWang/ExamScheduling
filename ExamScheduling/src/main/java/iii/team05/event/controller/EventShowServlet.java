@@ -1,17 +1,13 @@
 package iii.team05.event.controller;
 
-import iii.team05.event.model.EventDAO;
-import iii.team05.event.model.EventVO;
 import iii.team05.examinee.ecmodel.ESHibernateDAO;
 import iii.team05.examinee.ecmodel.ESVO;
 import iii.team05.job.model.Job111DAO;
 import iii.team05.job.model.JobVO;
 import iii.team05.jober.model.JobEr1DAO;
-import iii.team05.jober.model.JobErDAO;
 import iii.team05.jober.model.JobErVO;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -47,6 +43,25 @@ public class EventShowServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String jobid_str = request.getParameter("jobid"); //當前職缺
+		int jobid = 0;
+		
+		//判斷沒有id時自動撈資料庫第一筆顯示
+		if(jobid_str == null){
+			
+			Job111DAO jbDAO = new Job111DAO();
+			List<JobVO> joblists = jbDAO.getAll();
+			if(joblists.size() != 0){
+				JobVO jobVO = joblists.get(0);
+				jobid = jobVO.getJobid();
+			}else{
+				RequestDispatcher failureView = request.getRequestDispatcher("/fullcalendar/error.jsp");
+				failureView.forward(request, response);
+				return;
+			}
+			
+		}else{
+			jobid = Integer.valueOf(jobid_str); //轉型
+		}
 		
 		//當前登入考生 撈session
 		HttpSession session = request.getSession();
@@ -61,7 +76,6 @@ public class EventShowServlet extends HttpServlet {
 		List<JobVO> jdlists = jbDAO.getAll();
 		
 		//主考官
-		int jobid = Integer.valueOf(jobid_str); //轉型
 		JobEr1DAO JobEr1DAO = new JobEr1DAO();
 		JobErVO jobErVO = JobEr1DAO.findByPrimaryKey(jobid); //只能抓一筆  之後再寫SQL抓多筆
 		Integer empno = jobErVO.getEmpno(); //這個職缺當前負責的主考官
