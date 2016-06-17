@@ -15,7 +15,10 @@
 <FORM METHOD="get" ACTION="/ExamScheduling/setting/editmail"  >
 
 <textarea class="ckeditor" cols="80" id="content" name=content rows="12">${mail}</textarea>
-<input type=submit value="送出">
+<!-- <input type=submit value="送出"> -->
+<button class="waves-light btn" type="submit" style="">
+						送出<i class="material-icons right">input</i>
+							</button>
 <input type="hidden" name="action" value="Mail_Content_Update">
 </FORM>
 </div>
