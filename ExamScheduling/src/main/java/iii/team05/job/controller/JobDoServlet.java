@@ -85,7 +85,8 @@ public class JobDoServlet extends HttpServlet {
 			EmployeeDAO empDAO = new EmployeeDAO();
 			List<EmployeeVO> emplists = empDAO.getAll();
 			
-			request.setAttribute("emplists", emplists); 
+			request.setAttribute("jobVO", jobVO);
+			request.setAttribute("emplists", emplists);
 			request.setAttribute("jobname", jobname); 
 			request.setAttribute("empno", empno);
 			request.setAttribute("jobid", jobid);

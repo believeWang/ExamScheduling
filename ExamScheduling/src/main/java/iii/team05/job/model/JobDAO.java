@@ -116,11 +116,5 @@ public class JobDAO implements JobDAO_interface{
 		
 	}
 	
-	@Override
-	public int get_jobfirst(){
-		return 0;
-		// TODO Auto-generated method stub
-	}
-
 }
 
