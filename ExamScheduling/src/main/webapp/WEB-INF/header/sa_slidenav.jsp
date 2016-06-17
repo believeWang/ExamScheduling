@@ -38,8 +38,8 @@ $(function() {
               <div class="collapsible-body">
                 <ul>
                   <li><a href="/ExamScheduling/aboutedit">關於緯康</a></li>
-                  <li><a href="/ExamScheduling/setting/loadmail.jsp">E-mail內容</a></li>
-                  <li><a href="/ExamScheduling/bannerset.jsp">輪播圖</a></li>    
+                  <li><a href="/ExamScheduling/setting/editmail">E-mail內容</a></li>
+                  <li><a href="/ExamScheduling/bannerservlet">輪播圖</a></li>    
                 </ul>
               </div>
             </li>

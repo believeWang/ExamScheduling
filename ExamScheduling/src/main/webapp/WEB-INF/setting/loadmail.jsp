@@ -3,10 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<%@ include file="../WEB-INF/cdn.file" %>
+<%@ include file="/WEB-INF/cdn.file" %>
 <script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+<!-- <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script> -->
 <link rel="stylesheet" type="text/css"
 	href="/ExamScheduling/css/preload.css" />
 	<script type="text/javascript">
@@ -22,7 +22,7 @@
 <title>Edit mail</title>
 </head>
 <body>
-<%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
+<%@ include file="/WEB-INF/header/sa_slidenav.jsp" %>
 <!-- loading圖 -->
 	<div id="loader-wrapper">
 		<div id="loader"></div>
