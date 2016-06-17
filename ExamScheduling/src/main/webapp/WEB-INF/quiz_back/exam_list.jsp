@@ -4,11 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試列表</title>
 
 <!-- 自訂 -->
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/examstyle.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <%@ include file="../cdn.file" %>
 
 
@@ -17,6 +20,20 @@
 </head>
 <body>
 <%@ include file="../header/slidenav.jsp" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
+
+<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
   <!-- START CONTENT -->
       <section id="content">
                
@@ -122,9 +139,15 @@
         columnWidth: ".product-sizer",
       });
    
-      
-      
-     
+      $(document).ready(function() {
+    		
+    		setTimeout(function(){
+    			$('body').addClass('loaded');
+    		
+    		}, 1000);
+    		
+    		   $('body').addClass('loaded');
+    	});    
  </script>
 </body>
 <script src="exam_resourse/js/examlistjs.js"></script>

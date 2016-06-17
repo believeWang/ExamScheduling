@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/component.css" />
-
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 
 
 <style type="text/css">
@@ -146,6 +147,12 @@ section.related {
 </head>
 
 <body>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 
 <div class="container">
 <header><h1 >考題回顧</h1></header>
@@ -234,6 +241,12 @@ section.related {
 
 $('input[type=radio]:checked').get().forEach( function( el, i ) { draw( el, 'circle' ); } );
 $('input[type=checkbox]:checked').get().forEach( function( el, i ) { draw( el, 'boxfill' ); } );
-
+$(document).ready(function(){
+    $('body').addClass('loaded');
+});
+$('form').submit(function() {	
+	$('body').removeClass('loaded');
+	return true; // return false to cancel form action
+});
 </script>
 </html>

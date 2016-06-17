@@ -19,6 +19,8 @@
 <%@ include file="/WEB-INF/cdn.file"%>
 <%@ include file="/WEB-INF/header/slide_mqtt.file" %>
 <%@ include file="/WEB-INF/calendar.file"%>
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <title></title>
 
 <style type="text/css">
@@ -29,30 +31,28 @@
 
 </style>
 <script>
-// 	$(document).ready(function() {
-// 			$('#calendar').fullCalendar({
-// 				googleCalendarApiKey:'AIzaSyB9e2zHCeLrh1Wit4lL04g07DAAVZaQwLw',
-// 				header : {
-// 					left : 'title today',
-// 					center : 'month,basicWeek,basicDay,agendaWeek,agendaDay',
-// 					right : 'prevYear prev next nextYear'
-// 				},
-// 				editable : true,
-// 				events: {
-// 		                googleCalendarId: 'kmhlcc@gmail.com'
-// 	            },
-// 				//events : '/ExamScheduling/employee/EmployeeJSONServlet',// 一開始頁面
-// 				dayClick : function(date, allDay,jsEvnt, view) {
-// 					var selDate = moment(date).format('YYYY-MM-DD');
-// 				},
-// 				eventClick : function(calEvent, jsEvent, view) {
-// 					$.fancybox({
-// 								'type' : 'ajax',
-// 								'href' : '/ExamScheduling/employee/Score?action=get_Event&id='+ calEvent.id
-// 							});
-// 				}
-// 			})
-// 	});
+	$(document).ready(
+			function() {
+				$('body').addClass('loaded');
+				$('#calendar').fullCalendar({
+											header : {
+												left : 'title today',
+												center : 'month,basicWeek,basicDay,agendaWeek,agendaDay',
+												right : 'prevYear prev next nextYear'
+											},
+											editable : true,
+											events : '/ExamScheduling/employee/EmployeeJSONServlet',// 一開始頁面
+											dayClick : function(date, allDay,jsEvnt, view) {
+												var selDate = moment(date).format('YYYY-MM-DD');
+											},
+											eventClick : function(calEvent, jsEvent, view) {
+												$.fancybox({
+															'type' : 'ajax',
+															'href' : '/ExamScheduling/employee/Score?action=get_Event&id='+ calEvent.id
+														});
+											}
+										})
+					});
 </script>
 <script type="text/javascript">
       // Your Client ID can be retrieved from your project in the Google
@@ -184,7 +184,12 @@ body {
 </head>
 <body>
 <%@ include file="/WEB-INF/header/slidenav.jsp" %>
-	
+	<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 
 			<div class="container-fluid">
 		<div class="row">

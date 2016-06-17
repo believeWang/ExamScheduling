@@ -7,11 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>編輯考試</title>
-<%@ include file="../cdn.file" %>
+<%@ include file="../cdn.file"%>
 <link rel="stylesheet" type="text/css"
 	href="exam_resourse/css/custom_form.css" />
-
-
+<link rel="stylesheet" type="text/css"
+	href="css/preload.css" />
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 
 
 <style>
@@ -33,11 +35,14 @@ a[href|='#q'] {color =red;width =35px;
 }
 </style>
 
-
 </head>
-<body>
-
-
+<body class="loaded">
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 	<div class="content">
 		<div class="row">
 			<div class="col s12 m9 l10">
@@ -381,13 +386,14 @@ a[href|='#q'] {color =red;width =35px;
 		</div>
 		<div class="fixed-action-btn horizontal "
 			style="bottom: 45px; right: 24px;">
-			<a class="btn-floating btn-large teal darken-3"> <i class="material-icons">menu</i>
+			<a class="btn-floating btn-large teal darken-3"> <i
+				class="material-icons">menu</i>
 			</a>
 			<ul>
-				
+
 				<li><a href="ExamList" class="btn-floating red darken-1"><i
 						class="material-icons">replay</i></a></li>
-						<li><a id='addQuestion' class="btn-floating teal lighten-2"><i
+				<li><a id='addQuestion' class="btn-floating teal lighten-2"><i
 						class="material-icons">add</i></a></li>
 
 			</ul>
@@ -419,7 +425,18 @@ a[href|='#q'] {color =red;width =35px;
 				}); //滑鼠離開
 			}
 		});
+	    		
+// 	    		setTimeout(function(){
+// 	    			$('body').addClass('loaded');
+	    		
+// 	    		}, 1000);
+	    		
+		 $('body').addClass('loaded');
 	});
+$('form').submit(function() {	
+    	$('body').removeClass('loaded');
+    	return true; // return false to cancel form action
+    });
 </script>
 <script src="exam_resourse/js/exameditjs.js"></script>
 

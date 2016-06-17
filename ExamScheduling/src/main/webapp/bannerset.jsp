@@ -14,16 +14,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="css/preload.css" />
 <title>Banner編輯頁面</title>
-<%@ include file="../WEB-INF/cdn.file" %>
+<%@ include file="WEB-INF/cdn.file" %>
 </head>
 
 <body>
-<%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
+<%@ include file="WEB-INF/header/sa_slidenav.jsp" %>
+<div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
 <div class="row">
   <div class="col s10 offset-s2">
     <h3>Banner編輯</h3>
-    <table class="responsive-table" width="680" BORDER='0' style="background:#ACD6FF">
+    <table class="responsive-table" width="300" BORDER='0'bgcolor="#ACD6FF" >
       <form method="post" action="bannerservlet" enctype="multipart/form-data">    
 		    <tr height="36" >
 		      <td height="61" colspan="6" align="center">
@@ -34,8 +43,10 @@
 		    </tr>
 		    </form>
 	    <c:forEach var="BannerVO" items="${map}">
-			<tr>
-			  <td><img class="materialboxed" alt="" src="${BannerVO.value}" width="200px" height="200px"></td>
+			  <tr>
+			  <td>
+			    <img class="materialboxed" alt="" src="${BannerVO.value}" width="200px" height="200px">
+			  </td>
 			  <td>
 				<form  METHOD="post" action="bannerservlet">
 				<input type="submit" value="刪除" name="delete">
@@ -43,7 +54,7 @@
 				<input type="hidden" name="action" value="Banner_Imag_Delete">
 				</form>
 			  <td/>
-			</tr>
+			  </tr>	
         </c:forEach>
     </table>
    </div>
@@ -55,6 +66,18 @@
 <!-- body內需改 img class="materialboxed" -->
 <script type="text/javascript">$(document).ready(function(){
     $('.materialboxed').materialbox();
+
+   
+        $('body').addClass('loaded');
+    
+    
+    
+ // submit後跳出讀取畫面
+    $('form').submit(function() {
+    	
+    	$('body').removeClass('loaded');
+    	return true; // return false to cancel form action
+    });
 });</script>
 
 </html>
