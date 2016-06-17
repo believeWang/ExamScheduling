@@ -49,6 +49,8 @@ public class bannerservlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		request.getRequestDispatcher("/WEB-INF/bannerset.jsp").forward(request, response);
 	}
 
 	/**
@@ -83,7 +85,8 @@ public class bannerservlet extends HttpServlet {
 //					response); //新增和刪除的跳轉都直接寫在外部用Redirect
 		}
 		new ExamService().putAllBannerImag(getServletContext());
-		response.sendRedirect("/ExamScheduling/bannerset.jsp");
+		response.sendRedirect("/ExamScheduling/forwardBanner");
+		
 
 	}
 }
