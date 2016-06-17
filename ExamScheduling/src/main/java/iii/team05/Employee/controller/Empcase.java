@@ -41,6 +41,10 @@ public class Empcase extends HttpServlet {
 		case "EMP":
 			request.getRequestDispatcher("/WEB-INF/emp/Emptable2.jsp").forward(request, response);	
 			break;
+		case "EVENT":
+//			request.getRequestDispatcher("/WEB-INF/emp/emp_event.jsp").forward(request, response);	
+			request.getRequestDispatcher("/emp/EmpEventServlet").forward(request, response);	
+			break;
 		
 		default:
 			break;
