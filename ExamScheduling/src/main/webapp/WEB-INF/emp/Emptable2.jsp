@@ -83,7 +83,7 @@ pageContext.setAttribute("list", list);
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
     <div>
-    <a href="<%=request.getContextPath()%>/test/jsp/empTable.jsp">修改</a> 
+    <a href="EmpCaes?empturn=EMP">修改</a> 
     
     </div>
     
