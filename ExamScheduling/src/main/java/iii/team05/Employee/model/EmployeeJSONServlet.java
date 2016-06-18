@@ -35,7 +35,8 @@ public class EmployeeJSONServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html; charset=UTF-8");
+		response.setContentType("text/ht"
+				+ "ml; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		if (session.getAttribute("EmpNO") == null)
@@ -65,11 +66,18 @@ public class EmployeeJSONServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+	//	EmployeeDAO empdao=new EmployeeDAO();
+		EventDAO eventDAO=new EventDAO();
+		Integer empno=(Integer) request.getSession().getAttribute("EmpNO") ;
+		if (empno== null)
+			return;
+		//EmployeeVO empVO=empdao.findByPrimaryKey(emp);
+		
 		EventVO eventVO = new EventVO();
-
+		
 		String start = request.getParameter("start");
 		String end = request.getParameter("end");
-		System.out.println(start);
+		System.out.println(end);
 		try {
 			SimpleDateFormat dateFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
 			Date parsedDate = dateFormat.parse(start);
@@ -77,7 +85,11 @@ public class EmployeeJSONServlet extends HttpServlet {
 			eventVO.setStarttime(new java.sql.Timestamp(parsedDate.getTime()));
 
 			parsedDate = dateFormat.parse(end);
-			eventVO.setStarttime(new java.sql.Timestamp(parsedDate.getTime()));
+			eventVO.setEndtime(new java.sql.Timestamp(parsedDate.getTime()));
+			eventVO.setTitle("預約額滿");
+			eventVO.setEmpno(empno);
+			eventDAO.insert(eventVO);
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
