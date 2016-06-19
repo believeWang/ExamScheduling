@@ -175,6 +175,7 @@ body {
 												var selDate = moment(date)
 														.format('YYYY-MM-DD');
 											},
+											
 											eventClick : function(calEvent,
 													jsEvent, view) {
 												$
@@ -184,6 +185,7 @@ body {
 																	+ calEvent.id
 														});
 											}
+											
 										})
 					});
 </script>

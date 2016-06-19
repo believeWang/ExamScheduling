@@ -66,8 +66,14 @@ public class InsertExcel extends HttpServlet {
 			JSONArray ary = new JSONArray();
 		
 			 for(ECVO ecVO:showClass){
+				 ecVO.setEcpsd(null);//隱藏密碼;
+				 ecVO.notNullVO();//把null的值都改為預設字串避免資料傳不過去
+				 
+				 
 			 ESVO esVO=ecVO.geteSVO();
+			 esVO.notNullVO();
 			 ScoreVO scoreVO=ecVO.getScoreVO();
+			 scoreVO.notNullVO();
 			 ecVO.seteSVO(null);
 			 ecVO.setScoreVO(null);
 			 esVO.seteCVO(null);
@@ -90,7 +96,7 @@ public class InsertExcel extends HttpServlet {
 //
 //			}
 //			str += "]}";
-			 System.out.println(ary);
+			// System.out.println(ary);
 			out.print(ary);
 			// 設定屬性,方便在JSP 顯示商品
 		} else if (iiiClass == null && method.equals("poi_upload")) {

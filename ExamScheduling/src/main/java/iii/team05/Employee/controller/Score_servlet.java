@@ -65,6 +65,7 @@ public class Score_servlet extends HttpServlet {
 		if ("get_Event".equals(action)) {
 			// PrintWriter out = res.getWriter();
 			Integer id = 0;
+			id = new Integer(req.getParameter("id").trim());// 取事件table id
 			try {
 				id = new Integer(req.getParameter("id").trim());// 取事件table id
 			} catch (NumberFormatException e) {

@@ -1,6 +1,8 @@
 package iii.team05.examinee.ecmodel;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class ESVO implements java.io.Serializable{
 
@@ -78,7 +80,28 @@ public class ESVO implements java.io.Serializable{
 	public void setEsremark2(String esremark2) {
 		this.esremark2 = esremark2;
 	}
+	public void notNullVO(){
+		if(this.esteam==null)this.esteam=1;
+		if(this.esbirth==null)this.esbirth=80;
+		//欲轉換的日期字串
+		String dateString = "2016-07-04";
+		//設定日期格式
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		//進行轉換
+		java.util.Date date=null;
+		try {
+			date = sdf.parse(dateString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		if(this.eshiredate==null)this.eshiredate=new Date(date.getTime());
+		if(this.essalary==null)this.essalary=38000;
+		if(this.esranking==null)this.esranking=0;
+		if(this.esremark2==null)this.esremark2="無";
+		
 	
+		
+	}
 	
 	
 	
