@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?> 
 <Context displayName="EEiT85 Team05" docBase="ExamScheduling" path="/ExamScheduling" reloadable="true">
   <!--                  SQLServer                      -->
-  <Resource name="jdbc/ESDB" type="javax.sql.DataSource"
-      username="sa" password="P@ssw0rd"
-      driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-      url="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=ESDB"    
-      maxActive="8"
-      maxIdle="4"
-      maxWait="5000"
-  />  
-<!--                  SQLServer  AZURE                      -->
 <!--   <Resource name="jdbc/ESDB" type="javax.sql.DataSource" -->
-
-<!--       username="startbooksuser@startbookserver" password="P@ssw0rd" -->
-
+<!--       username="sa" password="P@ssw0rd" -->
 <!--       driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
-<!--       url="jdbc:sqlserver://startbookserver.database.windows.net:1433;database=esdb;"     -->
+<!--       url="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=ESDB"     -->
 <!--       maxActive="8" -->
 <!--       maxIdle="4" -->
 <!--       maxWait="5000" -->
 <!--   />   -->
+<!--                  SQLServer  AZURE                      -->
+  <Resource name="jdbc/ESDB" type="javax.sql.DataSource"
+
+      username="startbooksuser@startbookserver" password="P@ssw0rd"
+
+      driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+      url="jdbc:sqlserver://startbookserver.database.windows.net:1433;database=esdb;"    
+      maxActive="8"
+      maxIdle="4"
+      maxWait="5000"
+  />  
  <!--                 凱翔的  AZURE                      -->
 <!--   <Resource name="jdbc/ESDB" type="javax.sql.DataSource" -->
 

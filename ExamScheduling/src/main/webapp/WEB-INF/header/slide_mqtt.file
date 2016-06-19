@@ -1,4 +1,19 @@
 <style>
+a.button-collapse.top-nav {
+    position: absolute;
+    text-align: center;
+    height: 48px;
+    width: 48px;
+    left: 7.5%;
+    top: 0;
+    float: none;
+    margin-left: 1.5rem;
+    color: #fff;
+    font-size: 36px;
+    z-index: 2;
+}
+
+
 #mqtt {
  /* 設定footer的高度 */
     height: 200;

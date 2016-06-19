@@ -60,7 +60,7 @@ table{
 }
 </style>
   
-   <title>TechQ Online Quiz</title>
+   <title>考試列表</title>
 <script type="text/javascript">
 $(document).ready(function(){
     $('body').addClass('loaded');

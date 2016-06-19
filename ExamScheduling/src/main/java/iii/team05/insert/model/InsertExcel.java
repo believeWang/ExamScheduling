@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -162,10 +163,10 @@ public class InsertExcel extends HttpServlet {
 						// 上传文件必须为excel类型,根据后缀判断(xls)
 						String excelContentType = excelFileName
 								.substring(excelFileName.lastIndexOf(".")); // 获取上传文件的类型
-						System.out.println("上传文件名:" + excelFileName);
-						System.out.println("文件大小:" + item.getSize());
-						System.out
-								.println("\n---------------------------------------");
+//						System.out.println("上传文件名:" + excelFileName);
+//						System.out.println("文件大小:" + item.getSize());
+//						System.out
+//								.println("\n---------------------------------------");
 
 						if (".xls".equals(excelContentType)
 								|| ".xlsx".equals(excelContentType)) {
@@ -183,6 +184,7 @@ public class InsertExcel extends HttpServlet {
 							ESVO esvo = null;
 							ScoreVO scoreVO = null;
 							ECHibernateDAO dao = new ECHibernateDAO();
+							List<ECVO> list =new ArrayList<ECVO>();
 							DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
 							for (int i = 1; i < rowCnt; i++) {
@@ -319,9 +321,10 @@ public class InsertExcel extends HttpServlet {
 								ecvo.seteSVO(esvo);
 								ecvo.setScoreVO(scoreVO);
 								// 載入進資料庫
-								dao.insert(ecvo);
+								list.add(ecvo);
+								
 							}
-
+							dao.insertALL(list);
 							request.getRequestDispatcher("uploadSucessed.jsp")
 									.forward(request, response);
 						}
