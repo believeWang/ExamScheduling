@@ -36,10 +36,14 @@ public class Empcase extends HttpServlet {
 			break;
 //			以下為系統管理者新刪修
 		case "EMPF":
-			request.getRequestDispatcher("/WEB-INF/employee/empform.jsp").forward(request, response);	
+			request.getRequestDispatcher("/WEB-INF/emp/test/jsp/empTable.jsp").forward(request, response);	
 			break;
 		case "EMP":
-			request.getRequestDispatcher("/WEB-INF/employee/Emptable2.jsp").forward(request, response);	
+			request.getRequestDispatcher("/WEB-INF/emp/Emptable2.jsp").forward(request, response);	
+			break;
+		case "EVENT":
+//			request.getRequestDispatcher("/WEB-INF/emp/emp_event.jsp").forward(request, response);	
+			request.getRequestDispatcher("/emp/EmpEventServlet").forward(request, response);	
 			break;
 		
 		default:

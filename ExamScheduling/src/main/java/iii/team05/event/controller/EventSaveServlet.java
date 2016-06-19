@@ -2,6 +2,8 @@ package iii.team05.event.controller;
 
 import iii.team05.event.model.EventDAO;
 import iii.team05.event.model.EventVO;
+import iii.team05.job.model.JobDAO;
+import iii.team05.job.model.JobVO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -71,12 +73,17 @@ public class EventSaveServlet extends HttpServlet {
 	            e.printStackTrace();  
 	        }  
 			
+	        Integer jobidPK = Integer.valueOf(jobid);
+	        JobDAO jobDAO = new JobDAO();
+	        JobVO jobVO = jobDAO.findByPrimaryKey(jobidPK);
+	        String color = jobVO.getJobcolor();
+	        
 			EventVO evo = new EventVO();
 			evo.setEmpno(empno);
 			evo.setStarttime(ts);
 			evo.setEndtime(ts);
-			evo.setBgcolor("#58A4B0");//337AB7
-			evo.setTitle(title);
+			evo.setBgcolor(color);//58A4B0 337AB7
+			evo.setTitle(ecno+"預約面試");
 			evo.setEcno(ecno);
 			evo.setEventremark(remark);
 			

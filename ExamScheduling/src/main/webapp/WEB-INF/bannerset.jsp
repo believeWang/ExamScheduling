@@ -17,11 +17,11 @@
 <link rel="stylesheet" type="text/css"
 	href="css/preload.css" />
 <title>Banner編輯頁面</title>
-<%@ include file="WEB-INF/cdn.file" %>
+<%@ include file="cdn.file" %>
 </head>
 
 <body>
-<%@ include file="WEB-INF/header/sa_slidenav.jsp" %>
+<%@ include file="header/sa_slidenav.jsp" %>
 <div id="loader-wrapper">
 			<div id="loader"></div>
 
@@ -36,8 +36,22 @@
       <form method="post" action="bannerservlet" enctype="multipart/form-data">    
 		    <tr height="36" >
 		      <td height="61" colspan="6" align="center">
-		         <input type="file" name="image" size="60" accept=".jpg,.png"/>
-		         <input type="submit" value="新增圖片" />
+<!-- 以下舊按鍵皆已備註<input type="file" name="image" size="60" accept=".jpg,.png"/> -->
+				<div class="row">
+				<div class="file-field input-field">
+						<div class="light-blue darken-2 btn">
+							<span>選擇圖片</span> <input type="file" name="image"
+								accept=".jpg,.png" >
+						</div>
+						<div class="file-path-wrapper">
+										<input class="file-path validate" placeholder="png or jpg"
+											type="text">
+						</div>
+						</div>
+<!-- 		         <input type="submit" value="新增圖片" /> -->
+<button class="waves-light btn-large" type="submit" style="">
+						新增圖片<i class="material-icons right">input</i>
+							</button>
 		         <input type="hidden" name="action" value="Banner_Imag_Insert">
 		      </td>
 		    </tr>
@@ -45,11 +59,14 @@
 	    <c:forEach var="BannerVO" items="${map}">
 			  <tr>
 			  <td>
-			    <img class="materialboxed" alt="" src="${BannerVO.value}" width="200px" height="200px">
+			    <img class="materialboxed" alt="" src="${BannerVO.value}" width="250px" height="250px">
 			  </td>
 			  <td>
 				<form  METHOD="post" action="bannerservlet">
-				<input type="submit" value="刪除" name="delete">
+<!-- 				<input type="submit" value="刪除" name="delete"> -->
+<button class="red lighten-2 waves-light btn-large" type="submit" style="">
+						刪除<i class="material-icons right">delete</i>
+							</button>
 				<input type="hidden" name="deImag" value="${BannerVO.key}">
 				<input type="hidden" name="action" value="Banner_Imag_Delete">
 				</form>

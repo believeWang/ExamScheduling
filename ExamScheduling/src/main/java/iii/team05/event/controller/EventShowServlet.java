@@ -1,17 +1,13 @@
 package iii.team05.event.controller;
 
-import iii.team05.event.model.EventDAO;
-import iii.team05.event.model.EventVO;
 import iii.team05.examinee.ecmodel.ESHibernateDAO;
 import iii.team05.examinee.ecmodel.ESVO;
 import iii.team05.job.model.Job111DAO;
 import iii.team05.job.model.JobVO;
 import iii.team05.jober.model.JobEr1DAO;
-import iii.team05.jober.model.JobErDAO;
 import iii.team05.jober.model.JobErVO;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -51,10 +47,18 @@ public class EventShowServlet extends HttpServlet {
 		
 		//判斷沒有id時自動撈資料庫第一筆顯示
 		if(jobid_str == null){
+			
 			Job111DAO jbDAO = new Job111DAO();
 			List<JobVO> joblists = jbDAO.getAll();
-			JobVO jobVO = joblists.get(0);
-			jobid = jobVO.getJobid();
+			if(joblists.size() != 0){
+				JobVO jobVO = joblists.get(0);
+				jobid = jobVO.getJobid();
+			}else{
+				RequestDispatcher failureView = request.getRequestDispatcher("/fullcalendar/error.jsp");
+				failureView.forward(request, response);
+				return;
+			}
+			
 		}else{
 			jobid = Integer.valueOf(jobid_str); //轉型
 		}

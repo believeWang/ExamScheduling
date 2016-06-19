@@ -13,6 +13,8 @@
         </id>
         
         <property name="jobname" column="jobname" />
+        <property name="jobcolor" column="jobcolor" />
+        <property name="jobactive" column="jobactive" />
         
 		<set name="employee" table="Job_Er" 
         	inverse="false" lazy="false" fetch="select" cascade="save-update" >
