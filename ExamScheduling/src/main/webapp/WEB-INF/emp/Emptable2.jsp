@@ -24,8 +24,6 @@ pageContext.setAttribute("list", list);
 @import url('<%=request.getContextPath()%>/mes/css/main.css');
 </style>
 </head>
-
-<!---------------------------------------------------------------- 員工查詢<body>開始 -->
 <body>
 <%@ include file="../../WEB-INF/header/sa_slidenav.jsp" %>
 <div ><fieldset>
@@ -53,82 +51,13 @@ pageContext.setAttribute("list", list);
 		<c:if test="${EmpVO.position == 2}">系統管理者</c:if>
 	</td>
 	<td></td>
-<!-- 	<td> -->
-<%-- 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1"> --%>
-<%-- 	    <input type="hidden" name="empno" value="${EmpVO.empno}"> --%>
-<!-- 	    <input type="hidden" name="action" value="update"> -->
-<!-- 		<input type="submit"  value="增加考官"> -->
-<!-- 			</FORM> -->
-<!-- 	</td> -->
-<!-- 	<td> -->
-<%-- 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1"> --%>
-<%-- 	    <input type="hidden" name="empno" value="${EmpVO.empno}"> --%>
-<!-- 	    <input type="hidden" name="action" value="delete"> -->
-<!-- 		<input type="submit"  value="刪除"> -->
-<!-- 			</FORM> -->
-<!-- 	</td> -->
-	
 		</tr>
-		
         </c:forEach>
       	</table>
-
-<!-- 		<a type="image" class="waves-effect waves-light btn modal-trigger" href="#modal1">修改</a> -->
 		<a type="image" class="waves-effect waves-light btn modal-trigger" target="_blank" href="<%=request.getContextPath()%>/test/jsp/empTable.jsp">修改</a>
 		</fieldset></div>
-		<a href='<%=request.getContextPath()%>/employee/Examiner2.jsp'>返回考官表格</a>
-<!---------------------------------------------------------------- 員工查詢<body>結束 -->	
-<!---------------------------------------------------------------- 新增表單<body>開始 -->
-  
-  <div id="modal1" class="modal bottom-sheet">
-    <div class="modal-content">
-    <div>
-    <a href="EmpCaes?empturn=EMP">修改</a> 
-    
-    </div>
-    
-    
-<!---------------------------------------------------------------- For 表單開始 -->
-<%--     <form class="col s12" METHOD="post" ACTION="<%=request.getContextPath()%>/emp/emp.do"> --%>
-<!--       <div class="row"> -->
-<!--          <div class="input-field col s6"> -->
-<!--           <input id="last_name" type="text" name="empname" class="validate" value=""> -->
-<!--           <label for="last_name">姓名：</label> -->
-<!--         </div> -->
-<!--       </div> -->
-      
-<!--        <div class="row"> -->
-<!--         <div class="input-field col s12"> -->
-<!--           <input id="email" type="email"  name="empemail"class="validate" value=""> -->
-<!--           <label for="email">Email</label> -->
-<!--         </div> -->
-<!--       </div>  -->
-<!--        <div class="input-field col s12"> -->
-<!--     <select name="position"> -->
-<!--       <option value="" disabled selected>Choose your position</option> -->
-<!--       <option  value="2">系統管理員</option> -->
-<!--       <option  value="1">主考官</option> -->
-<!--          </select> -->
-<!--     <label>選擇權限</label> -->
-<!--   </div> -->
-  
-<!--    <div class="modal-footer"> -->
-<!-- <button class="btn waves-effect waves-light" type="submit" name="action" value="insert" >Submit -->
-<!--     <i class="material-icons right">send</i> -->
-<!--   </button> -->
-<!-- </div> -->
-<!--         </form> -->
-<!---------------------------------------------------------------- For 表單結束 -->
-    </div>
-<!--     <div class="modal-footer"> -->
-<!--       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
-        
-<!--     </div> -->
-
-  </div>
 </body>
 
-<!---------------------------------------------------------------- 新增表單<body>結束 -->
 <script>
 $(document).ready(function(){
        $('.modal-trigger').leanModal();
@@ -136,10 +65,5 @@ $(document).ready(function(){
         
   });
 </script>
-
-
-
-
-
 
 </html>

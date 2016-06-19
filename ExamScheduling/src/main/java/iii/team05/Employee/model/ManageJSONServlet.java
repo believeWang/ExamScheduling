@@ -50,7 +50,6 @@ public class ManageJSONServlet extends HttpServlet {
 		}
 		out.print(jary);							//
 
-		//System.out.println(jary);					//測試"{}"裡的json
 
 	}
 

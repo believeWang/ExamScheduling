@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +15,7 @@
 </script>
 </head>
 <body>
-<%@ include file="../../WEB-INF/header/slidenav.jsp" %>
+<%-- <%@ include file="../../WEB-INF/header/slidenav.jsp" %> --%>
 
 	<table>
 		<tr>
@@ -29,7 +30,12 @@
 		<c:forEach var="enentVO" items="${eventVOlists}">
 		<tr>
 			<td>${enentVO.eventid}</td>
-			<td>substring(${enentVO.starttime},0,3)</td>
+<%-- 			<td>${fn:substring(${enentVO.starttime}, 0, 3)}</td> --%>
+			
+			<c:set var="string1" value="${enentVO.starttime}"/>
+			<c:set var="string2" value="${fn:substring(string1, 0, 16)}" />
+			<td>${string2}</td>
+			
 			<td>${enentVO.title}</td>
 			<td>
 				<c:forEach var="ecVO" items="${ecVOlists}">
