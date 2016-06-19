@@ -7,12 +7,14 @@ import iii.team05.setting.model.STVO;
 import java.io.IOException;
 import java.util.List;
 
+import javax.jms.Session;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class EditmailServlet
@@ -36,14 +38,14 @@ public class EditmailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		STService stSvc = new STService();
-
+		HttpSession session = request.getSession();
 
 		  if ("Mail_Subject_Query".equals(action)){     // 來自loadmail.jsp的action查詢請求 
 				List<STVO> mailArticle = stSvc.query();
 				String subject= null;
 				for(STVO s:mailArticle){
 					subject = s.getEmailsubject();
-					System.out.println(subject);
+//					System.out.println(subject);
 	      }
 				request.setAttribute("mail", subject);     // 將第一項資訊放入request物件內
 		        RequestDispatcher rd =                     // 準備將移轉程式的執行順序
@@ -57,7 +59,7 @@ public class EditmailServlet extends HttpServlet {
 			String content= null;
 			for(STVO s:mailArticle){
 			 content = s.getEmailcontent();
-				System.out.println(content);
+//				System.out.println(content);
 			}
 			request.setAttribute("mail", content);        // 將第一項資訊放入request物件內
 	        RequestDispatcher rd =                        // 準備將移轉程式的執行順序
@@ -69,21 +71,21 @@ public class EditmailServlet extends HttpServlet {
 		  
 		  if ("Mail_Subject_Update".equals(action)){
 			  String emailsubject = request.getParameter("subject");
-			  System.out.println(emailsubject);            //測試editmail.jsp有傳更新資料進來
+//			  System.out.println(emailsubject);            //測試editmail.jsp有傳更新資料進來
 			  stSvc.updateMailsubject(emailsubject);       //呼叫STService的updatemail()方法工作
+			  session.setAttribute("alert", "修改mail主旨成功");
 		  }
 		
 		  if ("Mail_Content_Update".equals(action)){
 			  String emailcontent = request.getParameter("content");
-			  System.out.println(emailcontent);            //測試editmail.jsp有傳更新資料進來
+//			  System.out.println(emailcontent);            //測試editmail.jsp有傳更新資料進來
 			  stSvc.updateMailcontent(emailcontent);       //呼叫STService的updatemail()方法工作
+			  session.setAttribute("alert", "修改mail內文成功");
 		  }
-		//response.sendRedirect("/WEB-INF/loadmail.jsp");
-		request.getRequestDispatcher("/WEB-INF/setting/loadmail.jsp").forward(request, response);
-
-
+		response.sendRedirect("SettingForward");
+		
+//		  request.getRequestDispatcher("/WEB-INF/setting/loadmail.jsp").forward(request, response);
 }
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -5,10 +5,11 @@
 
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
-	// config.language = 'fr';
-	// config.uiColor = '#AADC6E';
+	
+	config.uiColor = '#AADC6E';
+	config.height = 400;
 
- 
+	
 	config.filebrowserBrowseUrl ='../ckfinder/ckfinder.html';
 	config.filebrowserImageBrowseUrl ='../ckfinder/ckfinder.html?Type=Images';
 	config.filebrowserFlashBrowseUrl ='../ckfinder/ckfinder.html?Type=Flash'; 
