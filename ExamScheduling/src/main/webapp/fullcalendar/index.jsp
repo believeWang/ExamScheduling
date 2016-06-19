@@ -23,9 +23,9 @@
 <!--jquery.ui 裡日期插件-->
 <script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
 <!-- Bootstrap -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="../css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
-<script src="../js/bootstrap.min.js"></script>
+<!-- <script src="../js/bootstrap.min.js"></script> -->
 <!--燈箱樣式效果-->
 <link rel="stylesheet" type="text/css" href="../css/jquery.fancybox.css">
 <script src='../js/jquery.fancybox.js'></script>
@@ -116,21 +116,21 @@
 </script>
 <style>
 
-	body {
-/* 		margin: 40px 10px; */
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
+/* 	body { */
+/* /* 		margin: 40px 10px; */ */
+/* 		padding: 0; */
+/* 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif; */
+/* 		font-size: 12px; */
+/* 	} */
 
-	#calendar {
-		padding: 10px;
-		max-width: 900px;
-		margin: 0 auto;
-	}
-	.list-group{
-		padding: 10px;
-	}
+/* 	#calendar { */
+/* 		padding: 10px; */
+/* 		max-width: 900px; */
+/* 		margin: 0 auto; */
+/* 	} */
+/* 	.list-group{ */
+/* 		padding: 10px; */
+/* 	} */
 
 </style>
 </head>
@@ -148,7 +148,7 @@
 			<div class="col s2">
 				<ul class="collection">
 					<c:forEach var="job" items="${jdlists}">
-						<a href="EventShowServlet?jobid=${job.jobid}"><li class="collection-item <c:if test="${job.jobid == jobid}"> active</c:if>" ><h3>${job.jobname}</h3></li></a><!-- active -->
+						<a href="EventShowServlet?jobid=${job.jobid}"><li class="collection-item <c:if test="${job.jobid == jobid}"> active</c:if>" ><h5>${job.jobname}</h5></li></a><!-- active -->
 
 					</c:forEach>
 				</ul>
