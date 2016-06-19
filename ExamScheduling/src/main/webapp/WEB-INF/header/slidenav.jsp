@@ -34,8 +34,8 @@
 				</div>
 			</div>
 		</li>
-		<li class="bold"><a href="EmpCaes?empturn=EVENT"
-			class="waves-effect waves-teal">預約管理</a></li>
+<!-- 		<li class="bold"><a href="EmpCaes?empturn=EVENT" -->
+<!-- 			class="waves-effect waves-teal">預約管理</a></li> -->
 		<li class="bold"><a href="EmpCaes?empturn=CAL"
 			class="waves-effect waves-teal">行事曆</a></li>
 		<li class="bold"><a href="ExamList"
