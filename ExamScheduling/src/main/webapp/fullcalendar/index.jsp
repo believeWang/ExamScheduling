@@ -175,5 +175,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<%@ include file="../WEB-INF/header/footer.jsp" %> 
+	
 </body>
 </html>
