@@ -65,7 +65,7 @@ public class EventJSONServlet extends HttpServlet {
 		eventVO.setBg_startdate(eshiredate);
 		eventVO.setBg_enddate(bgenddate);
 		eventVO.setRendering("background");//background
-		eventVO.setBgcolor("#ff9f89");
+		eventVO.setBgcolor("#9FA8DA");
 		
 		//撈所有事件物件
 		EventDAO edao = new EventDAO();

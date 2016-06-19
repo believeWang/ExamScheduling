@@ -8,7 +8,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
     <title>
         登入
     </title>
@@ -57,10 +58,25 @@ body {
                     }
                 });
             });
- 
+            $(document).ready(function(){
+
+                $('body').addClass('loaded');
+        	});
+            $('form').submit(function() {
+            	$('body').removeClass('loaded');
+            	return true; // return false to cancel form action
+            });
         </script>
 </head>
 <body class=" blue-grey lighten-4">
+	<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+	</div>
 <div id="login-page" class="row">
     <div class="col s12 z-depth-6 card-panel">
       <form class="login-form" action="LoginServlet" method="post">

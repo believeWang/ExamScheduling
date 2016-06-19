@@ -11,6 +11,14 @@
 
 <%@ include file="/WEB-INF/cdn.file"%>
  <%@ include file="../header/header_resourse.file" %>
+ <link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
+   <script type="text/javascript">
+   $(document).ready(function(){
+       $('body').addClass('loaded');
+	});
+   </script>
+   
     <style type="text/css">
 body {
 	background: url("exam_resourse/images/background.jpg");
@@ -114,6 +122,12 @@ table.responsive-table{
 </head>
 <body>
 <%@ include file="../header/header.jsp" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 <%-- <c:if test="${requestScope.result >= 5}"> --%>
 <!--    <h3 align="center">Passed</h3> -->
 <%-- </c:if> --%>

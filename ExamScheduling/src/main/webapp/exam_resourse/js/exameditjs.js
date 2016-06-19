@@ -68,6 +68,7 @@ if(numberOfQuestion>1){
 // submit前把總題數傳進去
 form.submit(function() {
 	jqueryNumberOfQuestion.val(idNum);
+	$('body').removeClass('loaded');
 	return true; // return false to cancel form action
 });
 // 增加

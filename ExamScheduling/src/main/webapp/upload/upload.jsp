@@ -11,6 +11,8 @@
 <head>
 <%@ include file="../WEB-INF/cdn.file"%>
 
+<link rel="stylesheet" type="text/css"
+	href="../css/preload.css" />
 
 <title>班級表單上傳與下載</title>
 <style>
@@ -115,6 +117,14 @@
 </head>
 <body>
 <%@ include file="../WEB-INF/header/sa_slidenav.jsp"%>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+	</div>
 <div class="row">
   <div class="col s11 offset-s2">
 	<h3>班級表單上傳與下載</h3>
@@ -193,5 +203,16 @@
 	</div>
 	</div>
 </body>
+<script>
 
+$(document).ready(function(){
+//loading img
+    $('body').addClass('loaded');
+    $('form').submit(function() {
+    	
+    	$('body').removeClass('loaded');
+    	return true; // return false to cancel form action
+    });
+});
+</script>
 </html>

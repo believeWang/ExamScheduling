@@ -9,7 +9,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <%@ include file="/WEB-INF/cdn.file"%>
 
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
@@ -52,6 +53,7 @@
 <script>
 	
 	$(document).ready(function() { 
+		  $('body').addClass('loaded');
 		var esYear = ${datearray[0]};
 		var esMonth = ${datearray[1]};
 		var esDay = ${datearray[2]};
@@ -66,7 +68,7 @@
 	    	weekends: false,
 	        header:{
 	        	left: 'title today',
-	        	center: 'month,basicWeek,basicDay,agendaWeek,agendaDay',
+	        	center: 'month,basicWeek,basicDay',
 	        	right: 'prevYear prev next nextYear'
 	        },
 	        editable: true,
@@ -93,7 +95,18 @@
 	                'type':'ajax', 
 	                'href':'EventServlet?action=edit&id='+calEvent.id+'&empno='+empno
 	            }); 
-	        } 
+	        },
+	        buttonText: {
+        	  today: '今天',
+        	  month: '月',
+        	  week: '周',
+        	  day: '天'
+       	 	},
+			allDayText: '全天',
+			monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+			monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+			dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+			dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
 
 	    })
 	    
@@ -123,12 +136,19 @@
 </head>
 <body>
     <%@ include file="../WEB-INF/header/header.jsp" %> 
+    <!-- loading圖 -->
+    <div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+	</div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col s2">
 				<ul class="collection">
 					<c:forEach var="job" items="${jdlists}">
-						<a href="EventShowServlet?jobid=${job.jobid}"><li class="collection-item <c:if test="${job.jobid == jobid}"> blue darken-1 active</c:if>" >${job.jobname}</li></a><!-- active -->
+						<a href="EventShowServlet?jobid=${job.jobid}"><li class="collection-item <c:if test="${job.jobid == jobid}"> active</c:if>" ><h3>${job.jobname}</h3></li></a><!-- active -->
 
 					</c:forEach>
 				</ul>
@@ -137,17 +157,18 @@
 				<table class="table table-bordered">
 					<tr>
 						<td>
-							<div id='calendar'></div>
+							<div></div><!-- 數據統計 -->
+							<div id='calendar'></div><!-- 行事曆 -->
 							<a class="modal-trigger waves-effect waves-light btn1" href="#modal1" id="errormsg"></a>
-								<div id="modal1" class="modal modal-fixed-footer" style="width:650px; height:200px">
-								    <div class="modal-content">
-								      <h2>錯誤訊息!!!</h2>
-								      <h4>超過預約的時間，請選擇可報名日期:${datearray[0]}年${datearray[1]}月${datearray[2]}日後14天內，謝謝。</h4>
-								    </div>
-								    <div class="modal-footer">
-								      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">關閉</a>
-								    </div>
-								  </div>
+							<div id="modal1" class="modal modal-fixed-footer" style="width:650px; height:200px">
+						    	<div class="modal-content">
+						      		<h2><p>錯誤訊息!!!</p></h2>
+							      	<h4>超過預約的時間，請選擇可報名日期:${datearray[0]}年${datearray[1]}月${datearray[2]}日後14天內，謝謝。</h4>
+							    </div>
+							    <div class="modal-footer">
+							      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">關閉</a>
+							    </div>
+							</div>
 						</td>
 					</tr>
 				</table>

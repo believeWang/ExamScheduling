@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <!-- jQuery -->
 <!-- <script src='../js/jquery.min.js'></script> -->
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <%@ include file="../WEB-INF/cdn.file" %>
 
 <!-- Bootstrap -->
@@ -22,6 +24,14 @@
 </head>
 <body>
 <%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+	</div>
 <div class="container-fluid">
 	
 	<div class="row">
@@ -91,4 +101,11 @@
 </div>
 
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $('body').addClass('loaded');
+});
+
+</script>
 </html>

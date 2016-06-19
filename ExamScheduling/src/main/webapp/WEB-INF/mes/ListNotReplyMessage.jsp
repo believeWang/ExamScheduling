@@ -12,18 +12,33 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/cdn.file"%>
-
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <script type="text/javascript">
 	$(function() {
 		$("td[id^='content']").hide();
 	});
+	$(document).ready(function(){
+        $('body').addClass('loaded');
+	});
+	$('form').submit(function() {	
+    	$('body').removeClass('loaded');
+    	return true; // return false to cancel form action
+    });
 </script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>考試預約系統Backstage</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/header/slidenav.jsp" %>
 <%@ include file="/WEB-INF/header/slide_mqtt.file" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+	</div>
 	<div style="margin: 50px 500px">
 		<table class="table">
 			<tr>

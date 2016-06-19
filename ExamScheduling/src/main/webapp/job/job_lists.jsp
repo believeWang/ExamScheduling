@@ -5,12 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>職缺列表</title>
+
 <!-- jQuery -->
 <!-- <script src='../js/jquery.min.js'></script> -->
 <%@ include file="../WEB-INF/cdn.file" %>
 <!-- jQuery UI -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css"
+	href="/ExamScheduling/css/preload.css" />
 <!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
@@ -21,6 +24,7 @@
   
 <script>
 $(function() {
+	 $('body').addClass('loaded');
 	var dialog, form,
 	
 	id = $( "#id" ),
@@ -80,12 +84,25 @@ $(function() {
     });
     
    
+    
+    $(".delete-job").click(function(){
+    	location.href = "http://www.yahoo.com.tw";
+    });
+    
 });
 </script>
   
 </head>
 <body>
 <%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+	</div>
 <div class="container-fluid">
 	
 	<div class="row">
@@ -122,6 +139,8 @@ $(function() {
 	  				<td>序號</td>
 	  				<td>職位名稱</td>
 	  				<td>負責主考官</td>
+	  				<td>職缺預約顏色</td>
+	  				<td>啟用狀態</td>
 	  				<td></td>
 	  			</tr>
 	  			
@@ -130,14 +149,19 @@ $(function() {
 	  				<td>${lp.index+1}</td>
 	  				<td id="${job.jobid}name">${job.jobname}</td>
 	  				<td id="${job.jobid}emp">
-	  				<c:forEach var="employee" items="${job.employee}">
-	  					${employee.empname}
-	  				</c:forEach>
+		  				<c:forEach var="employee" items="${job.employee}">
+		  					${employee.empname}
+		  				</c:forEach>
+	  				</td>
+	  				<td><input type="color" name="jobcolor" value="${job.jobcolor}" readonly="readonly"></td>
+	  				<td>
+						<c:if test="${job.jobactive == true}">啟用中</c:if>
+		  				<c:if test="${job.jobactive == false}">未啟用</c:if>  				
 	  				</td>
 	  				<td>
 						<a href="JobDoServlet?action=edit&id=${job.jobid}" class="edit-job"><span class="glyphicon glyphicon-pencil" aria-hidden="true">修改</span></a>
 						 / 
-						<a href="JobDoServlet?action=delete&id=${job.jobid}" class="delete-job"><span class="glyphicon glyphicon-trash" aria-hidden="true">刪除</span></a>
+						<a href="JobDoServlet?action=delete&id=${job.jobid}" class="delete-job" ><span class="glyphicon glyphicon-trash" aria-hidden="true">刪除</span></a>
 					</td>
 	  			</tr>
 	  			</c:forEach>

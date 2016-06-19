@@ -9,7 +9,7 @@
 		<div class="cn-wrapper" id="cn-wrapper">
 			<ul>
 				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="預約考試"><a
-					href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet?jobid=1"><i
+					href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet"><i
 						class="material-icons ">present_to_all</i></a></li>
 				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="前往考試"><a
 					href="${pageContext.request.contextPath}/choose"><i

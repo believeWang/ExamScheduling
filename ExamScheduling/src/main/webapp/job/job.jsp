@@ -15,54 +15,12 @@
 </head>
 <body>
 <%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
-<div class="container-fluid">
-	
+<div class="container">
 	<div class="row">
-		<div class="col-md-12">
-			<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#"> <img alt="Brand"
-						src="../images/calendar_icon.jpg" width="30px">
-					</a>
-					<p class="navbar-text">FullCalendar</p>
-					<div class="container">
-						<ul class="nav navbar-nav">
-								<li><a href="#">link1</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			</nav>
-		</div>
-	</div>
-	
-	<div class="row">
-	  	
-	  	<div class="col-md-3"></div>
-	  	
-	  	<div class="col-md-6">
-	  		<h3 class="text-center">職位</h3>
-	  		<table class="table  table-bordered">
-	  		<form action="InserJobServlet" method="post">
-	  			<tr>
-	  				<td>職位名稱：</td><td><input type="text" name="job" value=""  class="form-control"></td>
-	  			</tr>
-	  			<tr>
-	  				<td>啟用：</td><td><input type="checkbox" name="" value=""  class=""></td>
-	  			</tr>
-	  			<tr>
-	  				<td><input type="submit" value="Submit"  class="btn btn-primary"></td><td></td>
-	  			</tr>
-	  			</form>
-	  		</table>
-	  		
-	  	</div>
-	  	
-	  	<div class="col-md-3"></div>
-	
-	</div>
-
+      <div class="col s3"></div>
+      <div class="col s9">123</div>
+    </div>
 </div>
+
 </body>
 </html>
