@@ -1,6 +1,6 @@
-body { 
-	height: 100%; 
-	width: 100%; 
+body {
+	height: 100%;
+	width: 100%;
 }
 
 h3 {
@@ -8,5 +8,26 @@ h3 {
 }
 
 .editarea {
-	padding-right:200px;
+	padding-right: 200px;
+}
+
+div.center {
+	margin: 0px auto;
+}
+
+p.plandescription {
+	font-size: 2em;
+}
+
+.plandescription:hover{
+	color: #446778;	
+}
+
+.description {
+	color:  #58A4B0;
+	font-size: 1.6em;
+}
+
+.description a:hover {
+	color: #446778;	
 }

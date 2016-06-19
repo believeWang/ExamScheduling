@@ -308,6 +308,13 @@
 	<div>${aboutcontent}</div>
 	<h3>公司位置</h3>
 	<div id="map"></div>
-	<h3><a href="/ExamScheduling/google_map.jsp" target="_blank">路線圖</a></h3>
+	<br>
+	<div class="center"><a href="/ExamScheduling/google_map.jsp" target="_blank"><img src="/ExamScheduling/about/plan.png" style="width:30px;">
+	<p class="plandescription">點擊規劃 您的位置與公司距離</p></a></div>
+	<h3>更多職缺</h3>
+	<div class="center"><img src="/ExamScheduling/about/104qr.png"></div>
+	<div class="center"><p class="description"><a href="https://www.104.com.tw/jobbank/custjob/index.php?r=cust&j=624a446d3446402148423a1d1d1d1d5f2443a363189j50">查看104人力銀行更多職缺</p></a></div>
+	<br>
+	<br>
 </body>
 </html>
