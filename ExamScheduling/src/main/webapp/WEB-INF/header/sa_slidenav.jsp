@@ -55,27 +55,15 @@ $(function() {
             </li>
             </ul>
             </li>
-            <li class="bold"><a href="EmpCaes?empturn=EMP" class="waves-effect waves-teal" style="font-size:1.4em;">主考官管理</a></li>
+            <li class="bold"><a href="/ExamScheduling/EmpCaes?empturn=EMP" class="waves-effect waves-teal" style="font-size:1.4em;">主考官管理</a></li>
        		 <li class="bold"><a href="/ExamScheduling/upload/poitest.jspx" class="waves-effect waves-teal" style="font-size:1.4em;">考生管理</a></li>
- 			<li class="no-padding">
-          	<ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal" style="font-size:1.4em;">編輯前台</a>
-              <div class="collapsible-body">
-                <ul>
-               <li><a href="/ExamScheduling/job/JobServlet" style="font-size:1.4em;">職缺管理</a></li>
-                  <li><a href="/ExamScheduling/section/SectionServlet" style="font-size:1.4em;">時段管理</a></li>
-                </ul>
-              </div>
-            </li>
-            </ul>
-            </li>
             <li class="no-padding">
           	<ul class="collapsible collapsible-accordion">
             <li class="bold"><a class="collapsible-header  waves-effect waves-teal" style="font-size:1.4em;">設定</a>
               <div class="collapsible-body">
                 <ul>
-                 <li><a href="/ExamScheduling/job/JobServlet">職缺管理</a></li> 
-                  <li><a href="/ExamScheduling/section/SectionServlet">時段管理</a></li>
+                 <li><a href="/ExamScheduling/job/JobServlet" style="font-size:1.4em">職缺管理</a></li> 
+                  <li><a href="/ExamScheduling/section/SectionServlet" style="font-size:1.4em">時段管理</a></li>
                 </ul>
               </div>
             </li>

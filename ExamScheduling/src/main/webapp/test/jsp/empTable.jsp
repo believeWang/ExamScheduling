@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="Shortcut Icon" type="image/x-icon" href="/ExamScheduling/images/logo13.ico" />
 <title>員工管理</title>
 <%@ include file="../../WEB-INF/emp_cdn.file" %>
     <link rel="stylesheet" type="text/css" href="demos.css" />
