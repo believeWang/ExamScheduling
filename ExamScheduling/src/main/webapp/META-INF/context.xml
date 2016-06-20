@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?> 
+
 <Context displayName="EEiT85 Team05" docBase="ExamScheduling" path="/ExamScheduling" reloadable="true">
-  <!--                  SQLServer                      -->
+<!--                    SQLServer                      -->
   <Resource name="jdbc/ESDB" type="javax.sql.DataSource"
       username="sa" password="P@ssw0rd"
       driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
@@ -19,7 +20,6 @@
 <!--       maxActive="8" -->
 <!--       maxIdle="4" -->
 <!--       maxWait="5000" -->
-  />  
  <!--                 凱翔的  AZURE                      -->
 <!--   <Resource name="jdbc/ESDB" type="javax.sql.DataSource" -->
 

@@ -115,7 +115,7 @@ public class Student_select extends HttpServlet {
 				scoVO = scorSvc.updateSco(ecno,lab, interview,labtime, onlineex);
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("scoreVO", scoVO); // 資料庫update成功後,正確的的empVO物件,存入req
-				String url = "/employee/calender.jsp";
+				String url ="/WEB-INF/emp/calender.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
 				successView.forward(req, res);
 

@@ -15,7 +15,7 @@
 
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>面試預約</title>
 <!-- <script src='../js/jquery.min.js'></script> -->
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <script src='../js/moment.min.js'></script>
@@ -23,9 +23,9 @@
 <!--jquery.ui 裡日期插件-->
 <script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
 <!-- Bootstrap -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="../css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
-<script src="../js/bootstrap.min.js"></script>
+<!-- <script src="../js/bootstrap.min.js"></script> -->
 <!--燈箱樣式效果-->
 <link rel="stylesheet" type="text/css" href="../css/jquery.fancybox.css">
 <script src='../js/jquery.fancybox.js'></script>
@@ -116,21 +116,21 @@
 </script>
 <style>
 
-	body {
-/* 		margin: 40px 10px; */
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
+/* 	body { */
+/* /* 		margin: 40px 10px; */ */
+/* 		padding: 0; */
+/* 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif; */
+/* 		font-size: 12px; */
+/* 	} */
 
-	#calendar {
-		padding: 10px;
-		max-width: 900px;
-		margin: 0 auto;
-	}
-	.list-group{
-		padding: 10px;
-	}
+/* 	#calendar { */
+/* 		padding: 10px; */
+/* 		max-width: 900px; */
+/* 		margin: 0 auto; */
+/* 	} */
+/* 	.list-group{ */
+/* 		padding: 10px; */
+/* 	} */
 
 </style>
 </head>
@@ -148,17 +148,19 @@
 			<div class="col s2">
 				<ul class="collection">
 					<c:forEach var="job" items="${jdlists}">
-						<a href="EventShowServlet?jobid=${job.jobid}"><li class="collection-item <c:if test="${job.jobid == jobid}"> active</c:if>" ><h3>${job.jobname}</h3></li></a><!-- active -->
+						<a href="EventShowServlet?jobid=${job.jobid}"><li class="collection-item <c:if test="${job.jobid == jobid}"> active</c:if>" ><h5>${job.jobname}</h5></li></a><!-- active -->
 
 					</c:forEach>
 				</ul>
 			</div>
-			<div class="col s10">
+			<div class="col s10" style="background-color:#DFFFFC; ">
 				<table class="table table-bordered">
 					<tr>
 						<td>
 							<div></div><!-- 數據統計 -->
+							
 							<div id='calendar'></div><!-- 行事曆 -->
+							
 							<a class="modal-trigger waves-effect waves-light btn1" href="#modal1" id="errormsg"></a>
 							<div id="modal1" class="modal modal-fixed-footer" style="width:650px; height:200px">
 						    	<div class="modal-content">
@@ -175,5 +177,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<%@ include file="../WEB-INF/header/footer.jsp" %> 
+	
 </body>
 </html>

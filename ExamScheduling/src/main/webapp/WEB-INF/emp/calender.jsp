@@ -14,12 +14,12 @@
 <%@ include file="/WEB-INF/calendar.file"%>
 <link rel="stylesheet" type="text/css"
 	href="/ExamScheduling/css/preload.css" />
-<title></title>
+<title>主考官行事曆</title>
 
 <style type="text/css">
 #calendar {
-	width: 960px;
-	margin: 20px auto 10px auto
+ 	max-width: 70%;
+/* 	margin: 20px auto 10px auto */
 }
 </style>
 
@@ -31,11 +31,11 @@ body {
 	font-size: 14px;
 }
 
-#calendar {
-	padding: 10px;
-	max-width: 900px;
-	margin: 0 auto;
-}
+/* #calendar { */
+/* 	padding: 10px; */
+
+/* 	margin: 0 auto; */
+/* } */
 
 .list-group {
 	padding: 10px;
@@ -175,6 +175,7 @@ body {
 												var selDate = moment(date)
 														.format('YYYY-MM-DD');
 											},
+											
 											eventClick : function(calEvent,
 													jsEvent, view) {
 												$
@@ -183,7 +184,18 @@ body {
 															'href' : '/ExamScheduling/employee/Score?action=get_Event&id='
 																	+ calEvent.id
 														});
-											}
+											}, buttonText: {
+									        	  today: '今天',
+									        	  month: '月',
+									        	  week: '周',
+									        	  day: '天'
+									       	 	},
+												allDayText: '全天',
+												monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+												monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+												dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+												dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+											
 										})
 					});
 </script>
@@ -202,19 +214,15 @@ body {
 	<div class="container-fluid">
 		<div class="row">
 
-			<div class="col-md-2">
-				<ul class="list-group">
-
-				</ul>
-			</div>
-			<div class="col-md-10">
+		
+			  <div class="col s10 offset-s2">
 				<table class="table table-bordered">
 					<tr>
 						<td>
-							
+							<a class="waves-effect waves-light btn" id="authorize-button" onclick="handleAuthClick(event)"><i class="material-icons left">cloud</i>匯入GOOGLE CALENDAR</a>
 								<!--Button for the user to click to initiate auth sequence -->
-								<button id="authorize-button" onclick="handleAuthClick(event)">
-									Authorize</button>
+<!-- 								<button > -->
+<!-- 									匯入GOOGLE CALENDAR</button> -->
 							
 						</td>
 					</tr>

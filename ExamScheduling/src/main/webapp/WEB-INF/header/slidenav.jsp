@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <header>
+	 <nav class="top-nav  blue-grey lighten-3" style="height:122px;box-shadow: none;">
+        <div class="container">
+          <div class="nav-wrapper"><h1>主考官</h1></div>
+        </div>
+      </nav>
 
-
-	<nav class="top-nav  blue-grey lighten-3">
-		<div class="container" style="height: 5%">
-			<div class="nav-wrapper">
-				<a class="page-title"></a>
-			</div>
-		</div>
-	</nav>
+	
 	<div class="container">
 		<a href="#" data-activates="nav-mobile"
 			class="button-collapse top-nav full hide-on-large-only"><i
 			class="material-icons">menu</i></a>
 	</div>
-	<ul id="nav-mobile" class="side-nav fixed">
-
+	<ul id="nav-mobile" class="side-nav fixed" >
+	 <li class="logo" style="background-color:#0097a7">
+            <img style="width:240px" id="front-page-logo"  src="images/iiIVlight.png"/>
+            </li>
 		<li class="user-details blue-grey lighten-3">
 			<div class="row cyan darken-1">
 
@@ -28,25 +28,23 @@
 					</ul>
 					<a
 						class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn"
-						href="#" data-activates="profile-dropdown">${sessionScope.GoogleUser }<i
+						href="#" data-activates="profile-dropdown" style="font-size:1.6em;">${sessionScope.GoogleUser }<i
 						class="mdi-navigation-arrow-drop-down right"></i></a>
-					<p class="user-roal">主考官</p>
+				
 				</div>
 			</div>
 		</li>
-<!-- 		<li class="bold"><a href="EmpCaes?empturn=EVENT" -->
-<!-- 			class="waves-effect waves-teal">預約管理</a></li> -->
-		<li class="bold"><a href="EmpCaes?empturn=CAL"
-			class="waves-effect waves-teal">行事曆</a></li>
+
+		<li class="bold" ><a href="EmpCaes?empturn=CAL"
+			class="waves-effect waves-teal" style="font-size:1.4em;">行事曆</a></li>
 		<li class="bold"><a href="ExamList"
-			class="waves-effect waves-teal">編輯考題</a></li>
+			class="waves-effect waves-teal" style="font-size:1.4em;">編輯考題</a></li>
 		<li class="bold"><a href="MesTurn?turn=LNRM"
-			class="waves-effect waves-teal">留言版</a></li>
+			class="waves-effect waves-teal" style="font-size:1.4em;">留言版</a></li>
 
 
 	</ul>
 </header>
-
 <!-- 以下MQTT -->
 
 <div class="toggler" id="mqtt">

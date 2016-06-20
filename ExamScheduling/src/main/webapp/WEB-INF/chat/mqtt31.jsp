@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <%@ include file="/WEB-INF/cdn.file"%>
-
+<title>即時通訊</title>
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
 <script src="/ExamScheduling/chat/js/mqttws31.js" type="text/javascript"></script>
 <script src="/ExamScheduling/chat/js/jquery.qqFace.js" type="text/javascript"></script>
@@ -153,6 +153,7 @@ span.emotion:hover {
       <li><a href='<%=request.getContextPath()%>/MesTurn?turn=LM' class="btn-floating blue darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="留言" ><i class="material-icons">library_add</i></a></li>
     </ul>
   </div>
+  <%@ include file="/WEB-INF/header/footer.jsp" %>
 </body>
 <script type="text/javascript">
 $(document).ready(function(){

@@ -89,6 +89,11 @@
 									myTd = $("<td>是</td>");
 								} else
 									myTd = $("<td>否</td>");
+							}else if (key == 'essex') {
+								if (objectvalue == 'true') {
+									myTd = $("<td>男</td>");
+								} else
+									myTd = $("<td>女</td>");
 							} else {
 								myTd = "<td>" + objectvalue + "</td>";
 							}
@@ -129,7 +134,7 @@
   <div class="col s11 offset-s2">
 	<h3>班級表單上傳與下載</h3>
 	<hr>
-	<div class="container">
+	<div class="row">
 		<div class="divider"></div>
 		<div class="section">
 			<div>
@@ -149,7 +154,7 @@
 					<h4>上傳新班級名單</h4>
 					<form action="poitest.jspx?_m=poi_upload" method="post"
 						enctype="multipart/form-data">
-						<input type="file" name="file"> <input type="submit"
+						<input type="file" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> <input type="submit"
 							value="上傳" class="btn btn-info">
 					</form>
 					<hr>

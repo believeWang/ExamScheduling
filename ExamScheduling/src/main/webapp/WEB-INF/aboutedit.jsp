@@ -10,11 +10,15 @@
 
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+<<<<<<< HEAD
+=======
 
 <link rel="stylesheet" type="text/css"
 	href="css/preload.css" />
+>>>>>>> branch 'master' of https://github.com/believeWang/ExamScheduling.git
 <style>
 @import url('<%=request.getContextPath()%>/about/aboutedit.css');
 </style>
@@ -31,7 +35,7 @@
 	</div>
 	<%@ include file="/WEB-INF/header/sa_slidenav.jsp"%>
 	<div class="row editarea">
-		<div class="col s11 offset-s2">
+		<div class="col s10 offset-s2">
 			<h3>公司簡介 - 編輯頁面</h3>
 			<hr>
 			<br>
@@ -39,6 +43,7 @@
 				<form METHOD="post" ACTION="/ExamScheduling/aboutedit">
 					<textarea class="ckeditor" cols="20" id="content" name=content
 						rows="60">${about}</textarea>
+
 <!-- 					<input type=submit value="送出"> -->
 					<button class="waves-light btn" type="submit" style="">
 						送出<i class="material-icons right">input</i>

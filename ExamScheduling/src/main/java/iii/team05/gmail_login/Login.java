@@ -33,7 +33,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String login="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=14162985850-ukk7ka9npfvhatl0vi7mccqgnhnq2ui0.apps.googleusercontent.com&redirect_uri=http://localhost:8081/ExamScheduling/GoogleCheck&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/admin.directory.resource.calendar&access_type=offline";
+		String login="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=14162985850-ukk7ka9npfvhatl0vi7mccqgnhnq2ui0.apps.googleusercontent.com&redirect_uri=http://localhost:8081/ExamScheduling/GoogleCheck&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/calendar&access_type=offline";
 	response.sendRedirect(response.encodeRedirectURL(login));
 	
 

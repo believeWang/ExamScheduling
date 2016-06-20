@@ -80,7 +80,7 @@ public class bannerservlet extends HttpServlet {
 		// 刪除Imag的需求
 		if ("Banner_Imag_Delete".equals(action)) {
 			Integer deImag = Integer.valueOf(request.getParameter("deImag"));
-			System.out.println(deImag); // 測試banner.jsp有傳Delete資料進來
+//			System.out.println(deImag); // 測試banner.jsp有傳Delete資料進來
 			baSvc.delete(deImag);
 			// request.getRequestDispatcher("/bannerset.jsp").forward(request,
 			// response); //新增和刪除的跳轉都直接寫在外部用Redirect

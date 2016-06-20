@@ -1,6 +1,8 @@
 package iii.team05.examinee.ecmodel;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class ScoreVO implements java.io.Serializable{
 
@@ -51,7 +53,16 @@ public class ScoreVO implements java.io.Serializable{
 	}
 
 
+	public void notNullVO(){
+		if(this.lab==null)this.lab=0;
+		if(this.interview==null)this.interview=0;
+		if(this.labtime==null)this.labtime=0;
+		if(this.onlineex==null)this.onlineex=0;
 	
+		
+	
+		
+	}
 	
 		
 	

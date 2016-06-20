@@ -48,11 +48,11 @@ public class SectionServlet extends HttpServlet {
 		SectionDAO sectionDAO = new SectionDAO();
 		List<SectionVO> sectionlists = sectionDAO.getAll();
 		
-		for(SectionVO sectionVO : sectionlists){
-			System.out.println(sectionVO.getSectionid());
-			System.out.println(sectionVO.getSectiontime());
-			System.out.println(sectionVO.getSectionStatus());
-		}
+//		for(SectionVO sectionVO : sectionlists){
+//			System.out.println(sectionVO.getSectionid());
+//			System.out.println(sectionVO.getSectiontime());
+//			System.out.println(sectionVO.getSectionStatus());
+//		}
 		
 		request.setAttribute("sectionlists", sectionlists);
 		

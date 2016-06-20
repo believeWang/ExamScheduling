@@ -92,4 +92,10 @@ public class ECVO implements java.io.Serializable{
 				
 		return str;
 	}
+	public void notNullVO(){
+		if(this.ecstatus==null)this.ecstatus=false;
+		if(this.ecremark1==null)this.ecremark1="無";
+		
+		
+	}
 }

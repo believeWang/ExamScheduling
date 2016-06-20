@@ -64,8 +64,7 @@ public class AbouteditorServlet extends HttpServlet {
 		if ("Editor_Update".equals(action)) {
 			abSvc.updateAbout(aboutcontent);// 呼叫Service
 			// request.getRequestDispatcher("/about.jsp");
-			response.sendRedirect("/ExamScheduling/AboutServlet");
-
+			response.sendRedirect("/ExamScheduling/about/abouteditSuccess.jsp");
 		}
 
 	}
