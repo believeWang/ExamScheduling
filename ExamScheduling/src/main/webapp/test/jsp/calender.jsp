@@ -72,55 +72,55 @@ function myGrid(response){
 	            insertItem: function(insertingClient) {
 	                this.clients.push(insertingClient);
 	             
-// 	            	$.ajax({
-// 	            		url : '/ExamScheduling/emp/emptable.do',
-// 	             		data : {
-// 	             			'button' : 'insert',
-// 	             			'Name' : insertingClient.Name,
-// 	             			'Email' : insertingClient.Email,
-// 	             			'Position' : insertingClient.Position
-// 	             		},
-// 	            		type : 'post',
-// 	            		dataType : "json",
-// 	            		success : function(response) {
-// 	            		}
-// 	            	});
+	            	$.ajax({
+	            		url : '/ExamScheduling/emp/emptable.do',
+	             		data : {
+	             			'button' : 'insert',
+	             			'Name' : insertingClient.Name,
+	             			'Email' : insertingClient.Email,
+	             			'Position' : insertingClient.Position
+	             		},
+	            		type : 'post',
+	            		dataType : "json",
+	            		success : function(response) {
+	            		}
+	            	});
 	            },
 
 	            updateItem: function(updatingClient) {
 	            	 var clientIndex = $.inArray(updatingClient, this.clients);
 		                this.clients.splice(clientIndex, 1);
-// 	            	$.ajax({
-// 	            		url : '/ExamScheduling/emp/emptable.do',
-// 	             		data : {
-// 	             			'button' : 'update',
-// 	             			'Number' : updatingClient.Number,
+	            	$.ajax({
+	            		url : '/ExamScheduling/emp/emptable.do',
+	             		data : {
+	             			'button' : 'update',
+	             			'Number' : updatingClient.Number,
 	             			
-// 	             		},
-// 	            		type : 'post',
-// 	            		dataType : "json",
-// 	            		success : function(response) {
-// 	            		}
-// 	            	});
+	             		},
+	            		type : 'post',
+	            		dataType : "json",
+	            		success : function(response) {
+	            		}
+	            	});
 	            },
 
 	            
 	            deleteItem: function(deletingClient) {
 		               
-// 	                $.ajax({
-// 	            		url : '/ExamScheduling/emp/emptable.do',
-// 	             		data : {
-// 	             			'button' : 'delete',
-// 	             			'Number' : deletingClient.Number,
-// 	             		},
+	                $.ajax({
+	            		url : '/ExamScheduling/emp/emptable.do',
+	             		data : {
+	             			'button' : 'delete',
+	             			'Number' : deletingClient.Number,
+	             		},
 	             		
-// 	            		type : 'post',
-// 	            		dataType : "json",
-// 	            		success : function(response) {
+	            		type : 'post',
+	            		dataType : "json",
+	            		success : function(response) {
 	            			
-// 	            		},
+	            		},
 	            		
-// 	            	});
+	            	});
 	                
 	            }
 
