@@ -18,8 +18,8 @@
 
 <style type="text/css">
 #calendar {
-	width: 960px;
-	margin: 20px auto 10px auto
+ 	max-width: 70%;
+/* 	margin: 20px auto 10px auto */
 }
 </style>
 
@@ -31,11 +31,11 @@ body {
 	font-size: 14px;
 }
 
-#calendar {
-	padding: 10px;
-	max-width: 900px;
-	margin: 0 auto;
-}
+/* #calendar { */
+/* 	padding: 10px; */
+
+/* 	margin: 0 auto; */
+/* } */
 
 .list-group {
 	padding: 10px;
@@ -175,6 +175,7 @@ body {
 												var selDate = moment(date)
 														.format('YYYY-MM-DD');
 											},
+											
 											eventClick : function(calEvent,
 													jsEvent, view) {
 												$
@@ -184,6 +185,7 @@ body {
 																	+ calEvent.id
 														});
 											}
+											
 										})
 					});
 </script>
@@ -202,19 +204,15 @@ body {
 	<div class="container-fluid">
 		<div class="row">
 
-			<div class="col-md-2">
-				<ul class="list-group">
-
-				</ul>
-			</div>
-			<div class="col-md-10">
+		
+			  <div class="col s10 offset-s2">
 				<table class="table table-bordered">
 					<tr>
 						<td>
 							
 								<!--Button for the user to click to initiate auth sequence -->
 								<button id="authorize-button" onclick="handleAuthClick(event)">
-									Authorize</button>
+									匯入GOOGLE CALENDAR</button>
 							
 						</td>
 					</tr>

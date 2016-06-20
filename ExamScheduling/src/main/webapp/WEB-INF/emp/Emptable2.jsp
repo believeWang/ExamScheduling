@@ -19,15 +19,26 @@ pageContext.setAttribute("list", list);
 
 <title>員工表格</title>
 <%@ include file="../../WEB-INF/cdn.file" %>
+<link rel="stylesheet" type="text/css"
+	href="css/preload.css" />
 <style>
 @import url('<%=request.getContextPath()%>/employee/main.css');
 @import url('<%=request.getContextPath()%>/mes/css/main.css');
 </style>
+
 </head>
 
 <!---------------------------------------------------------------- 員工查詢<body>開始 -->
 <body>
 <%@ include file="../../WEB-INF/header/sa_slidenav.jsp" %>
+<!-- loading圖 -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+
+		<div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+	</div>
 <div ><fieldset>
 			<legend>員工表格</legend>
 
@@ -37,8 +48,6 @@ pageContext.setAttribute("list", list);
 					<th>員工姓名</th>
 					<th>E-mail</th>
 					<th>權限</th>
-					<th>修改</th>
-<!-- 					<th>刪除</th> -->
 				</tr>
 
 	<c:forEach var="EmpVO" items="${list}">
@@ -52,7 +61,6 @@ pageContext.setAttribute("list", list);
 		<c:if test="${EmpVO.position == 1}">主考官</c:if>
 		<c:if test="${EmpVO.position == 2}">系統管理者</c:if>
 	</td>
-	<td></td>
 <!-- 	<td> -->
 <%-- 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/emp/emp.do" name="form1"> --%>
 <%-- 	    <input type="hidden" name="empno" value="${EmpVO.empno}"> --%>
@@ -133,6 +141,7 @@ pageContext.setAttribute("list", list);
 $(document).ready(function(){
        $('.modal-trigger').leanModal();
     $('select').material_select();
+    $('body').addClass('loaded');
         
   });
 </script>

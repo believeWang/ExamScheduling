@@ -77,7 +77,7 @@ public class EmployeeJSONServlet extends HttpServlet {
 		
 		String start = request.getParameter("start");
 		String end = request.getParameter("end");
-		System.out.println(end);
+	//	System.out.println(end);
 		try {
 			SimpleDateFormat dateFormat =new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
 			Date parsedDate = dateFormat.parse(start);

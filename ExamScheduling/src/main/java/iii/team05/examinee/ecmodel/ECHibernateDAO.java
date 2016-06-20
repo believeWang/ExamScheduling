@@ -29,6 +29,18 @@ public class ECHibernateDAO implements ECDao_interface{
 			throw ex;
 		}
 	}
+	public void insertALL(List<ECVO> list) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			for(ECVO examineeCatVO:list)
+			session.persist(examineeCatVO);
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+	}
 
 	@Override
 	public void update(ECVO examineeCatVO) {
