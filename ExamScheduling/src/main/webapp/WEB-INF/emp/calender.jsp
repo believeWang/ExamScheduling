@@ -14,7 +14,7 @@
 <%@ include file="/WEB-INF/calendar.file"%>
 <link rel="stylesheet" type="text/css"
 	href="/ExamScheduling/css/preload.css" />
-<title></title>
+<title>主考官行事曆</title>
 
 <style type="text/css">
 #calendar {
@@ -209,10 +209,10 @@ body {
 				<table class="table table-bordered">
 					<tr>
 						<td>
-							
+							<a class="waves-effect waves-light btn" id="authorize-button" onclick="handleAuthClick(event)"><i class="material-icons left">cloud</i>匯入GOOGLE CALENDAR</a>
 								<!--Button for the user to click to initiate auth sequence -->
-								<button id="authorize-button" onclick="handleAuthClick(event)">
-									匯入GOOGLE CALENDAR</button>
+<!-- 								<button > -->
+<!-- 									匯入GOOGLE CALENDAR</button> -->
 							
 						</td>
 					</tr>

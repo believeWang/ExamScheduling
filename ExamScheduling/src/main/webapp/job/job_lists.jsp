@@ -106,7 +106,7 @@ $(function() {
 <div class="container-fluid">
 	
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col s10 offset-s2">
 			<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -129,7 +129,7 @@ $(function() {
 	  	
 	  	<div class="col-md-3"></div>
 	  	
-	  	<div class="col-md-6">
+	  	<div class="col s8 offset-s2">
 	  		<h3 class="text-center">職位</h3>
 	  		<a href="JobDoServlet?action=add&id=${job.jobid}" id="create-job000"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
 	  		

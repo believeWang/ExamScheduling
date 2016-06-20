@@ -35,7 +35,7 @@
 <div class="container-fluid">
 	
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col s10 offset-s2">
 			<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -58,7 +58,7 @@
 	  	
 	  	<div class="col-md-3"></div>
 	  	
-	  	<div class="col-md-6">
+	  	<div class="col s10 offset-s2">
 	  		<h3 class="text-center">預約時段設定</h3>
 <!-- 	  		<a href="#" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a> -->
 	  		<a href="SectionDoServlet?action=add" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
