@@ -24,15 +24,15 @@
 <h1 class="center-align">請輸入留言</h1>
 <table border="0" class="table">
 	<tr>
-		<td>姓名:</td>
+		<td><h5>姓名:</h5></td>
 		<td><input type="TEXT" name="msgname" size="40"  value="${sessionScope.ExamName}" readonly="readonly"/></td>
 	</tr>
 	<tr>
-		<td>e-mail:</td>
+		<td><h5>e-mail:</h5></td>
 		<td><input type="TEXT" name="msgmail" size="40" value="${sessionScope.ExamEmail}" readonly="readonly"/></td>
 	</tr>
 	<tr>
-		<td>留言:</td>
+		<td><h5>留言:</h5></td>
 		<td><textarea cols="40" rows="20" id="area1" name="msgcontent" class="materialize-textarea"></textarea></td>
 	</tr>
 </table>
@@ -55,6 +55,7 @@
 <c:if test="${status=='NG'}">
 <script>alert("你在這裡當駭客，你媽知道嗎!")</script>
 </c:if>
+<%@ include file="/WEB-INF/header/footer.jsp" %> 
 </body>
 <script type="text/javascript">
 $(document).ready(function(){

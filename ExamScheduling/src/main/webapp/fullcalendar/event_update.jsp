@@ -29,7 +29,7 @@
         <label for="remark">備註：</label><textarea name="remark" rows="4" cols="50" id="remark" class="form-control">${eventVO.eventremark}</textarea>
         <div class="sub_btn">
         	<span class="del"><input type="button" class="btn btn_del" id="del_event" value="删除"></span> 
-        	<input type="submit" class="btn btn-primary" value="确定"> <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()">
+        	<input type="submit" class="btn btn-primary" value="確定"> <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()">
        	</div> 
     </form> 
 </div> 
@@ -64,7 +64,7 @@ $(function(){
 function showRequest(){//輸出表單的
     var events = $("#event").val();
     if(events==''){
-        alert("请输入日程内容！");
+        alert("請输入日程内容！");
         $("#event").focus();
         return false;
     }

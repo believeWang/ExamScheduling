@@ -1,94 +1,76 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Parallax Template - Materialize</title>
 
-
-
-	<div class="component">
-		<!-- Start Nav Structure -->
-		<button class="cn-button" id="cn-button">+</button>
-		<div class="cn-wrapper" id="cn-wrapper">
-			<ul>
-				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="預約考試"><a
-					href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet"><i
-						class="material-icons ">present_to_all</i></a></li>
-				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="前往考試"><a
-					href="${pageContext.request.contextPath}/choose"><i
-						class="material-icons">mode_edit</i></a></li>
-				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="首頁"><a
-					href="<%=request.getContextPath()%>/index.jsp"><span
-						class="icon-home"></span></a></li>
-				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="關於緯康"><a href="/ExamScheduling/AboutServlet"><i class="material-icons">library_books</i></a></li>
-				<li class="tooltipped" data-position="top" data-delay="50" data-tooltip="聯絡我們 "><a
-					href="<%=request.getContextPath()%>/MesTurn?turn=LM"><i
-						class="material-icons">perm_phone_msg</i></a></li>
-			</ul>
-		</div>
-		<div id="cn-overlay" class="cn-overlay"></div>
-		<!-- End Nav Structure -->
-	</div>
-
-	<div id="mwt_mwt_slider_scroll">
-		<div id="mwt_fb_tab">
-			<span>i</span> <SPAN>i</SPAN> <SPAN>I</SPAN> <SPAN>N</SPAN> <SPAN>T</SPAN>
-			<SPAN>E</SPAN> <SPAN>R</SPAN> <SPAN>V</SPAN> <SPAN>I</SPAN> <SPAN>E</SPAN>
-			<SPAN>W</SPAN>
-		</div>
-		<div id="mwt_slider_content">
-			<div
-				style="background-image: url(/ExamScheduling/header/images/ba01.png); height: 200px">
-				<h3 align="center">${errorMessage}</h3>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/ExamScheduling/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/ExamScheduling/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+	<nav class="white" role="navigation">
+		<div class="nav-wrapper container">
+			<a id="logo-container" href="/ExamScheduling/AboutServlet" class="brand-logo">
+<!-- 				<p style="color:#4DB6AC; margin-top:15px"></>i Interviewer</p> -->
+					<img src="/ExamScheduling/images/iiIV.png" height="80px">
+			</a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet">預約考試</a></li>
+				<li><a href="${pageContext.request.contextPath}/choose">前往考試</a></li>
+				<li><a href="<%=request.getContextPath()%>/MesTurn?turn=LM">聯絡我們</a></li>
 				<c:choose>
 					<c:when test="${not empty sessionScope.ecno}">
-
-						<div class="header-user-menu">
-							<ul>
-								
-								<li><h5 style="color:blue">${sessionScope.ecno}</h5>歡迎使用本系統</li>
-								<li><a class="blue lighten-1 waves-light btn"
-									href="${pageContext.request.contextPath}/LogoutServlet"><i
-										class="material-icons left">cloud</i>登出</a></li>
-
-
-							</ul>
-						</div>
-					</c:when>
-
-					<c:otherwise>
-						<div class="header-user-login">
-							<ul id="login">
-								<li>請先登入才能使用本系統</li>
-								<li><a class="modal-trigger blue lighten-1 waves-light btn"
-									href="/ExamScheduling/login"><i class="material-icons left">cloud</i>登入</a></li>
-							</ul>
-						</div>
-					</c:otherwise>
+					<li><a href="<%=request.getContextPath()%>/LogoutServlet">登出</a></li>
+					<li style="color: #000000;">${sessionScope.ecno}</li>
+				</c:when>
+				<c:otherwise>
+				<li><a href="<%=request.getContextPath()%>/login">登入</a></li>
+				</c:otherwise>
 				</c:choose>
+				
+				
+				
+			</ul>
 
-			</div>
+			<ul id="nav-mobile" class="side-nav">
+				<li><a href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet">預約考試</a></li>
+				<li><a href="${pageContext.request.contextPath}/choose">前往考試</a></li>
+				<li><a href="<%=request.getContextPath()%>/MesTurn?turn=LM">聯絡我們</a></li>
+				<li><a href="<%=request.getContextPath()%>/login">登入</a>
+				<a href="<%=request.getContextPath()%>/LogoutServlet">登出</a></li>
+				<li style="color: #000000;">${sessionScope.ecno}</li>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 		</div>
-	</div>
-<!-- 	<div id="modal1" class="modal "> -->
-<!-- 		<div class="modal-content"> -->
-<!-- 			<form name="login-form" class="login-form" action="LoginServlet" -->
-<!-- 				method="post"> -->
-<!-- 				帳號:<input name="username" type="text" class="input username" />  -->
-<!-- 				密碼:<input name="password" type="password" class="input password" /> -->
+	</nav>
 
-<!-- 				<button class="light-blue darken-2 waves-light btn" type="submit" -->
-<!-- 					style="float: right;"> -->
-<!-- 					送出<i class="material-icons right">input</i> -->
-<!-- 				</button> -->
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">i Interviewer</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">i Interviewer 讓您快速選出最符合該公司需求的人才</h5>
+        </div>
+        <div class="row center">
+          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+        </div>
+        <br><br>
 
+      </div>
+    </div>
+    <div class="parallax"><img src="/ExamScheduling/images/background1.jpg" alt="Unsplashed background img 1"></div>
+  </div>
 
-<!-- 			</form> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-	<script src="/ExamScheduling/header/js/polyfills.js"></script>
-	<script src="/ExamScheduling/header/js/demo1.js"></script>
+  <!--  Scripts-->
+<!--   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+  <script src="/ExamScheduling/js/materialize.js"></script>
+  <script src="/ExamScheduling/js/init.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $('.tooltipped').tooltip({delay: 50});
-  });
-</script>
-
+  </body>
+</html>

@@ -47,11 +47,11 @@ border-bottom:1px solid #313030;
 	<div style="margin: 100px 500px">
 		<table class="table">
 			<tr>
-				<th>刪除</th>
+				<th><h5>刪除</h5></th>
 <!-- 				<th>留言者姓名</th> -->
 <!-- 				<th>留言者e-mail</th> -->
-				<th>留言時間</th>
-				<th>回覆狀態</th>
+				<th><h5>留言時間</h5></th>
+				<th><h5>回覆狀態</h5></th>
 			</tr>
 			<%@ include file="page1.file"%>
 			<c:forEach var="mesVO" items="${list}" begin="<%=pageIndex%>"
@@ -70,12 +70,12 @@ border-bottom:1px solid #313030;
 <%-- 					<td>${mesVO.msgname}</td> --%>
 <%-- 					<td>${mesVO.msgmail}</td> --%>
 					<td>
-					${mesVO.msgtime}
+					<h5>${mesVO.msgtime}</h5>
 					</td>
 					<c:choose>
 							<c:when test="${mesVO.rpcontent==null}">
 							<td>
-								<h6 style="color: blue">尚未處理</h6>
+								<h5 style="color: blue">尚未處理</h5>
 							</td>
 							</c:when>
 							<c:otherwise>
@@ -89,12 +89,12 @@ border-bottom:1px solid #313030;
 									<td colspan="3" id="content${counter.index}">
 
 <%-- 										留言時間:${mesVO.msgtime}&nbsp;<br> 考生 ${mesVO.msgname}:<br> --%>
-										內容:<br>
-										${mesVO.msgcontent}<br>
+										<H5>內容:</H5><br>
+										<H6>${mesVO.msgcontent}</H6><br>
 										<div class="line-separator"></div> 
 										<br>
-										回覆時間:${mesVO.rptime}<br>主考官 ${mesVO.rpname}:<br>
-										${mesVO.rpcontent}<br>
+										<H5>回覆時間:${mesVO.rptime}</H5><br><H5>主考官 ${mesVO.rpname}:</H5><br>
+										<H6>${mesVO.rpcontent}</H6><br>
 
 
 									</td>
@@ -121,7 +121,7 @@ border-bottom:1px solid #313030;
 				class="btn-floating blue darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="即時通訊"><i class="material-icons">question_answer</i></a></li>
 		</ul>
 	</div>
-
+<%@ include file="/WEB-INF/header/footer.jsp" %>
 </body>
 <script type="text/javascript">
 $(document).ready(function(){

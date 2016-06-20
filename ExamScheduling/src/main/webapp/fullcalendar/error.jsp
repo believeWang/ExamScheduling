@@ -72,5 +72,6 @@
 	    	<h1>暫時沒有開放職缺。</h1>
 	    </div>
     </div>
+    <%@ include file="../WEB-INF/header/footer.jsp" %> 
 </body>
 </html>
