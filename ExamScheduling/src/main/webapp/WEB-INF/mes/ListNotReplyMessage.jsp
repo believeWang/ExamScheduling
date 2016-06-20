@@ -39,21 +39,21 @@
 		<div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
 	</div>
-	<div style="margin: 50px 500px">
+	<div style="margin: 100px 400px">
 		<table class="table">
 			<tr>
-				<th>留言者姓名</th>
-				<th>留言者信箱</th>
-				<th>留言時間</th>
+				<th><h5>留言者姓名</h5></th>
+				<th><h5>留言者信箱</h5></th>
+				<th><h5>留言時間</h5></th>
 
 			</tr>
 			
 			<c:forEach var="mesVO" items="${list}" varStatus="counter">
 
 				<tr>
-					<td>${mesVO.msgname}</td>
-					<td>${mesVO.msgmail}</td>
-					<td>${mesVO.msgtime}</td>
+					<td><h5>${mesVO.msgname}</h5></td>
+					<td><h5>${mesVO.msgmail}</h5></td>
+					<td><h5>${mesVO.msgtime}</h5></td>
 
 					<td>
 						<%-- 			     <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/mes/mes.do"> --%>
@@ -65,7 +65,7 @@
 					</td>
 					<tr>
 					<td colspan ="4" id="content${counter.index}">
-						${mesVO.msgcontent}<br>
+						<H5>${mesVO.msgcontent}</H5><br>
 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/mes/mes.do">
 							<textarea cols="40" rows="5" id="area1" name="rpcontent" class="materialize-textarea"></textarea>
 							<input type="hidden" name="messageid" value="${mesVO.messageid}">

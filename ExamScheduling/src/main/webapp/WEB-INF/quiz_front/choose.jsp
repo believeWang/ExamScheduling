@@ -113,6 +113,6 @@ $(document).ready(function(){
 </table>
 </div>
 
-
+<%@ include file="/WEB-INF/header/footer.jsp" %> 
 </body>
 </html>

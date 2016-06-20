@@ -20,3 +20,4 @@
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
 <!--scrollbar-->
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.11/js/perfect-scrollbar.min.js"></script>
+<link rel="Shortcut Icon" type="image/x-icon" href="/ExamScheduling/images/logo13.ico" />

@@ -15,7 +15,7 @@
 
 <%@ include file="/WEB-INF/header/header_resourse.file" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>面試預約</title>
 <!-- <script src='../js/jquery.min.js'></script> -->
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <script src='../js/moment.min.js'></script>
@@ -153,12 +153,14 @@
 					</c:forEach>
 				</ul>
 			</div>
-			<div class="col s10">
+			<div class="col s10" style="background-color:#DFFFFC; ">
 				<table class="table table-bordered">
 					<tr>
 						<td>
 							<div></div><!-- 數據統計 -->
+							
 							<div id='calendar'></div><!-- 行事曆 -->
+							
 							<a class="modal-trigger waves-effect waves-light btn1" href="#modal1" id="errormsg"></a>
 							<div id="modal1" class="modal modal-fixed-footer" style="width:650px; height:200px">
 						    	<div class="modal-content">

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
+          <h5 class="white-text">公司介紹</h5>
           <p class="grey-text text-lighten-4">偉康科技股份有限公司，成立於1998年，由一群熱愛軟體技術、具備豐富實務經驗、且時時以高品質專業服務為念之優秀技術團隊所共同經營。</p>
 
 
@@ -18,7 +18,7 @@
 <!--           </ul> -->
 <!--         </div> -->
         <div class="col l6 s12">
-          <h5 class="white-text">Connect</h5>
+          <h5 class="white-text">公司資訊</h5>
           <p class="grey-text text-lighten-4">
           	偉康科技股份有限公司  電話：886-2-77015899      傳真：886-2-7702899<br />
           	地址：台北市中山區松江路9號3樓之1     聯絡我們：service@comm.com.tw
