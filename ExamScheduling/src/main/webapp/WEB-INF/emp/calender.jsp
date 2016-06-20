@@ -52,13 +52,11 @@ body {
 	 * Check if current user has authorized this application.
 	 */
 	function checkAuth() {
-		 
 		gapi.auth.authorize({
 			'client_id' : CLIENT_ID,
 			'scope' : SCOPES.join(' '),
 			'immediate' : true
 		});
-		
 	}
 
 	/**
@@ -185,18 +183,7 @@ body {
 															'href' : '/ExamScheduling/employee/Score?action=get_Event&id='
 																	+ calEvent.id
 														});
-											},
-											buttonText: {
-									        	  today: '今天',
-									        	  month: '月',
-									        	  week: '周',
-									        	  day: '天'
-									       	 	},
-												allDayText: '全天',
-												monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
-												monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-												dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
-												dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+											}
 										})
 					});
 </script>
@@ -224,9 +211,11 @@ body {
 				<table class="table table-bordered">
 					<tr>
 						<td>
+							
 								<!--Button for the user to click to initiate auth sequence -->
 								<button id="authorize-button" onclick="handleAuthClick(event)">
 									Authorize</button>
+							
 						</td>
 					</tr>
 					<tr>
@@ -237,6 +226,10 @@ body {
 				</table>
 			</div>
 		</div>
+
 	</div>
+
+
+
 </body>
 </html>

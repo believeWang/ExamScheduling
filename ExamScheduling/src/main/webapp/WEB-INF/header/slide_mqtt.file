@@ -88,7 +88,7 @@ var wsport = 8080 // port for above
 var clientid = "${GoogleUser}"
 var client = new Paho.MQTT.Client(wsbroker, wsport, clientid);
 client.onConnectionLost = function(responseObject) {
-	console.log("connection lost: " + responseObject.errorMessage);
+	//console.log("connection lost: " + responseObject.errorMessage);
 };
 client.onMessageArrived = function(message) {
 	var messageArray = message.payloadString.split(":");
@@ -125,7 +125,7 @@ client.onMessageArrived = function(message) {
 var options = {
 	//       timeout: 3,
 	onSuccess : function() {
-		console.log("mqtt connected");
+	//	console.log("mqtt connected");
 		// Connection succeeded; subscribe to our topic, you can add multile lines of these
 		client.subscribe('/ESS', {
 			qos : 1
