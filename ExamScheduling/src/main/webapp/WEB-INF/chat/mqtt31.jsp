@@ -130,13 +130,13 @@ span.emotion:hover {
         <div class="loader-section section-right"></div>
 	</div>
 <%-- 	<%@ include file="/WEB-INF/header/header.jsp" %> --%>
-	<div style="margin: 100px 500px">
+	<div  style="width:700px;height:500px;margin: 0px auto;">
 		<div style="background: white">
 			<input type="hidden" id="messageName" size="50" value="考生  ${ecno}">
 			</br>
 			<div contenteditable="false" id="show" style="width:700px;height:300px; overflow:scroll;border-style:inset;" ></div>
 			</br> <input type="text" id="messageText" name="messageText" >
-			<p style="float: right">
+			<p style="float: left">
 				<span class="emotion">表情</span>
 <!-- 				<a class="blue darken-1 waves-light btn" onclick="sendMessage();"><i class="large material-icons">mode_edit</i></a> -->
 					<button class="light-blue darken-2 waves-light btn" type="submit" onclick="sendMessage();">
