@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>新增職缺</title>
 <!-- jQuery -->
 <!-- <script src='../js/jquery.min.js'></script> -->
 <%@ include file="../WEB-INF/cdn.file" %>
@@ -31,26 +31,6 @@ $(function(){
 <body>
 <%@ include file="../WEB-INF/header/sa_slidenav.jsp" %>
 <div class="container-fluid">
-	
-	<div class="row">
-		<div class="col-md-12">
-			<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#"> <img alt="Brand"
-						src="../images/calendar_icon.jpg" width="30px">
-					</a>
-					<p class="navbar-text">FullCalendar</p>
-					<div class="container">
-						<ul class="nav navbar-nav">
-								<li><a href="../fullcalendar/index.jsp">前台頁面</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			</nav>
-		</div>
-	</div>
 	
 	<div class="row">
 	  	
@@ -78,10 +58,16 @@ $(function(){
 	  				<td>職位預約顏色：</td><td><input type="color" name="jobcolor" id="colorid"></td>
 	  			</tr>
 	  			<tr>
-	  				
 	  				<td>啟用：</td>
-	  				<td><input type="checkbox" name="jobactive" value="1"></td>
-	  			
+	  				<td>
+<!-- 	  					<input type="checkbox" name="jobactive" value="1"> -->
+	  					
+	  					<p>
+					      <input type="checkbox" id="test5" name="jobactive" value="1" />
+					      <label for="test5"></label>
+					    </p>
+	  					
+  					</td>
 	  			</tr>
 	  			<tr>
 	  				<td><input type="submit" value="送出"  class="btn btn-primary"></td>
