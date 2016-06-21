@@ -145,7 +145,6 @@ public class Emptable extends HttpServlet {
 				EmployeeVO empVO = empSvc.updateEmp(empno, empname, empemail, position-1);
 				
 				
-				System.out.println(empVO+"sssssssssssssssssssssssssssssssss");
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {
 				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());

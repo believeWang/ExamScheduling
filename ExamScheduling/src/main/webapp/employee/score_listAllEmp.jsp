@@ -63,10 +63,8 @@
 
 </FORM>
  </c:forEach>
-
 </fieldset>
 </div>
-
 </body>
 <script>
 	$(document).ready(function() {

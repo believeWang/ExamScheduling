@@ -62,7 +62,7 @@ pageContext.setAttribute("list", list);
 		</tr>
         </c:forEach>
       	</table>
-		<a type="image" class="waves-effect waves-light btn modal-trigger" target="_blank" href="EmpCaes?empturn=EMPUPD">修改</a>
+		<a type="image" class="waves-effect waves-light btn modal-trigger" target="_blank" href="<%=request.getContextPath()%>/test/jsp/calender.jsp">修改</a>
 		</fieldset></div>
 </body>
 
