@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- jQuery -->
-<script src='../js/jquery.min.js'></script>
-<%-- <%@ include file="../WEB-INF/cdn.file" %> --%>
+<!-- <script src='../js/jquery.min.js'></script> -->
+<%@ include file="../WEB-INF/cdn.file" %>
 <!-- Bootstrap -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
@@ -76,7 +76,7 @@
 	  			
 	  			</tr>
 	  			<tr>
-	  				<td><input type="submit" value="Submit"  class="btn btn-primary"></td><td></td>
+	  				<td><input type="submit" value="送出"  class="btn btn-primary"></td><td></td>
 	  			</tr>
   			</form>
 	  		</table>

@@ -44,11 +44,15 @@
 				<li><a
 					href="<%=request.getContextPath()%>/fullcalendar/EventShowServlet">預約考試</a></li>
 				<li><a href="${pageContext.request.contextPath}/choose">前往考試</a></li>
-				<li><a href="<%=request.getContextPath()%>/MesTurn?turn=LM">聯絡我們</a></li>
+				<li><a href="<%=request.getContextPath()%>/MesTurn?turn=LM">聯絡我們</a></li>	
+<%-- 				<li><a href="<%=request.getContextPath()%>/login">登入</a> --%>
+<%-- 				<a href="<%=request.getContextPath()%>/LogoutServlet">登出</a></li> --%>
+<%-- 				<li style="color: #000000;">${sessionScope.ecno}</li> --%>
 				<c:choose>
 					<c:when test="${not empty sessionScope.ecno}">
 						<li><a href="<%=request.getContextPath()%>/LogoutServlet">登出</a></li>
-						<li style="color: #000000;">${sessionScope.ecno}</li>
+						<li style="color: #000000;">使用者：${sessionScope.ecno}</li>
+
 					</c:when>
 					<c:otherwise>
 						<li><a href="<%=request.getContextPath()%>/login">登入</a></li>

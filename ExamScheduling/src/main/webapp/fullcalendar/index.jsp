@@ -162,10 +162,10 @@
 							<div id='calendar'></div><!-- 行事曆 -->
 							
 							<a class="modal-trigger waves-effect waves-light btn1" href="#modal1" id="errormsg"></a>
-							<div id="modal1" class="modal modal-fixed-footer" style="width:650px; height:200px">
+							<div id="modal1" class="modal modal-fixed-footer" style="width:650px; height:250px">
 						    	<div class="modal-content">
-						      		<h2><p>錯誤訊息!!!</p></h2>
-							      	<h4>超過預約的時間，請選擇可報名日期:${datearray[0]}年${datearray[1]}月${datearray[2]}日後14天內，謝謝。</h4>
+						      		<h2 ><p>非預約時段!!!</p></h2>
+							      	<h4 >超過預約的時間，請選擇可報名日期:${datearray[0]}年${datearray[1]}月${datearray[2]}日後14天內，謝謝。</h4>
 							    </div>
 							    <div class="modal-footer">
 							      	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">關閉</a>
