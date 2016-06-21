@@ -106,26 +106,6 @@ $(function() {
 <div class="container-fluid">
 	
 	<div class="row">
-		<div class="col s10 offset-s2">
-			<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#"> <img alt="Brand"
-						src="../images/calendar_icon.jpg" width="30px">
-					</a>
-					<p class="navbar-text">FullCalendar</p>
-					<div class="container">
-						<ul class="nav navbar-nav">
-								<li><a href="../fullcalendar/index.jsp">前台頁面</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			</nav>
-		</div>
-	</div>
-	
-	<div class="row">
 	  	
 	  	<div class="col-md-3"></div>
 	  	

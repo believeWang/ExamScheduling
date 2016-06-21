@@ -20,7 +20,7 @@ response.setHeader("Expires", "0");
 <link rel="stylesheet" type="text/css" href="exam_resourse/css/component.css" />
 <link rel="stylesheet" type="text/css"
 	href="/ExamScheduling/css/preload.css" />
-
+<link rel="Shortcut Icon" type="image/x-icon" href="/ExamScheduling/images/logo13.ico" />
 <style type="text/css">
 #content {
 	position: absolute;

@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 a.button-collapse.top-nav {
     position: absolute;
@@ -111,11 +112,11 @@ client.onMessageArrived = function(message) {
 	if (messageArray[0] == checkId) {
 		$("#show").append(
 				"<h6 style='color:blue; text-align:right;'>"
-						+ replace_em(messageArray[1]) + "</h6></br>");
+						+ replace_em(messageArray[1]) + "</h6>");
 	} else {
 		$("#show").append(
 				"<h6 style='text-align:left;'>"
-						+ replace_em(message.payloadString) + "</h6></br>");
+						+ replace_em(message.payloadString) + "</h6>");
 		var checkbox=$("#checkboxid");
 		var chexval=checkbox.val();
 		checkbox.change(function() {

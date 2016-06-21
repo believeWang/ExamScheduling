@@ -35,30 +35,10 @@
 <div class="container-fluid">
 	
 	<div class="row">
-		<div class="col s10 offset-s2">
-			<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#"> <img alt="Brand"
-						src="../images/calendar_icon.jpg" width="30px">
-					</a>
-					<p class="navbar-text">FullCalendar</p>
-					<div class="container">
-						<ul class="nav navbar-nav">
-								<li><a href="../fullcalendar/index.jsp">前台頁面</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			</nav>
-		</div>
-	</div>
-	
-	<div class="row">
 	  	
 	  	<div class="col-md-3"></div>
 	  	
-	  	<div class="col s10 offset-s2">
+	  	<div class="col s8 offset-s2">
 	  		<h3 class="text-center">預約時段設定</h3>
 <!-- 	  		<a href="#" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a> -->
 	  		<a href="SectionDoServlet?action=add" id="create-section"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增</a>
@@ -94,7 +74,7 @@
 	  		</div><!-- end -->
 	  	</div>
 	  	
-	  	<div class="col-md-3"></div>
+<!-- 	  	<div class="col-md-3"></div> -->
 	
 	</div>
 

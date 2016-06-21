@@ -15,7 +15,7 @@
 	</div>
 	<ul id="nav-mobile" class="side-nav fixed" >
 	 <li class="logo" style="background-color:#0097a7">
-            <img style="width:240px" id="front-page-logo"  src="images/iiIVlight.png"/>
+            <img style="width:240px" id="front-page-logo"  src="/ExamScheduling/images/iiIVlight.png"/>
             </li>
 		<li class="user-details blue-grey lighten-3">
 			<div class="row cyan darken-1">
@@ -23,7 +23,7 @@
 				<div class="col col s12">
 					<ul id="profile-dropdown" class="dropdown-content">
 
-						<li><a href="gmail_login/loginout.do"><i
+						<li><a href="/ExamScheduling/gmail_login/loginout.do"><i
 								class="mdi-hardware-keyboard-tab"></i> Logout</a></li>
 					</ul>
 					<a
@@ -35,11 +35,11 @@
 			</div>
 		</li>
 
-		<li class="bold" ><a href="EmpCaes?empturn=CAL"
+		<li class="bold" ><a href="/ExamScheduling/EmpCaes?empturn=CAL"
 			class="waves-effect waves-teal" style="font-size:1.4em;">行事曆</a></li>
-		<li class="bold"><a href="ExamList"
+		<li class="bold"><a href="/ExamScheduling/ExamList"
 			class="waves-effect waves-teal" style="font-size:1.4em;">編輯考題</a></li>
-		<li class="bold"><a href="MesTurn?turn=LNRM"
+		<li class="bold"><a href="/ExamScheduling/MesTurn?turn=LNRM"
 			class="waves-effect waves-teal" style="font-size:1.4em;">留言版</a></li>
 
 

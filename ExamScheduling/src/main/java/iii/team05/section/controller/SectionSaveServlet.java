@@ -67,8 +67,7 @@ public class SectionSaveServlet extends HttpServlet {
 			try {
 				
 				java.sql.Time timeValue = new java.sql.Time(formatter.parse(datetime).getTime());
-				System.out.println(timeValue);
-				System.out.println(active);
+				
 				
 				SectionVO sectionVO = new SectionVO();
 				sectionVO.setSectiontime(timeValue);
@@ -112,8 +111,6 @@ public class SectionSaveServlet extends HttpServlet {
 			try {
 				
 				java.sql.Time timeValue = new java.sql.Time(formatter.parse(datetime).getTime());
-				System.out.println(timeValue);
-				System.out.println(active);
 				
 				SectionVO sectionVO = new SectionVO();
 				sectionVO.setSectiontime(timeValue);

@@ -76,32 +76,24 @@ public class Score_servlet extends HttpServlet {
 			EventVO eventVO = eventDAO.findByPrimaryKey(id);// 利用事件id 取得對應的table
 			ECHibernateDAO echDAO = new ECHibernateDAO();
 			List<ECVO> student_data = echDAO.SAM(eventVO.getEcno());// 取得事件id裡面的ecno欄位
-
-			
-			JSONArray jary= new JSONArray();			//增加json的大括號"["開始
-			for (EmployeeVO empVO : student_data) {			//強化行迴圈輸出
-				JSONObject obj = new JSONObject();		//json轉型
-				obj.put("Name", empVO.getEmpname());	//"id"為辨識字串,"eventVO.getEventid"取得event裡的"id"
-				obj.put("Number", empVO.getEmpno());
-				obj.put("Email", empVO.getEmpemail());
-				obj.put("Position", empVO.getPosition());
-				jary.put(obj);							//強化行迴圈結束
-			}
-			out.print(jary);	
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+//
+//			
+//			JSONArray jary= new JSONArray();			//增加json的大括號"["開始
+//			for (ECVO ecVO : student_data) {			//強化行迴圈輸出
+//				JSONObject obj = new JSONObject();		//json轉型
+//				obj.put("Name", ecVO.getEcno());	//"id"為辨識字串,"eventVO.getEventid"取得event裡的"id"
+//				obj.put("Number", ecVO.geteSVO());
+//				obj.put("Email", ecVO.getScoreVO());
+//				obj.put("Position", ecVO.getEcname());
+//				obj.put("Position", ecVO.getEcemail());
+//				obj.put("Position", ecVO.getEcpsd());
+//				obj.put("Position", ecVO.getEcstatus());
+//				
+//				
+//				jary.put(obj);							//強化行迴圈結束
+//			}
+//			out.print(jary);	
+//			
 			
 			req.setAttribute("student_data", student_data); // 資料庫取出的empVO物件,存入req
 			String url = "/employee/score_listAllEmp.jsp";

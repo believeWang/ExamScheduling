@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title></title>
+<title>員工維護</title>
 <link rel="stylesheet" type="text/css" href="demos.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
 
@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="../css/theme.css" />
 
     <script src="../external/jquery/jquery-1.8.3.js"></script>
-<!--     <script src="db.js"></script> -->
 
     <script src="../src/jsgrid.core.js"></script>
     <script src="../src/jsgrid.load-indicator.js"></script>
@@ -32,7 +31,7 @@
 </head>
 <body>
 
-  <h1>Basic Scenario</h1>
+  <h1>員工維護</h1>
     <div id="jsGrid"></div>
 
     
@@ -88,12 +87,11 @@ function myGrid(response){
 	            },
 
 	            updateItem: function(updatingClient) {
-	            	 var clientIndex = $.inArray(updatingClient, this.clients);
-		                this.clients.splice(clientIndex, 1);
+	            	 
 	            	$.ajax({
 	            		url : '/ExamScheduling/emp/emptable.do',
 	             		data : {
-	             			'button' : 'update',
+	             			'button' : 'Update',
 	             			'Number' : updatingClient.Number,
 	             			
 	             		},
@@ -106,7 +104,8 @@ function myGrid(response){
 
 	            
 	            deleteItem: function(deletingClient) {
-		               
+	            	var clientIndex = $.inArray(deletingClient, this.clients);
+	                this.clients.splice(clientIndex, 1);
 	                $.ajax({
 	            		url : '/ExamScheduling/emp/emptable.do',
 	             		data : {
@@ -130,22 +129,14 @@ function myGrid(response){
 
 
       db.countries = [
-          { Name: "", Id: null },
-          { Name: "一般員工", Id: 0 },
-          { Name: "主考官", Id: 1 },
-          { Name: "系統使用者", Id: 2 },
+          { Name: "", Id: 0 },
+          { Name: "一般員工", Id: 1 },
+          { Name: "主考官", Id: 2 },
+          { Name: "系統使用者", Id: 3 },
           
       ];
 	        db.clients=response;
 
-// 	       db.clients = [
-//         {
-//             "Number": "Otto Clay",
-//             "Name": 61,
-//             "Email": "Otto Clay",
-//             "Position": 1
-           
-//         }];
 	       $("#jsGrid").jsGrid({
 	            height: "70%",
 	            width: "100%",
