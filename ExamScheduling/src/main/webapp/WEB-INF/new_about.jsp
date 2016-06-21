@@ -327,7 +327,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-          <h5 class="header col s12 light" style="background-color: black">關於偉康</h5>
+          <h5 class="header col s12 light">關於偉康</h5>
         </div>
       </div>
     </div>
@@ -345,7 +345,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-          <h5 class="header col s12 light" style="background-color: black">地圖</h5>
+          <h5 class="header col s12 light">地圖</h5>
         </div>
       </div>
     </div>
@@ -365,7 +365,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-          <h5 class="header col s12 light" style="background-color: black">更多職缺</h5>
+          <h5 class="header col s12 light">更多職缺</h5>
         </div>
       </div>
     </div>
